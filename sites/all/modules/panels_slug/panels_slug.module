@@ -44,7 +44,7 @@ function panels_slug_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
 function panels_slug_ctools_arguments() {
   $args = array();
   $args['panels_slug'] = array(
-    'title' => t('Ding slug'),
+    'title' => t('Panel slug'),
     'keyword' => 'node',
     'description' => t('Finds the node context based on the "slug" name for it.'),
     'context' => 'panels_slug_region_context',
