@@ -12,14 +12,14 @@
  * This hook should return a SchemaAPI array with a full definition of the most
  * up-to-date version of the module's database tables.
  */
-function panel_slug_schema() {
-  $schema['panel_slug'] = array(
+function panels_slug_schema() {
+  $schema['panels_slug'] = array(
     'description' => t('Stores custom links to be added to nodes.'),
     'fields' => array(
       'slug' => array(
         'type' => 'varchar',
         'length' => 100,
-        'description' => t('Unique identifier for the {panel_slug}.'),
+        'description' => t('Unique identifier for the {panels_slug}.'),
       ),
       'nid' => array(
         'type' => 'int',
@@ -44,14 +44,13 @@ function panel_slug_schema() {
 /**
  * Implementation of hook_install().
  */
-function panel_slug_install() {
-  drupal_install_schema('panel_slug');
+function panels_slug_install() {
+  drupal_install_schema('panels_slug');
 }
 
 /**
  * Implementation of hook_uninstall().
  */
-function panel_slug_uninstall() {
-  drupal_uninstall_schema('panel_slug');
+function panels_slug_uninstall() {
+  drupal_uninstall_schema('panels_slug');
 }
-
