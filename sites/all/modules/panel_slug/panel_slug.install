@@ -12,7 +12,7 @@
  * This hook should return a SchemaAPI array with a full definition of the most
  * up-to-date version of the module's database tables.
  */
-function ding_slug_schema() {
+function panel_slug_schema() {
   $schema['panel_slug'] = array(
     'description' => t('Stores custom links to be added to nodes.'),
     'fields' => array(

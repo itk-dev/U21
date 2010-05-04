@@ -1,0 +1,26 @@
+<?php
+
+// $Id$
+
+/**
+ * @file installes the default u21 content types.
+ */
+
+include_once 'u21_content_types.inc';
+
+/**
+ * Implementation of hook_install
+ */
+function u21_content_install() {
+  // Create event content types
+  u21_content_types_install();
+}
+
+/**
+ * Implementation of hook_uninstall
+ */
+function u21_content_uninstall() {
+
+  // Remove the event content type
+  u21_content_types_uninstall();
+}

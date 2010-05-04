@@ -1,0 +1,66 @@
+<?php
+
+/**
+ * Implementation of hook_perm().
+ */
+function u21_content_perm() {
+  return array(
+    'create region',
+    'edit region',
+    'delete region',
+  );
+}
+
+/**
+ * Implementation of hook_access().
+ */
+function u21_content_access($op, $node, $account = NULL) {
+  if ($node instanceOf stdClass) {
+    $type = $node->type;
+  }
+  else {
+    $type = $node;
+  }
+
+  $permissions = array(
+    'region' => array(
+      'create' => 'create region',
+      'update' => 'edit region',
+      'delete' => 'delete region',
+    ),
+  );
+
+  if (isset($permissions[$type][$op])) {
+    return user_access($permissions[$type][$op], $account);
+  }
+}
+
+function u21_content_node_info() {
+  return array(
+    'region' => array(
+      'name' => t('Region'),
+      'module' => 'u21_content',
+      'description' => 'Defines a region e.g Aarhus',
+      'title_label' => t('Region name'),
+      'body_label' => FALSE,
+    ),
+  );
+}
+
+/**
+ * Implementation of hook_views_api() {
+ */
+function u21_content_views_api() {
+  return array(
+    'api' => 2.0,
+  );
+}
+
+/**
+ * Implementation of hook_ctools_plugin_api().
+ */
+function u21_content_ctools_plugin_api($module, $api) {
+  if ($module == 'page_manager' && $api == 'pages_default') {
+    return array('version' => 1);
+  }
+}
