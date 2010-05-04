@@ -1,0 +1,861 @@
+<?php
+// $Id: homebox.module,v 1.1.2.10 2010/04/30 09:13:31 jchatard Exp $
+
+/**
+ * @file
+ * Home box main file, takes care of global functions settings constants, etc.
+ *
+ * Defines menu elements, callbacks, permissions, hooks,
+ * preprocess functions, utility functions
+ */
+
+define('HOMEBOX_REGION_NONE', -1);
+// Sets the number of colors that an administrator can set
+
+// TODO add this as a variable
+define('HOMEBOX_NUMBER_OF_COLOURS', 6);
+
+/**
+ * Implementation of hook_menu().
+ */
+function homebox_menu() {
+  $items = array();
+
+  // User pages
+  if (is_array(homebox_pages()) && count(homebox_pages()) > 0) {
+    foreach (homebox_pages() as $page) {
+      $items['homebox/'. $page->pid] = array(
+        'title' => $page->name,
+        'page callback' => 'homebox_build',
+        'page arguments' => array(1),
+        'access arguments' => array('access homebox '. $page->safe_name),
+        'type' => MENU_NORMAL_ITEM,
+      );
+    }
+  }
+
+  // Ajax Callbacks
+  $items['homebox/save'] = array(
+    'page callback' => 'homebox_save_user_settings',
+    'access callback' => '_homebox_user_access_current_homebox',
+    'type' => MENU_CALLBACK,
+  );
+  $items['homebox/save-color'] = array(
+    'page callback' => 'homebox_save_user_color',
+    'access callback' => '_homebox_user_access_current_homebox',
+    'type' => MENU_CALLBACK,
+  );
+  $items['homebox/save-open'] = array(
+    'page callback' => 'homebox_save_user_open',
+    'access callback' => '_homebox_user_access_current_homebox',
+    'type' => MENU_CALLBACK,
+  );
+
+  // Admin related tasks
+  $items['admin/build/homebox'] = array(
+    'title' => 'Home box',
+    'description' => 'List, edit, or add home box pages.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('homebox_admin_new_page'),
+    'access arguments' => array('administer homebox'),
+    'file' => 'homebox.admin.inc',
+  );
+  $items['admin/build/homebox/edit'] = array(
+    'title' => 'Edit page',
+    'page arguments' => array('homebox_admin_page'),
+    'access arguments' => array('administer homebox'),
+    'type' => MENU_CALLBACK,
+    'file' => 'homebox.admin.inc',
+  );
+  $items['admin/build/homebox/layout/%'] = array(
+    'title' => 'Layout',
+    'description' => 'Edit layout.',
+    'page callback' => 'homebox_layout',
+    'page arguments' => array(4),
+    'access arguments' => array('administer homebox'),
+    'file' => 'homebox.admin.inc',
+    'type' => MENU_CALLBACK,
+  );
+  $items['admin/build/homebox/settings/%'] = array(
+    'title' => 'Settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('homebox_configure_form', 4),
+    'access arguments' => array('administer homebox'),
+    'type' => MENU_CALLBACK,
+    'file' => 'homebox.admin.inc',
+  );
+  return $items;
+}
+
+/**
+ * Implementation of hook_forms().
+ */
+function homebox_forms() {
+  $forms['homebox_admin_new_page']['callback'] = 'homebox_admin_page';
+  return $forms;
+}
+
+/**
+ * Implementation of hook_help().
+ */
+function homebox_help($path, $arg) {
+  switch ($path) {
+    case 'admin/build/homebox':
+      $output = '<p>'. theme('advanced_help_topic', 'homebox', 'introduction') .'&nbsp;';
+      $output .= t("Home box pages are listed below. Each page is accessible from one url on your site. You can create as many pages as you need, set its default layout (i.e. blocks that you want to be available per page, color options, etc.). Don't forget to visit the <a href='!permissions'>permissions page</a> to set access to home box pages for each role. <strong>NOTE:</strong> if a page doesn't contain any block, visiting it will fire a <em>Page not found (404)</em> error.", array('!permissions' => url('admin/user/permissions', array('fragment' => 'module-homebox')))) .'</p>';
+      break;
+    case 'admin/build/homebox/edit':
+      $output = '<p>'. theme('advanced_help_topic', 'homebox', 'new-page') .'&nbsp;';
+      $output .= t("You can rename or delete a Home box page.") .'</p>';
+      break;
+    case 'admin/build/homebox/layout/%':
+      $output = '<p>'. theme('advanced_help_topic', 'homebox', 'default-layout') .'&nbsp;';
+      $output .= t("This page behave the same way as Drupal block administration page. Drag blocks to whatever column you want to enable it for your users. Note that you can change the number of columns in the <a href='!settings_url'>settings page</a>", array('!settings_url' => url('admin/build/homebox/settings/'. arg(4)))) .'.</p>';
+      break;
+    case 'admin/build/homebox/settings/%':
+      $output = '<p>'. theme('advanced_help_topic', 'homebox', 'settings') .'&nbsp;';
+      $output .= t('Home box configuration page.');
+      break;
+  }
+  return $output;
+}
+
+/**
+ * Implementation of hook_perm().
+ */
+function homebox_perm() {
+  $permissions = array('administer homebox');
+
+  if ($pages = homebox_pages()) {
+    foreach ($pages as $page) {
+      $permissions[] = "access homebox ". $page->safe_name;
+    }
+    return $permissions;
+  }
+  return NULL;
+}
+
+/**
+ * Implementation of hook_theme().
+ */
+function homebox_theme($blocks) {
+  return array(
+    // Set hook name: see template_preprocess_homebox()
+    'homebox' => array(
+      'arguments' => array('regions' => $regions, 'available_blocks' => $available_blocks, 'color_css_classes' => $color_css_classes, 'column_count' => $column_count, 'pid' => $pid),
+      'template' => 'homebox', // Set template to homebox.tpl.php
+    ),
+    'homebox_block' => array(
+      'arguments' => array('block' => $block, 'pid' => $pid),
+      'template' => 'homebox-block', // Set template to homebox-block.tpl.php
+    ),
+    'homebox_admin_display_form' => array(
+      'template' => 'homebox-admin-display-form',
+      'file' => 'homebox.admin.inc',
+      'arguments' => array('form' => NULL),
+    ),
+    'homebox_admin_new_page' => array(
+      'arguments' => array('form' => NULL),
+      'file' => 'homebox.admin.inc',
+    ),
+    'homebox_views_exposed_filter' => array(
+      'arguments' => array('block' => NULL),
+    ),
+  );
+}
+
+/**
+ * Preprocesses variables for home-box.tpl.php template
+ *
+ * @param $variables
+ *  An array containing variables to used in home-box.tpl.php
+ * @return
+ *  An array containing preprocessed variables (see home-box.tpl.php)
+ */
+function template_preprocess_homebox(&$variables) {
+
+  // Add jQuery UI needed files
+  jquery_ui_add(array('ui.draggable', 'ui.droppable', 'ui.sortable'));
+
+  // Add collapsible behaviour for adding/hiding blocks
+  drupal_add_js($data = "misc/collapse.js");
+
+  // Add Home box JavaScript file
+  drupal_add_js($data = drupal_get_path('module', 'homebox') .'/homebox.js', $type = 'module', $scope = 'header', $defer = FALSE, $cache = TRUE, $preprocess = TRUE);
+
+  // Add CSS for home box
+  drupal_add_css($path = drupal_get_path('module', 'homebox') .'/homebox.css', $type = 'module', $media = 'all', $preprocess = TRUE);
+
+  return $variables;
+}
+
+/**
+ * Responsible for firing the hook_theme()
+ *
+ * @return
+ *  homebox_theme() call
+ */
+function homebox_build($pid) {
+
+  // If no default block layout is set return a Drupal 404
+  if (db_result(db_query("SELECT COUNT(*) FROM {homebox_default} WHERE pid = %d", $pid)) == 0) {
+    drupal_not_found();
+    exit();
+  }
+
+  // Get every block placed into its region sorted by weight
+  $regions = homebox_load_blocks_in_regions($pid);
+
+  // Get the list of available blocks to activate/desactivate
+  $available_blocks = homebox_list_available_blocks($regions);
+
+  // Is color support enabled?
+  if (variable_get('homebox_users_use_colors_'. $pid, FALSE)) {
+    $color_css_classes = _homebox_get_css_color_classes($pid);
+  }
+  else {
+    $color_css_classes = NULL;
+  }
+
+  $column_count = variable_get('homebox_column_count_'. $pid, 3);
+
+  return theme('homebox', $regions, $available_blocks, $color_css_classes, $column_count, $pid);
+}
+
+/**
+ * Loads available blocks for user
+ *
+ * @return
+ *  An array of regions/columns containing blocks ordered by region / weight (see home-box.tpl.php)
+ */
+function homebox_load_blocks_in_regions($pid) {
+  global $user;
+
+  $regions = array();
+  $column_count = variable_get('homebox_column_count_'. $pid, 3);
+
+  $blocks = _homebox_db_fetch_all_blocks(db_query("SELECT bid, region, weight, status, open
+                                                   FROM {homebox_default}
+                                                   WHERE pid = %d ORDER BY region ASC, weight ASC", $pid));
+
+  // Retrieve customization from user
+  // and adds new blocks to the user table
+  if ($user->uid != 0) {
+    $blocks = _homebox_apply_user_settings($blocks, $pid);
+  }
+  else {
+    $message = t("Please be sure to <a href='!login_url'>login</a> on our site to have your preferences saved. If you do not have an account please <a href='!register_url'>register</a>, and then you will be able to save your preferences.", array('!login_url' => url('user/login'),'!register_url' => url('user/register')));
+    drupal_set_message($message, $type = 'warning', $repeat = FALSE);
+  }
+
+  $is_cache_enabled = (bool) variable_get('homebox_cache_enabled_'. $pid, 0);
+
+  // Preparing blocks object for theming
+  foreach ($blocks as $key => $block_settings) {
+    // Retrieve information from blocks Drupal table
+    $block = db_query_range("SELECT * FROM {blocks} WHERE bid = %d", array($block_settings['bid']), $from = 0, $to = 1);
+    $block = db_fetch_object($block);
+
+    // Check for permissions set at the block level
+    $allowed_roles = db_query("SELECT rid FROM {blocks_roles} WHERE module = '%s' AND delta = '%s'", $block->module, $block->delta);
+    // We need to first grant access, because no record means no role restriction
+    $can_access_block = TRUE;
+    $stop = FALSE;
+
+    while (($role = db_fetch_object($allowed_roles)) && $stop == FALSE && $user->uid != 1) {
+      // We found at least one record, so we become pessimistic
+      $can_access_block = FALSE;
+      if (isset($user->roles[$role->rid])) {
+        // User has permission to view this block
+        $can_access_block = TRUE;
+        // We don't need to continue
+        $stop = TRUE;
+      }
+    }
+
+    // If the user can't access this block
+    // stop here and go to the next block
+    if ($can_access_block == FALSE) {
+      continue;
+    }
+
+    // Block created with Views, check access
+    $can_access_view = FALSE;
+    if ($block->module == 'views') {
+      $can_access_view = _homebox_check_views_block_access($block);
+      if (!$can_access_view) {
+        // Skip end of the foreach()
+        // start a new iteration on next block
+        continue;
+      }
+    }
+
+   // Attempt to find a block in the cache table
+   if ($is_cache_enabled == TRUE && !count(module_implements('node_grants')) && $_SERVER['REQUEST_METHOD'] == 'GET' && ($cid = _block_get_cache_id($block)) && ($cache = cache_get($cid, 'cache_block'))) {
+     $array = $cache->data;
+   }
+   else {
+     $array = module_invoke($block->module, 'block', 'view', $block->delta);
+     if (isset($cid)) {
+       cache_set($cid, $array, 'cache_block', CACHE_TEMPORARY);
+     }
+   }
+
+    // Render block content
+    if (isset($array) && is_array($array)) {
+      foreach ($array as $k => $v) {
+        $block->$k = $v;
+      }
+    }
+
+    // We don't continue to assign this block
+    // since Drupal didn't returned any content
+    // which could be permissions rules applied by any module
+    if ($block->content && trim($block->content) != '' || $can_access_view) {
+      // If no title provided we try to get one from blocks table
+      if (!$block->subject) {
+        $block->subject = db_result(db_query("SELECT title FROM {blocks} WHERE bid = %d", $block->bid));
+      }
+      if (!$block->subject && $block->module == 'views') {
+        $block->subject = _homebox_get_view_name($block);
+      }
+      if (!$block->subject) {
+        $module_blocks = module_invoke($block->module, 'block', 'list');
+        $block->subject = $module_blocks[$block->delta]['info'];
+      }
+      // Fail safe
+      if (!$block->subject) {
+        // Is this still necessary?
+        $block->subject = t('<em>No title defined</em>');
+      }
+
+      // Mostly ugly for now, but we need this for performance issue when saving blocks ordering this prevent many queries!
+      $block->content .= "<input type='hidden' class='homebox' value='". $block->bid ."' />";
+      $block->content .= "<input type='hidden' class='pid' value='". $pid ."' />";
+
+      // Override core region parameter with homebox one
+      $block->region = (int) $block_settings['region'];
+      // Override core weight parameter with homebox one
+      $block->weight = (int) $block_settings['weight'];
+
+      // Homebox specific paramters
+      $block->status = isset($block_settings['status']) ? (bool) $block_settings['status'] : TRUE;
+      $block->open = isset($block_settings['open']) ? (bool) $block_settings['open'] : TRUE;
+
+      $block->homebox_classes = _homebox_get_css_classes_for_block($block_settings, $pid);
+
+      // If user defined region is greate than
+      // real column count put block in the last column/region
+      if ($block->region > $column_count) {
+        $block->region = $column_count;
+      }
+
+      // Adds block to its regions
+      $regions[$block->region][$block->weight][] = $block;
+    }
+  }
+
+  // Sort each region/column based on key value
+  for ($i = 1; $i <= count($regions); $i++) {
+    if (is_array($regions[$i]) && count($regions[$i]) > 0) {
+      ksort($regions[$i]);
+    }
+  }
+
+  // Fill region array to match defined column count
+  for ($i=1; $i <= $column_count; $i++) {
+    if (!isset($regions[$i])) {
+      $regions[$i] = array();
+    }
+  }
+  // Sorts region/column
+  ksort($regions);
+
+  return $regions;
+}
+
+/**
+ * Apply user defined settings like positionning
+ * bloxes sorting
+ *
+ * @param $blocks
+ *  An array of blocks
+ * @return
+ *  The same array, but sorted with user defined settings if any
+ */
+function _homebox_apply_user_settings($blocks, $pid) {
+  global $user;
+
+  // Blocks that the user already had in his settings
+  $user_blocks = _homebox_db_fetch_all_blocks(db_query("SELECT * FROM {homebox_users} WHERE uid = %d AND pid = %d ORDER BY region ASC, weight ASC", $user->uid, $pid));
+
+  // Blocks that $user has in his table but is not a 'default' one, aka deprecated block
+  $deprecated_blocks = array_diff_key($user_blocks, $blocks);
+  foreach ($deprecated_blocks as $key => $block) {
+    db_query("DELETE FROM {homebox_users} WHERE uid = %d AND pid = %d AND bid = %d", $user->uid, $pid, $block['bid']);
+    unset($user_blocks[$key]);
+  }
+
+  // Blocks that $user doesn't have yet in his table ('default')
+  $new_blocks = array_diff_key($blocks, $user_blocks);
+  // We insert those new blocks in the user table
+  foreach ($new_blocks as $key => $block) {
+    $block['uid'] = $user->uid;
+    $block['pid'] = $pid;
+    drupal_write_record('homebox_users', $block);
+  }
+  // Merge default blocks settings with user defined settings
+  // we don't need to merge newly inserted ones since there set to default values
+  $blocks = array_merge($blocks, $user_blocks);
+
+  return $blocks;
+}
+
+/**
+ * List available blocks to let user show/hide blocks
+ *
+ * @param $regions
+ *  contains every regions/blocks
+ * @return
+ *  An array of blocks containing information like subject/dom_id/status/checked
+ */
+function homebox_list_available_blocks($regions) {
+  $blocks = array();
+  $i = 0;
+  foreach ($regions as $column) {
+    foreach ($column as $weight) {
+      foreach ($weight as $block) {
+        // Block created with Views, check access
+        if ($block->module == 'views' && !_homebox_check_views_block_access($block)) {
+          continue;
+        }
+
+        $blocks[$i]['subject']  = $block->subject;
+        $blocks[$i]['dom_id']   = 'homebox-block-'. $block->module .'-'. $block->delta;
+        $blocks[$i]['status']   = $block->status;
+        $blocks[$i]['checked']  = $block->status ? 'checked="checked"' : NULL;
+        $i++;
+      }
+    }
+  }
+
+  // Sorts blocks by subject in alpha order asc
+  usort($blocks, '_homebox_compare_block_subject');
+
+  return $blocks;
+}
+
+/**
+ * Helper function to properly check access to blocks generated by the Views module
+ * Coda taken from : function views_block($op = 'view', $delta = 0, $edit = array())
+ */
+function _homebox_check_views_block_access($block) {
+  $delta = $block->delta;
+
+  // if this is 32, this should be an md5 hash.
+  if (drupal_strlen($delta) == 32) {
+    $hashes = variable_get('views_block_hashes', array());
+    if (!empty($hashes[$delta])) {
+      $delta = $hashes[$delta];
+    }
+  }
+
+  // This indicates it's a special one.
+  if (drupal_substr($delta, 0, 1) == '-') {
+    list($nothing, $type, $name, $display_id) = explode('-', $delta);
+    if ($view = views_get_view($name)) {
+      if ($view->access($display_id)) {
+        $view->destroy();
+        return TRUE;
+      }
+      $view->destroy();
+    }
+  }
+
+  list($name, $display_id) = explode('-', $delta);
+
+  // Load the view
+  if ($view = views_get_view($name)) {
+    if ($view->access($display_id)) {
+      $view->destroy();
+      return TRUE;
+    }
+    $view->destroy();
+  }
+
+  return FALSE;
+}
+
+/**
+ * Helper function to sort blocks by subject alpha asc
+ */
+function _homebox_compare_block_subject($a, $b) {
+  if ($a['subject'] == $b['subject']) {
+    return 0;
+  }
+  return ($a['subject'] < $b['subject']) ? -1 : 1;
+}
+
+function _homebox_get_view_name($block) {
+  $delta = $block->delta;
+
+  // if this is 32, this should be an md5 hash.
+  if (drupal_strlen($delta) == 32) {
+    $hashes = variable_get('views_block_hashes', array());
+    if (!empty($hashes[$delta])) {
+      $delta = $hashes[$delta];
+    }
+  }
+
+  // This indicates it's a special one.
+  if (drupal_substr($delta, 0, 1) == '-') {
+    list($nothing, $type, $name, $display_id) = explode('-', $delta);
+    if ($view = views_get_view($name)) {
+      $name = $view->display[$display_id]->display_options['block_description'];
+      $view->destroy();
+    }
+  }
+
+  list($name, $display_id) = explode('-', $delta);
+
+  // Load the view
+  if ($view = views_get_view($name)) {
+    $name = $view->display[$display_id]->display_options['block_description'];
+    $view->destroy();
+  }
+
+  return $name;
+}
+
+/**
+ * Implementation of theme_homebox_views_exposed_filter().
+ *
+ * Here we try to render exposed filters in the portelt config
+ * zone. We first check to see if the block display has exposed
+ * filters. If we don't find any, we try to find if default has some
+ * but in this case we must check if the display we try to render
+ * has not set overridding options to remove those default exposed filters.
+ */
+function theme_homebox_views_exposed_filter($block) {
+  $delta = $block->delta;
+
+  // if this is 32, this should be an md5 hash.
+  if (drupal_strlen($delta) == 32) {
+    $hashes = variable_get('views_block_hashes', array());
+    if (!empty($hashes[$delta])) {
+      $delta = $hashes[$delta];
+    }
+  }
+
+  list($name, $display_id) = explode('-', $delta);
+
+  // Load the view
+  if ($view = views_get_view($name)) {
+    // We try with override rules
+    if ($filters = $view->display[$display_id]->display_options['filters']) {
+      foreach ($filters as $filter) {
+        if ($filter['exposed'] == TRUE) {
+          $array = module_invoke($block->module, 'block', 'view', '-exp-'. $delta);
+          if (isset($array) && is_array($array)) {
+            foreach ($array as $k => $v) {
+              $content .= $v;
+            }
+          }
+          $view->destroy();
+          return $content;
+        }
+      }
+    }
+
+    // No chance so we try with default View display
+    if ($filters = $view->display['default']->display_options['filters']) {
+      foreach ($filters as $filter) {
+        // Here we check if default has exposed AND that our display inherit from default
+        if ($filter['exposed'] == TRUE && ($view->display[$display_id]->display_options['default']['filters'] == TRUE || !isset($view->display[$display_id]->display_options['default']['filters']))) {
+          $array = module_invoke($block->module, 'block', 'view', '-exp-'. $delta);
+          if (isset($array) && is_array($array)) {
+            foreach ($array as $k => $v) {
+              $content .= $v;
+            }
+          }
+          $view->destroy();
+          return $content;
+        }
+      }
+    }
+  }
+  return NULL;
+}
+
+/**
+ * Saves user settings i.e. sorting/hidding boxes
+ * Always an Ajax call
+ *
+ * @return
+ *  A Boolean JSON formated
+ */
+function homebox_save_user_settings() {
+  global $user;
+
+  if ($user->uid == 0) {
+    drupal_json(TRUE);
+    exit();
+  }
+
+  $pid = (int) trim($_POST['pid']);
+
+  $order = trim($_POST['order']);
+
+  $blocks = explode(" ", $order);
+
+  for ($i = 0; $i < count($blocks) ; $i++) {
+    $array = explode(':', $blocks[$i]);
+    $regions[$array[0]][$i]['bid'] = (int) $array[1];
+    $regions[$array[0]][$i]['status'] = (int) $array[2];
+    $regions[$array[0]][$i]['weight'] = $i;
+  }
+
+  foreach ($regions as $key => $column) {
+    $region = (int) $key;
+    foreach ($column as $k => $b) {
+      $block =  new stdClass();
+      $block->uid = $user->uid;
+      $block->bid = $b['bid'];
+      $block->pid = $pid;
+      $block->region = $region;
+      $block->weight = $b['weight'];
+      $block->status = $b['status'];
+      drupal_write_record('homebox_users', $block, array('uid', 'bid', 'pid'));
+    }
+  }
+
+  drupal_json(TRUE);
+  exit();
+}
+
+/**
+ * Saves color for a box
+ * Always an Ajax call
+ *
+ * @return
+ *  A Boolean JSON formated
+ */
+function homebox_save_user_color() {
+  global $user;
+
+  if ($user->uid == 0) {
+    drupal_json(TRUE);
+    exit();
+  }
+
+  // Retrieve values from POST
+  $bid = (int) trim($_POST['box']);
+  $pid = (int) trim($_POST['pid']);
+  $color = trim($_POST['color']);
+
+  // Build a block object
+  $block =  new stdClass();
+  $block->uid = $user->uid;
+  $block->bid = $bid;
+  $block->pid = $pid;
+  $block->color = $color;
+
+  // Update record in the database
+  if (drupal_write_record('homebox_users', $block, array('uid', 'bid', 'pid')) != FALSE) {
+    drupal_json(TRUE);
+  }
+  else {
+    drupal_json(FALSE);
+  }
+  exit();
+}
+
+/**
+ * Saves open status for a box
+ * Always an Ajax call
+ *
+ * @return
+ *  A Boolean JSON formated
+ */
+function homebox_save_user_open() {
+  global $user;
+
+  if ($user->uid == 0) {
+    drupal_json(TRUE);
+    exit();
+  }
+
+  // Retrieve values from POST
+  $bid = (int) trim($_POST['box']);
+  $pid = (int) trim($_POST['pid']);
+  $open = (bool) trim($_POST['open']);
+
+  // Build a block object
+  $block =  new stdClass();
+  $block->uid = $user->uid;
+  $block->bid = $bid;
+  $block->pid = $pid;
+  $block->open = (bool) $open;
+
+  // Update record in the database
+  if (drupal_write_record('homebox_users', $block, array('uid', 'bid', 'pid')) != FALSE) {
+    drupal_json(TRUE);
+  }
+  else {
+    drupal_json(FALSE);
+  }
+  exit();
+}
+
+/**
+ * Generates CSS classes from defined colors
+ */
+function _homebox_get_css_color_classes($pid) {
+  $start = '<style type="text/css" media="screen">';
+  $closure = '</style>';
+  $data = array();
+
+  for ($i=0; $i < HOMEBOX_NUMBER_OF_COLOURS; $i++) {
+    $color = variable_get('homebox_color_'. $pid .'_'. $i, NULL);
+    if ($color) {
+      $color = drupal_strtolower($color);
+      $rules  = "#homebox .homebox-portlet.homebox-color-". ltrim($color, '#') ." .homebox-portlet-inner { border: 1px solid ". $color ."; }\n";
+      $rules .= "#homebox .homebox-portlet.homebox-color-". ltrim($color, '#') ." .portlet-header { background-color: ". $color ."; }\n";
+      $classes[] = $rules;
+    }
+  }
+  if (count($classes) > 0) {
+    return $start . implode("\n", $classes) . $closure;
+  }
+  else {
+    return NULL;
+  }
+}
+
+/**
+ * Helper function retrieve all results into one array
+ */
+function _homebox_db_fetch_all_blocks(&$result) {
+  $records = array();
+  while ($record = db_fetch_array($result)) {
+    $records['bid_'. $record['bid']] = $record;
+  }
+  return $records;
+}
+
+/**
+ * Helper function which adds CSS classes to block, for jQuery to work properly
+ * @param $block
+ * @return
+ *  string containing CSS classes
+ */
+function _homebox_get_css_classes_for_block($block, $pid) {
+  $classes = array('homebox-portlet');
+  // Is the block movable?
+  $movable = (bool) db_result(db_query("SELECT movable FROM {homebox_default} WHERE bid = %d", $block['bid']));
+  $classes[] = $movable ? 'homebox-draggable' : NULL;
+  // Adds CSS class for collapsed block
+  if (!is_null($block['open'])) {
+    $classes[] = (bool) $block['open'] ? FALSE : ' homebox-portlet-collapsed';
+  }
+  // Adds CSS for closed block
+  if (!is_null($block['status'])) {
+    $classes[] = (bool) $block['status'] ? NULL : 'homebox-portlet-closed';
+  }
+  // Adds color css class
+  if (variable_get('homebox_users_use_colors_'. $pid, FALSE)) {
+    if ($block['color'] != '' && drupal_strlen($block['color']) == 7 && strpos($block['color'], '#') == 0) {
+      $classes[] = 'homebox-color-'. drupal_strtolower(ltrim($block['color'], "#"));
+    }
+  }
+  return implode(" ", $classes);
+}
+
+/**
+ * Implementation of hook_views_pre_execute().
+ *
+ * Stores the filters in $user->data to ensure
+ * that next time $user logs in he will get his
+ * filters back
+ */
+function homebox_views_pre_execute(&$view) {
+  global $user;
+
+  // Make sure $user is logged in, comes from an Ajax Request for Views
+  if ($user->uid != 0 && arg(0) == 'homebox') {
+    $exposed = &$_SESSION['views'];
+    // We save the current user exposed parameters to the database
+    user_save($user, array('homebox_views_exposed' => $exposed));
+  }
+}
+/**
+ * Implementation of hook_user().
+ *
+ * Restore previously saved views filters
+ */
+function homebox_user($op, &$edit, &$account, $category = NULL) {
+  if ($op == 'login') {
+    $_SESSION['views'] = $account->homebox_views_exposed;
+  }
+}
+
+/**
+ * Retrieve an array of pages matching specified conditions.
+ *
+ * @param $membersonly
+ *   Set this to TRUE to exclude the 'anonymous' role.
+ * @param $permission
+ *   A string containing a permission. If set, only roles containing that
+ *   permission are returned.
+ *
+ * @return
+ *   An associative array with the role id as the key and the role name as
+ *   value.
+ */
+function homebox_pages() {
+  $result = db_query('SELECT * FROM {homebox_pages} ORDER BY name');
+
+  while ($page = db_fetch_object($result)) {
+    $filter = '![^abcdefghijklmnopqrstuvwxyz0-9-_]+!s';
+    $page->safe_name = preg_replace($filter, '-', drupal_strtolower($page->name));
+    $pages[] = $page;
+  }
+
+  return empty($pages) ? NULL : $pages;
+}
+
+/**
+ * Helper function to return a named profile from an $pid
+ */
+function _homebox_get_profile_name($pid) {
+  $page = db_fetch_object(db_query('SELECT * FROM {homebox_pages} WHERE pid = %d', $pid));
+  if (is_object($page) && $page->name != '' && $pid == $page->pid) {
+    return $page->name;
+  }
+  return FALSE;
+}
+
+/**
+ * Helper function to return a named profile from an $pid
+ */
+function _homebox_get_profile_safe_name($pid) {
+  $page = db_fetch_object(db_query('SELECT * FROM {homebox_pages} WHERE pid = %d', $pid));
+  if (is_object($page) && $page->name != '' && $pid == $page->pid) {
+    $filter = '![^abcdefghijklmnopqrstuvwxyz0-9-_]+!s';
+    $page->safe_name = preg_replace($filter, '-', drupal_strtolower($page->name));
+    return $page->safe_name;
+  }
+  return FALSE;
+}
+
+
+/**
+ * Helper function to check access to current homebox
+ */
+function _homebox_user_access_current_homebox() {
+  $pid = $_POST['pid'];
+  if (is_numeric($pid) && !is_null($pid) && $page_safe_name = _homebox_get_profile_safe_name($pid)) {
+    return user_access('access homebox '. $page_safe_name);
+  }
+  return FALSE;
+}
