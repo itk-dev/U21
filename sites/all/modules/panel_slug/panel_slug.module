@@ -1,0 +1,183 @@
+<?php
+// $Id$
+
+/**
+ * @file
+ * Handles the generation and loading of nodes from "slugs", 
+ * small bits of text, suitable for use in URLs.
+ */
+
+/**
+ * Implementation of hook_nodeapi().
+ */
+function panel_slug_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
+  if ($node->type == 'region') {
+    switch ($op) {
+      case 'load':
+        $node->panel_slug = db_result(db_query("SELECT slug FROM {panel_slug} WHERE nid=%d", $node->nid));
+        break;
+    }
+  }
+}
+
+/**
+ * Implementation of hook_ctools_arguments().
+ */
+function panel_slug_ctools_arguments() {
+  $args = array();
+  $args['panel_slug'] = array(
+    'title' => t('Ding slug'),
+    'keyword' => 'node',
+    'description' => t('Finds the node context based on the "slug" name for it.'),
+    'context' => 'panel_slug_region_context',
+  );
+  return $args;
+}
+
+/**
+ * Implementation of hook_token_list().
+ */
+function panel_slug_token_list($type = 'all') {
+  $tokens = array();
+  if ($type == 'node' || $type == 'all') {
+    $tokens['node']['panel_slug'] = t('Slug for the current node');
+    $tokens['node']['panel_region_slug'] = t('Slug for the region');
+  }
+  
+  return $tokens;
+}
+
+/**
+ * Implementation of hook_token_values().
+ */
+function panel_slug_token_values($type, $object = NULL, $options = array()) {
+  $tokens = array();
+  if ($type == 'node') {
+    $node = $object;
+
+    // If node has a slug, use that.
+    if (isset($node->ding_slug)) {
+      $tokens['panel_slug'] = check_plain($node->ding_panel);
+      // For the region node, the region slug is their own.
+      if ($node->type == 'region') {
+        $tokens['panel_region_slug'] = check_plain($node->panel_slug);
+      }
+    }
+    // If there is no slug set on the object, try looking it up
+    // in the database, otherwise return the node id.
+    else {
+      $slug = db_result(db_query("SELECT slug FROM {panel_slug} WHERE nid = %d;", $node->nid));
+      if (empty($slug)) {
+        $slug = $node->nid;
+      }
+
+      $tokens['panel_slug'] = $slug;
+      if ($node->type == 'region') {
+        $tokens['panel_region_slug'] = $slug;
+      }
+    }
+
+    // If we didn't set the library slug above, try looking it up from
+    // the related region node.
+    if (!isset($tokens['panel_region_slug'])) {
+      // Look up the slug of the related region.
+      if (isset($node->field_region_ref[0]['nid']) && !empty($node->field_region_ref[0]['nid'])) {
+        $slug = db_result(db_query("SELECT slug FROM {panel_slug} WHERE nid = %d LIMIT 1;", $node->field_region_ref[0]['nid']));
+        if ($slug) {
+          $tokens['panel_region_slug'] = check_plain($slug);
+        }
+        // If the related region doesn't have a slug, return its nid.
+        else {
+          $tokens['panel_region_slug'] = $node->field_region_ref[0]['nid'];
+        }
+      }
+    }
+
+    // Finally, if we failed to set our tokens above, make sure to
+    // return empty strings, since otherwise the token itself will be
+    // printed in the output.
+    if (empty($tokens['panel_slug'])) {
+      $tokens['panel_slug'] = '';
+    }
+    if (empty($tokens['panel_region_slug'])) {
+      $tokens['panel_region_slug'] = '';
+    }
+  }
+  
+  return $tokens;
+}
+
+/**
+ * Lookup an argument to see if it corresponds to a region.
+ */
+function panel_slug_region_context($arg = NULL, $conf = NULL, $empty = FALSE) {
+  // If unset it wants a generic, unfilled context.
+  if ($empty) {
+    return ctools_context_create_empty('node');
+  }
+
+  // We can accept either a node object or a pure nid.
+  if (is_object($arg)) {
+    return ctools_context_create('node', $arg);
+  }
+
+  // Cast argument to an integer to see if it looks like a node ID.
+  $num = intval($arg);
+  if (is_numeric($num) && $num > 0) {
+    $nid = $num;
+  }
+  // Try looking up the argument as a slug
+  elseif (strlen($arg) > 1) {
+    $nid = db_result(db_query("SELECT nid FROM {panel_slug} WHERE slug='%s'", $arg));
+  }
+  else {
+    return FALSE;
+  }
+
+  if (!$nid || !is_numeric($nid)) {
+    return FALSE;
+  }
+
+  $node = node_load($nid);
+  if (!$node) {
+    return FALSE;
+  }
+
+  return ctools_context_create('node', $node);
+}
+
+/**
+ * Slugify a piece of text, ie. make it ready for use in URLs.
+ *
+ * @param string $input
+ *      Text to slugify.
+ */
+function panel_slug_slugify($input) {
+  if (module_exists('transliteration')) {
+    // Transliterate all letters down to ASCII
+    $output = transliteration_get($input, '-', 'da');
+  }
+  else {
+    $output = $input;
+  }
+
+  // Remove all characters that are not lowercase alphanumeric.
+  $output = preg_replace('/[^a-z0-9]+/', '-', drupal_strtolower($output));
+  // Remove dashes at the end of the string
+  $output = preg_replace('/-+$/', '', $output);
+  return $output;
+}
+
+/**
+ * Get a region slug by the corresponding node ID
+ *
+ * @param integer $nid
+ *    The node ID.
+ * @return string
+ *    The slug matching the node.
+ */
+function panel_slug_get_by_nid($nid) {
+  $slug = db_result(db_query("SELECT slug FROM {panel_slug} WHERE nid=%d;", $nid));
+  return $slug;
+}
+

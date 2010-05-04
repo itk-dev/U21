@@ -1,0 +1,57 @@
+<?php
+// $Id$
+
+/**
+ * @file 
+ * Install and uninstall code for the slug modules used in panels.
+ */
+
+/**
+ * Implementation of hook_schema().
+ *
+ * This hook should return a SchemaAPI array with a full definition of the most
+ * up-to-date version of the module's database tables.
+ */
+function ding_slug_schema() {
+  $schema['panel_slug'] = array(
+    'description' => t('Stores custom links to be added to nodes.'),
+    'fields' => array(
+      'slug' => array(
+        'type' => 'varchar',
+        'length' => 100,
+        'description' => t('Unique identifier for the {panel_slug}.'),
+      ),
+      'nid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'description' => t('The {node}.nid for the node this slug is a reference to.'),
+      ),
+      'uid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'description' => t('The {users}.uid for the user this slug is a reference to.'),
+      ),
+    ),
+    'primary key' => array('slug'),
+    'indexes' => array(
+      'nid' => array('nid'),
+      'uid' => array('uid'),
+    ),
+  );
+  return $schema;
+}
+
+/**
+ * Implementation of hook_install().
+ */
+function panel_slug_install() {
+  drupal_install_schema('panel_slug');
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function panel_slug_uninstall() {
+  drupal_uninstall_schema('panel_slug');
+}
+
