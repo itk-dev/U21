@@ -1,0 +1,7 @@
+; $Id$
+name = U21 content
+description = Installs basic content types, views and panels
+package = "U21"
+core = 6.x
+dependencies[] = panels
+dependencies[] = views
