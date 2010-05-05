@@ -7,6 +7,8 @@
  * small bits of text, suitable for use in URLs.
  */
 
+define('U21_REGION_SLUG_PREFIX', 'location/');
+
 /**
  * Implementation of hook_menu().
  */
@@ -59,6 +61,7 @@ function u21_region_slug_token_list($type = 'all') {
   $tokens = array();
   if ($type == 'node' || $type == 'all') {
     $tokens['node']['u21_region_slug'] = t('Slug for the region');
+    $tokens['node']['u21_region_slug_prefix'] = t('Slug for the region, with prefixed path');
   }
   
   return $tokens;
@@ -76,6 +79,7 @@ function u21_region_slug_token_values($type, $object = NULL, $options = array())
     if (isset($node->u21_region_slug)) {
       if ($node->type == 'region') {
         $tokens['u21_region_slug'] = check_plain($node->u21_region_slug);
+        $tokens['u21_region_slug_prefix'] = U21_REGION_SLUG_PREFIX;
       }
     }
     // If there is no slug set on the object, try looking it up
@@ -87,6 +91,7 @@ function u21_region_slug_token_values($type, $object = NULL, $options = array())
       }
       if ($node->type == 'region') {
         $tokens['u21_region_slug'] = $slug;
+        $tokens['u21_region_slug_prefix'] = U21_REGION_SLUG_PREFIX;
       }
     }
 
@@ -98,10 +103,12 @@ function u21_region_slug_token_values($type, $object = NULL, $options = array())
         $slug = db_result(db_query("SELECT slug FROM {u21_region_slug} WHERE nid = %d LIMIT 1;", $node->field_region_ref[0]['nid']));
         if ($slug) {
           $tokens['u21_region_slug'] = check_plain($slug);
+          $tokens['u21_region_slug_prefix'] = U21_REGION_SLUG_PREFIX;
         }
         // If the related region doesn't have a slug, return its nid.
         else {
           $tokens['u21_region_slug'] = $node->field_region_ref[0]['nid'];
+          $tokens['u21_region_slug_prefix'] = U21_REGION_SLUG_PREFIX;
         }
       }
     }
@@ -111,6 +118,9 @@ function u21_region_slug_token_values($type, $object = NULL, $options = array())
     // printed in the output.
     if (empty($tokens['u21_region_slug'])) {
       $tokens['u21_region_slug'] = '';
+    }
+    if (empty($tokens['u21_region_slug_prefix'])) {
+      $tokens['u21_region_slug_prefix'] = '';
     }
   }
   
