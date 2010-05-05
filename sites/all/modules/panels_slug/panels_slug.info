@@ -1,9 +1,0 @@
-; $Id$
-name = Panels slugs
-description = Handles "slugs" for nodes, short names to be referenced in URLs (This module is based on Ding! slugs)
-package = "Panels"
-core = 6.x
-dependencies[] = ctools
-dependencies[] = token
-dependencies[] = transliteration
-

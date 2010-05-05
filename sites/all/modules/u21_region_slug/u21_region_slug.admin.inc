@@ -3,7 +3,7 @@
 /**
  * Region slug editing form.
  */
-function panels_slug_admin_settings_form(&$form_state) {
+function u21_region_slug_admin_settings_form(&$form_state) {
   // Confirmation form for changing existing slugs. The storage array
   // is set by the submit handler, and as long as it is non-empty, we're
   // returned to the form.
@@ -23,7 +23,7 @@ function panels_slug_admin_settings_form(&$form_state) {
   // Grab all the region nodes
   $query = db_query("SELECT node.nid, node.title, slugs.slug
                        FROM {node} AS node
-                  LEFT JOIN {panels_slug} AS slugs ON (slugs.nid = node.nid)
+                  LEFT JOIN {u21_region_slug} AS slugs ON (slugs.nid = node.nid)
                       WHERE node.type = 'region'
                    ORDER BY node.title");
 
@@ -62,13 +62,13 @@ function panels_slug_admin_settings_form(&$form_state) {
 /**
  * Submit handler for the slug editing form.
  */
-function panels_slug_admin_settings_form_submit($form, &$form_state) {
+function u21_region_slug_admin_settings_form_submit($form, &$form_state) {
   // If the there's slug changes in the storage array, it means that
   // we've been through the confirmation form, and should now proceeed
   // to change the slugs in the database.
   if (isset($form_state['storage']['slug_changes'])) {
     foreach ($form_state['storage']['slug_changes'] as $change) {
-      db_query("UPDATE {panels_slug} SET slug = '%s' WHERE nid = %d;", $change['new_slug'], $change['nid']);
+      db_query("UPDATE {u21_region_slug} SET slug = '%s' WHERE nid = %d;", $change['new_slug'], $change['nid']);
     }
 
     // Unset the storage, so we'll won't get the confirmation page again.
@@ -86,13 +86,13 @@ function panels_slug_admin_settings_form_submit($form, &$form_state) {
             'nid' => $nid,
             'title' => $form['records'][$nid]['#title'],
             'old_slug' => $form_state['values']['existing_slugs'][$nid],
-            'new_slug' => panels_slug_slugify($slug),
+            'new_slug' => u21_region_slug_slugify($slug),
           );
         }
         else {
           // Create a new slug.
           if (!isset($form_state['values']['existing_slugs'][$nid])) {
-            db_query("INSERT INTO {panels_slug} (slug, nid) VALUES ('%s', %d)", panels_slug_slugify($slug), $nid);
+            db_query("INSERT INTO {u21_region_slug} (slug, nid) VALUES ('%s', %d)", u21_region_slug_slugify($slug), $nid);
           }
         }
       }
