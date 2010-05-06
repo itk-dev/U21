@@ -36,9 +36,16 @@ function u21_region_slug_region_selected_ctools_access_check($conf, $context) {
     if ($selected == no) {
       return FALSE;
     }
+    // Region is selected, so check if a specific region have been choosen
+    elseif ($selected != yes) {
+      if ($selected != $node->field_region_ref[0]['nid']) {
+        return FALSE;
+      }
+    }
+
   }
   else {
-    if ($selected == yes) {
+    if ($selected != 'no') {
       return FALSE;
     }
   }
@@ -50,13 +57,21 @@ function u21_region_slug_region_selected_ctools_access_check($conf, $context) {
  * Add the type to the settings form.
  */
 function u21_region_slug_region_selected_ctools_access_settings(&$form, &$form_state, $conf) {
+
+  // Build options based on regions
+  $options = array(
+    'yes' => t('Yes'),
+    'no' => t('No'),
+  );
+  $regions = u21_region_slug_get_all_slugs();
+  foreach ($regions as $nid => $value) {
+    $options[$nid] = check_plain($value['title']). ' (' .check_plain($value['slug']). ')';
+  }
+
   $form['settings']['region_selected'] = array(
     '#type' => 'radios',
     '#title' => t('Region relation'),
-    '#options' => array(
-      'yes' => t('Yes'),
-      'no' => t('No'),
-    ),
+    '#options' => $options,
     '#default_value' => (isset($conf['region_selected'])) ? $conf['region_selected'] : 'yes',
     '#description' => t('Should node be related to a node to be shown.'),
   );
@@ -67,6 +82,6 @@ function u21_region_slug_region_selected_ctools_access_settings(&$form, &$form_s
  */
 function u21_region_slug_region_selected_ctools_access_summary($conf, $context) {
   $selected = (isset($conf['region_selected'])) ? $conf['region_selected'] : 'yes';
-  return t('@identifier is node related to region: "@selected"', array('@identifier' => $context->identifier, '@selected' => $selected));
+  return t('@identifier is related to region: "@selected"', array('@identifier' => $context->identifier, '@selected' => $selected));
 }
 

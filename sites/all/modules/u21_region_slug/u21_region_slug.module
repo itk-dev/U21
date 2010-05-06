@@ -212,3 +212,24 @@ function u21_region_slug_get_by_nid($nid) {
   return $slug;
 }
 
+/**
+ * Get all region slugs and corresponding node IDs
+ *
+ * @return array
+ *    Regions title and slug indexed by node IDs.
+ */
+function u21_region_slug_get_all_slugs() {
+  // Grab all the region nodes
+  $query = db_query("SELECT node.nid, node.title, slugs.slug
+                       FROM {node} AS node
+                  LEFT JOIN {u21_region_slug} AS slugs ON (slugs.nid = node.nid)
+                      WHERE node.type = 'region'
+                   ORDER BY node.title");
+
+  $regions = array();
+  while ($row = db_fetch_object($query)) {
+    $regions[$row->nid] = array('title' => $row->title, 'slug' => $row->slug);
+  }
+
+  return $regions;
+}
