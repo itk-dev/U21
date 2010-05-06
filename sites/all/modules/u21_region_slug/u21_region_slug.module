@@ -257,6 +257,6 @@ function u21_region_panels_preprocess_region_menu(&$variables) {
   $variables['title'] = t('U21 in @title', array('@title' => $node->title));
   
   // Load menu
-  $tree = menu_tree_page_data($node->field_menu_ref[0]['value']);
+  $tree = menu_tree_all_data($node->field_menu_ref[0]['value']);
   $variables['menu'] = menu_tree_output($tree);
 }
