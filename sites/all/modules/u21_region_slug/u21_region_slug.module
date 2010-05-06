@@ -233,3 +233,30 @@ function u21_region_slug_get_all_slugs() {
 
   return $regions;
 }
+
+/**
+ * Implementation of hook_theme().
+ */
+function u21_region_slug_theme($existing, $type, $theme, $path) {
+  return array(
+    'u21_region_slug_region_menu' => array(
+      'arguments' => array('node' => NULL),
+      'template' => 'u21_region_panels_content_region_menu',
+      'preprocess functions' => array('u21_region_panels_preprocess_region_menu'),
+    ),
+  );
+}
+
+/**
+ * Preprocess hook for the region title and menu pane.
+ */
+function u21_region_panels_preprocess_region_menu(&$variables) {
+  $node = $variables['node'];
+
+  // Set title
+  $variables['title'] = t('U21 in @title', array('@title' => $node->title));
+  
+  // Load menu
+  $tree = menu_tree_page_data($node->field_menu_ref[0]['value']);
+  $variables['menu'] = menu_tree_output($tree);
+}
