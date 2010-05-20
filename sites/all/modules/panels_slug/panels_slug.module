@@ -62,17 +62,14 @@ function panels_slug_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
  * Implementation of hook_ctools_arguments().
  */
 function panels_slug_ctools_arguments() {
-  $types = array_filter(variable_get('panels_slug_selected_node_types', array()));
   $args = array();
 
-  foreach ($types as $type) {
-    $args[$type. '_slug'] = array(
-      'title' => t('@type slug', array('@type' => $type)),
-      'keyword' => 'node',
-      'description' => t('Finds the node context based on the "slug" name for it.'),
-      'context' => 'panels_slug_context',
-    );
-  }
+  $args['panels_slug'] = array(
+    'title' => t('Panels slug'),
+    'keyword' => 'node',
+    'description' => t('Finds the node context based on the "slug" name for it.'),
+    'context' => 'panels_slug_context',
+  );
   return $args;
 }
 
@@ -121,8 +118,8 @@ function panels_slug_context($arg = NULL, $conf = NULL, $empty = FALSE) {
 function panels_slug_token_list($type = 'all') {
   $tokens = array();
   if ($type == 'node' || $type == 'all') {
-    $tokens['node']['panels_slug'] = t('Slug for the node');
-    $tokens['node']['panels_slug_prefix'] = t('Path prefixed for node slug');
+    $tokens['node']['panels_slug'] = t('Panels slug');
+    $tokens['node']['panels_slug_prefix'] = t('Panels slug path prefixed');
   }
   
   return $tokens;
