@@ -13,7 +13,7 @@
  * This is only required to make CTools know that we're providing 
  * multiple types here (since we have no single => TRUE in the array).
  */
-function u21_region_slug_region_ctools_content_types() {
+function u21_content_region_ctools_content_types() {
   return array(
     'title' => t('Region page'),
   );
@@ -22,7 +22,7 @@ function u21_region_slug_region_ctools_content_types() {
 /**
  * Callback function to supply a list of content types.
  */
-function u21_region_slug_region_content_type_content_types() {
+function u21_content_region_content_type_content_types() {
   $types = array(
     'region_menu' => array(
       'title' => t('Region title and menu'),
@@ -44,12 +44,12 @@ function u21_region_slug_region_content_type_content_types() {
 /**
  * Return the pane contents.
  */
-function u21_region_slug_region_content_type_render($subtype, $conf, $panel_args, $context) {
+function u21_content_region_content_type_render($subtype, $conf, $panel_args, $context) {
   $block = new stdClass();
   $node = isset($context->data) ? drupal_clone($context->data) : NULL;
   switch($subtype) {
     case 'region_menu':
-      $block->content = theme('u21_region_slug_region_menu', $node);
+      $block->content = theme('u21_content_region_menu', $node);
       break;
   }
   return $block;
@@ -58,7 +58,7 @@ function u21_region_slug_region_content_type_render($subtype, $conf, $panel_args
 /**
  * Return the pane titles.
  */
-function u21_region_slug_region_content_type_admin_title($subtype, $conf, $context) {
+function u21_content_region_content_type_admin_title($subtype, $conf, $context) {
   switch($subtype) {
     case 'region_menu':
       return t('"@s":  Region title and menu', array('@s' => $context->identifier));
@@ -68,7 +68,7 @@ function u21_region_slug_region_content_type_admin_title($subtype, $conf, $conte
 /**
  * Returns an edit form for the content type.
  */
-function u21_region_slug_region_content_type_edit_form(&$form, &$form_state) {
+function u21_content_region_content_type_edit_form(&$form, &$form_state) {
   $conf = $form_state['conf'];
   switch ($form_state['subtype_name']) {
     case 'region_menu':
@@ -87,7 +87,7 @@ function u21_region_slug_region_content_type_edit_form(&$form, &$form_state) {
 /**
  * Submit handler for the content type editing form.
  */
-function u21_region_slug_region_content_type_edit_form_submit(&$form, &$form_state) {
+function u21_content_region_content_type_edit_form_submit(&$form, &$form_state) {
   switch ($form_state['subtype_name']) {
     case 'region_title':
       /*

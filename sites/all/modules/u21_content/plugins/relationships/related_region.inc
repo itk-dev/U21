@@ -8,30 +8,32 @@
 /**
  * Implementation of hook_ctools_relationships().
  */
-function u21_region_slug_related_region_ctools_relationships() {
+function u21_content_related_region_ctools_relationships() {
+
   $args = array();
   $args['related_region'] = array(
     'title' => t('Related region'),
     'keyword' => 'related_region',
     'description' => t('Finds the related region from a node context.'),
     'required context' => new ctools_context_required(t('Node'), 'node'),
-    'context' => 'u21_region_slug_related_region_context',
-    'settings form' => 'u21_region_slug_related_region_settings_form',
+    'context' => 'u21_content_related_region_context',
+    'settings form' => 'u21_content_related_region_settings_form',
   );
+  
   return $args;
 }
 
 /**
  * Return a new context based on an existing context
  */
-function u21_region_slug_related_region_context($context = NULL, $conf) {
+function u21_content_related_region_context($context = NULL, $conf = NULL) {
   // If unset it wants a generic, unfilled context, which is just NULL
   if (empty($context->data)) {
     return ctools_context_create_empty('node');
   }
 
-  if (isset($context->data->field_region_ref[0]) && $context->data->field_region_ref[0] > 0) {
-    $node = node_load($context->data->field_region_ref[0]);
+  if (isset($context->data->field_slug_ref[0]) && $context->data->field_slug_ref[0] > 0) {
+    $node = node_load($context->data->field_slug_ref[0]);
     if ($node) {
       return ctools_context_create('node', $node);
     }
@@ -42,9 +44,6 @@ function u21_region_slug_related_region_context($context = NULL, $conf) {
 /**
  * Settings form for the relationship
  */
-function u21_region_slug_related_region_settings_form($conf) {
+function u21_content_related_region_settings_form($conf) {
   return $form;
 }
-
-
-

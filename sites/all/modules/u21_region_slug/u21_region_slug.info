@@ -1,9 +1,0 @@
-; $Id$
-name = U21 regions panel slugs
-description = Handles "slugs" for region nodes, short names to be referenced in URLs (This module is based on Ding! slugs)
-package = "U21"
-core = 6.x
-dependencies[] = ctools
-dependencies[] = token
-dependencies[] = transliteration
-
