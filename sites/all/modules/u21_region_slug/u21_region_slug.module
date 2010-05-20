@@ -61,7 +61,7 @@ function u21_region_slug_token_list($type = 'all') {
   $tokens = array();
   if ($type == 'node' || $type == 'all') {
     $tokens['node']['u21_region_slug'] = t('Slug for the region');
-    $tokens['node']['u21_region_slug_prefix'] = t('Slug for the region, with prefixed path');
+    $tokens['node']['u21_region_slug_prefix'] = t('Path prefixed for region slugs');
   }
   
   return $tokens;
