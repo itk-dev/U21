@@ -121,7 +121,7 @@ function panels_slug_admin_settings_form_submit($form, &$form_state) {
           else {
             // Create a new slug.
             if (!isset($form_state['values']['existing_slugs'][$nid])) {
-              db_query("INSERT INTO {panels_slug} (slug, nid, nodetype) VALUES ('%s', %d)", panels_slug_slugify($slug), $nid, $type);
+              db_query("INSERT INTO {panels_slug} (slug, nid, nodetype) VALUES ('%s', %d, '%s')", panels_slug_slugify($slug), $nid, $type);
             }
           }
         }
