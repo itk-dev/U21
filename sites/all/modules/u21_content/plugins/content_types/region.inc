@@ -27,16 +27,10 @@ function u21_content_region_content_type_content_types() {
     'region_menu' => array(
       'title' => t('Region title and menu'),
       'description' => t('The title and related menu for a region page.'),
-    ),
-  );
-
-  // Append our default settings to every type.
-  foreach ($types as $name => $type) {
-    $types[$name] += array(
       'category' => t('Region page'),
       'required context' => new ctools_context_required(t('Node'), 'node'),
-    );
-  }
+    ),
+  );
   
   return $types;
 }
@@ -72,14 +66,6 @@ function u21_content_region_content_type_edit_form(&$form, &$form_state) {
   $conf = $form_state['conf'];
   switch ($form_state['subtype_name']) {
     case 'region_menu':
-      /*
-      $form['selected_region_menu'] = array(
-        '#type' => 'textfield',
-        '#title' => t('Menu to display'),
-        '#description' => t('Defines which menu this panel should show as regional'),
-        '#default_value' => $conf['selected_region_menu'],
-      );
-      */
       break;
   }
   return $form;
@@ -90,9 +76,6 @@ function u21_content_region_content_type_edit_form(&$form, &$form_state) {
 function u21_content_region_content_type_edit_form_submit(&$form, &$form_state) {
   switch ($form_state['subtype_name']) {
     case 'region_title':
-      /*
-      $form_state['conf']['selected_region_menu'] = (bool) $form_state['values']['selected_region_menu'];
-      */
       break;
   }
 }

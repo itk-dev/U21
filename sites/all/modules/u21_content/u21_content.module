@@ -86,6 +86,11 @@ function u21_content_theme($existing, $type, $theme, $path) {
       'template' => 'u21_content_panels_content_region_menu',
       'preprocess functions' => array('u21_content_preprocess_region_menu'),
     ),
+    'u21_content_google_maps' => array(
+      'arguments' => array('node' => NULL, 'width' => NULL, 'height' => NULL, 'zoom' => NULL),
+      'template' => 'u21_content_panels_content_google_maps',
+      'preprocess functions' => array('u21_content_preprocess_google_maps'),
+    ),
   );
 }
 
@@ -101,4 +106,18 @@ function u21_content_preprocess_region_menu(&$variables) {
   // Load menu
   $tree = menu_tree_all_data($node->field_menu_ref[0]['value']);
   $variables['menu'] = menu_tree_output($tree);
+}
+
+function u21_content_preprocess_google_maps(&$variables, $hook) {
+  $node = $variables['node'];
+  $location = $node->location;
+
+  $variables['title'] = check_plain($node->title);
+  $variables['map'] = gmap_simple_map($location['latitude'],
+                                      $location['longitude'],
+                                      '',
+                                      check_plain($node->title),
+                                      $variables['zoom'],
+                                      $variables['width'].'px',
+                                      $variables['height'].'px');
 }
