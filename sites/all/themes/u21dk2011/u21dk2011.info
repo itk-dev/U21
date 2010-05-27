@@ -1,0 +1,58 @@
+;----------// Theme Information
+
+  name         = u21dk2011
+  description  = Theme for LOC website, UEFA Under-21 Championships 2011
+  core         = 6.x
+  version      = 0.1
+  engine       = phptemplate
+  screenshot   = screenshot.png
+  base         = ninesixty
+  
+;----------// Regions
+
+  regions[top_banner]         = Top Ad Banner 
+  regions[mid_banner]         = Middle Ad Banner
+  regions[secondary_left]     = Secondary Content Left
+  regions[secondary_middle]   = Secondary Content Middle
+  regions[secondary_right]    = Secondary Content Right
+  regions[bottom_banner]      = Bottom Ad Banner
+  regions[footer_1]           = Footer Left
+  regions[footer_2]           = Footer Middle Left
+  regions[footer_3]           = Footer Middle Right
+  regions[footer_4]           = Footer Right
+
+;----------// Styles
+
+  stylesheets[all][] = styles/typography.css
+  stylesheets[all][] = styles/layout.css
+  stylesheets[all][] = styles/blocks.css
+  stylesheets[print][] = styles/print.css
+  stylesheets[handheld][] = styles/mobile.css
+
+  ; Debug styles
+  ;stylesheets[all] = styles/debug.css
+  
+  ; Developer styles
+  stylesheets[all][] = styles/developer.css
+  
+  
+;----------// IE Conditional Stylesheets
+  ; Support conditional styles. Module included in theme
+
+  ;conditional-stylesheets[if lte IE 6][all][] = css/ie/ie6.css
+
+;----------// Panels layouts. 
+
+  plugins[panels][layouts] = layouts
+
+  
+;----------// Theme Features
+
+  features[] = logo
+  features[] = name
+  features[] = slogan
+  features[] = mission
+  features[] = search
+  features[] = favicon
+  features[] = primary_links
+  features[] = secondary_links

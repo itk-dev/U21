@@ -5,12 +5,13 @@ description = A blank base theme using the 960 Grid System. See the "README.txt"
 screenshot = images/screenshot.png
 core = 6.x
 engine = phptemplate
+base = mothership
 
 ; Stylesheets. Anything within the "framework" folder will be placed before all others.
 stylesheets[all][] = styles/framework/reset.css
 stylesheets[all][] = styles/framework/text.css
 stylesheets[all][] = styles/framework/960.css
-stylesheets[all][] = styles/framework/debug.css
+;stylesheets[all][] = styles/framework/debug.css
 
 ; Theme specific styles. Any sub-themes should override this.
 stylesheets[all][] = styles/styles.css
