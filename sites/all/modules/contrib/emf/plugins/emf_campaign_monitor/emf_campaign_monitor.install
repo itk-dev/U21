@@ -1,0 +1,66 @@
+<?php
+// $Id: emf_campaign_monitor.install,v 1.4 2009/11/09 07:04:54 davyvandenbremt Exp $
+
+/**
+ * @file
+ * Installation
+ *
+ * @author Davy Van Den Bremt
+ */
+ 
+/**
+ * Implementation of hook_install().
+ */
+function emf_campaign_monitor_install() {
+  $ret = array();
+  
+  // renaming variable to reflect module name change
+  db_query("UPDATE {variable} SET name = 'emf_campaign_monitor_api_key' WHERE name = 'campaign_monitor_api_key'");
+  
+  cache_clear_all('variables', 'cache');
+
+  $link = array('!link' => l(st('Administer > Site configuration > Campaign Monitor'), 'admin/settings/emf_campaign_monitor'));
+  drupal_set_message(st("Campaign Monitor module settings are available under !link", $link));
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function emf_campaign_monitor_uninstall() {
+  db_query("DELETE FROM {variable} WHERE name LIKE 'emf_campaign_monitor_%'");
+  cache_clear_all('variables', 'cache');
+}
+
+/**
+ * Implementation of hook_requirements().
+ */
+function emf_campaign_monitor_requirements($phase) {
+  $requirements = array();
+
+  $t = get_t();
+
+  if ($phase == 'runtime') {
+
+    // Raise warning if Campaign Monitor API key has not been set yet.
+    if (trim(variable_get('emf_campaign_monitor_api_key', '')) == '') {
+      $requirements['emf_campaign_monitor_api_key'] = array(
+        'title' => $t('Campaign Monitor API key'),
+        'description' => $t('Your Campaign Monitor API key has not been set yet. Please specify it on the <a href="@url">Campaign Monitor settings page</a>.', array('@url' => url('admin/settings/emf_campaign_monitor'))),
+        'severity' => REQUIREMENT_ERROR,
+        'value' => $t('Not configured'),
+      );
+    }
+
+    // Raise warning if Campaign Monitor Client ID has not been set yet.
+    if (trim(variable_get('emf_campaign_monitor_client_id', '')) == '') {
+      $requirements['emf_campaign_monitor_client_id'] = array(
+        'title' => $t('Campaign Monitor Client ID'),
+        'description' => $t('Your Campaign Monitor Client ID has not been set yet. Please specifiy it on the <a href="@url">Campaign Monitor settings page</a>.', array('@url' => url('admin/settings/emf_campaign_monitor'))),
+        'severity' => REQUIREMENT_ERROR,
+        'value' => $t('Not configured'),
+      );
+    }
+  }
+
+  return $requirements;
+}

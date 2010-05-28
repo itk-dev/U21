@@ -1,0 +1,12 @@
+; $Id: emf_mailchimp.info,v 1.1 2009/10/28 18:59:01 davyvandenbremt Exp $
+name = MailChimp Plugin
+description = E-mail Marketing Framework plugin for MailChimp integration.
+core = 6.x
+package = E-mail Marketing Framework
+dependencies[] = emf
+; Information added by drupal.org packaging script on 2009-11-09
+version = "6.x-1.3"
+core = "6.x"
+project = "emf"
+datestamp = "1257768333"
+

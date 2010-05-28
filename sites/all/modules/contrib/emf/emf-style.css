@@ -1,0 +1,9 @@
+/* $Id: emf-style.css,v 1.2 2009/10/28 14:16:51 davyvandenbremt Exp $ */
+
+.emf-lists-table tr.list-error {
+  background-color: #ffc9c9;
+}
+
+.block-emf .form-text {
+  width: 100%;
+}
