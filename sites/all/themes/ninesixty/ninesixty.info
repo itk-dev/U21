@@ -5,7 +5,7 @@ description = A blank base theme using the 960 Grid System. See the "README.txt"
 screenshot = images/screenshot.png
 core = 6.x
 engine = phptemplate
-base = mothership
+base theme = mothership
 
 ; Stylesheets. Anything within the "framework" folder will be placed before all others.
 stylesheets[all][] = styles/framework/reset.css

@@ -6,16 +6,16 @@
   version      = 0.1
   engine       = phptemplate
   screenshot   = screenshot.png
-  base         = ninesixty
+  base theme    = ninesixty
   
 ;----------// Regions
 
-  regions[top_banner]         = Top Ad Banner 
-  regions[mid_banner]         = Middle Ad Banner
-  regions[secondary_left]     = Secondary Content Left
-  regions[secondary_middle]   = Secondary Content Middle
-  regions[secondary_right]    = Secondary Content Right
-  regions[bottom_banner]      = Bottom Ad Banner
+  regions[region_top]         = Top Ad Banner 
+  regions[region_middle]         = Middle Ad Banner
+  regions[region_middle_left]     = Secondary Content Left
+  regions[region_middle_center]   = Secondary Content Middle
+  regions[region_middle_right]    = Secondary Content Right
+  regions[region_bottom]      = Bottom Ad Banner
   regions[footer_1]           = Footer Left
   regions[footer_2]           = Footer Middle Left
   regions[footer_3]           = Footer Middle Right
@@ -43,7 +43,7 @@
 
 ;----------// Panels layouts. 
 
-  plugins[panels][layouts] = layouts
+  ;plugins[panels][layouts] = layouts
 
   
 ;----------// Theme Features
