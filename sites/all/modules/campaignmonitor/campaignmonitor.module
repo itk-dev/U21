@@ -32,6 +32,14 @@ function campaignmonitor_block() {
   
 }
 
+/**
+ * Implementation of hook_flush_caches().
+ */
+function campaignmonitor_flush_caches() {
+	return array('cache_campaignmonitor');
+}
+
+
 function _campaignmonitor_includes() {
   require_once './' . drupal_get_path('module', 'campaignmonitor') . '/includes/CMBase.inc';
 }
