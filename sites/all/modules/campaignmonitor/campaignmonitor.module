@@ -1,0 +1,67 @@
+<?php
+
+function campaignmonitor_menu() {
+  $items = array();
+
+  $items['admin/settings/campaigns'] = array(
+    'title' => 'Campaign Monitor',
+    'description' => t('Settings for the simple campaign monitor intergration.'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('campaignmonitor_admin_settings_form'),
+    'access arguments' => array('configure campaignmonitor'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'campaignmonitor.admin.inc',
+  );
+
+  $items['admin/settings/campaigns/lists'] = array(
+    'title' => 'Campaign Monitor Lists',    
+    'description' => t('Selection of list(s) to enable subscription on.'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('campaignmonitor_admin_lists_form'),
+    'access arguments' => array('configure campaignmonitor lists'),
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => 0,
+    'file' => 'campaignmonitor.admin.inc',
+  );
+
+  return $items;
+}
+
+
+function campaignmonitor_block() {
+  
+}
+
+function _campaignmonitor_includes() {
+  require_once './' . drupal_get_path('module', 'campaignmonitor') . '/includes/CMBase.inc';
+}
+
+function _campaignmonitor_get_lists($api_key, $client_id) {
+  
+  $cache = cache_get('lists', 'cache_campaignmonitor');
+  if ($cache)
+  {
+    $ret = $cache->data;
+  }
+  else {
+    // Load campaign monitor base
+    _campaignmonitor_includes();
+
+    // Get lists
+    $cm = new CampaignMonitor($api_key);
+    $lists = $cm->clientGetLists($client_id);
+
+    // Parse lists
+    $ret = array();
+    foreach ($lists as $type) {
+      foreach ($type as $list) {
+        $ret[$list['ListID']] = $list['Name'];
+      }
+    }
+    
+    // Save it in the cache
+    cache_set('lists', $ret, 'cache_campaignmonitor', time()+3600);
+  }
+
+  return $ret;
+}
