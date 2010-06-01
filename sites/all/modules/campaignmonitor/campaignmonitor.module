@@ -62,7 +62,8 @@ function campaignmonitor_block($op = 'list', $delta = 0, $edit = array()) {
         $block['content'] = '<div id="cm-signup-block-form">' .drupal_get_form('_campaignmonitor_signup_form'). '</div>';
       }
       else if ($delta == 1) { // Archive block
-
+        $block['subject'] = t('Newsletter achive');
+        $block['content'] = '<script type="text/javascript" src="'.variable_get('campaignmonitor_archive', '').'"></script>';
       }
 
       return $block;
@@ -178,7 +179,6 @@ function _campaignmonitor_signup_form($form_state) {
   $form['submit'] = array(
     '#type' => 'submit',
     '#value' => t('Subscribe'),
-    '#submit' => array('_campaignmonitor_signup_form_submit'), // None js version
     '#ahah' => array(
         'event' => 'click',
         'path' => 'campaignmonitor/signup',
@@ -208,9 +208,4 @@ function _campaignmonitor_signup_js() {
     $cm->subscriberAdd($signup_email, $signup_name, $signup_lists, TRUE);
   }
   return drupal_json(array('status' => TRUE, 'data' => t("Thank you for signing up")));
-}
-
-function _campaignmonitor_signup_form_submit($form, &$form_state) {
-  
-  
 }
