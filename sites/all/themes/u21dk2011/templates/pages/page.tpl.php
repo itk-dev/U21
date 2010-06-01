@@ -48,7 +48,7 @@
       </div>
     <?php endif; ?>
        
-    <div id="content">
+    <div id="content" class="grid-12 clear">
       <?php if ($title): ?>
         <h1 class="title" id="page-title"><?php print $title; ?></h1>
       <?php endif; ?>
@@ -62,7 +62,7 @@
       </div>
     </div><!-- /content -->
 
-    <div id="secondary-content">
+    <div id="secondary-content" class="clear">
       <?php if ($region_middle): ?>
         <div id="region-middle" class="region grid-12">
         <?php print $region_middle; ?>
@@ -92,7 +92,7 @@
     </div><!-- /Secondary content -->
   
     <?php if ($footer_1 || $footer_2 || $footer_3 || $footer_4): ?>
-    <ul id="footer" class="grid-12">
+    <ul id="footer" class="clear">
         <?php if ($footer_1): ?>        
         <li class="region grid-3">
           <?php print $footer_1; ?>
