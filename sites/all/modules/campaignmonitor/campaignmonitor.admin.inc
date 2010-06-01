@@ -74,7 +74,6 @@ function campaignmonitor_admin_lists_form($form_state) {
     '#title' => t('Select the list(s) that users can subscribe to.'),
     '#required' => TRUE,
     '#options' => $lists,
-    '#description' => t(''),
     '#default_value' => variable_get('campaignmonitor_selected_lists', array()),
   );
 
