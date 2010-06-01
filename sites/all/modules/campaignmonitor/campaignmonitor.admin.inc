@@ -39,19 +39,25 @@ function campaignmonitor_admin_settings_form($form_state) {
 
 function campaignmonitor_admin_settings_form_validate($form, &$form_state) {
 
-  // Validate that api key is correct
-
-
-  // Load current campaings from archive
-
-
-  
-  drupal_set_message('Form validated', 'info');
+  // Validate that the api key is correct
+  $api_key = $form_state['values']['campaignmonitor_api']['api_key'];
+  $status = _campaignmonitor_check_connection($api_key);
+  if ($status != 1) {
+    form_set_error('api_key', $status);
+  }
+  else {
+    // Validate that the client id is correct
+    $client_id = $form_state['values']['campaignmonitor_api']['client_id'];
+    if (!_campaignmonitor_validate_client_id($api_key, $client_id)) {
+      form_set_error('client_id', 'A client with that ID was not found');
+    }
+  }
 }
 
 function campaignmonitor_admin_lists_form($form_state) {
   
-  // Get api keys
+  // Clear cache and get newste lists
+  cache_clear_all('lists', 'cache_campaignmonitor');
   $api_keys = variable_get('campaignmonitor_api', array());
   $lists = _campaignmonitor_get_lists($api_keys['api_key'], $api_keys['client_id']);
 

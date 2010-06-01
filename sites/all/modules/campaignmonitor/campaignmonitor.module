@@ -1,7 +1,12 @@
 <?php
 
+define('CM_INVALID_API_KEY', 100);
+
+function campainmonitor_perm() {
+  return array('configure campaignmonitor', 'configure campaignmonitor lists');
+}
+
 function campaignmonitor_menu() {
-  $items = array();
 
   $items['admin/settings/campaigns'] = array(
     'title' => 'Campaign Monitor',
@@ -9,18 +14,21 @@ function campaignmonitor_menu() {
     'page callback' => 'drupal_get_form',
     'page arguments' => array('campaignmonitor_admin_settings_form'),
     'access arguments' => array('configure campaignmonitor'),
-    'type' => MENU_NORMAL_ITEM,
     'file' => 'campaignmonitor.admin.inc',
   );
 
+  $items['admin/settings/campaigns/settings'] = array(
+    'title' => 'Settings',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+  );
+
   $items['admin/settings/campaigns/lists'] = array(
-    'title' => 'Campaign Monitor Lists',    
-    'description' => t('Selection of list(s) to enable subscription on.'),
+    'title' => 'Lists',    
     'page callback' => 'drupal_get_form',
     'page arguments' => array('campaignmonitor_admin_lists_form'),
     'access arguments' => array('configure campaignmonitor lists'),
-    'type' => MENU_DEFAULT_LOCAL_TASK,
-    'weight' => 0,
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 1,
     'file' => 'campaignmonitor.admin.inc',
   );
 
@@ -44,6 +52,33 @@ function _campaignmonitor_includes() {
   require_once './' . drupal_get_path('module', 'campaignmonitor') . '/includes/CMBase.inc';
 }
 
+function _campaignmonitor_get_connection($api_key) {
+  _campaignmonitor_includes();
+  return new CampaignMonitor($api_key);
+}
+
+function _campaignmonitor_check_connection($api_key) {
+  $cm = _campaignmonitor_get_connection($api_key);
+  $status = $cm->userGetSystemDate();
+  if ($status['anyType']['Code'] == CM_INVALID_API_KEY) {
+    return $status['anyType']['Message'];
+  }
+  else {
+    return 1; // No error
+  }
+}
+
+function _campaignmonitor_validate_client_id($api_key, $client_id) {
+  $cm = _campaignmonitor_get_connection($api_key);
+  $clients = $cm->userGetClients();
+  foreach ($clients['anyType']['Client'] as $client) {
+    if ($client['ClientID'] == $client_id) {
+      return TRUE;
+    }
+  }
+  return FALSE;
+}
+
 function _campaignmonitor_get_lists($api_key, $client_id) {
   
   $cache = cache_get('lists', 'cache_campaignmonitor');
@@ -52,22 +87,23 @@ function _campaignmonitor_get_lists($api_key, $client_id) {
     $ret = $cache->data;
   }
   else {
-    // Load campaign monitor base
-    _campaignmonitor_includes();
-
     // Get lists
-    $cm = new CampaignMonitor($api_key);
+    $cm = _campaignmonitor_get_connection($api_key);
     $lists = $cm->clientGetLists($client_id);
 
     // Parse lists
     $ret = array();
-    foreach ($lists as $type) {
-      foreach ($type as $list) {
+    $lists = $lists['anyType']['List'];
+    if (empty($lists['ListID']) && is_array($lists[0])) {
+      foreach ($lists as $list) {
         $ret[$list['ListID']] = $list['Name'];
       }
     }
+    else {
+      $ret[$lists['ListID']] = $lists['Name'];
+    }
     
-    // Save it in the cache
+    // Save it in the cache (1 hour)
     cache_set('lists', $ret, 'cache_campaignmonitor', time()+3600);
   }
 
