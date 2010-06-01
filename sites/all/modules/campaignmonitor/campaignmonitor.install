@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * Implementation of hook_install().
+ */
+function campaignmonitor_install() {
+	drupal_install_schema('campaignmonitor');
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function campaignmonitor_uninstall() {
+	drupal_uninstall_schema('campaignmonitor');
+
+  variable_del('campaignmonitor_api');
+  variable_del('campaignmonitor_archive');
+	variable_del('campaignmonitor_selected_lists');
+}
+
+/**
+ * Implementation of hook_schema().
+ */
+function campaignmonitor_schema() {
+	$schema = array();
+	$schema['cache_campaignmonitor'] = drupal_get_schema_unprocessed('system', 'cache');
+	return $schema;
+}

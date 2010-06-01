@@ -1,0 +1,211 @@
+<?php
+
+define('CM_INVALID_API_KEY', 100);
+
+function campainmonitor_perm() {
+  return array('configure campaignmonitor', 'configure campaignmonitor lists');
+}
+
+function campaignmonitor_menu() {
+
+  $items['campaignmonitor/signup'] = array(
+    'page callback' => '_campaignmonitor_signup_js',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['admin/settings/campaigns'] = array(
+    'title' => 'Campaign Monitor',
+    'description' => t('Settings for the simple campaign monitor intergration.'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('campaignmonitor_admin_settings_form'),
+    'access arguments' => array('configure campaignmonitor'),
+    'file' => 'campaignmonitor.admin.inc',
+  );
+
+  $items['admin/settings/campaigns/settings'] = array(
+    'title' => 'Settings',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+  );
+
+  $items['admin/settings/campaigns/lists'] = array(
+    'title' => 'Lists',    
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('campaignmonitor_admin_lists_form'),
+    'access arguments' => array('configure campaignmonitor lists'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 1,
+    'file' => 'campaignmonitor.admin.inc',
+  );
+
+  return $items;
+}
+
+
+function campaignmonitor_block($op = 'list', $delta = 0, $edit = array()) {
+  switch ($op) {
+    case "list":
+      $blocks[0]['info'] = t('Campaign Monitor signup');
+      $blocks[0]['cache'] = BLOCK_NO_CACHE;
+
+      $blocks[1]['info'] = t('Campaign Monitor archive');
+      $blocks[1]['cache'] = BLOCK_NO_CACHE;
+
+      return $blocks;
+      
+    case "view":
+      $block = array();
+      if ($delta == 0) { // Signup block
+
+
+        $block['subject'] = t('Signup for newsletter');
+        $block['content'] = '<div id="cm-signup-block-form">' .drupal_get_form('_campaignmonitor_signup_form'). '</div>';
+      }
+      else if ($delta == 1) { // Archive block
+        $block['subject'] = t('Newsletter achive');
+        $block['content'] = '<script type="text/javascript" src="'.variable_get('campaignmonitor_archive', '').'"></script>';
+      }
+
+      return $block;
+  }
+}
+
+/**
+ * Implementation of hook_flush_caches().
+ */
+function campaignmonitor_flush_caches() {
+	return array('cache_campaignmonitor');
+}
+
+
+function _campaignmonitor_includes() {
+  require_once './' . drupal_get_path('module', 'campaignmonitor') . '/includes/CMBase.inc';
+}
+
+function _campaignmonitor_get_connection($api_key) {
+  _campaignmonitor_includes();
+  return new CampaignMonitor($api_key);
+}
+
+function _campaignmonitor_check_connection($api_key) {
+  $cm = _campaignmonitor_get_connection($api_key);
+  $status = $cm->userGetSystemDate();
+  if ($status['anyType']['Code'] == CM_INVALID_API_KEY) {
+    return $status['anyType']['Message'];
+  }
+  else {
+    return 1; // No error
+  }
+}
+
+function _campaignmonitor_validate_client_id($api_key, $client_id) {
+  $cm = _campaignmonitor_get_connection($api_key);
+  $clients = $cm->userGetClients();
+  foreach ($clients['anyType']['Client'] as $client) {
+    if ($client['ClientID'] == $client_id) {
+      return TRUE;
+    }
+  }
+  return FALSE;
+}
+
+function _campaignmonitor_get_lists($api_key, $client_id) {
+  
+  $cache = cache_get('lists', 'cache_campaignmonitor');
+  if ($cache)
+  {
+    $ret = $cache->data;
+  }
+  else {
+    // Get lists
+    $cm = _campaignmonitor_get_connection($api_key);
+    $lists = $cm->clientGetLists($client_id);
+
+    // Parse lists
+    $ret = array();
+    $lists = $lists['anyType']['List'];
+    if (empty($lists['ListID']) && is_array($lists[0])) {
+      foreach ($lists as $list) {
+        $ret[$list['ListID']] = $list['Name'];
+      }
+    }
+    else {
+      $ret[$lists['ListID']] = $lists['Name'];
+    }
+    
+    // Save it in the cache (1 hour)
+    cache_set('lists', $ret, 'cache_campaignmonitor', time()+3600);
+  }
+
+  return $ret;
+}
+
+function _campaignmonitor_signup_form($form_state) {
+  $form = array();
+  $form['campaignmonitor_signup_name'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Name'),
+    '#size' => 20,
+  );
+  $form['campaignmonitor_signup_mail'] = array(
+    '#type' => 'textfield',
+    '#title' => t('E-mail'),
+    '#size' => 20,
+  );
+
+  // Find list to subscrible to
+  $api_keys = variable_get('campaignmonitor_api', array());
+  $lists_selected = array_filter(variable_get('campaignmonitor_selected_lists', array()));
+  $lists_avaliable = _campaignmonitor_get_lists($api_keys['api_key'], $api_keys['client_id']);
+  if (count($lists_selected) == 1) {
+    // Only one, so no reason to give user a choice
+    $form['campaignmonitor_signup_lists'] = array(
+      '#type' => 'hidden',
+      '#value' => array_pop($lists_selected),
+    );
+  }
+  else {
+    $options = array();
+    foreach ($lists_selected as $id) {
+      $options[$id] = $lists_avaliable[$id];
+    }
+    $form['campaignmonitor_signup_lists'] = array(
+      '#type' => 'checkboxes',
+      '#title' => t('Which list(s)'),
+      '#options' => $options,
+    );
+  }
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Subscribe'),
+    '#ahah' => array(
+        'event' => 'click',
+        'path' => 'campaignmonitor/signup',
+        'wrapper' => 'cm-signup-block-form',
+        'effect' => 'fade',
+        'methode' => 'replace',
+      ),
+  );
+
+  return $form;
+}
+
+function _campaignmonitor_signup_js() {
+  $signup_name = $_POST['campaignmonitor_signup_name'];
+  $signup_email = $_POST['campaignmonitor_signup_mail'];
+  $signup_lists = $_POST['campaignmonitor_signup_lists'];
+
+  // Add subscriber to campaing monitor
+  $api_keys = variable_get('campaignmonitor_api', array());
+  $cm = _campaignmonitor_get_connection($api_keys['api_key']);
+  if (is_array($signup_lists)) {
+    foreach ($signup_lists as $list_id) {
+      $cm->subscriberAdd($signup_email, $signup_name, $list_id, TRUE);
+    }
+  }
+  else {
+    $cm->subscriberAdd($signup_email, $signup_name, $signup_lists, TRUE);
+  }
+  return drupal_json(array('status' => TRUE, 'data' => t("Thank you for signing up")));
+}
