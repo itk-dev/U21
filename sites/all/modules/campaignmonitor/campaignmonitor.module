@@ -47,11 +47,7 @@ function campaignmonitor_block($op = 'list', $delta = 0, $edit = array()) {
     case "list":
       $blocks[0]['info'] = t('Campaign Monitor signup');
       $blocks[0]['cache'] = BLOCK_NO_CACHE;
-
-      $blocks[1]['info'] = t('Campaign Monitor archive');
-      $blocks[1]['cache'] = BLOCK_NO_CACHE;
-
-      return $blocks;
+       return $blocks;
       
     case "view":
       $block = array();
@@ -60,10 +56,6 @@ function campaignmonitor_block($op = 'list', $delta = 0, $edit = array()) {
 
         $block['subject'] = t('Signup for newsletter');
         $block['content'] = '<div id="cm-signup-block-form">' .drupal_get_form('_campaignmonitor_signup_form'). '</div>';
-      }
-      else if ($delta == 1) { // Archive block
-        $block['subject'] = t('Newsletter achive');
-        $block['content'] = '<script type="text/javascript" src="'.variable_get('campaignmonitor_archive', '').'"></script>';
       }
 
       return $block;
@@ -208,4 +200,47 @@ function _campaignmonitor_signup_js() {
     $cm->subscriberAdd($signup_email, $signup_name, $signup_lists, TRUE);
   }
   return drupal_json(array('status' => TRUE, 'data' => t("Thank you for signing up")));
+}
+
+function campaignmonitor_cron() {
+  $script_url = variable_get('campaignmonitor_archive', '');
+  if ($script_url != '') {
+    $request = drupal_http_request($script_url);
+  }
+
+  // Parse content
+  $dom = new DOMDocument();
+  $dom->loadHTML($request->data);
+  $dom->preserveWhiteSpace = false;
+  
+  $content = $dom->getElementsByTagname('li');
+  foreach ($content as $item) {
+    $href = $item->getElementsByTagname('a');
+    $href = $href->item(0)->getAttribute('href');
+    list($title, $date) = split(', ', $item->nodeValue);
+
+    // Validate that it do not exists based on the href
+
+    if (!function_exists('node_form')) {
+      require_once './' . drupal_get_path('module', 'node') . '/node.module';
+    }
+
+    // Create node based parse data
+    
+    $form_state = array();
+    module_load_include('inc', 'node', 'node.pages');
+    $node = new stdClass();
+    $node->type = 'newsletter';
+    $node->name = 'admin';
+
+    $form_state['values']['title'] = $title;
+    $form_state['values']['field_email_view'][0]['value'] = $href;
+    $form_state['values']['field_news_date'][0]['value']['date'] = '02/06/2010';
+    $form_state['values']['field_news_date'][0]['value2']['date'] = '02/06/2010';
+    $form_state['values']['field_content'][0]['value'] = 'empty';
+    $form_state['submit_handlers'] = array('node_form_submit');
+
+    drupal_execute('newsletter_node_form', $form_state, $node);
+    
+  }  
 }

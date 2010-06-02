@@ -38,7 +38,6 @@ function campaignmonitor_admin_settings_form($form_state) {
 }
 
 function campaignmonitor_admin_settings_form_validate($form, &$form_state) {
-
   // Validate that the api key is correct
   $api_key = $form_state['values']['campaignmonitor_api']['api_key'];
   $status = _campaignmonitor_check_connection($api_key);
