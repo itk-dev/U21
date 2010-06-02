@@ -46,7 +46,7 @@
 
 ;----------// Panels layouts. 
 
-  ;plugins[panels][layouts] = layouts
+  plugins[panels][layouts] = layouts
 
   
 ;----------// Theme Features
