@@ -1,10 +1,13 @@
 <?php
 
+include_once 'includes/campaignmonitor_newslettet_type.inc';
+
 /**
  * Implementation of hook_install().
  */
 function campaignmonitor_install() {
 	drupal_install_schema('campaignmonitor');
+  campaignmonitor_content_type_install();
 }
 
 /**
@@ -16,6 +19,8 @@ function campaignmonitor_uninstall() {
   variable_del('campaignmonitor_api');
   variable_del('campaignmonitor_archive');
 	variable_del('campaignmonitor_selected_lists');
+
+  campaignmonitor_content_type_uninstall();
 }
 
 /**

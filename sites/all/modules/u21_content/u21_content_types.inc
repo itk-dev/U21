@@ -58,9 +58,6 @@ function u21_content_types_import() {
  *
  */
 function u21_content_types_install() {
-  // Get CCK content.
-  $content = u21_content_types_import();
-
   // CCK content_copy.module may not be enabled, so make sure it is included.
   include_once './' . drupal_get_path('module', 'content') . '/modules/content_copy/content_copy.module';
 
