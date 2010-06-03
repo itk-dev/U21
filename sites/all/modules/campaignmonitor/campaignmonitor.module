@@ -2,10 +2,20 @@
 
 define('CM_INVALID_API_KEY', 100);
 
+/**
+ * Implementation of hook_perm.
+ *
+ * @return array
+ */
 function campainmonitor_perm() {
   return array('configure campaignmonitor', 'configure campaignmonitor lists');
 }
 
+/**
+ * Implementation of hook_menu.
+ *
+ * @return array
+ */
 function campaignmonitor_menu() {
 
   $items['campaignmonitor/signup'] = array(
@@ -41,7 +51,15 @@ function campaignmonitor_menu() {
   return $items;
 }
 
-
+/**
+ *
+ * Implementation of hook_block. It returns the sign up block.
+ *
+ * @param string $op
+ * @param string $delta
+ * @param string $edit
+ * @return array
+ */
 function campaignmonitor_block($op = 'list', $delta = 0, $edit = array()) {
   switch ($op) {
     case "list":
@@ -69,27 +87,48 @@ function campaignmonitor_flush_caches() {
 	return array('cache_campaignmonitor');
 }
 
-
+/**
+ * Loads the campaign monitor web-services layer
+ */
 function _campaignmonitor_includes() {
   require_once './' . drupal_get_path('module', 'campaignmonitor') . '/includes/CMBase.inc';
 }
 
+/**
+ * Creates a new campaign monitor web-service gateway object.
+ *
+ * @param string $api_key
+ * @return CampaignMonitor 
+ */
 function _campaignmonitor_get_connection($api_key) {
   _campaignmonitor_includes();
   return new CampaignMonitor($api_key);
 }
 
+/**
+ * Tries to validate the api key given by calling campaign monitor web-service.
+ *
+ * @param <type> $api_key
+ * @return string if '1' is return key is valided else error message is returned.
+ */
 function _campaignmonitor_check_connection($api_key) {
   $cm = _campaignmonitor_get_connection($api_key);
   $status = $cm->userGetSystemDate();
   if ($status['anyType']['Code'] == CM_INVALID_API_KEY) {
-    return $status['anyType']['Message'];
+    return check_plain($status['anyType']['Message']);
   }
   else {
     return 1; // No error
   }
 }
 
+/**
+ *  Uses campaing monitors web-service to validate that the client id exists.
+ *
+ * @param <type> $api_key
+ * @param <type> $client_id
+ * @return boolean TRUE if client id was found via campaign monitors web-service.
+ */
 function _campaignmonitor_validate_client_id($api_key, $client_id) {
   $cm = _campaignmonitor_get_connection($api_key);
   $clients = $cm->userGetClients();
@@ -101,6 +140,15 @@ function _campaignmonitor_validate_client_id($api_key, $client_id) {
   return FALSE;
 }
 
+/**
+ * Loads all avaliable list name form campaign monitor based on client id. It
+ * uses cache to prevent overloading campaignmonitor systems. Cache timeout is
+ * set to 1 hour.
+ *
+ * @param string $api_key
+ * @param string $client_id
+ * @return array
+ */
 function _campaignmonitor_get_lists($api_key, $client_id) {
   
   $cache = cache_get('lists', 'cache_campaignmonitor');
@@ -118,11 +166,11 @@ function _campaignmonitor_get_lists($api_key, $client_id) {
     $lists = $lists['anyType']['List'];
     if (empty($lists['ListID']) && is_array($lists[0])) {
       foreach ($lists as $list) {
-        $ret[$list['ListID']] = $list['Name'];
+        $ret[$list['ListID']] = check_plain($list['Name']);
       }
     }
     else {
-      $ret[$lists['ListID']] = $lists['Name'];
+      $ret[$lists['ListID']] = check_plain($lists['Name']);
     }
     
     // Save it in the cache (1 hour)
@@ -132,6 +180,12 @@ function _campaignmonitor_get_lists($api_key, $client_id) {
   return $ret;
 }
 
+/**
+ * Generates the form for signing up to a give list.
+ *
+ * @param array $form_state
+ * @return string render form
+ */
 function _campaignmonitor_signup_form($form_state) {
   $form = array();
   $form['campaignmonitor_signup_name'] = array(
@@ -183,25 +237,50 @@ function _campaignmonitor_signup_form($form_state) {
   return $form;
 }
 
+/**
+ * Handles ahah callback from the signup form. It calls the campaign monitor
+ * web-service and adds the user to the selected list.
+ *
+ * @return string json encode
+ */
 function _campaignmonitor_signup_js() {
-  $signup_name = $_POST['campaignmonitor_signup_name'];
-  $signup_email = $_POST['campaignmonitor_signup_mail'];
-  $signup_lists = $_POST['campaignmonitor_signup_lists'];
+  $signup_name = check_plain($_POST['campaignmonitor_signup_name']);
+  $signup_email = check_plain($_POST['campaignmonitor_signup_mail']);
+  $signup_lists = check_plain($_POST['campaignmonitor_signup_lists']);
 
   // Add subscriber to campaing monitor
   $api_keys = variable_get('campaignmonitor_api', array());
   $cm = _campaignmonitor_get_connection($api_keys['api_key']);
   if (is_array($signup_lists)) {
     foreach ($signup_lists as $list_id) {
-      $cm->subscriberAdd($signup_email, $signup_name, $list_id, TRUE);
+      $status = $cm->subscriberAdd($signup_email, $signup_name, $list_id, TRUE);
     }
   }
   else {
-    $cm->subscriberAdd($signup_email, $signup_name, $signup_lists, TRUE);
+    $status = $cm->subscriberAdd($signup_email, $signup_name, $signup_lists, TRUE);
   }
-  return drupal_json(array('status' => TRUE, 'data' => t("Thank you for signing up")));
+
+  // Validate status
+  if ($status['Result']['Code'] != 0) {
+    $msg = t(check_plain($status['Result']['Message']));
+  }
+  else {
+    // Get return message
+    $msg = variable_get('campaignmonitor_reply_msg', t("Thank you for signing up to our newsletter."));
+  }
+
+  // Return json
+  return drupal_json(array('status' => TRUE, 'data' => '<p id="cm-status-msg">'. $msg .'</p>'));
 }
 
+/**
+ * Implementation of hook_cron.
+ *
+ * It downloads the campaing news archive form
+ * campaignmonitor.com and creates newsletter nodes for any content that does
+ * not already have an corrensponding node.
+ *
+ */
 function campaignmonitor_cron() {
   $script_url = variable_get('campaignmonitor_archive', '');
   if ($script_url != '') {

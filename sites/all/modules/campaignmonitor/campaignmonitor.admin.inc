@@ -29,12 +29,26 @@ function campaignmonitor_admin_settings_form($form_state) {
   $form['campaignmonitor_archive'] = array(
     '#type' => 'textfield',
     '#title' => t('JavaScript archive link'),
-    '#description' => t('To display a list of sent campaings, you have to go into client settings under "Create newsletter archive" and create a JavaScript link for this setting'),
+    '#description' => t('To display a list of sent campaings, you have to go into client settings under "Create newsletter archive" and create a JavaScript link for this setting.'),
     '#default_value' => variable_get('campaignmonitor_archive', ''),
   );
-  
+
+  $form['campaignmonitor_reply_msg'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Subscription message'),
+    '#description' => t('Massage to display, when user have subscribe to list (JavaScript enabled users).'),
+    '#default_value' => variable_get('campaignmonitor_reply_msg', ''),
+  );
+
+  $form['campaignmonitor_redirect'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Redirect path'),
+    '#description' => t('Path of node to redirect to for no-JavaScript users.'),
+    '#default_value' => variable_get('campaignmonitor_redirect', ''),
+  );
+
   // Get systemet form elements
- return system_settings_form($form);
+  return system_settings_form($form);
 }
 
 function campaignmonitor_admin_settings_form_validate($form, &$form_state) {
