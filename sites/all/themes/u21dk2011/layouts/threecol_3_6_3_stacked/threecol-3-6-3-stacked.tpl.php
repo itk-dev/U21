@@ -11,7 +11,7 @@
   <?php } ?>
 
   <?php if ($content['center']) { ?>
-  <div class="grid-6 panel-col-center">
+  <div class="<?php if (!$content['left']) { ?>prefix-3 <?php } ?><?php if (!$content['right']) { ?>suffix-3 <?php } ?>grid-6 panel-col-center">
     <?php print $content['center']; ?>
   </div>
   <?php } ?>
@@ -23,15 +23,16 @@
   <?php } ?>
   
   <?php if ($content['lower_left']) { ?>
-  <div class="grid-8 alpha panel-col-lowleft">
+  <div class="<?php if (!$content['lower_right']) { ?>suffix-4 <?php } ?>grid-8 alpha panel-col-lowleft">
     <?php print $content['lower_left']; ?>
   </div>
   <?php } ?>
   
   <?php if ($content['lower_right']) { ?>
-  <div class="grid-4 omega panel-col-lowright">
+  <div class="<?php if (!$content['lower_left']) { ?>prefix-8 <?php } ?>grid-4 omega panel-col-lowright">
     <?php print $content['lower_left']; ?>
   </div>
   <?php } ?>  
 
 
+<?php if ($content['VAR']) { ?>  <?php } ?>
