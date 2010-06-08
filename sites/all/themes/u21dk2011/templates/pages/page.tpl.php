@@ -13,7 +13,7 @@
   
   <div id="wrapper" class="container-12">
   
-    <div id="header">
+    <div id="header" class="clearfix">
       
       <div id="branding" class="grid-12">
         <?php print $site_logo; ?>
@@ -21,23 +21,25 @@
         <div id="site-slogan" class=""><?php print $site_slogan; ?></div>
         <?php endif; ?>
       </div>
-      
-      <?php if ($region_main_menu): ?>
-        <div id="region-main-menu" class="grid-8">
-        <?php print $region_main_menu; ?>
-        </div>
-      <?php endif; ?>
-      <?php if ($region_city_menu): ?>
-        <div id="region-city-menu" class="grid-4">
-        <?php print $region_city_menu; ?>
-        </div>
-      <?php endif; ?>
+
       <?php if ($region_secondary_menu): ?>
         <div id="region-secondary-menu" class="grid-12">
         <?php print $region_secondary_menu; ?>
         </div>
-      <?php endif; ?>    
-    
+      <?php endif; ?>
+      <div id="main-menus" class="grid-12">
+        <h1>Denmark 2010</h1>
+        <?php if ($region_city_menu): ?>
+          <div id="region-city-menu">
+          <?php print $region_city_menu; ?>
+          </div>
+        <?php endif; ?>
+        <?php if ($region_main_menu): ?>
+          <div id="region-main-menu">
+          <?php print $region_main_menu; ?>
+          </div>
+        <?php endif; ?>        
+      </div>
     </div><!-- /header -->
 
     <?php print $breadcrumb; ?>
@@ -62,7 +64,7 @@
       </div>
     </div><!-- /content -->
 
-    <div id="secondary-content" class="clear">
+    <div id="secondary-content" class="clear clearfix">
       <?php if ($region_middle): ?>
         <div id="region-middle" class="region grid-12">
         <?php print $region_middle; ?>
@@ -92,7 +94,7 @@
     </div><!-- /Secondary content -->
   
     <?php if ($footer_1 || $footer_2 || $footer_3 || $footer_4): ?>
-    <ul id="footer" class="clear">
+    <ul id="footer" class="clear clearfix">
         <?php if ($footer_1): ?>        
         <li class="region grid-3">
           <?php print $footer_1; ?>
