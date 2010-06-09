@@ -78,7 +78,7 @@ function gmap_admin_settings(&$form_state) {
 
   // Allow previewable behaviors to affect the preview map.
   $m = array();
-  $behaviors = module_invoke_all('gmap', 'behaviors', $m);
+  $behaviors = gmap_module_invoke('behaviors', $m);
   foreach ($behaviors as $k => $v) {
     if (isset($v['previewable']) && $v['previewable']) {
       $form['gmap_default']['map']['#settings']['behavior'][$k] = $defaults['behavior'][$k];
@@ -171,9 +171,7 @@ function gmap_admin_settings(&$form_state) {
 
   $baselayers = array();
 
-  foreach (module_implements('gmap') as $module) {
-    call_user_func_array($module .'_gmap', array('baselayers', &$baselayers));
-  }
+  gmap_module_invoke('baselayers', $baselayers);
 
   $options = array();
   foreach ($baselayers as $name => $layers) {
@@ -218,7 +216,7 @@ function gmap_admin_settings(&$form_state) {
     '#description' => t('Behavior flags modify how a map behaves. Grayed out flags are not settable here, but may be set on a map by map basis via code or a macro. Changes to behaviors will not affect the preview map shown above until changes are saved.'),
   );
   $m = array();
-  $behaviors = module_invoke_all('gmap', 'behaviors', $m);
+  $behaviors = gmap_module_invoke('behaviors', $m);
   foreach ($behaviors as $k => $v) {
     $form['gmap_default']['behavior'][$k] = array(
       '#type' => 'checkbox',
