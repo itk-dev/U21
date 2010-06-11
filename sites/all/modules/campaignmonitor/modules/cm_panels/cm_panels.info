@@ -1,0 +1,9 @@
+; $Id$
+name = Campaign Monitor (Panels extension)
+description = Create campaign monitor signup form as pannels plugin.
+package = e-Marketing
+core = 6.x
+php = 5.2
+dependencies[] = campaignmonitor
+dependencies[] = panels
+dependencies[] = ctools
