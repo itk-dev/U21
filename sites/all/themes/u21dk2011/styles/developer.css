@@ -97,8 +97,9 @@
 /* Main content */
 #main-content #top-news-pane,
 #main-content #related-news-stories,
-#main-content #global-new-list,
-#main-content #news-list-region {
+#main-content #news-list-global,
+#main-content #news-list-region,
+#main-content #news-list-global-term {
   border: 1px dashed #BBB;
   padding: 10px 10px 0px 10px;
 }
