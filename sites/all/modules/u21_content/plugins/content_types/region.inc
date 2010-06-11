@@ -2,7 +2,7 @@
 // $Id$
 
 /**
- * @file library.inc
+ * @file region.inc
  * Provides several region related panels content types.
  */
 

@@ -96,10 +96,14 @@
 
 /* Main content */
 #main-content #top-news-pane,
-#main-content #related-news-stories{
+#main-content #related-news-stories,
+#main-content #global-new-list,
+#main-content #news-list-region {
   border: 1px dashed #BBB;
   padding: 10px 10px 0px 10px;
 }
+
+
 
 #main-content #related-news-stories {
   margin-top: 20px;
