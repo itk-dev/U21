@@ -95,8 +95,8 @@
 }
 
 /* Main content */
-#main-content #top-news-pane,
-#main-content #related-news-stories,
+#main-content #news-top-news,
+#main-content #news-related-stories,
 #main-content #news-list-global,
 #main-content #news-list-region,
 #main-content #news-list-global-term {
