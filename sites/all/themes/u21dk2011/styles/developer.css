@@ -7,7 +7,6 @@
 }
 
 /* Menu settings and header*/
-
 #header {
   height: 190px;
 }
@@ -55,12 +54,14 @@
 }
 
 #header #main-menus #region-city-menu {
-  float: right;
+  position: absolute;
+  right: -1px;
+  bottom: 4px;
 }
 
 #header #main-menus #region-main-menu {
-  position: relative;
-  top: 28px;
+  position: absolute;
+  bottom: -24px;
   left: -1px;
 }
 
@@ -78,6 +79,18 @@
 #header #main-menus #region-main-menu li a {
   background-color: #EEE;
   padding: 5px 10px 5px 10px;
+}
+
+
+/* Main content */
+#main-content #top-news-pane,
+#main-content #related-news-stories{
+  border: 1px dashed #BBB;
+  padding: 10px 10px 0px 10px;
+}
+
+#main-content #related-news-stories {
+  margin-top: 20px;
 }
 
 /* secondary-content */
