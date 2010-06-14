@@ -25,7 +25,7 @@ function u21_content_taxonomy_ctools_content_types() {
 function u21_content_taxonomy_content_type_content_types() {
   $types = array(
     'taxonomy_links' => array(
-      'title' => t('Taxonomy links for node begin viewd'),
+      'title' => t('Taxonomy links'),
       'description' => t('Using taxonomy to create link box.'),
       'category' => t('Taxonomy'),
       'defaults' => array(
@@ -33,6 +33,17 @@ function u21_content_taxonomy_content_type_content_types() {
          'vocabulary' => '1',
          'node_type' => NULL,
       ),
+    ),
+    'taxonomy_links_context' => array(
+      'title' => t('Taxonomy links for selected contect'),
+      'description' => t('Using taxonomy to create link box.'),
+      'category' => t('Taxonomy'),
+      'defaults' => array(
+         'path_prefix' => '/%slug/term',
+         'vocabulary' => '1',
+         'node_type' => NULL,
+      ),
+      'required context' => new ctools_context_required(t('Node'), 'node'),
     ),
   );
   return $types;
@@ -46,17 +57,11 @@ function u21_content_taxonomy_content_type_render($subtype, $conf, $panel_args, 
   $node = isset($context->data) ? drupal_clone($context->data) : NULL;
   switch($subtype) {
     case 'taxonomy_links':
-      if ($context->identifier) {
-        $block->title = t('Category');
-        $block->content = theme('u21_content_taxonomy_links', $node, 
-                                $conf['path_prefix'], $conf['vocabulary'],
-                                $conf['node_type'], TRUE);
-      } else {
-        $block->title = t('Category');
-        $block->content = theme('u21_content_taxonomy_links', $node, 
-                                $conf['path_prefix'], $conf['vocabulary'],
-                                $conf['node_type'], FALSE);
-      }
+    case 'taxonomy_links_context':
+      $block->title = t('Categories');
+      $block->content = theme('u21_content_taxonomy_links', $node, 
+                              $conf['path_prefix'], $conf['vocabulary'],
+                              $conf['node_type']);
       break;
   }
   return $block;
@@ -68,6 +73,7 @@ function u21_content_taxonomy_content_type_render($subtype, $conf, $panel_args, 
 function u21_content_taxonomy_content_type_admin_title($subtype, $conf, $context) {
   switch($subtype) {
     case 'taxonomy_links':
+    case 'taxonomy_links_context':
       if ($context->identifier) {
         $str = t('"@s":  Taxonomy links', array('@s' => $context->identifier));        
       }
@@ -85,6 +91,7 @@ function u21_content_taxonomy_content_type_edit_form(&$form, &$form_state) {
   $conf = $form_state['conf'];
   switch ($form_state['subtype_name']) {
     case 'taxonomy_links':
+    case 'taxonomy_links_context':
       $form['path_prefix'] = array(
         '#type' => 'textfield',
         '#title' => t('Path prefix (e.g location/%slug/news)'),
@@ -99,7 +106,7 @@ function u21_content_taxonomy_content_type_edit_form(&$form, &$form_state) {
       }
       $form['vocabulary'] = array(
         '#type' => 'select',
-        '#title' => t('Id of vocabulary to use'),
+        '#title' => t('Vocabulary to use'),
         '#options' => $options,
         '#default_value' => $conf['vocabulary'],
       );
@@ -125,6 +132,7 @@ function u21_content_taxonomy_content_type_edit_form(&$form, &$form_state) {
 function u21_content_taxonomy_content_type_edit_form_submit(&$form, &$form_state) {
   switch ($form_state['subtype_name']) {
     case 'taxonomy_links':
+    case 'taxonomy_links_context':
       $form_state['conf']['path_prefix'] = $form_state['values']['path_prefix'];
       $form_state['conf']['vocabulary'] = $form_state['values']['vocabulary'];
       $form_state['conf']['node_type'] = $form_state['values']['node_type'];

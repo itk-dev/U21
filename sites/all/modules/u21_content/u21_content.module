@@ -93,8 +93,7 @@ function u21_content_theme($existing, $type, $theme, $path) {
     ),
     'u21_content_taxonomy_links' => array(
       'arguments' => array('node' => NULL, 'path_prefix' => NULL, 
-                           'vocabulary' => NULL, 'node_type' => NULL,
-                           'context' => NULL),
+                           'vocabulary' => NULL, 'node_type' => NULL),
       'template' => 'u21_content_panels_content_taxonomy_links',
       'preprocess functions' => array('u21_content_preprocess_taxonomy_links'),
     ),
@@ -115,6 +114,9 @@ function u21_content_preprocess_region_menu(&$variables) {
   $variables['menu'] = menu_tree_output($tree);
 }
 
+/**
+ * Preprocess hook for the google maps.
+ */
 function u21_content_preprocess_google_maps(&$variables, $hook) {
   $node = $variables['node'];
   $location = $node->location;
@@ -129,19 +131,24 @@ function u21_content_preprocess_google_maps(&$variables, $hook) {
                                       $variables['height'].'px');
 }
 
+/**
+ * Preprocess hook for taxonomy link boxes.
+ */
 function u21_content_preprocess_taxonomy_links(&$variables, $hook) {
-  if ($variables['context']) {
+  if ($variables['node']) {
     $node = $variables['node'];
-    
+    $path = str_replace('%slug', $node->panels_slug, $variables['path_prefix']) .'/';
   }
-  else {    
-    $terms = array();
-    $objects = taxonomy_get_tree($variables['vocabulary']);
-    foreach ($objects as $term) {
-      $terms[$term->tid] = array('name' => $term->name, 
-                                 'count' => taxonomy_term_count_nodes($term->tid, $variables['node_type']),
-                                 'link' => l($term->name, 'news/'. strtolower($term->name)));
-    }
+  else {
+    $path = $variables['path_prefix'] .'/';
+  }
+
+  $terms = array();
+  $objects = taxonomy_get_tree($variables['vocabulary']);
+  foreach ($objects as $term) {
+    $terms[$term->tid] = array('name' => $term->name, 
+                               'count' => taxonomy_term_count_nodes($term->tid, $variables['node_type']),
+                               'link' => l($term->name, $path . strtolower($term->name)));
   }
   $variables['terms'] = $terms;
 }
