@@ -97,6 +97,11 @@ function u21_content_theme($existing, $type, $theme, $path) {
       'template' => 'u21_content_panels_content_taxonomy_links',
       'preprocess functions' => array('u21_content_preprocess_taxonomy_links'),
     ),
+    'u21_content_slug_links' => array(
+      'arguments' => array('node' => NULL, 'node_type' => NULL, 'slug_path' => NULL, 'global_path' => NULL),
+      'template' => 'u21_content_panels_content_slug_links',
+      'preprocess functions' => array('u21_content_preprocess_slug_links'),
+    ),
   );
 }
 
@@ -153,3 +158,24 @@ function u21_content_preprocess_taxonomy_links(&$variables, $hook) {
   $variables['terms'] = $terms;
 }
 
+function u21_content_preprocess_slug_links(&$variables, $hook) {
+  $result = db_query('SELECT s.slug, n.title 
+                      FROM {panels_slug} s, {node} n
+                      WHERE s.nid = n.nid
+                        AND s.nodetype = n.type
+                        AND s.nodetype = \'%s\'
+                      ORDER BY n.title DESC', $variables['node_type']);
+  $links = array(
+    'all' => array(
+        'title' => t('All'),
+        'href' => $variables['global_path'],
+      ),
+    );
+  while ($row = db_fetch_array($result)) {
+    $links[$row['title']] = array('title' => $row['title'],
+                                  'href' => str_replace('%slug', $row['slug'], $variables['slug_path']));
+  }
+
+
+  $variables['links'] = theme('links', $links);
+}
