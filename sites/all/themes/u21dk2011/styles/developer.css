@@ -104,6 +104,12 @@
   padding: 10px 10px 0px 10px;
 }
 
+#main-content #events-top-event,
+#main-content #events-list-global {
+  border: 1px dashed #BBB;
+  padding: 10px 10px 0px 10px;
+}
+
 
 
 #main-content #related-news-stories {

@@ -101,6 +101,8 @@ function u21_content_slug_links_content_type_edit_form_submit(&$form, &$form_sta
   switch ($form_state['subtype_name']) {
     case 'slug_links':
       $form_state['conf']['node_type'] = $form_state['values']['node_type'];
+      $form_state['conf']['slug_path'] = $form_state['values']['slug_path'];
+      $form_state['conf']['global_path'] = $form_state['values']['global_path'];
       break;
   }
 }
