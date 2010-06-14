@@ -91,6 +91,13 @@ function u21_content_theme($existing, $type, $theme, $path) {
       'template' => 'u21_content_panels_content_google_maps',
       'preprocess functions' => array('u21_content_preprocess_google_maps'),
     ),
+    'u21_content_taxonomy_links' => array(
+      'arguments' => array('node' => NULL, 'path_prefix' => NULL, 
+                           'vocabulary' => NULL, 'node_type' => NULL,
+                           'context' => NULL),
+      'template' => 'u21_content_panels_content_taxonomy_links',
+      'preprocess functions' => array('u21_content_preprocess_taxonomy_links'),
+    ),
   );
 }
 
@@ -121,3 +128,21 @@ function u21_content_preprocess_google_maps(&$variables, $hook) {
                                       $variables['width'].'px',
                                       $variables['height'].'px');
 }
+
+function u21_content_preprocess_taxonomy_links(&$variables, $hook) {
+  if ($variables['context']) {
+    $node = $variables['node'];
+    
+  }
+  else {    
+    $terms = array();
+    $objects = taxonomy_get_tree($variables['vocabulary']);
+    foreach ($objects as $term) {
+      $terms[$term->tid] = array('name' => $term->name, 
+                                 'count' => taxonomy_term_count_nodes($term->tid, $variables['node_type']),
+                                 'link' => l($term->name, 'news/'. strtolower($term->name)));
+    }
+  }
+  $variables['terms'] = $terms;
+}
+
