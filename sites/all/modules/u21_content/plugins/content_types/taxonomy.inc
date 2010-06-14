@@ -118,7 +118,7 @@ function u21_content_taxonomy_content_type_edit_form(&$form, &$form_state) {
       }
       $form['node_type'] = array(
         '#type' => 'select',
-        '#title' => t('Id of vocabulary to use'),
+        '#title' => t('Content type (used to get node count)'),
         '#options' => $options,
         '#default_value' => $conf['node_type'],
       );
