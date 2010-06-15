@@ -29,7 +29,7 @@ function u21_content_maps_content_type_content_types() {
       'description' => t('Displays a google map for the selected node.'),
       'category' => t('Location and maps'),
       'defaults' => array(
-         'map_width' => '200',
+         'map_width' => '300',
          'map_height' => '250',
          'map_zoom' => '14',
       ),
