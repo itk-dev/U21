@@ -110,7 +110,18 @@
   padding: 10px 10px 0px 10px;
 }
 
+#main-content #events-practical-information table {
+  width: 300px;
+}
 
+#main-content #events-practical-information table td {
+  border: 1px solid #BBB;
+  padding: 4px;
+}
+
+#main-content #events-practical-information table td.label {
+  width: 25%;
+}
 
 #main-content #related-news-stories {
   margin-top: 20px;
