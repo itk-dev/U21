@@ -93,7 +93,8 @@ function u21_content_theme($existing, $type, $theme, $path) {
     ),
     'u21_content_taxonomy_links' => array(
       'arguments' => array('node' => NULL, 'path_prefix' => NULL, 
-                           'vocabulary' => NULL, 'node_type' => NULL),
+                           'vocabulary' => NULL, 'node_type' => NULL,
+                           'slug_nid' => NULL),
       'template' => 'u21_content_panels_content_taxonomy_links',
       'preprocess functions' => array('u21_content_preprocess_taxonomy_links'),
     ),
@@ -156,8 +157,9 @@ function u21_content_preprocess_taxonomy_links(&$variables, $hook) {
   $terms = array();
   $objects = taxonomy_get_tree($variables['vocabulary']);
   foreach ($objects as $term) {
+    $count = (isset($variables['slug_nid']) ? _u21_content_taxonomy_node_count($term->tid, $variables['node_type'], $variables['slug_nid']) : taxonomy_term_count_nodes($term->tid, $variables['node_type']));
     $terms[$term->tid] = array('name' => $term->name, 
-                               'count' => taxonomy_term_count_nodes($term->tid, $variables['node_type']),
+                               'count' => $count,
                                'link' => l($term->name, $path . strtolower($term->name)));
   }
   $variables['terms'] = $terms;

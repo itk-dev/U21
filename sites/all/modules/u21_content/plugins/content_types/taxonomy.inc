@@ -55,13 +55,14 @@ function u21_content_taxonomy_content_type_content_types() {
 function u21_content_taxonomy_content_type_render($subtype, $conf, $panel_args, $context) {
   $block = new stdClass();
   $node = isset($context->data) ? drupal_clone($context->data) : NULL;
+  $arg  = isset($context->argument) ? $context->argument : NULL;
   switch($subtype) {
     case 'taxonomy_links':
     case 'taxonomy_links_context':
       $block->title = t('Categories');
       $block->content = theme('u21_content_taxonomy_links', $node, 
                               $conf['path_prefix'], $conf['vocabulary'],
-                              $conf['node_type']);
+                              $conf['node_type'], $arg);
       break;
   }
   return $block;
@@ -138,4 +139,17 @@ function u21_content_taxonomy_content_type_edit_form_submit(&$form, &$form_state
       $form_state['conf']['node_type'] = $form_state['values']['node_type'];
       break;
   }
+}
+
+function _u21_content_taxonomy_node_count($tid, $type, $slug_nid) {
+  $result = db_query(db_rewrite_sql('SELECT t.tid, COUNT(n.nid) AS c
+                      FROM content_field_slug_ref s INNER JOIN node n ON s.nid = n.nid
+                                                    INNER JOIN term_node t ON t.vid = n.vid
+                      WHERE s.field_slug_ref_nid IS NOT NULL
+                        AND s.field_slug_ref_nid = %d
+                        AND t.tid = %d
+                        AND n.status = 1 AND n.type = \'%s\'
+                      GROUP BY t.tid'), $slug_nid, $tid, $type);
+  $result = db_fetch_array($result);
+  return $result['c'];
 }
