@@ -129,12 +129,12 @@ function u21_content_preprocess_region_menu(&$variables) {
  */
 function u21_content_preprocess_google_maps(&$variables, $hook) {
   $node = $variables['node'];
-  $locations = $node->location;
+  $locations = $node->locations;
 
-  if (isset($node->locations[0])) {
+  if (isset($locations[0])) {
     $variables['title'] = check_plain($node->title);
-    $variables['map'] = gmap_simple_map($locations['latitude'],
-                                        $locations['longitude'],
+    $variables['map'] = gmap_simple_map($locations[0]['latitude'],
+                                        $locations[0]['longitude'],
                                         '',
                                         check_plain($node->title),
                                         $variables['zoom'],
