@@ -11,7 +11,7 @@
   <?php } ?>
 
   <?php if ($content['center']) { ?>
-  <div class="<?php if (!$content['left']) { ?>prefix-3 <?php } ?><?php if (!$content['right']) { ?>suffix-3 <?php } ?>grid-6 panel-col-center">
+  <div class="<?php if (!$content['left']) { ?>prefix-3 <?php } ?><?php if (!$content['right']) { ?><?php } ?>grid-6 panel-col-center">
     <?php print $content['center']; ?>
   </div>
   <?php } ?>

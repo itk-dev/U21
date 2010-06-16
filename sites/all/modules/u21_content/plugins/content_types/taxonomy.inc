@@ -141,10 +141,18 @@ function u21_content_taxonomy_content_type_edit_form_submit(&$form, &$form_state
   }
 }
 
+/**
+ * Counts the number of node that is related to term and for an specifik node ref (slug).
+ *
+ * @param interger $tid term id
+ * @param string $type content-type
+ * @param interger $slug_nid node id for the slug node (panels slug)
+ * @return interger
+ */
 function _u21_content_taxonomy_node_count($tid, $type, $slug_nid) {
   $result = db_query(db_rewrite_sql('SELECT t.tid, COUNT(n.nid) AS c
-                      FROM content_field_slug_ref s INNER JOIN node n ON s.nid = n.nid
-                                                    INNER JOIN term_node t ON t.vid = n.vid
+                      FROM {content_field_slug_ref} s INNER JOIN {node} n ON s.nid = n.nid
+                                                    INNER JOIN {term_node} t ON t.vid = n.vid
                       WHERE s.field_slug_ref_nid IS NOT NULL
                         AND s.field_slug_ref_nid = %d
                         AND t.tid = %d

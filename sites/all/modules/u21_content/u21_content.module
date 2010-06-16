@@ -121,8 +121,7 @@ function u21_content_preprocess_region_menu(&$variables) {
   $variables['title'] = t('U21 in @title', array('@title' => $node->title));
 
   // Load menu
-  $tree = menu_tree_all_data($node->field_menu_ref[0]['value']);
-  $variables['menu'] = menu_tree_output($tree);
+  $variables['menu'] = menu_tree($node->field_menu_ref[0]['value']);
 }
 
 /**
@@ -130,16 +129,18 @@ function u21_content_preprocess_region_menu(&$variables) {
  */
 function u21_content_preprocess_google_maps(&$variables, $hook) {
   $node = $variables['node'];
-  $location = $node->location;
+  $locations = $node->location;
 
-  $variables['title'] = check_plain($node->title);
-  $variables['map'] = gmap_simple_map($location['latitude'],
-                                      $location['longitude'],
-                                      '',
-                                      check_plain($node->title),
-                                      $variables['zoom'],
-                                      $variables['width'].'px',
-                                      $variables['height'].'px');
+  if (isset($node->locations[0])) {
+    $variables['title'] = check_plain($node->title);
+    $variables['map'] = gmap_simple_map($locations['latitude'],
+                                        $locations['longitude'],
+                                        '',
+                                        check_plain($node->title),
+                                        $variables['zoom'],
+                                        $variables['width'].'px',
+                                        $variables['height'].'px');
+  }
 }
 
 /**

@@ -1,1 +1,1 @@
-<?php print $map ?>
+<?php if ($map) { print $map; } ?>
