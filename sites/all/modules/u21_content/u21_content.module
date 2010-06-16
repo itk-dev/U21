@@ -198,7 +198,7 @@ function u21_content_preprocess_event_details(&$variables, $hook) {
 
   // Price
   if (isset($node->field_price[0]['value']) && $node->field_price[0]['value'] > 0) {
-    $variables['price'] = $node->field_price[0]['value'];
+    $variables['price'] = $node->field_price[0]['value'] .' Kr';
   }
   else {
     $variables['price'] = t('Free of charge');

@@ -650,6 +650,9 @@ function date_format_date($date, $type = 'medium', $format = '', $langcode = NUL
   if (empty($date)) {
     return '';
   }
+  if (get_Class($date) != 'DateTime') {
+    $date = new DateTime($date);
+  }
   switch ($type) {
     case 'small':
     case 'short':

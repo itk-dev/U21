@@ -10,7 +10,7 @@
   </tr>
   <tr>
     <td class="label"><?php print t('Price') ?>:</td>
-    <td><?php print $price ?> Kr</td>
+    <td><?php print $price ?></td>
   </tr>
   <tr>
     <td class="label"><?php print t('Location') ?>:</td>
