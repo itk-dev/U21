@@ -28,7 +28,7 @@
         </div>
       <?php endif; ?>
       <div id="main-menus" class="grid-12">
-        <h1>Denmark 2010</h1>
+        <h1>Denmark 2011</h1>
         <?php if ($region_city_menu): ?>
           <div id="region-city-menu">
           <?php print $region_city_menu; ?>

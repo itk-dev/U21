@@ -96,6 +96,7 @@
 
 /* Main content */
 #main-content #news-top-news,
+#main-content #news-top-region-news,
 #main-content #news-related-stories,
 #main-content #news-list-global,
 #main-content #news-list-region,
@@ -105,7 +106,8 @@
 }
 
 #main-content #events-top-event,
-#main-content #events-list-global {
+#main-content #events-list-global,
+#main-content #events-region-topevents {
   border: 1px dashed #BBB;
   padding: 10px 10px 0px 10px;
 }
