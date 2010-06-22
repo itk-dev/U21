@@ -132,7 +132,15 @@ function u21_content_preprocess_region_menu(&$variables) {
   $variables['title'] = t('U21 in @title', array('@title' => $node->title));
 
   // Load menu
-  $variables['menu'] = menu_tree($node->field_menu_ref[0]['value']);
+  $conf = array('menu_name' => $node->field_menu_ref[0]['value'],
+                'parent_mlid' => 0, 'title_link' => 0,
+                'admin_title' => 'Static regional menu (1+)',
+                'level' => 1, 'follow' => 0, 'depth' => 0,
+                'expanded' => 0, 'sort' => 0,
+                'override_title' => 1, 'override_title_text' => '',
+                'delta' => 'ctools-_active-1' );
+  $tree = menu_tree_build($conf);
+  $variables['menu'] = $tree['content'];
 }
 
 /**
