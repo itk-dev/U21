@@ -90,7 +90,7 @@ function theme_filefield_formatter_url_plain($element) {
  * in any case, please use theme('filefield_file') instead.
  */
 function theme_filefield_item($file, $field) {
-  if (filefield_view_access($field['field_name']) && filefield_file_listed($file, $field)) {
+  if (filefield_view_access($field['field_name'], node_load($file['nid'])) && filefield_file_listed($file, $field)) {
     return theme('filefield_file', $file);
   }
   return '';
