@@ -12,6 +12,7 @@ nbproject
 /sites/default/files
 /files
 /backup
+/backups
 CVS
 *.patch
 *~
