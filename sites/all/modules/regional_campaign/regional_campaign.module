@@ -144,19 +144,22 @@ function regional_campaign_block($op = 'list', $delta = 0, $edit = array()) {
 
     case view:
       $nodes = _regional_campaign_load_random_nodes();
-
-      $campaings = array();
-      foreach ($nodes as $node) {    
-        $campaings[] = array('url' => $node->field_link[0]['value'],
-                           'img' => $node->field_graphics[0]['filepath'],
-                           'rel' => ($node->field_new_window[0]['value'] == 1 ? 'external' : ''),
-                           'alt' => $node->title);
-      }
-      $type = str_replace(' ', '-', strtolower($node->field_campaign_type[0]['value']));
-
-      $block['content'] = theme('regional_campaign', $campaings, $type);
+      $block['content'] = _regional_campaign_build_block($nodes);
       return $block;
   }  
+}
+
+function _regional_campaign_build_block($nodes) {
+  $campaings = array();
+  foreach ($nodes as $node) {
+    $campaings[] = array('url' => $node->field_link[0]['value'],
+                         'img' => $node->field_graphics[0]['filepath'],
+                         'rel' => ($node->field_new_window[0]['value'] == 1 ? 'external' : ''),
+                         'alt' => $node->title);
+    }
+  $type = str_replace(' ', '-', strtolower($node->field_campaign_type[0]['value']));
+
+  return theme('regional_campaign', $campaings, $type);
 }
 
 /**
@@ -167,7 +170,10 @@ function regional_campaign_block($op = 'list', $delta = 0, $edit = array()) {
 function regional_campaign_theme() {
   return array(
     'regional_campaign' => array(
-      'arguments' => array('type' => NULL),
+      'arguments' => array('campaings' => NULL, 'type' => NULL),
+    ),
+    'regional_campagin_panels_plugin' => array(
+      'arguments' => array('node' => NULL),
     ),
   );
 }
@@ -193,7 +199,7 @@ function theme_regional_campaign($campaings, $type) {
   $output .= '</div>';
 
   // Add javascript
-  drupal_add_js(drupal_get_path('module', 'regional_campaign') . '/js/regional-campaign.js');
+  drupal_add_js(drupal_get_path('module', 'regional_campaign') . '/js/regional_campaign.js');
 
   return $output;
 }
@@ -201,7 +207,7 @@ function theme_regional_campaign($campaings, $type) {
 /**
  * Finds random campaign node.
  */
-function _regional_campaign_load_random_nodes() {
+function _regional_campaign_load_random_nodes($region = NULL) {
   // Random select type
   $active_types = variable_get(REGIONAL_CAMPAIGN_ACTIVE_TYPES, array());
   $key = array_rand($active_types);
@@ -211,13 +217,48 @@ function _regional_campaign_load_random_nodes() {
 
   // Load random campaign, based on type
   $nodes = array();
-  $result = db_query('SELECT nid
-                      FROM {content_type_kampagne}
-                      WHERE field_campaign_type_value = \'%s\'
-                      ORDER BY RAND() LIMIT 0,%d', $active_types[$key], $types[$active_types[$key]]);
+  if ($region) {
+    $result = db_query('SELECT ctk.nid
+                        FROM {content_type_kampagne} ctk JOIN {content_field_campaign_slug_ref} csf ON ctk.nid = csf.nid
+                        WHERE field_campaign_type_value = \'%s\'
+                        AND csf.field_campaign_slug_ref_nid = (
+                          SELECT nid
+                          FROM {panels_slug WHERE slug} = \'%s\')
+                        ORDER BY RAND() LIMIT 0,%d', $active_types[$key], $region, $types[$active_types[$key]]);
+  }
+  else {
+    $result = db_query('SELECT nid
+                        FROM {content_type_kampagne}
+                        WHERE field_campaign_type_value = \'%s\'
+                        ORDER BY RAND() LIMIT 0,%d', $active_types[$key], $types[$active_types[$key]]);
+  }
   while ($data = db_fetch_object($result)) {
     $nodes[] = node_load($data->nid);
   }
   
   return $nodes;
+}
+
+/**
+ * Implementation of hook_ctools_plugin_api().
+ */
+function regional_campaign_ctools_plugin_api($module, $api) {
+  if ($module == 'page_manager' && $api == 'pages_default') {
+    return array('version' => 1);
+  }
+}
+
+/**
+ * Implementation of hook_ctools_plugin_directory().
+ *
+ * Tells CTools (and thus Panels) where to look for plugin code.
+ */
+function regional_campaign_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'ctools' || $module == 'panels') {
+    return 'plugins/' . $plugin;
+  }
+}
+
+function theme_regional_campagin_panels_plugin($node) {
+  return _regional_campaign_build_block(_regional_campaign_load_random_nodes($node->panels_slug));
 }
