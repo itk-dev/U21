@@ -27,7 +27,7 @@ function regional_campaign_admin_settings(&$form_state) {
   $form['regional_campaign_type']['type'] = array(
       '#prefix' => '<div id="regional-campaign-types">',
       '#suffix' => '</div>',
-      '#theme' => 'regional_campaign_types',
+      '#theme' => 'campaign_types',
   );
 
   // Insert types
@@ -35,7 +35,7 @@ function regional_campaign_admin_settings(&$form_state) {
     for ($delta = 0; $delta < $form_state['type_count']; $delta++) {
       $text = isset($form_state['values']['type'][$delta]['bntext']) ? $form_state['values']['type'][$delta]['bntext'] : '';
       $count = isset($form_state['values']['type'][$delta]['bncount']) ? $form_state['values']['type'][$delta]['bncount'] : '';
-      $form['regional_campaign_type']['type'][$delta] = _regional_campaign_type_form_element($delta, $text, $count, $form_state['values']['type'][$delta]['bnhidden']);
+      $form['campaign_type']['type'][$delta] = _regional_campaign_type_form_element($delta, $text, $count, $form_state['values']['type'][$delta]['bnhidden']);
     }
   }
   else {
@@ -46,25 +46,25 @@ function regional_campaign_admin_settings(&$form_state) {
     if (count($types)) {
       $delta = 0;
       foreach ($types as $text => $count) {
-        $form['regional_campaign_type']['type'][$delta] = _regional_campaign_type_form_element($delta, $text, $count, $text);
+        $form['campaign_type']['type'][$delta] = _regional_campaign_type_form_element($delta, $text, $count, $text);
         $delta++;
       }
     }
     else {
-      $form['regional_campaign_type']['type'][$delta] = _regional_campaign_type_form_element(0, '', '', '');
+      $form['campaign_type']['type'][$delta] = _regional_campaign_type_form_element(0, '', '', '');
     }
   }
 
   // We name our button 'poll_more' to avoid conflicts with other modules using
   // AHAH-enabled buttons with the id 'more'.
-  $form['regional_campaign_type']['type_more'] = array(
+  $form['campaign_type']['type_more'] = array(
       '#type' => 'submit',
       '#value' => t('More types'),
       '#description' => t("If the amount of boxes above isn't enough, click here to add more types."),
       '#submit' => array('regional_campaign_more_types_submit'), // If no javascript action.
       '#ahah' => array(
         'path' => 'admin/content/regional_campaign/js',
-        'wrapper' => 'regional-campaign-types',
+        'wrapper' => 'campaign-types',
         'effect' => 'fade',
       ),
   );
@@ -109,7 +109,7 @@ function _regional_campaign_type_form_element($delta, $text, $count, $old) {
   );
 
   $form['type_wrapper'] = array(
-      '#prefix' => '<div id="regional-campaign-types">',
+      '#prefix' => '<div id="campaign-types">',
       '#suffix' => '</div>',
   );
 
@@ -163,7 +163,7 @@ function regional_campaign_types_js() {
   // drupal_process_form set up.
   $form = drupal_rebuild_form($form_id, $form_state, $args, $form_build_id);
   // Render the new output.
-  $type_form = $form['regional_campaign_type']['type'];
+  $type_form = $form['campaign_type']['type'];
   unset($type_form['#prefix'], $type_form['#suffix']); // Prevent duplicate wrappers.
   $output = theme('status_messages') . drupal_render($type_form);
 
@@ -222,7 +222,7 @@ function regional_campaign_admin_form_submit($form, &$form_state) {
  * @param string $new
  */
 function _regional_campaign_update_name($old, $new) {
-  $result = db_query('UPDATE {content_type_regional_campaign}
+  $result = db_query('UPDATE {content_type_kampagne}
                       SET field_campaign_type_value = \'%s\'
                       WHERE field_campaign_type_value = \'%s\'', $new, $old);
 }

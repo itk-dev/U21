@@ -65,12 +65,12 @@ function regional_campaign_access($op, $node, $account) {
  *
  */
 function regional_campaign_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
-  if ($node->type == 'regional_campaign') {
+  if ($node->type == 'kampagne') {
     switch ($op) {
       case "insert":
       case "update":
       case "delete":
-        _regional_campaign_update_active_types($op, $node->field_regional_campaign_type[0]['value']);
+        _regional_campaign_update_active_types($op, $node->field_campaign_type[0]['value']);
         break;
     }
   }
@@ -88,9 +88,9 @@ function _regional_campaign_update_active_types($op, $value) {
   switch ($op) {
     case 'insert':
       $types = variable_get(REGIONAL_CAMPAIGN_SETTINGS_TYPE, array());
-      $active_types = variable_get(REGIONAL_CAMPAIGN_ACTIVE_TYPES, array());
-      if (!array_key_exists($value, $active_types)) {
-        $active_types[$value] = $types[$value];
+      $active_types = variable_get(REGIONAL_CAMPAIGN_ACTIVE_TYPES, array());    
+      if (!in_array($value, $active_types)) {
+        array_push($active_types, $value);
       }
       variable_set(REGIONAL_CAMPAIGN_ACTIVE_TYPES, $active_types);
       break;
@@ -98,7 +98,7 @@ function _regional_campaign_update_active_types($op, $value) {
     case 'update':
       _regional_campaign_update_active_types('insert', $value);
       $types = variable_get(REGIONAL_CAMPAIGN_SETTINGS_TYPE, array());
-      foreach ($types as $type => $number) {
+      foreach ($types as $type => $count) {
         _regional_campaign_update_active_types('delete', $type);
       }
       break;
@@ -106,7 +106,12 @@ function _regional_campaign_update_active_types($op, $value) {
     case 'delete':
       if (regional_campaign_number_of_campaigns($value) == 0) {
         $active_types = variable_get(REGIONAL_CAMPAIGN_ACTIVE_TYPES, array());
-        unset($active_types[$value]);
+        $count = count($active_types);
+        for($i = 0; $i < $count; $i++ ) {
+           if ($active_types[$i] == $value) {
+             unset($active_types[$i]);
+           }
+        }
         variable_set(REGIONAL_CAMPAIGN_ACTIVE_TYPES, $active_types);
       }
       break;
@@ -121,7 +126,7 @@ function _regional_campaign_update_active_types($op, $value) {
  */
 function regional_campaign_number_of_campaigns($type) {
   $result = db_query('SELECT count(*) AS count
-                        FROM {content_type_regional_campaign}
+                        FROM {content_type_kampagne}
                        WHERE field_campaign_type_value = \'%s\'', $type);
   $result = db_fetch_object($result);
   return $result->count;
@@ -198,18 +203,21 @@ function theme_regional_campaign($campaings, $type) {
  */
 function _regional_campaign_load_random_nodes() {
   // Random select type
-  $types = variable_get(REGIONAL_CAMPAIGN_ACTIVE_TYPES, array());
-  $text = array_rand($types);
-  
+  $active_types = variable_get(REGIONAL_CAMPAIGN_ACTIVE_TYPES, array());
+  $key = array_rand($active_types);
+
+  // Load types
+  $types = variable_get(REGIONAL_CAMPAIGN_SETTINGS_TYPE, array());
+
   // Load random campaign, based on type
   $nodes = array();
   $result = db_query('SELECT nid
-                      FROM {content_type_regional_campaign}
+                      FROM {content_type_kampagne}
                       WHERE field_campaign_type_value = \'%s\'
-                      ORDER BY RAND() LIMIT 0,%d', $text, $types[$text]);
+                      ORDER BY RAND() LIMIT 0,%d', $active_types[$key], $types[$active_types[$key]]);
   while ($data = db_fetch_object($result)) {
     $nodes[] = node_load($data->nid);
   }
-
+  
   return $nodes;
 }
