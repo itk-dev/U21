@@ -97,11 +97,6 @@ function u21_content_theme($existing, $type, $theme, $path) {
       'template' => 'u21_content_panels_content_region_menu',
       'preprocess functions' => array('u21_content_preprocess_region_menu'),
     ),
-    'u21_content_region_static_menu' => array(
-      'arguments' => array('node' => NULL),
-      'template' => 'u21_content_panels_content_region_static_menu',
-      'preprocess functions' => array('u21_content_preprocess_region_static_menu'),
-    ),
     'u21_content_google_maps' => array(
       'arguments' => array('node' => NULL, 'width' => NULL, 'height' => NULL, 'zoom' => NULL),
       'template' => 'u21_content_panels_content_google_maps',
@@ -138,13 +133,6 @@ function u21_content_preprocess_region_menu(&$variables) {
 
   // Load menu
   $variables['menu'] = menu_tree($node->field_menu_ref[0]['value']);
-}
-
-function u21_content_preprocess_region_static_menu(&$variables) {
-  $node = $variables['node'];
-
-  // Load menu
-  $variables['menu'] = menu_tree($node->field_menu_static_ref[0]['value']);
 }
 
 /**

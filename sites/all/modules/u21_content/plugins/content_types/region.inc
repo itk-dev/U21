@@ -30,12 +30,6 @@ function u21_content_region_content_type_content_types() {
       'category' => t('Region page'),
       'required context' => new ctools_context_required(t('Node'), 'node'),
     ),
-    'region_static_menu' => array(
-      'title' => t('Region static menu'),
-      'description' => t('Static menu for the region in the current context.'),
-      'category' => t('Region page'),
-      'required context' => new ctools_context_required(t('Node'), 'node'),
-    ),
   );  
   return $types;
 }
@@ -50,10 +44,6 @@ function u21_content_region_content_type_render($subtype, $conf, $panel_args, $c
     case 'region_menu':
       $block->content = theme('u21_content_region_menu', $node);
       break;
-
-    case 'region_static_menu':
-      $block->content = theme('u21_content_region_static_menu', $node);
-      break;
   }
   return $block;
 }
@@ -65,8 +55,6 @@ function u21_content_region_content_type_admin_title($subtype, $conf, $context) 
   switch($subtype) {
     case 'region_menu':
       return t('"@s":  Region title and menu', array('@s' => $context->identifier));
-    case 'region_static_menu':
-      return t('"@s": Region static menu', array('@s' => $context->identifier));
   }
 }
 
