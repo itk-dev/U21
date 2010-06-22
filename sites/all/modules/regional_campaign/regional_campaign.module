@@ -1,0 +1,215 @@
+<?php
+
+define('REGIONAL_CAMPAIGN_SETTINGS_TYPE', 'regional_campaign_types');
+define('REGIONAL_CAMPAIGN_ACTIVE_TYPES', 'regional_campaign_active_types');
+
+/**
+ * Implementation of hook_menu
+ */
+function regional_campaign_menu() {
+  $items['admin/content/regional_campaign'] = array(
+    'title' => 'Regional campaign types',
+    'description' => 'Change how regional campaigns behave',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array(
+      'regional_campaign_admin_settings'
+    ),
+    'access arguments' => array( 'administer site configuration' ),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'regional_campaign.admin.inc',
+  );
+
+  // AHAH callback for adding more types
+  $items['admin/content/regional_campaign/js'] = array(
+    'title' => 'Javascript Regional Campaign Type Form',
+    'page callback' => 'regional_campaign_types_js',
+    'access arguments' => array( 'administer site configuration' ),
+    'type' => MENU_CALLBACK,
+    'file' => 'regional_campaign.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implementation of hook_perm().
+ */
+function regional_campaign_perm() {
+  return array('create regional campaign', 'edit regional campaign', 'delete regional campaign');
+}
+
+/**
+ * Implementation of hook_access
+ */
+function regional_campaign_access($op, $node, $account) {
+  switch ($op) {
+    case 'create':
+      return user_access('create regional campaign', $account);
+      break;
+
+    case 'update':
+      return user_access('edit regional campaign', $account);
+      break;
+
+    case 'delete':
+      return user_access('delete regional campaign', $account);
+      break;
+  }
+}
+
+/**
+ * Implementation of hook_nodeapi
+ *
+ * Makes sure that only campaings of types that exists are shown
+ * by adding them to REGIONAL_CAMPAIGN_ACTIVE_TYPES array.
+ *
+ */
+function regional_campaign_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
+  if ($node->type == 'regional_campaign') {
+    switch ($op) {
+      case "insert":
+      case "update":
+      case "delete":
+        _regional_campaign_update_active_types($op, $node->field_regional_campaign_type[0]['value']);
+        break;
+    }
+  }
+}
+
+/**
+ * This function updates the array contain regional campaign types, where one or more
+ * campaign exists. It's used to ensure that a campaign type without any campaign's
+ * are NOT randomly selected.
+ *
+ * @param string $op
+ * @param string $value
+ */
+function _regional_campaign_update_active_types($op, $value) {
+  switch ($op) {
+    case 'insert':
+      $types = variable_get(REGIONAL_CAMPAIGN_SETTINGS_TYPE, array());
+      $active_types = variable_get(REGIONAL_CAMPAIGN_ACTIVE_TYPES, array());
+      if (!array_key_exists($value, $active_types)) {
+        $active_types[$value] = $types[$value];
+      }
+      variable_set(REGIONAL_CAMPAIGN_ACTIVE_TYPES, $active_types);
+      break;
+
+    case 'update':
+      _regional_campaign_update_active_types('insert', $value);
+      $types = variable_get(REGIONAL_CAMPAIGN_SETTINGS_TYPE, array());
+      foreach ($types as $type => $number) {
+        _regional_campaign_update_active_types('delete', $type);
+      }
+      break;
+
+    case 'delete':
+      if (regional_campaign_number_of_campaigns($value) == 0) {
+        $active_types = variable_get(REGIONAL_CAMPAIGN_ACTIVE_TYPES, array());
+        unset($active_types[$value]);
+        variable_set(REGIONAL_CAMPAIGN_ACTIVE_TYPES, $active_types);
+      }
+      break;
+  }
+}
+
+/**
+ * Find the number of occurences of a campaign type in the database.
+ *
+ * @param string $type
+ * @return int
+ */
+function regional_campaign_number_of_campaigns($type) {
+  $result = db_query('SELECT count(*) AS count
+                        FROM {content_type_regional_campaign}
+                       WHERE field_campaign_type_value = \'%s\'', $type);
+  $result = db_fetch_object($result);
+  return $result->count;
+}
+
+/**
+ * Implementation of hook_block().
+ */
+function regional_campaign_block($op = 'list', $delta = 0, $edit = array()) {
+  switch ($op) {
+    case "list":
+      $blocks[0]['info'] = t('Random regional campaign(s)');
+      $blocks[0]['cache'] = BLOCK_NO_CACHE;
+      return $blocks;
+
+    case view:
+      $nodes = _regional_campaign_load_random_nodes();
+
+      $campaings = array();
+      foreach ($nodes as $node) {    
+        $campaings[] = array('url' => $node->field_link[0]['value'],
+                           'img' => $node->field_graphics[0]['filepath'],
+                           'rel' => ($node->field_new_window[0]['value'] == 1 ? 'external' : ''),
+                           'alt' => $node->title);
+      }
+      $type = str_replace(' ', '-', strtolower($node->field_campaign_type[0]['value']));
+
+      $block['content'] = theme('regional_campaign', $campaings, $type);
+      return $block;
+  }  
+}
+
+/**
+ * Implmentation of hook_theme. Make 'campaign' theme function visible.
+ *
+ * @return array
+ */
+function regional_campaign_theme() {
+  return array(
+    'regional_campaign' => array(
+      'arguments' => array('type' => NULL),
+    ),
+  );
+}
+
+/**
+ * Theme random campaign block content.
+ *
+ * @param array $campaings
+ * @return string
+ */
+function theme_regional_campaign($campaings, $type) {
+  $count = 0;
+  $output  = '<div class="regional-campaign-random '. $type .'">';
+  foreach ($campaings as $campaign) {
+    if (isset($campaign['url'])) {
+      $output .= '<div id="regional-campaign-'. $count .'" class="random-regional-campaign"><a href="'. $campaign['url'] .'" rel="'. $campaign['rel'] .'"><img alt="'. $campaign['alt'] .'" src="/'. $campaign['img'] .'" /></a></div>';
+    }
+    else {
+      $output .= '<div id="regional-campaign-'. $count .'" class="random-regional-campaign"><img alt="'. $campaign['alt'] .'" src="/'. $campaign['img'] .'" /></div>';
+    }
+    $count++;
+  }
+  $output .= '</div>';
+
+  // Add javascript
+  drupal_add_js(drupal_get_path('module', 'regional_campaign') . '/js/regional-campaign.js');
+
+  return $output;
+}
+
+/**
+ * Finds random campaign node.
+ */
+function _regional_campaign_load_random_nodes() {
+  // Random select type
+  $types = variable_get(REGIONAL_CAMPAIGN_ACTIVE_TYPES, array());
+  $text = array_rand($types);
+  
+  // Load random campaign, based on type
+  $nodes = array();
+  $result = db_query('SELECT nid
+                      FROM {content_type_regional_campaign}
+                      WHERE field_campaign_type_value = \'%s\'
+                      ORDER BY RAND() LIMIT 0,%d', $text, $types[$text]);
+  while ($data = db_fetch_object($result)) {
+    $nodes[] = node_load($data->nid);
+  }
+
+  return $nodes;
+}

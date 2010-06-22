@@ -1,0 +1,8 @@
+; $Id$
+name = Regional Campaign
+description = Place x campaigns on a page based on the regional campaign type
+core = 6.x
+version = 6.x-0.1-alpha
+package = ITK
+dependencies[] = imagefield
+dependencies[] = imagecache

@@ -1,0 +1,21 @@
+<?php
+// $Id$
+
+/**
+ * Implementation of hook_install
+ */
+function regional_campaign_install() {
+  include_once drupal_get_path('module', 'regional_campaign') .'/regional_campaign.module';
+
+  // Set default campaign types
+  variable_set(REGIONAL_CAMPAIGN_SETTINGS_TYPE, array('Campaign type I (one campaign)' => '1', 'Campaign type II (two campaings)' => '2'));
+}
+
+/**
+ * Implementation of hook_uninstall
+ */
+function regional_campaign_uninstall() {
+  // Remove settings.
+  variable_del(REGIONAL_CAMPAIGN_SETTINGS_TYPE);
+  variable_del(REGIONAL_CAMPAIGN_ACTIVE_TYPES);
+}
