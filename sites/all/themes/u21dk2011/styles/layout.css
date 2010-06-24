@@ -1,3 +1,120 @@
 .clear {
   clear: both;
 }
+
+#content {
+
+}
+
+#secondary-content {
+  padding: 10px 0;
+  background: #efefef;
+}
+
+/* ----- / Regions ------ */
+.panel-col-left .pane-menu-tree {
+  border-top: 1px solid #ccc;
+  padding-top: 8px;
+}
+
+.panel-col-left .pane-menu-tree ul {
+  margin-left: 20px;
+}
+
+#region-title-menu {
+  border-top: 1px solid #ccc;
+  padding-top: 8px;
+}
+
+
+/* ------ / News ------ */
+.title-image img {
+  display: block;
+}
+
+#news-top-news {
+  margin-bottom: 20px;
+}
+
+.post-date {
+  float: left;
+  padding-right: 3px;
+  margin-right: 3px;
+  border-right: 1px solid #ccc;
+}
+
+.region-link {
+  float: left;
+  padding: 0px 3px;
+  margin-right: 3px;
+  background: blue;
+}
+
+.region-link a:link,
+.region-link a:visited {
+    color: #fff;
+}
+
+/* ----- / Events ------ */
+.views-list .location {
+  float: left;
+}
+
+#events-top-event {
+  margin-bottom: 20px;
+}
+
+.view-events .views-list li {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+  .view-events .views-list li.last {
+    border-bottom: none;
+  }
+
+
+/* ------ / Views ------ */
+
+.views-list {
+  list-style: none;
+}
+
+.pager li {
+  float: left;
+  list-style: none;
+  margin-right: 8px;
+}
+
+/* ----- / Regions ----- */
+#region-middle-left>div,
+#region-middle-center>div,
+#region-middle-right>div,
+#footer .region>div {
+  border: 3px dashed #666;
+  padding: 10px;
+}
+
+#footer .region>div {
+  margin: 10px 0;
+}
+
+
+/* ----- / Campaigns ----- */
+.campaign-type-ii .random-regional-campaign {
+  float: left;
+  width: 298px;
+  border: 1px dashed silver;
+  margin-bottom: 10px;
+}
+
+.campaign-type-ii .random-regional-campaign:first-child {
+  margin-right: 19px;
+}
+
+.campaign-type-i .random-regional-campaign {
+  width: 618px;
+  border: 1px dashed silver;
+  margin-bottom: 10px;
+}

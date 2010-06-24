@@ -1,0 +1,60 @@
+body {
+  font-size: 12px;
+}
+
+p {
+  margin-bottom: 0.5em;
+}
+
+.field-content-value ul, .field-content-value ol {
+  margin-bottom: 0.5em;
+  margin-left: 20px;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: normal;
+}
+
+h2 {
+  font-size: 18px;
+  margin: 2em 0 0.2em;
+}
+
+  li>h2 {
+    margin-top: 0;
+  }
+
+h3 {
+  font-size: 14px;
+  margin: 1em 0 0.2em;
+}
+
+
+
+/* ------ / REGION TITLE ----- */
+
+#region-title-menu h1 {
+  font-weight: normal;
+  font-size: 18px;
+}
+
+/* ----- / Metadata ------ */
+
+.views-list .date-display-single,
+.views-list .date-display-start,
+.views-list .date-display-end,
+.views-list .date-display-separator,
+.views-list .location {
+  font-size: 14px;
+}
+
+.views-list .location em,
+.views-list .locality {
+  font-style: normal;
+  margin-right: 6px;
+}
+
+.views-list .locality:after {
+  content: ", ";
+}
