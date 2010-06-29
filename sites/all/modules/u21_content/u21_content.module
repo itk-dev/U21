@@ -114,6 +114,11 @@ function u21_content_theme($existing, $type, $theme, $path) {
       'template' => 'u21_content_panels_content_slug_links',
       'preprocess functions' => array('u21_content_preprocess_slug_links'),
     ),
+    'u21_content_type_links' => array(
+      'arguments' => array('args' => NULL, 'node_types' => NULL),
+      'template' => 'u21_content_panels_content_type_links',
+      'preprocess functions' => array('u21_content_preprocess_type_links'),
+    ),
     'u21_content_event_details' => array(
       'arguments' => array('node' => NULL),
       'template' => 'u21_content_panels_content_event_details',
@@ -205,6 +210,15 @@ function u21_content_preprocess_slug_links(&$variables, $hook) {
 
 
   $variables['links'] = theme('links', $links);
+}
+
+function u21_content_preprocess_type_links(&$variables, $hook) {
+  $variables['links'] = array();
+  $term = isset($variables['args']) ? array_pop($variables['args']) : '';
+  array_push($variables['links'],l(t('All'), 'news/'. $term));
+  foreach ($variables['node_types'] as $key => $value) {
+    array_push($variables['links'],l($value, 'news/' .$key. '/'. $term));
+  }
 }
 
 function u21_content_preprocess_event_details(&$variables, $hook) {

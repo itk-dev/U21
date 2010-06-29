@@ -2,12 +2,6 @@
 // $Id$
 
 /**
- * @file library.inc
- * Provides panels_slug related panels content types.
- */
-
-
-/**
  * Callback function to supply a list of content types.
  *
  * This is only required to make CTools know that we're providing

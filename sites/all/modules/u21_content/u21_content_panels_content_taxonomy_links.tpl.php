@@ -1,4 +1,3 @@
-<h2><?php print $title ?></h2>
 <ul>
   <?php foreach ($terms as $term) { ?>
       <?php if ($term['count']) { ?>
