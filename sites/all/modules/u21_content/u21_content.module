@@ -208,7 +208,6 @@ function u21_content_preprocess_slug_links(&$variables, $hook) {
                                   'href' => str_replace('%slug', $row['slug'], $variables['slug_path']));
   }
 
-
   $variables['links'] = theme('links', $links);
 }
 
@@ -221,7 +220,7 @@ function u21_content_preprocess_type_links(&$variables, $hook) {
 
   // All link
   array_push($variables['links'],l(t('All'), 'news/'. $term));
-
+  
   // Build links
   foreach ($variables['node_types'] as $key => $value) {
     array_push($variables['links'],l($value, 'news/' .$key. '/'. $term));
