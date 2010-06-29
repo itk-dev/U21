@@ -215,7 +215,14 @@ function u21_content_preprocess_slug_links(&$variables, $hook) {
 function u21_content_preprocess_type_links(&$variables, $hook) {
   $variables['links'] = array();
   $term = isset($variables['args']) ? array_pop($variables['args']) : '';
+  if (isset($variables['args']) && array_key_exists($term, $variables['node_types'])) {
+    $term = '';
+  }
+
+  // All link
   array_push($variables['links'],l(t('All'), 'news/'. $term));
+
+  // Build links
   foreach ($variables['node_types'] as $key => $value) {
     array_push($variables['links'],l($value, 'news/' .$key. '/'. $term));
   }
