@@ -10,7 +10,7 @@ function u21_views_settings_views_default_views() {
   $view = new view;
   $view->name = 'News';
   $view->description = 'Show news for a region';
-  $view->tag = '';
+  $view->tag = 'U21';
   $view->view_php = '';
   $view->base_table = 'node';
   $view->is_cacheable = FALSE;
@@ -665,7 +665,7 @@ function u21_views_settings_views_default_views() {
   $view = new view;
   $view->name = 'news_global';
   $view->description = 'Global news (all news NOT connected to a region or subsite)';
-  $view->tag = '';
+  $view->tag = 'U21';
   $view->view_php = '';
   $view->base_table = 'node';
   $view->is_cacheable = FALSE;
@@ -1731,7 +1731,7 @@ function u21_views_settings_views_default_views() {
   $view = new view;
   $view->name = 'news_regional';
   $view->description = 'Regional news (all news connected to a region or subsite)';
-  $view->tag = '';
+  $view->tag = 'U21';
   $view->view_php = '';
   $view->base_table = 'node';
   $view->is_cacheable = FALSE;
@@ -2742,7 +2742,7 @@ function u21_views_settings_views_default_views() {
   $view = new view;
   $view->name = 'static_pages';
   $view->description = 'All that looks like static content viewing - goes here';
-  $view->tag = '';
+  $view->tag = 'U21';
   $view->view_php = '';
   $view->base_table = 'node';
   $view->is_cacheable = FALSE;
