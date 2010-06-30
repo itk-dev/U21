@@ -30,7 +30,13 @@ function u21_content_region_content_type_content_types() {
       'category' => t('Region page'),
       'required context' => new ctools_context_required(t('Node'), 'node'),
     ),
-  );  
+    'region_calendar_link' => array(
+      'title' => t('Region calendar link '),
+      'description' => t('Displays link to external calendar.'),
+      'category' => t('Region page'),
+      'required context' => new ctools_context_required(t('Node'), 'node'),
+    ),
+  );
   return $types;
 }
 
@@ -44,6 +50,10 @@ function u21_content_region_content_type_render($subtype, $conf, $panel_args, $c
     case 'region_menu':
       $block->content = theme('u21_content_region_menu', $node);
       break;
+
+    case 'region_calendar_link':
+      $block->content = theme('u21_content_region_calendar_link', $node);
+      break;
   }
   return $block;
 }
@@ -55,6 +65,8 @@ function u21_content_region_content_type_admin_title($subtype, $conf, $context) 
   switch($subtype) {
     case 'region_menu':
       return t('"@s":  Region title and menu', array('@s' => $context->identifier));
+    case 'region_calendar_link':
+      return t('"@s":  Region calendar link', array('@s' => $context->identifier));
   }
 }
 

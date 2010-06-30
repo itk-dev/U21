@@ -97,6 +97,11 @@ function u21_content_theme($existing, $type, $theme, $path) {
       'template' => 'u21_content_panels_content_region_menu',
       'preprocess functions' => array('u21_content_preprocess_region_menu'),
     ),
+    'u21_content_region_calendar_link' => array(
+      'arguments' => array('node' => NULL),
+      'template' => 'u21_content_panels_content_region_calendar_link',
+      'preprocess functions' => array('u21_content_preprocess_region_calendar_link'),
+    ),
     'u21_content_google_maps' => array(
       'arguments' => array('node' => NULL, 'width' => NULL, 'height' => NULL, 'zoom' => NULL),
       'template' => 'u21_content_panels_content_google_maps',
@@ -146,6 +151,16 @@ function u21_content_preprocess_region_menu(&$variables) {
                 'delta' => 'ctools-_active-1' );
   $tree = menu_tree_build($conf);
   $variables['menu'] = $tree['content'];
+}
+
+/**
+ * Preprocess hook for the region calendar link.
+ */
+function u21_content_preprocess_region_calendar_link(&$variables, $hook) {
+  $node = $variables['node'];
+
+  $link = $node->field_external_calendar[0];
+  $variables['link'] = l($link['title'], $link['url'], array('attributes' => array('rel' => 'external')));
 }
 
 /**
