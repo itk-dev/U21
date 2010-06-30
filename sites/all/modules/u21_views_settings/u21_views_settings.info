@@ -1,0 +1,6 @@
+; $Id: $
+name = U21 Views settings
+description = Exports some views of u21_views_settings
+dependencies[] = views
+package = U21
+core = 6.x
