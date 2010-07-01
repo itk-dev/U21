@@ -1199,13 +1199,219 @@ function u21_panels_settings_default_page_manager_pages() {
   $page = new stdClass;
   $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
   $page->api_version = 1;
-  $page->name = 'events_region';
+  $page->name = 'news_overview_type_and_term';
   $page->task = 'page';
-  $page->admin_title = 'Region events';
-  $page->admin_description = '';
-  $page->path = 'location/%slug/events';
+  $page->admin_title = 'News overview (based on type and taxonomy)';
+  $page->admin_description = 'News overview display limited on type (articles, blogs, photos and videos) and taxonomy term.';
+  $page->path = 'news/%type/%term';
   $page->access = array(
-    'plugins' => array(),
+    'plugins' => array(
+      '0' => array(
+        'name' => 'perm',
+        'settings' => array(
+          'perm' => 'access content',
+        ),
+        'context' => 'logged-in-user',
+      ),
+    ),
+    'logic' => 'and',
+  );
+  $page->menu = array();
+  $page->arguments = array(
+    'type' => array(
+      'id' => 1,
+      'identifier' => 'Node: node type',
+      'name' => 'string',
+      'settings' => array(
+        'use_tail' => 0,
+      ),
+    ),
+    'term' => array(
+      'id' => 1,
+      'identifier' => 'Taxonomy term: Name',
+      'name' => 'term',
+      'settings' => array(
+        'input_form' => 'term',
+        'breadcrumb' => 0,
+      ),
+    ),
+  );
+  $page->conf = array();
+  $page->default_handlers = array();
+  $handler = new stdClass;
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
+  $handler->name = 'page_news_overview_type_and_term_panel_context';
+  $handler->task = 'page';
+  $handler->subtask = 'news_overview_type_and_term';
+  $handler->handler = 'panel_context';
+  $handler->weight = 0;
+  $handler->conf = array(
+    'title' => 'Panel',
+    'no_blocks' => FALSE,
+    'css_id' => '',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(),
+    'access' => array(
+      'logic' => 'and',
+    ),
+  );
+  $display = new panels_display;
+  $display->layout = 'twocol_8_4_stacked';
+  $display->layout_settings = array();
+  $display->panel_settings = array();
+  $display->cache = array();
+  $display->title = '%type:html_safe - %term:name';
+  $display->content = array();
+  $display->panels = array();
+    $pane = new stdClass;
+    $pane->pid = 'new-1';
+    $pane->panel = 'left';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'news_global-panel_pane_6';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'use_pager' => 1,
+      'pager_id' => '',
+      'items_per_page' => '10',
+      'fields_override' => array(
+        'title' => 1,
+        'created' => 1,
+        'field_teaser_value' => 1,
+      ),
+      'context' => array(
+        '0' => 'argument_term_1',
+      ),
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array();
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-1'] = $pane;
+    $display->panels['left'][0] = 'new-1';
+    $pane = new stdClass;
+    $pane->pid = 'new-2';
+    $pane->panel = 'right';
+    $pane->type = 'slug_links';
+    $pane->subtype = 'slug_links';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'node_type' => 'region',
+      'slug_path' => 'location/%slug/news',
+      'global_path' => 'news',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array();
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-2'] = $pane;
+    $display->panels['right'][0] = 'new-2';
+    $pane = new stdClass;
+    $pane->pid = 'new-3';
+    $pane->panel = 'right';
+    $pane->type = 'type_links';
+    $pane->subtype = 'type_links';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'node_type' => array(
+        'articles' => 'articles',
+        'blogs' => 'blogs',
+        'photo' => 'photo',
+        'region' => 0,
+        'panel' => 0,
+        'event' => 0,
+        'kampagne' => 0,
+        'newsletter' => 0,
+        'profile' => 0,
+        'static_page' => 0,
+        'subsite' => 0,
+      ),
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array();
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $display->content['new-3'] = $pane;
+    $display->panels['right'][1] = 'new-3';
+    $pane = new stdClass;
+    $pane->pid = 'new-4';
+    $pane->panel = 'right';
+    $pane->type = 'taxonomy';
+    $pane->subtype = 'taxonomy_links';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'path_prefix' => 'news',
+      'vocabulary' => '1',
+      'node_type' => 'articles',
+      'override_title' => 1,
+      'override_title_text' => 'Kategori',
+    );
+    $pane->cache = array();
+    $pane->style = array();
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
+    $display->content['new-4'] = $pane;
+    $display->panels['right'][2] = 'new-4';
+    $pane = new stdClass;
+    $pane->pid = 'new-5';
+    $pane->panel = 'right';
+    $pane->type = 'cm_signup';
+    $pane->subtype = 'cm_signup_form';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => 'Få nyheder i din inbox',
+      'optional' => array(
+        'name' => 0,
+      ),
+    );
+    $pane->cache = array();
+    $pane->style = array();
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 3;
+    $display->content['new-5'] = $pane;
+    $display->panels['right'][3] = 'new-5';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = '0';
+  $handler->conf['display'] = $display;
+  $page->default_handlers[$handler->name] = $handler;
+  $pages['news_overview_type_and_term'] = $page;
+
+  $page = new stdClass;
+  $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
+  $page->api_version = 1;
+  $page->name = 'news_overviews_region_category';
+  $page->task = 'page';
+  $page->admin_title = 'News overviews region (category)';
+  $page->admin_description = '';
+  $page->path = 'location/%slug/news/%term';
+  $page->access = array(
+    'plugins' => array(
+      '0' => array(
+        'name' => 'perm',
+        'settings' => array(
+          'perm' => 'access content',
+        ),
+        'context' => 'logged-in-user',
+      ),
+    ),
     'logic' => 'and',
   );
   $page->menu = array(
@@ -1227,15 +1433,24 @@ function u21_panels_settings_default_page_manager_pages() {
       'name' => 'panels_slug',
       'settings' => array(),
     ),
+    'term' => array(
+      'id' => 1,
+      'identifier' => 'Taxonomy term: ID',
+      'name' => 'term',
+      'settings' => array(
+        'input_form' => 'term',
+        'breadcrumb' => 0,
+      ),
+    ),
   );
   $page->conf = array();
   $page->default_handlers = array();
   $handler = new stdClass;
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
-  $handler->name = 'page_events_region_panel_context';
+  $handler->name = 'page_news_overviews_region_category_panel_context';
   $handler->task = 'page';
-  $handler->subtask = 'events_region';
+  $handler->subtask = 'news_overviews_region_category';
   $handler->handler = 'panel_context';
   $handler->weight = 0;
   $handler->conf = array(
@@ -1262,55 +1477,38 @@ function u21_panels_settings_default_page_manager_pages() {
     $pane->pid = 'new-1';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
-    $pane->subtype = 'events-panel_pane_4';
+    $pane->subtype = 'news_regional-panel_pane_7';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'use_pager' => 0,
+      'use_pager' => 1,
       'pager_id' => '',
       'items_per_page' => '10',
-      'offset' => '0',
-      'path' => '',
       'fields_override' => array(
         'title' => 1,
-        'address' => 1,
-        'field_date_value' => 1,
+        'created' => 1,
+        'tid' => 1,
         'field_teaser_value' => 1,
       ),
       'context' => array(
         '0' => 'argument_panels_slug_1',
+        '1' => 'argument_term_1',
       ),
-      'override_title' => 0,
+      'override_title' => 1,
       'override_title_text' => '',
     );
     $pane->cache = array();
     $pane->style = array();
-    $pane->css = array();
+    $pane->css = array(
+      'css_id' => 'news-list-taxonomy',
+      'css_class' => '',
+    );
     $pane->extras = array();
     $pane->position = 0;
     $display->content['new-1'] = $pane;
     $display->panels['left'][0] = 'new-1';
     $pane = new stdClass;
     $pane->pid = 'new-2';
-    $pane->panel = 'left';
-    $pane->type = 'region';
-    $pane->subtype = 'region_calendar_link';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'context' => 'argument_panels_slug_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array();
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 1;
-    $display->content['new-2'] = $pane;
-    $display->panels['left'][1] = 'new-2';
-    $pane = new stdClass;
-    $pane->pid = 'new-3';
     $pane->panel = 'right';
     $pane->type = 'slug_links';
     $pane->subtype = 'slug_links';
@@ -1318,8 +1516,8 @@ function u21_panels_settings_default_page_manager_pages() {
     $pane->access = array();
     $pane->configuration = array(
       'node_type' => 'region',
-      'slug_path' => 'location/%slug/events',
-      'global_path' => 'events',
+      'slug_path' => 'location/%slug/news',
+      'global_path' => 'news',
       'override_title' => 0,
       'override_title_text' => '',
     );
@@ -1328,19 +1526,19 @@ function u21_panels_settings_default_page_manager_pages() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-3'] = $pane;
-    $display->panels['right'][0] = 'new-3';
+    $display->content['new-2'] = $pane;
+    $display->panels['right'][0] = 'new-2';
     $pane = new stdClass;
-    $pane->pid = 'new-4';
+    $pane->pid = 'new-3';
     $pane->panel = 'right';
     $pane->type = 'taxonomy';
     $pane->subtype = 'taxonomy_links_context';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'path_prefix' => 'location/%slug/events',
+      'path_prefix' => 'location/%slug/news',
       'vocabulary' => '1',
-      'node_type' => 'event',
+      'node_type' => 'articles',
       'context' => 'argument_panels_slug_1',
       'override_title' => 0,
       'override_title_text' => '',
@@ -1350,8 +1548,29 @@ function u21_panels_settings_default_page_manager_pages() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
+    $display->content['new-3'] = $pane;
+    $display->panels['right'][1] = 'new-3';
+    $pane = new stdClass;
+    $pane->pid = 'new-4';
+    $pane->panel = 'right';
+    $pane->type = 'cm_signup';
+    $pane->subtype = 'cm_signup_form';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => 'Få nyheder i din inbox',
+      'optional' => array(
+        'name' => 0,
+      ),
+    );
+    $pane->cache = array();
+    $pane->style = array();
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
     $display->content['new-4'] = $pane;
-    $display->panels['right'][1] = 'new-4';
+    $display->panels['right'][2] = 'new-4';
     $pane = new stdClass;
     $pane->pid = 'new-5';
     $pane->panel = 'top';
@@ -1375,7 +1594,233 @@ function u21_panels_settings_default_page_manager_pages() {
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
-  $pages['events_region'] = $page;
+  $pages['news_overviews_region_category'] = $page;
+
+  $page = new stdClass;
+  $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
+  $page->api_version = 1;
+  $page->name = 'news_overview';
+  $page->task = 'page';
+  $page->admin_title = 'News overview all';
+  $page->admin_description = 'News overview display types of articles, blogs, photos and videos.';
+  $page->path = 'news';
+  $page->access = array(
+    'plugins' => array(
+      '0' => array(
+        'name' => 'perm',
+        'settings' => array(
+          'perm' => 'access content',
+        ),
+        'context' => 'logged-in-user',
+      ),
+    ),
+    'logic' => 'and',
+  );
+  $page->menu = array();
+  $page->arguments = array();
+  $page->conf = array();
+  $page->default_handlers = array();
+  $handler = new stdClass;
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
+  $handler->name = 'page_news_overview_panel_context';
+  $handler->task = 'page';
+  $handler->subtask = 'news_overview';
+  $handler->handler = 'panel_context';
+  $handler->weight = 0;
+  $handler->conf = array(
+    'title' => 'Panel',
+    'no_blocks' => FALSE,
+    'css_id' => '',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(),
+    'access' => array(
+      'logic' => 'and',
+    ),
+  );
+  $display = new panels_display;
+  $display->layout = 'twocol_8_4_stacked';
+  $display->layout_settings = array();
+  $display->panel_settings = array();
+  $display->cache = array();
+  $display->title = '';
+  $display->content = array();
+  $display->panels = array();
+    $pane = new stdClass;
+    $pane->pid = 'new-1';
+    $pane->panel = 'left';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'news_global-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'use_pager' => 1,
+      'pager_id' => 'page',
+      'items_per_page' => '5',
+      'offset' => '0',
+      'fields_override' => array(
+        'title' => 1,
+        'created' => 1,
+        'field_slug_ref_nid' => 1,
+        'field_teaser_value' => 1,
+      ),
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array();
+    $pane->css = array(
+      'css_id' => 'news-list',
+      'css_class' => '',
+    );
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-1'] = $pane;
+    $display->panels['left'][0] = 'new-1';
+    $pane = new stdClass;
+    $pane->pid = 'new-2';
+    $pane->panel = 'right';
+    $pane->type = 'slug_links';
+    $pane->subtype = 'slug_links';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'node_type' => 'region',
+      'slug_path' => 'location/%slug/news',
+      'global_path' => 'news',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array();
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-2'] = $pane;
+    $display->panels['right'][0] = 'new-2';
+    $pane = new stdClass;
+    $pane->pid = 'new-3';
+    $pane->panel = 'right';
+    $pane->type = 'type_links';
+    $pane->subtype = 'type_links';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'node_type' => array(
+        'articles' => 'articles',
+        'blogs' => 'blogs',
+        'photo' => 'photo',
+        'region' => 0,
+        'panel' => 0,
+        'event' => 0,
+        'kampagne' => 0,
+        'newsletter' => 0,
+        'profile' => 0,
+        'static_page' => 0,
+        'subsite' => 0,
+      ),
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array();
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $display->content['new-3'] = $pane;
+    $display->panels['right'][1] = 'new-3';
+    $pane = new stdClass;
+    $pane->pid = 'new-4';
+    $pane->panel = 'right';
+    $pane->type = 'taxonomy';
+    $pane->subtype = 'taxonomy_links';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'path_prefix' => 'news',
+      'vocabulary' => '1',
+      'node_type' => 'articles',
+      'override_title' => 1,
+      'override_title_text' => 'Kategori',
+    );
+    $pane->cache = array();
+    $pane->style = array();
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
+    $display->content['new-4'] = $pane;
+    $display->panels['right'][2] = 'new-4';
+    $pane = new stdClass;
+    $pane->pid = 'new-5';
+    $pane->panel = 'right';
+    $pane->type = 'cm_signup';
+    $pane->subtype = 'cm_signup_form';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => 'Få nyheder i din inbox',
+      'optional' => array(
+        'name' => 0,
+      ),
+    );
+    $pane->cache = array();
+    $pane->style = array();
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 3;
+    $display->content['new-5'] = $pane;
+    $display->panels['right'][3] = 'new-5';
+    $pane = new stdClass;
+    $pane->pid = 'new-6';
+    $pane->panel = 'top';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'news_global-panel_pane_2';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'plugins' => array(
+        '0' => array(
+          'name' => 'php',
+          'settings' => array(
+            'description' => 'If pagination is active',
+            'php' => 'if (isset($_GET[\'page\'])) {
+  return FALSE;
+}
+return TRUE;',
+          ),
+        ),
+      ),
+    );
+    $pane->configuration = array(
+      'use_pager' => 0,
+      'pager_id' => '',
+      'items_per_page' => '3',
+      'offset' => '0',
+      'path' => 'news/%/rss',
+      'fields_override' => array(
+        'title' => 1,
+        'created' => 1,
+        'field_teaser_value' => 1,
+      ),
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array();
+    $pane->css = array(
+      'css_id' => 'news-top-news',
+      'css_class' => '',
+    );
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-6'] = $pane;
+    $display->panels['top'][0] = 'new-6';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = '0';
+  $handler->conf['display'] = $display;
+  $page->default_handlers[$handler->name] = $handler;
+  $pages['news_overview'] = $page;
 
   $page = new stdClass;
   $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
@@ -1523,6 +1968,9 @@ function u21_panels_settings_default_page_manager_pages() {
     $pane->configuration = array(
       'override_title' => 1,
       'override_title_text' => 'Få nyheder i din inbox',
+      'optional' => array(
+        'name' => 0,
+      ),
     );
     $pane->cache = array();
     $pane->style = array();
@@ -1555,117 +2003,6 @@ function u21_panels_settings_default_page_manager_pages() {
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
   $pages['region_news'] = $page;
-
-  $page = new stdClass;
-  $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
-  $page->api_version = 1;
-  $page->name = 'frontpage';
-  $page->task = 'page';
-  $page->admin_title = 'Frontpage';
-  $page->admin_description = '';
-  $page->path = 'frontpage';
-  $page->access = array(
-    'logic' => 'and',
-  );
-  $page->menu = array();
-  $page->arguments = array();
-  $page->conf = array();
-  $page->default_handlers = array();
-  $handler = new stdClass;
-  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
-  $handler->api_version = 1;
-  $handler->name = 'page_frontpage_panel_context';
-  $handler->task = 'page';
-  $handler->subtask = 'frontpage';
-  $handler->handler = 'panel_context';
-  $handler->weight = 0;
-  $handler->conf = array(
-    'title' => 'Panel',
-    'no_blocks' => FALSE,
-    'css_id' => '',
-    'css' => '',
-    'contexts' => array(),
-    'relationships' => array(),
-    'access' => array(
-      'logic' => 'and',
-    ),
-  );
-  $display = new panels_display;
-  $display->layout = 'twocol_8_4';
-  $display->layout_settings = array();
-  $display->panel_settings = array();
-  $display->cache = array();
-  $display->title = '';
-  $display->content = array();
-  $display->panels = array();
-    $pane = new stdClass;
-    $pane->pid = 'new-1';
-    $pane->panel = 'left';
-    $pane->type = 'views_panes';
-    $pane->subtype = 'news_global-panel_pane_2';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'use_pager' => 0,
-      'pager_id' => '',
-      'items_per_page' => '3',
-      'offset' => '0',
-      'path' => 'news/%/rss',
-      'fields_override' => array(
-        'title' => 1,
-        'created' => 1,
-        'field_teaser_value' => 1,
-      ),
-      'override_title' => 1,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array();
-    $pane->css = array(
-      'css_id' => 'news-top-news',
-      'css_class' => '',
-    );
-    $pane->extras = array();
-    $pane->position = 0;
-    $display->content['new-1'] = $pane;
-    $display->panels['left'][0] = 'new-1';
-    $pane = new stdClass;
-    $pane->pid = 'new-2';
-    $pane->panel = 'right';
-    $pane->type = 'views_panes';
-    $pane->subtype = 'events-panel_pane_2';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'use_pager' => 0,
-      'pager_id' => '',
-      'items_per_page' => '2',
-      'offset' => '0',
-      'path' => '',
-      'fields_override' => array(
-        'title' => 1,
-        'address' => 1,
-        'field_date_value' => 1,
-        'field_teaser_value' => 1,
-      ),
-      'override_title' => 1,
-      'override_title_text' => 'Eventkalender',
-    );
-    $pane->cache = array();
-    $pane->style = array();
-    $pane->css = array(
-      'css_id' => 'events-top-event',
-      'css_class' => '',
-    );
-    $pane->extras = array();
-    $pane->position = 0;
-    $display->content['new-2'] = $pane;
-    $display->panels['right'][0] = 'new-2';
-  $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = '0';
-  $handler->conf['display'] = $display;
-  $page->default_handlers[$handler->name] = $handler;
-  $pages['frontpage'] = $page;
 
   $page = new stdClass;
   $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
@@ -1850,6 +2187,9 @@ return FALSE;',
     $pane->configuration = array(
       'override_title' => 1,
       'override_title_text' => 'Få nyheder i din inbox',
+      'optional' => array(
+        'name' => 0,
+      ),
     );
     $pane->cache = array();
     $pane->style = array();
@@ -1998,8 +2338,11 @@ return FALSE;',
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'override_title' => 0,
-      'override_title_text' => '',
+      'override_title' => 1,
+      'override_title_text' => 'Få nyheder i din inbox',
+      'optional' => array(
+        'name' => 0,
+      ),
     );
     $pane->cache = array();
     $pane->style = array();
@@ -2017,216 +2360,13 @@ return FALSE;',
   $page = new stdClass;
   $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
   $page->api_version = 1;
-  $page->name = 'news_overview_type_and_term';
+  $page->name = 'events_region';
   $page->task = 'page';
-  $page->admin_title = 'News overview (based on type and taxonomy)';
-  $page->admin_description = 'News overview display limited on type (articles, blogs, photos and videos) and taxonomy term.';
-  $page->path = 'news/%type/%term';
-  $page->access = array(
-    'plugins' => array(
-      '0' => array(
-        'name' => 'perm',
-        'settings' => array(
-          'perm' => 'access content',
-        ),
-        'context' => 'logged-in-user',
-      ),
-    ),
-    'logic' => 'and',
-  );
-  $page->menu = array();
-  $page->arguments = array(
-    'type' => array(
-      'id' => 1,
-      'identifier' => 'Node: node type',
-      'name' => 'string',
-      'settings' => array(
-        'use_tail' => 0,
-      ),
-    ),
-    'term' => array(
-      'id' => 1,
-      'identifier' => 'Taxonomy term: Name',
-      'name' => 'term',
-      'settings' => array(
-        'input_form' => 'term',
-        'breadcrumb' => 0,
-      ),
-    ),
-  );
-  $page->conf = array();
-  $page->default_handlers = array();
-  $handler = new stdClass;
-  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
-  $handler->api_version = 1;
-  $handler->name = 'page_news_overview_type_and_term_panel_context';
-  $handler->task = 'page';
-  $handler->subtask = 'news_overview_type_and_term';
-  $handler->handler = 'panel_context';
-  $handler->weight = 0;
-  $handler->conf = array(
-    'title' => 'Panel',
-    'no_blocks' => FALSE,
-    'css_id' => '',
-    'css' => '',
-    'contexts' => array(),
-    'relationships' => array(),
-    'access' => array(
-      'logic' => 'and',
-    ),
-  );
-  $display = new panels_display;
-  $display->layout = 'twocol_8_4_stacked';
-  $display->layout_settings = array();
-  $display->panel_settings = array();
-  $display->cache = array();
-  $display->title = '%type:html_safe - %term:name';
-  $display->content = array();
-  $display->panels = array();
-    $pane = new stdClass;
-    $pane->pid = 'new-1';
-    $pane->panel = 'left';
-    $pane->type = 'views_panes';
-    $pane->subtype = 'news_global-panel_pane_6';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'use_pager' => 1,
-      'pager_id' => '',
-      'items_per_page' => '10',
-      'fields_override' => array(
-        'title' => 1,
-        'created' => 1,
-        'field_teaser_value' => 1,
-      ),
-      'context' => array(
-        '0' => 'argument_term_1',
-      ),
-      'override_title' => 1,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array();
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $display->content['new-1'] = $pane;
-    $display->panels['left'][0] = 'new-1';
-    $pane = new stdClass;
-    $pane->pid = 'new-2';
-    $pane->panel = 'right';
-    $pane->type = 'slug_links';
-    $pane->subtype = 'slug_links';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'node_type' => 'region',
-      'slug_path' => 'location/%slug/news',
-      'global_path' => 'news',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array();
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $display->content['new-2'] = $pane;
-    $display->panels['right'][0] = 'new-2';
-    $pane = new stdClass;
-    $pane->pid = 'new-3';
-    $pane->panel = 'right';
-    $pane->type = 'type_links';
-    $pane->subtype = 'type_links';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'node_type' => array(
-        'articles' => 'articles',
-        'blogs' => 'blogs',
-        'photo' => 'photo',
-        'region' => 0,
-        'panel' => 0,
-        'event' => 0,
-        'kampagne' => 0,
-        'newsletter' => 0,
-        'profile' => 0,
-        'static_page' => 0,
-        'subsite' => 0,
-      ),
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array();
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 1;
-    $display->content['new-3'] = $pane;
-    $display->panels['right'][1] = 'new-3';
-    $pane = new stdClass;
-    $pane->pid = 'new-4';
-    $pane->panel = 'right';
-    $pane->type = 'taxonomy';
-    $pane->subtype = 'taxonomy_links';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'path_prefix' => 'news',
-      'vocabulary' => '1',
-      'node_type' => 'articles',
-      'override_title' => 1,
-      'override_title_text' => 'Kategori',
-    );
-    $pane->cache = array();
-    $pane->style = array();
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 2;
-    $display->content['new-4'] = $pane;
-    $display->panels['right'][2] = 'new-4';
-    $pane = new stdClass;
-    $pane->pid = 'new-5';
-    $pane->panel = 'right';
-    $pane->type = 'cm_signup';
-    $pane->subtype = 'cm_signup_form';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 1,
-      'override_title_text' => 'Få nyheder i din inbox',
-    );
-    $pane->cache = array();
-    $pane->style = array();
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 3;
-    $display->content['new-5'] = $pane;
-    $display->panels['right'][3] = 'new-5';
-  $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = '0';
-  $handler->conf['display'] = $display;
-  $page->default_handlers[$handler->name] = $handler;
-  $pages['news_overview_type_and_term'] = $page;
-
-  $page = new stdClass;
-  $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
-  $page->api_version = 1;
-  $page->name = 'news_overviews_region_category';
-  $page->task = 'page';
-  $page->admin_title = 'News overviews region (category)';
+  $page->admin_title = 'Region events';
   $page->admin_description = '';
-  $page->path = 'location/%slug/news/%term';
+  $page->path = 'location/%slug/events';
   $page->access = array(
-    'plugins' => array(
-      '0' => array(
-        'name' => 'perm',
-        'settings' => array(
-          'perm' => 'access content',
-        ),
-        'context' => 'logged-in-user',
-      ),
-    ),
+    'plugins' => array(),
     'logic' => 'and',
   );
   $page->menu = array(
@@ -2248,24 +2388,15 @@ return FALSE;',
       'name' => 'panels_slug',
       'settings' => array(),
     ),
-    'term' => array(
-      'id' => 1,
-      'identifier' => 'Taxonomy term: ID',
-      'name' => 'term',
-      'settings' => array(
-        'input_form' => 'term',
-        'breadcrumb' => 0,
-      ),
-    ),
   );
   $page->conf = array();
   $page->default_handlers = array();
   $handler = new stdClass;
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
-  $handler->name = 'page_news_overviews_region_category_panel_context';
+  $handler->name = 'page_events_region_panel_context';
   $handler->task = 'page';
-  $handler->subtask = 'news_overviews_region_category';
+  $handler->subtask = 'events_region';
   $handler->handler = 'panel_context';
   $handler->weight = 0;
   $handler->conf = array(
@@ -2292,47 +2423,24 @@ return FALSE;',
     $pane->pid = 'new-1';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
-    $pane->subtype = 'news_regional-panel_pane_7';
+    $pane->subtype = 'events-panel_pane_4';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'use_pager' => 1,
+      'use_pager' => 0,
       'pager_id' => '',
       'items_per_page' => '10',
+      'offset' => '0',
+      'path' => '',
       'fields_override' => array(
         'title' => 1,
-        'created' => 1,
-        'tid' => 1,
+        'address' => 1,
+        'field_date_value' => 1,
         'field_teaser_value' => 1,
       ),
       'context' => array(
         '0' => 'argument_panels_slug_1',
-        '1' => 'argument_term_1',
       ),
-      'override_title' => 1,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array();
-    $pane->css = array(
-      'css_id' => 'news-list-taxonomy',
-      'css_class' => '',
-    );
-    $pane->extras = array();
-    $pane->position = 0;
-    $display->content['new-1'] = $pane;
-    $display->panels['left'][0] = 'new-1';
-    $pane = new stdClass;
-    $pane->pid = 'new-2';
-    $pane->panel = 'right';
-    $pane->type = 'slug_links';
-    $pane->subtype = 'slug_links';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'node_type' => 'region',
-      'slug_path' => 'location/%slug/news',
-      'global_path' => 'news',
       'override_title' => 0,
       'override_title_text' => '',
     );
@@ -2341,19 +2449,16 @@ return FALSE;',
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-2'] = $pane;
-    $display->panels['right'][0] = 'new-2';
+    $display->content['new-1'] = $pane;
+    $display->panels['left'][0] = 'new-1';
     $pane = new stdClass;
-    $pane->pid = 'new-3';
-    $pane->panel = 'right';
-    $pane->type = 'taxonomy';
-    $pane->subtype = 'taxonomy_links_context';
+    $pane->pid = 'new-2';
+    $pane->panel = 'left';
+    $pane->type = 'region';
+    $pane->subtype = 'region_calendar_link';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'path_prefix' => 'location/%slug/news',
-      'vocabulary' => '1',
-      'node_type' => 'articles',
       'context' => 'argument_panels_slug_1',
       'override_title' => 0,
       'override_title_text' => '',
@@ -2363,26 +2468,51 @@ return FALSE;',
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
-    $display->content['new-3'] = $pane;
-    $display->panels['right'][1] = 'new-3';
+    $display->content['new-2'] = $pane;
+    $display->panels['left'][1] = 'new-2';
     $pane = new stdClass;
-    $pane->pid = 'new-4';
+    $pane->pid = 'new-3';
     $pane->panel = 'right';
-    $pane->type = 'cm_signup';
-    $pane->subtype = 'cm_signup_form';
+    $pane->type = 'slug_links';
+    $pane->subtype = 'slug_links';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'override_title' => 1,
-      'override_title_text' => 'Få nyheder i din inbox',
+      'node_type' => 'region',
+      'slug_path' => 'location/%slug/events',
+      'global_path' => 'events',
+      'override_title' => 0,
+      'override_title_text' => '',
     );
     $pane->cache = array();
     $pane->style = array();
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 2;
+    $pane->position = 0;
+    $display->content['new-3'] = $pane;
+    $display->panels['right'][0] = 'new-3';
+    $pane = new stdClass;
+    $pane->pid = 'new-4';
+    $pane->panel = 'right';
+    $pane->type = 'taxonomy';
+    $pane->subtype = 'taxonomy_links_context';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'path_prefix' => 'location/%slug/events',
+      'vocabulary' => '1',
+      'node_type' => 'event',
+      'context' => 'argument_panels_slug_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array();
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
     $display->content['new-4'] = $pane;
-    $display->panels['right'][2] = 'new-4';
+    $display->panels['right'][1] = 'new-4';
     $pane = new stdClass;
     $pane->pid = 'new-5';
     $pane->panel = 'top';
@@ -2406,7 +2536,118 @@ return FALSE;',
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
-  $pages['news_overviews_region_category'] = $page;
+  $pages['events_region'] = $page;
+
+  $page = new stdClass;
+  $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
+  $page->api_version = 1;
+  $page->name = 'frontpage';
+  $page->task = 'page';
+  $page->admin_title = 'Frontpage';
+  $page->admin_description = '';
+  $page->path = 'frontpage';
+  $page->access = array(
+    'logic' => 'and',
+  );
+  $page->menu = array();
+  $page->arguments = array();
+  $page->conf = array();
+  $page->default_handlers = array();
+  $handler = new stdClass;
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
+  $handler->name = 'page_frontpage_panel_context';
+  $handler->task = 'page';
+  $handler->subtask = 'frontpage';
+  $handler->handler = 'panel_context';
+  $handler->weight = 0;
+  $handler->conf = array(
+    'title' => 'Panel',
+    'no_blocks' => FALSE,
+    'css_id' => '',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(),
+    'access' => array(
+      'logic' => 'and',
+    ),
+  );
+  $display = new panels_display;
+  $display->layout = 'twocol_8_4';
+  $display->layout_settings = array();
+  $display->panel_settings = array();
+  $display->cache = array();
+  $display->title = '';
+  $display->content = array();
+  $display->panels = array();
+    $pane = new stdClass;
+    $pane->pid = 'new-1';
+    $pane->panel = 'left';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'news_global-panel_pane_2';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'use_pager' => 0,
+      'pager_id' => '',
+      'items_per_page' => '3',
+      'offset' => '0',
+      'path' => 'news/%/rss',
+      'fields_override' => array(
+        'title' => 1,
+        'created' => 1,
+        'field_teaser_value' => 1,
+      ),
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array();
+    $pane->css = array(
+      'css_id' => 'news-top-news',
+      'css_class' => '',
+    );
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-1'] = $pane;
+    $display->panels['left'][0] = 'new-1';
+    $pane = new stdClass;
+    $pane->pid = 'new-2';
+    $pane->panel = 'right';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'events-panel_pane_2';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'use_pager' => 0,
+      'pager_id' => '',
+      'items_per_page' => '2',
+      'offset' => '0',
+      'path' => '',
+      'fields_override' => array(
+        'title' => 1,
+        'address' => 1,
+        'field_date_value' => 1,
+        'field_teaser_value' => 1,
+      ),
+      'override_title' => 1,
+      'override_title_text' => 'Eventkalender',
+    );
+    $pane->cache = array();
+    $pane->style = array();
+    $pane->css = array(
+      'css_id' => 'events-top-event',
+      'css_class' => '',
+    );
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-2'] = $pane;
+    $display->panels['right'][0] = 'new-2';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = '0';
+  $handler->conf['display'] = $display;
+  $page->default_handlers[$handler->name] = $handler;
+  $pages['frontpage'] = $page;
 
   $page = new stdClass;
   $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
@@ -2864,229 +3105,6 @@ return FALSE;',
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
   $pages['events_overviews_region_category'] = $page;
-
-  $page = new stdClass;
-  $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
-  $page->api_version = 1;
-  $page->name = 'news_overview';
-  $page->task = 'page';
-  $page->admin_title = 'News overview all';
-  $page->admin_description = 'News overview display types of articles, blogs, photos and videos.';
-  $page->path = 'news';
-  $page->access = array(
-    'plugins' => array(
-      '0' => array(
-        'name' => 'perm',
-        'settings' => array(
-          'perm' => 'access content',
-        ),
-        'context' => 'logged-in-user',
-      ),
-    ),
-    'logic' => 'and',
-  );
-  $page->menu = array();
-  $page->arguments = array();
-  $page->conf = array();
-  $page->default_handlers = array();
-  $handler = new stdClass;
-  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
-  $handler->api_version = 1;
-  $handler->name = 'page_news_overview_panel_context';
-  $handler->task = 'page';
-  $handler->subtask = 'news_overview';
-  $handler->handler = 'panel_context';
-  $handler->weight = 0;
-  $handler->conf = array(
-    'title' => 'Panel',
-    'no_blocks' => FALSE,
-    'css_id' => '',
-    'css' => '',
-    'contexts' => array(),
-    'relationships' => array(),
-    'access' => array(
-      'logic' => 'and',
-    ),
-  );
-  $display = new panels_display;
-  $display->layout = 'twocol_8_4_stacked';
-  $display->layout_settings = array();
-  $display->panel_settings = array();
-  $display->cache = array();
-  $display->title = '';
-  $display->content = array();
-  $display->panels = array();
-    $pane = new stdClass;
-    $pane->pid = 'new-1';
-    $pane->panel = 'left';
-    $pane->type = 'views_panes';
-    $pane->subtype = 'news_global-panel_pane_1';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'use_pager' => 1,
-      'pager_id' => 'page',
-      'items_per_page' => '5',
-      'offset' => '0',
-      'fields_override' => array(
-        'title' => 1,
-        'created' => 1,
-        'field_slug_ref_nid' => 1,
-        'field_teaser_value' => 1,
-      ),
-      'override_title' => 1,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array();
-    $pane->css = array(
-      'css_id' => 'news-list',
-      'css_class' => '',
-    );
-    $pane->extras = array();
-    $pane->position = 0;
-    $display->content['new-1'] = $pane;
-    $display->panels['left'][0] = 'new-1';
-    $pane = new stdClass;
-    $pane->pid = 'new-2';
-    $pane->panel = 'right';
-    $pane->type = 'slug_links';
-    $pane->subtype = 'slug_links';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'node_type' => 'region',
-      'slug_path' => 'location/%slug/news',
-      'global_path' => 'news',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array();
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $display->content['new-2'] = $pane;
-    $display->panels['right'][0] = 'new-2';
-    $pane = new stdClass;
-    $pane->pid = 'new-3';
-    $pane->panel = 'right';
-    $pane->type = 'type_links';
-    $pane->subtype = 'type_links';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'node_type' => array(
-        'articles' => 'articles',
-        'blogs' => 'blogs',
-        'photo' => 'photo',
-        'region' => 0,
-        'panel' => 0,
-        'event' => 0,
-        'kampagne' => 0,
-        'newsletter' => 0,
-        'profile' => 0,
-        'static_page' => 0,
-        'subsite' => 0,
-      ),
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array();
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 1;
-    $display->content['new-3'] = $pane;
-    $display->panels['right'][1] = 'new-3';
-    $pane = new stdClass;
-    $pane->pid = 'new-4';
-    $pane->panel = 'right';
-    $pane->type = 'taxonomy';
-    $pane->subtype = 'taxonomy_links';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'path_prefix' => 'news',
-      'vocabulary' => '1',
-      'node_type' => 'articles',
-      'override_title' => 1,
-      'override_title_text' => 'Kategori',
-    );
-    $pane->cache = array();
-    $pane->style = array();
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 2;
-    $display->content['new-4'] = $pane;
-    $display->panels['right'][2] = 'new-4';
-    $pane = new stdClass;
-    $pane->pid = 'new-5';
-    $pane->panel = 'right';
-    $pane->type = 'cm_signup';
-    $pane->subtype = 'cm_signup_form';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 1,
-      'override_title_text' => 'Få nyheder i din inbox',
-    );
-    $pane->cache = array();
-    $pane->style = array();
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 3;
-    $display->content['new-5'] = $pane;
-    $display->panels['right'][3] = 'new-5';
-    $pane = new stdClass;
-    $pane->pid = 'new-6';
-    $pane->panel = 'top';
-    $pane->type = 'views_panes';
-    $pane->subtype = 'news_global-panel_pane_2';
-    $pane->shown = TRUE;
-    $pane->access = array(
-      'plugins' => array(
-        '0' => array(
-          'name' => 'php',
-          'settings' => array(
-            'description' => 'If pagination is active',
-            'php' => 'if (isset($_GET[\'page\'])) {
-  return FALSE;
-}
-return TRUE;',
-          ),
-        ),
-      ),
-    );
-    $pane->configuration = array(
-      'use_pager' => 0,
-      'pager_id' => '',
-      'items_per_page' => '3',
-      'offset' => '0',
-      'path' => 'news/%/rss',
-      'fields_override' => array(
-        'title' => 1,
-        'created' => 1,
-        'field_teaser_value' => 1,
-      ),
-      'override_title' => 1,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array();
-    $pane->css = array(
-      'css_id' => 'news-top-news',
-      'css_class' => '',
-    );
-    $pane->extras = array();
-    $pane->position = 0;
-    $display->content['new-6'] = $pane;
-    $display->panels['top'][0] = 'new-6';
-  $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = '0';
-  $handler->conf['display'] = $display;
-  $page->default_handlers[$handler->name] = $handler;
-  $pages['news_overview'] = $page;
 
  return $pages;
 }
