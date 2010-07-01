@@ -124,12 +124,16 @@ function u21_content_theme($existing, $type, $theme, $path) {
       'template' => 'u21_content_panels_content_type_links',
       'preprocess functions' => array('u21_content_preprocess_type_links'),
     ),
-    'u21_content_page_content_static_file_links' => array(
+    'u21_content_panels_content_static_file_links' => array(
       'arguments' => array('node' => NULL),
       'template' => 'u21_content_panels_content_static_file_links',
       'preprocess functions' => array('u21_content_preprocess_static_file_links'),
     ),
-
+    'u21_content_panels_content_page_links' => array(
+      'arguments' => array('node' => NULL),
+      'template' => 'u21_content_panels_content_page_links',
+      'preprocess functions' => array('u21_content_preprocess_page_links'),
+    ),
     'u21_content_event_details' => array(
       'arguments' => array('node' => NULL),
       'template' => 'u21_content_panels_content_event_details',
@@ -257,6 +261,18 @@ function u21_content_preprocess_static_file_links(&$variables, $hook) {
   $variables['links'] = array();
   foreach ($files as $file) {
     array_push($variables['links'], l($file['data']['description'], $file['filepath'], array('attributes' => array('rel' => 'external'))));
+  }
+}
+
+function u21_content_preprocess_page_links(&$variables, $hook) {
+  // Set title
+  $variables['title'] = t('External links');
+  
+  // Build file list
+  $links = $variables['node']->field_links;
+  $variables['links'] = array();
+  foreach ($links as $link) {
+    array_push($variables['links'], l($link['title'], $link['url'], array('attributes' => array('rel' => 'external'))));
   }
 }
 

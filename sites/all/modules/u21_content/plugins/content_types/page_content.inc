@@ -21,7 +21,13 @@ function u21_content_page_content_content_type_content_types() {
     'static_file_links' => array(
       'title' => t('Static file(s) download'),
       'description' => t('Links box showing files uploaded to static page.'),
-      'category' => t('Static pages'),
+      'category' => t('Page content'),
+      'required context' => new ctools_context_required(t('Node'), 'node'),
+    ),
+    'page_links' => array(
+      'title' => t('Page links'),
+      'description' => t('Links box for page links.'),
+      'category' => t('Page content'),
       'required context' => new ctools_context_required(t('Node'), 'node'),
     ),
   );
@@ -36,7 +42,10 @@ function u21_content_page_content_content_type_render($subtype, $conf, $panel_ar
   $node = isset($context->data) ? drupal_clone($context->data) : NULL;
   switch($subtype) {
     case 'static_file_links':
-      $block->content = theme('u21_content_page_content_static_file_links', $node);
+      $block->content = theme('u21_content_panels_content_static_file_links', $node);
+      break;
+    case 'page_links':
+      $block->content = theme('u21_content_panels_content_page_links', $node);
       break;
   }
   return $block;
@@ -49,23 +58,20 @@ function u21_content_page_content_content_type_admin_title($subtype, $conf, $con
   switch($subtype) {
     case 'static_file_links':
       return t('"@s":  Static file links', array('@s' => $context->identifier));
-    break;
+      break;
+    case 'page_links':
+      return t('"@s":  Page links', array('@s' => $context->identifier));
+      break;
   }
 }
 
 /**
  * Returns an edit form for the content type.
  */
-function u21_content_page_content_content_type_edit_form(&$form, &$form_state) {
-
-
-}
+function u21_content_page_content_content_type_edit_form(&$form, &$form_state) { }
 
 /**
  * Submit handler for the content type editing form.
  */
-function u21_content_page_content_content_type_edit_form_submit(&$form, &$form_state) {
-
-
-}
+function u21_content_page_content_content_type_edit_form_submit(&$form, &$form_state) { }
 
