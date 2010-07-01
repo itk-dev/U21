@@ -815,6 +815,25 @@ function u21_panels_settings_default_page_manager_handlers() {
     $display->panels['right'][1] = 'new-4';
     $pane = new stdClass;
     $pane->pid = 'new-5';
+    $pane->panel = 'right';
+    $pane->type = 'page_content';
+    $pane->subtype = 'page_links';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'context' => 'argument_nid_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array();
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
+    $display->content['new-5'] = $pane;
+    $display->panels['right'][2] = 'new-5';
+    $pane = new stdClass;
+    $pane->pid = 'new-6';
     $pane->panel = 'top';
     $pane->type = 'page_title';
     $pane->subtype = 'page_title';
@@ -826,8 +845,8 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-5'] = $pane;
-    $display->panels['top'][0] = 'new-5';
+    $display->content['new-6'] = $pane;
+    $display->panels['top'][0] = 'new-6';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = 'new-1';
   $handler->conf['display'] = $display;
