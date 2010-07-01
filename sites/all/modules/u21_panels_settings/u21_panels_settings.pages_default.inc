@@ -797,19 +797,14 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane = new stdClass;
     $pane->pid = 'new-4';
     $pane->panel = 'right';
-    $pane->type = 'views_panes';
-    $pane->subtype = 'static_pages-panel_pane_2';
+    $pane->type = 'page_content';
+    $pane->subtype = 'static_file_links';
     $pane->shown = TRUE;
-    $pane->access = array(
-      'plugins' => array(),
-    );
+    $pane->access = array();
     $pane->configuration = array(
-      'path' => '',
-      'fields_override' => array(
-        'field_multi_files_fid' => 1,
-      ),
-      'override_title' => 1,
-      'override_title_text' => 'Fil(er) til download',
+      'context' => 'argument_nid_1',
+      'override_title' => 0,
+      'override_title_text' => '',
     );
     $pane->cache = array();
     $pane->style = array();
