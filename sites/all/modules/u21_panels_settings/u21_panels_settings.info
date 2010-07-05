@@ -1,6 +1,7 @@
 ; $Id: $
 name = U21 panels settings
 description = Export objects from CTools
+dependencies[] = context
 dependencies[] = page_manager
 package = U21
 core = 6.x
