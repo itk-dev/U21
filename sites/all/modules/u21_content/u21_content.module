@@ -202,10 +202,15 @@ function u21_content_preprocess_google_maps(&$variables, $hook) {
  * Preprocess hook for taxonomy link boxes.
  */
 function u21_content_preprocess_taxonomy_links(&$variables, $hook) {
+  // Load vocabulary
+  $vocabulary = taxonomy_get_tree($variables['vocabulary']);
+
+  // Filter node types
+  $node_types = array_filter($variables['node_types']);
+
   // Build path
   if ($variables['node']) { // Context is defined
-    $node = $variables['node'];
-    $path = str_replace('%slug', $node->panels_slug, $variables['path_prefix']) .'/';
+    $path = str_replace('%slug', $variables['node']->panels_slug, $variables['path_prefix']) .'/';
   }
   else { // No context
     if (isset($variables['panel_args']) && count($variables['panel_args']) == 2) { 
@@ -213,19 +218,26 @@ function u21_content_preprocess_taxonomy_links(&$variables, $hook) {
       $path = $variables['path_prefix'] .'/'. $variables['panel_args'][0] .'/';
       $limite_by_node_type = $variables['panel_args'][0];
     }
+    else if (isset($variables['panel_args']) && count($variables['panel_args']) == 1) {
+      // Something is given in the URL maybe a node type
+      if (in_array($variables['panel_args'][0], $node_types)) {
+        // It was a node type
+        $path = $variables['path_prefix'] .'/'. $variables['panel_args'][0] .'/';
+        $limite_by_node_type = $variables['panel_args'][0];
+      }
+      else {
+        $path = $variables['path_prefix'] .'/';
+      }
+    }
     else {
       // No node type given in url
       $path = $variables['path_prefix'] .'/';
     }
   }
 
-  // Filter node types
-  $node_types = array_filter($variables['node_types']);
-
   // Run through terms
-  $terms = array();
-  $objects = taxonomy_get_tree($variables['vocabulary']);
-  foreach ($objects as $term) {
+  $terms = array();  
+  foreach ($vocabulary as $term) {
 
     // Fix node count
     if (isset($limite_by_node_type)) {
