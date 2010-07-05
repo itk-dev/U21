@@ -613,14 +613,17 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane = new stdClass;
     $pane->pid = 'new-4';
     $pane->panel = 'right';
-    $pane->type = 'page_content';
-    $pane->subtype = 'sidebar_content';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'static_pages-panel_pane_2';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'context' => 'argument_nid_1',
-      'override_title' => 0,
-      'override_title_text' => '',
+      'path' => '',
+      'fields_override' => array(
+        'field_multi_files_fid' => 1,
+      ),
+      'override_title' => 1,
+      'override_title_text' => 'Fil(er) til download',
     );
     $pane->cache = array();
     $pane->style = array();
@@ -631,44 +634,6 @@ function u21_panels_settings_default_page_manager_handlers() {
     $display->panels['right'][1] = 'new-4';
     $pane = new stdClass;
     $pane->pid = 'new-5';
-    $pane->panel = 'right';
-    $pane->type = 'page_content';
-    $pane->subtype = 'static_file_links';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'context' => 'argument_nid_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array();
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 2;
-    $display->content['new-5'] = $pane;
-    $display->panels['right'][2] = 'new-5';
-    $pane = new stdClass;
-    $pane->pid = 'new-6';
-    $pane->panel = 'right';
-    $pane->type = 'page_content';
-    $pane->subtype = 'page_links';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'context' => 'argument_nid_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array();
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 3;
-    $display->content['new-6'] = $pane;
-    $display->panels['right'][3] = 'new-6';
-    $pane = new stdClass;
-    $pane->pid = 'new-7';
     $pane->panel = 'top';
     $pane->type = 'region';
     $pane->subtype = 'region_menu';
@@ -684,10 +649,10 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-7'] = $pane;
-    $display->panels['top'][0] = 'new-7';
+    $display->content['new-5'] = $pane;
+    $display->panels['top'][0] = 'new-5';
     $pane = new stdClass;
-    $pane->pid = 'new-8';
+    $pane->pid = 'new-6';
     $pane->panel = 'top';
     $pane->type = 'page_title';
     $pane->subtype = 'page_title';
@@ -699,10 +664,10 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
-    $display->content['new-8'] = $pane;
-    $display->panels['top'][1] = 'new-8';
+    $display->content['new-6'] = $pane;
+    $display->panels['top'][1] = 'new-6';
   $display->hide_title = PANELS_TITLE_NONE;
-  $display->title_pane = 'new-7';
+  $display->title_pane = 'new-5';
   $handler->conf['display'] = $display;
   $handlers['node_view_panel_context_4'] = $handler;
 
@@ -833,7 +798,7 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->pid = 'new-4';
     $pane->panel = 'right';
     $pane->type = 'page_content';
-    $pane->subtype = 'sidebar_content';
+    $pane->subtype = 'static_file_links';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
@@ -852,7 +817,7 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->pid = 'new-5';
     $pane->panel = 'right';
     $pane->type = 'page_content';
-    $pane->subtype = 'static_file_links';
+    $pane->subtype = 'page_links';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
@@ -869,25 +834,6 @@ function u21_panels_settings_default_page_manager_handlers() {
     $display->panels['right'][2] = 'new-5';
     $pane = new stdClass;
     $pane->pid = 'new-6';
-    $pane->panel = 'right';
-    $pane->type = 'page_content';
-    $pane->subtype = 'page_links';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'context' => 'argument_nid_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array();
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 3;
-    $display->content['new-6'] = $pane;
-    $display->panels['right'][3] = 'new-6';
-    $pane = new stdClass;
-    $pane->pid = 'new-7';
     $pane->panel = 'top';
     $pane->type = 'page_title';
     $pane->subtype = 'page_title';
@@ -899,8 +845,8 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-7'] = $pane;
-    $display->panels['top'][0] = 'new-7';
+    $display->content['new-6'] = $pane;
+    $display->panels['top'][0] = 'new-6';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = 'new-1';
   $handler->conf['display'] = $display;
@@ -1057,25 +1003,6 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->position = 1;
     $display->content['new-4'] = $pane;
     $display->panels['right'][1] = 'new-4';
-    $pane = new stdClass;
-    $pane->pid = 'new-5';
-    $pane->panel = 'right';
-    $pane->type = 'page_content';
-    $pane->subtype = 'page_links';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'context' => 'argument_nid_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array();
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 2;
-    $display->content['new-5'] = $pane;
-    $display->panels['right'][2] = 'new-5';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -1226,25 +1153,6 @@ function u21_panels_settings_default_page_manager_handlers() {
     $display->panels['right'][1] = 'new-3';
     $pane = new stdClass;
     $pane->pid = 'new-4';
-    $pane->panel = 'right';
-    $pane->type = 'page_content';
-    $pane->subtype = 'page_links';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'context' => 'argument_nid_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array();
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 2;
-    $display->content['new-4'] = $pane;
-    $display->panels['right'][2] = 'new-4';
-    $pane = new stdClass;
-    $pane->pid = 'new-5';
     $pane->panel = 'top';
     $pane->type = 'region';
     $pane->subtype = 'region_menu';
@@ -1260,10 +1168,10 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-5'] = $pane;
-    $display->panels['top'][0] = 'new-5';
+    $display->content['new-4'] = $pane;
+    $display->panels['top'][0] = 'new-4';
     $pane = new stdClass;
-    $pane->pid = 'new-6';
+    $pane->pid = 'new-5';
     $pane->panel = 'top';
     $pane->type = 'page_title';
     $pane->subtype = 'page_title';
@@ -1275,8 +1183,8 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
-    $display->content['new-6'] = $pane;
-    $display->panels['top'][1] = 'new-6';
+    $display->content['new-5'] = $pane;
+    $display->panels['top'][1] = 'new-5';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -1288,6 +1196,117 @@ function u21_panels_settings_default_page_manager_handlers() {
  * Implementation of hook_default_page_manager_pages()
  */
 function u21_panels_settings_default_page_manager_pages() {
+  $page = new stdClass;
+  $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
+  $page->api_version = 1;
+  $page->name = 'frontpage';
+  $page->task = 'page';
+  $page->admin_title = 'Frontpage';
+  $page->admin_description = '';
+  $page->path = 'frontpage';
+  $page->access = array(
+    'logic' => 'and',
+  );
+  $page->menu = array();
+  $page->arguments = array();
+  $page->conf = array();
+  $page->default_handlers = array();
+  $handler = new stdClass;
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
+  $handler->name = 'page_frontpage_panel_context';
+  $handler->task = 'page';
+  $handler->subtask = 'frontpage';
+  $handler->handler = 'panel_context';
+  $handler->weight = 0;
+  $handler->conf = array(
+    'title' => 'Panel',
+    'no_blocks' => FALSE,
+    'css_id' => '',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(),
+    'access' => array(
+      'logic' => 'and',
+    ),
+  );
+  $display = new panels_display;
+  $display->layout = 'twocol_8_4';
+  $display->layout_settings = array();
+  $display->panel_settings = array();
+  $display->cache = array();
+  $display->title = '';
+  $display->content = array();
+  $display->panels = array();
+    $pane = new stdClass;
+    $pane->pid = 'new-1';
+    $pane->panel = 'left';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'news_global-panel_pane_2';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'use_pager' => 0,
+      'pager_id' => '',
+      'items_per_page' => '3',
+      'offset' => '0',
+      'path' => 'news/%/rss',
+      'fields_override' => array(
+        'title' => 1,
+        'created' => 1,
+        'field_teaser_value' => 1,
+      ),
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array();
+    $pane->css = array(
+      'css_id' => 'news-top-news',
+      'css_class' => '',
+    );
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-1'] = $pane;
+    $display->panels['left'][0] = 'new-1';
+    $pane = new stdClass;
+    $pane->pid = 'new-2';
+    $pane->panel = 'right';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'events-panel_pane_2';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'use_pager' => 0,
+      'pager_id' => '',
+      'items_per_page' => '2',
+      'offset' => '0',
+      'path' => '',
+      'fields_override' => array(
+        'title' => 1,
+        'address' => 1,
+        'field_date_value' => 1,
+        'field_teaser_value' => 1,
+      ),
+      'override_title' => 1,
+      'override_title_text' => 'Eventkalender',
+    );
+    $pane->cache = array();
+    $pane->style = array();
+    $pane->css = array(
+      'css_id' => 'events-top-event',
+      'css_class' => '',
+    );
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-2'] = $pane;
+    $display->panels['right'][0] = 'new-2';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = '0';
+  $handler->conf['display'] = $display;
+  $page->default_handlers[$handler->name] = $handler;
+  $pages['frontpage'] = $page;
+
   $page = new stdClass;
   $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
   $page->api_version = 1;
