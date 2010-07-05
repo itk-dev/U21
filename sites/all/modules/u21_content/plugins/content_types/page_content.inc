@@ -30,6 +30,12 @@ function u21_content_page_content_content_type_content_types() {
       'category' => t('Page content'),
       'required context' => new ctools_context_required(t('Node'), 'node'),
     ),
+    'sidebar_content' => array(
+      'title' => t('Sidebar content'),
+      'description' => t('Static pages sidebar information.'),
+      'category' => t('Page content'),
+      'required context' => new ctools_context_required(t('Node'), 'node'),
+    ),
   );
   return $types;
 }
@@ -47,6 +53,9 @@ function u21_content_page_content_content_type_render($subtype, $conf, $panel_ar
     case 'page_links':
       $block->content = theme('u21_content_panels_content_page_links', $node);
       break;
+    case 'sidebar_content':
+      $block->content = theme('u21_content_panels_content_sidebar', $node);
+      break;
   }
   return $block;
 }
@@ -61,6 +70,9 @@ function u21_content_page_content_content_type_admin_title($subtype, $conf, $con
       break;
     case 'page_links':
       return t('"@s":  Page links', array('@s' => $context->identifier));
+      break;
+    case 'sidebar_content':
+      return t('"@s": Sidebar', array('@s' => $context->identifier));
       break;
   }
 }

@@ -134,6 +134,11 @@ function u21_content_theme($existing, $type, $theme, $path) {
       'template' => 'u21_content_panels_content_page_links',
       'preprocess functions' => array('u21_content_preprocess_page_links'),
     ),
+    'u21_content_panels_content_sidebar' => array(
+      'arguments' => array('node' => NULL),
+      'template' => 'u21_content_panels_content_sidebar',
+      'preprocess functions' => array('u21_content_preprocess_sidebar'),
+    ),
     'u21_content_event_details' => array(
       'arguments' => array('node' => NULL),
       'template' => 'u21_content_panels_content_event_details',
@@ -274,6 +279,14 @@ function u21_content_preprocess_page_links(&$variables, $hook) {
   foreach ($links as $link) {
     array_push($variables['links'], l($link['title'], $link['url'], array('attributes' => array('rel' => 'external'))));
   }
+}
+
+function u21_content_preprocess_sidebar(&$variables, $hook) {
+  // Set title
+  $variables['title'] = t('Sidebar');
+
+  // Build file list
+  $variables['sidebar'] = filter_xss($variables['node']->field_sidebar[0]['value']);
 }
 
 function u21_content_preprocess_event_details(&$variables, $hook) {
