@@ -31,7 +31,7 @@ function u21_content_taxonomy_content_type_content_types() {
       'defaults' => array(
          'path_prefix' => '/term',
          'vocabulary' => '1',
-         'node_type' => NULL,
+         'node_types' => NULL,
       ),
     ),
     'taxonomy_links_context' => array(
@@ -41,7 +41,7 @@ function u21_content_taxonomy_content_type_content_types() {
       'defaults' => array(
          'path_prefix' => '/%slug/term',
          'vocabulary' => '1',
-         'node_type' => NULL,
+         'node_types' => NULL,
       ),
       'required context' => new ctools_context_required(t('Node'), 'node'),
     ),
@@ -55,14 +55,14 @@ function u21_content_taxonomy_content_type_content_types() {
 function u21_content_taxonomy_content_type_render($subtype, $conf, $panel_args, $context) {
   $block = new stdClass();
   $node = isset($context->data) ? drupal_clone($context->data) : NULL;
-  $arg  = isset($context->argument) ? $context->argument : NULL;
+  $slug_nid = isset($context->argument) ? $context->argument : NULL;
   switch($subtype) {
     case 'taxonomy_links':
     case 'taxonomy_links_context':
       $block->title = t('Categories');
       $block->content = theme('u21_content_taxonomy_links', $node, 
                               $conf['path_prefix'], $conf['vocabulary'],
-                              $conf['node_type'], $arg);
+                              $conf['node_types'], $slug_nid, $panel_args);
       break;
   }
   return $block;
@@ -95,7 +95,7 @@ function u21_content_taxonomy_content_type_edit_form(&$form, &$form_state) {
     case 'taxonomy_links_context':
       $form['path_prefix'] = array(
         '#type' => 'textfield',
-        '#title' => t('Path prefix (e.g location/%slug/news)'),
+        '#title' => t('Path prefix (e.g location/%slug/news/articles)'),
         '#default_value' => $conf['path_prefix'],
       );
 
@@ -117,11 +117,13 @@ function u21_content_taxonomy_content_type_edit_form(&$form, &$form_state) {
       foreach ($types as $key => $obj) {
         $options[$key] = $obj->name;
       }
-      $form['node_type'] = array(
-        '#type' => 'select',
-        '#title' => t('Content type (used to get node count)'),
+      
+      // Load content types
+      $form['node_types'] = array(
+        '#type' => 'checkboxes',
+        '#title' => t('Type of'),
         '#options' => $options,
-        '#default_value' => $conf['node_type'],
+        '#default_value' => $conf['node_types'],
       );
 
       break;
@@ -136,7 +138,7 @@ function u21_content_taxonomy_content_type_edit_form_submit(&$form, &$form_state
     case 'taxonomy_links_context':
       $form_state['conf']['path_prefix'] = $form_state['values']['path_prefix'];
       $form_state['conf']['vocabulary'] = $form_state['values']['vocabulary'];
-      $form_state['conf']['node_type'] = $form_state['values']['node_type'];
+      $form_state['conf']['node_types'] = $form_state['values']['node_types'];
       break;
   }
 }

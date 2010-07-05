@@ -109,8 +109,8 @@ function u21_content_theme($existing, $type, $theme, $path) {
     ),
     'u21_content_taxonomy_links' => array(
       'arguments' => array('node' => NULL, 'path_prefix' => NULL, 
-                           'vocabulary' => NULL, 'node_type' => NULL,
-                           'slug_nid' => NULL),
+                           'vocabulary' => NULL, 'node_types' => NULL,
+                           'slug_nid' => NULL, 'panel_args' => NULL),
       'template' => 'u21_content_panels_content_taxonomy_links',
       'preprocess functions' => array('u21_content_preprocess_taxonomy_links'),
     ),
@@ -201,22 +201,55 @@ function u21_content_preprocess_google_maps(&$variables, $hook) {
  * Preprocess hook for taxonomy link boxes.
  */
 function u21_content_preprocess_taxonomy_links(&$variables, $hook) {
-  if ($variables['node']) {
+  // Build path
+  if ($variables['node']) { // Context is defined
     $node = $variables['node'];
     $path = str_replace('%slug', $node->panels_slug, $variables['path_prefix']) .'/';
   }
-  else {
-    $path = $variables['path_prefix'] .'/';
+  else { // No context
+    if (isset($variables['panel_args']) && count($variables['panel_args']) == 2) { 
+      // Node type is given in url and term
+      $path = $variables['path_prefix'] .'/'. $variables['panel_args'][0] .'/';
+      $limite_by_node_type = $variables['panel_args'][0];
+    }
+    else {
+      // No node type given in url
+      $path = $variables['path_prefix'] .'/';
+    }
   }
 
+  // Filter node types
+  $node_types = array_filter($variables['node_types']);
+
+  // Run through terms
   $terms = array();
   $objects = taxonomy_get_tree($variables['vocabulary']);
   foreach ($objects as $term) {
-    $count = (isset($variables['slug_nid']) ? _u21_content_taxonomy_node_count($term->tid, $variables['node_type'], $variables['slug_nid']) : taxonomy_term_count_nodes($term->tid, $variables['node_type']));
+
+    // Fix node count
+    if (isset($limite_by_node_type)) {
+      $count = taxonomy_term_count_nodes($term->tid, $limite_by_node_type);
+    }
+    else if (isset($variables['slug_nid'])) {
+      $count = _u21_content_taxonomy_node_count($term->tid, 'articles', $variables['slug_nid']);
+    }
+    else {
+      $count = 0;
+      foreach ($variables['node_types'] as $node_type) {
+        $count =+ taxonomy_term_count_nodes($term->tid, $node_type);
+      }
+    }
+
+    // Build term link
     $terms[$term->tid] = array('name' => $term->name, 
                                'count' => $count,
                                'link' => l($term->name, $path . strtolower($term->name)));
   }
+
+  // Build all term
+  $terms['all'] = array('name' => t('All'),
+                        'link' => l(t('All'), $path));
+  
   $variables['terms'] = $terms;
 }
 
