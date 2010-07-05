@@ -109,8 +109,9 @@ function u21_content_theme($existing, $type, $theme, $path) {
     ),
     'u21_content_taxonomy_links' => array(
       'arguments' => array('node' => NULL, 'path_prefix' => NULL, 
-                           'vocabulary' => NULL, 'node_types' => NULL,
-                           'slug_nid' => NULL, 'panel_args' => NULL),
+                           'vocabulary' => NULL, 'main_type' => NULL,
+                           'node_types' => NULL, 'slug_nid' => NULL,
+                           'panel_args' => NULL),
       'template' => 'u21_content_panels_content_taxonomy_links',
       'preprocess functions' => array('u21_content_preprocess_taxonomy_links'),
     ),
@@ -231,12 +232,12 @@ function u21_content_preprocess_taxonomy_links(&$variables, $hook) {
       $count = taxonomy_term_count_nodes($term->tid, $limite_by_node_type);
     }
     else if (isset($variables['slug_nid'])) {
-      $count = _u21_content_taxonomy_node_count($term->tid, 'articles', $variables['slug_nid']);
+      $count = _u21_content_taxonomy_node_count($term->tid, $variables['main_type'], $variables['slug_nid']);
     }
     else {
       $count = 0;
-      foreach ($variables['node_types'] as $node_type) {
-        $count =+ taxonomy_term_count_nodes($term->tid, $node_type);
+      foreach ($node_types as $node_type) {
+        $count += taxonomy_term_count_nodes($term->tid, $node_type);
       }
     }
 

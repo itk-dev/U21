@@ -31,7 +31,8 @@ function u21_content_taxonomy_content_type_content_types() {
       'defaults' => array(
          'path_prefix' => '/term',
          'vocabulary' => '1',
-         'node_types' => NULL,
+         'main_type' => array(),
+         'node_types' => array(),
       ),
     ),
     'taxonomy_links_context' => array(
@@ -41,7 +42,8 @@ function u21_content_taxonomy_content_type_content_types() {
       'defaults' => array(
          'path_prefix' => '/%slug/term',
          'vocabulary' => '1',
-         'node_types' => NULL,
+         'main_type' => array(),
+         'node_types' => array(),
       ),
       'required context' => new ctools_context_required(t('Node'), 'node'),
     ),
@@ -62,7 +64,8 @@ function u21_content_taxonomy_content_type_render($subtype, $conf, $panel_args, 
       $block->title = t('Categories');
       $block->content = theme('u21_content_taxonomy_links', $node, 
                               $conf['path_prefix'], $conf['vocabulary'],
-                              $conf['node_types'], $slug_nid, $panel_args);
+                              $conf['main_type'], $conf['node_types'],
+                              $slug_nid, $panel_args);
       break;
   }
   return $block;
@@ -117,14 +120,23 @@ function u21_content_taxonomy_content_type_edit_form(&$form, &$form_state) {
       foreach ($types as $key => $obj) {
         $options[$key] = $obj->name;
       }
+
+      // Main content type
+      $form['main_type'] = array(
+        '#type' => 'select',
+        '#title' => t('Which type of node'),
+        '#options' => $options,
+        '#default_value' => $conf['main_type'],
+      );
       
-      // Load content types
+      // Content types
       $form['node_types'] = array(
         '#type' => 'checkboxes',
-        '#title' => t('Type of'),
+        '#title' => t('Which types should be included in the count'),
         '#options' => $options,
         '#default_value' => $conf['node_types'],
       );
+
 
       break;
   }
@@ -138,6 +150,7 @@ function u21_content_taxonomy_content_type_edit_form_submit(&$form, &$form_state
     case 'taxonomy_links_context':
       $form_state['conf']['path_prefix'] = $form_state['values']['path_prefix'];
       $form_state['conf']['vocabulary'] = $form_state['values']['vocabulary'];
+      $form_state['conf']['main_type'] = $form_state['values']['main_type'];
       $form_state['conf']['node_types'] = $form_state['values']['node_types'];
       break;
   }
