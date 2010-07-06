@@ -314,7 +314,7 @@ function campaignmonitor_cron() {
 
     // Validate that it do not exists based on the href
     $res = db_result(db_query('SELECT count(1)
-                               FROM u21.content_type_newsletter
+                               FROM {content_type_newsletter}
                                WHERE field_email_view_value = \'%s\'', array($href)));
     if (!$res) { // Node does not exists
       // Load node module
