@@ -311,6 +311,7 @@ function u21_content_preprocess_static_file_links(&$variables, $hook) {
   $files = $variables['node']->field_multi_files;
   $variables['links'] = array();
   foreach ($files as $file) {
+    if (empty($file['filepath'])) { continue; }
     array_push($variables['links'], l($file['data']['description'], $file['filepath'], array('attributes' => array('rel' => 'external'))));
   }
 }
@@ -323,6 +324,7 @@ function u21_content_preprocess_page_links(&$variables, $hook) {
   $links = $variables['node']->field_links;
   $variables['links'] = array();
   foreach ($links as $link) {
+    if (empty($link['url'])) { continue; }
     array_push($variables['links'], l($link['title'], $link['url'], array('attributes' => array('rel' => 'external'))));
   }
 }
@@ -332,7 +334,10 @@ function u21_content_preprocess_sidebar(&$variables, $hook) {
   $variables['title'] = t('Sidebar');
 
   // Build file list
-  $variables['sidebar'] = filter_xss($variables['node']->field_sidebar[0]['value']);
+  $data = filter_xss($variables['node']->field_sidebar[0]['value']);
+  if (!empty($data)) {
+    $variables['sidebar'] = $data;
+  }
 }
 
 function u21_content_preprocess_event_details(&$variables, $hook) {
