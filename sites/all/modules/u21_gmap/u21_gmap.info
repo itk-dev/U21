@@ -1,0 +1,8 @@
+; $Id$
+name = U21 Google maps extensions
+description = Provies panels plugins and block with maps
+package = "U21"
+core = 6.x
+dependencies[] = panels
+dependencies[] = location
+dependencies[] = gmap

@@ -1,0 +1,54 @@
+<?php
+
+
+/**
+ * Implementation of hook_ctools_plugin_api().
+ */
+function u21_gmap_ctools_plugin_api($module, $api) {
+  if ($module == 'page_manager' && $api == 'pages_default') {
+    return array('version' => 1);
+  }
+}
+
+/**
+ * Implementation of hook_ctools_plugin_directory().
+ *
+ * Tells CTools (and thus Panels) where to look for plugin code.
+ */
+function u21_gmap_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'ctools' || $module == 'panels') {
+    return 'plugins/' . $plugin;
+  }
+}
+
+/**
+ * Implementation of hook_theme().
+ */
+function u21_gmap_theme($existing, $type, $theme, $path) {
+  return array(
+    'u21_gmap_google_maps' => array(
+      'arguments' => array('node' => NULL, 'width' => NULL, 'height' => NULL, 'zoom' => NULL),
+      'template' => 'u21_gmap_panels_content_google_maps',
+      'preprocess functions' => array('u21_gmap_preprocess_google_maps'),
+    ),
+  );
+}
+
+/**
+ * Preprocess hook for the google maps.
+ */
+function u21_gmap_preprocess_google_maps(&$variables, $hook) {
+  $node = $variables['node'];
+  $locations = $node->locations;
+
+  if (isset($locations[0])) {
+    $variables['title'] = check_plain($node->title);
+    $variables['map'] = gmap_simple_map($locations[0]['latitude'],
+                                        $locations[0]['longitude'],
+                                        '',
+                                        check_plain($node->title),
+                                        $variables['zoom'],
+                                        $variables['width'].'px',
+                                        $variables['height'].'px');
+  }
+}

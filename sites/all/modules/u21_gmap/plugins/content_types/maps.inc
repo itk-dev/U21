@@ -13,7 +13,7 @@
  * This is only required to make CTools know that we're providing 
  * multiple types here (since we have no single => TRUE in the array).
  */
-function u21_content_maps_ctools_content_types() {
+function u21_gmap_maps_ctools_content_types() {
   return array(
     'title' => t('Google maps'),
   );
@@ -22,7 +22,7 @@ function u21_content_maps_ctools_content_types() {
 /**
  * Callback function to supply a list of content types.
  */
-function u21_content_maps_content_type_content_types() {
+function u21_gmap_maps_content_type_content_types() {
   $types = array(
     'maps' => array(
       'title' => t('Gmap for node begin viewed'),
@@ -43,12 +43,12 @@ function u21_content_maps_content_type_content_types() {
 /**
  * Return the pane contents.
  */
-function u21_content_maps_content_type_render($subtype, $conf, $panel_args, $context) {
+function u21_gmap_maps_content_type_render($subtype, $conf, $panel_args, $context) {
   $block = new stdClass();
   $node = isset($context->data) ? drupal_clone($context->data) : NULL;
   switch($subtype) {
     case 'maps':
-      $block->content = theme('u21_content_google_maps', $node, 
+      $block->content = theme('u21_gmap_google_maps', $node,
                               $conf['map_width'], $conf['map_height'],
                               $conf['map_zoom']);
       break;
@@ -59,7 +59,7 @@ function u21_content_maps_content_type_render($subtype, $conf, $panel_args, $con
 /**
  * Return the pane titles.
  */
-function u21_content_maps_content_type_admin_title($subtype, $conf, $context) {
+function u21_gmap_maps_content_type_admin_title($subtype, $conf, $context) {
   switch($subtype) {
     case 'maps':
       return t('"@s":  Google maps', array('@s' => $context->identifier));
@@ -69,7 +69,7 @@ function u21_content_maps_content_type_admin_title($subtype, $conf, $context) {
 /**
  * Returns an edit form for the content type.
  */
-function u21_content_maps_content_type_edit_form(&$form, &$form_state) {
+function u21_gmap_maps_content_type_edit_form(&$form, &$form_state) {
   $conf = $form_state['conf'];
   switch ($form_state['subtype_name']) {
     case 'maps':
@@ -104,7 +104,7 @@ function u21_content_maps_content_type_edit_form(&$form, &$form_state) {
 /**
  * Submit handler for the content type editing form.
  */
-function u21_content_maps_content_type_edit_form_submit(&$form, &$form_state) {
+function u21_gmap_maps_content_type_edit_form_submit(&$form, &$form_state) {
   switch ($form_state['subtype_name']) {
     case 'maps':
       foreach (array('map_height', 'map_width', 'map_zoom') as $key) {

@@ -102,11 +102,6 @@ function u21_content_theme($existing, $type, $theme, $path) {
       'template' => 'u21_content_panels_content_region_calendar_link',
       'preprocess functions' => array('u21_content_preprocess_region_calendar_link'),
     ),
-    'u21_content_google_maps' => array(
-      'arguments' => array('node' => NULL, 'width' => NULL, 'height' => NULL, 'zoom' => NULL),
-      'template' => 'u21_content_panels_content_google_maps',
-      'preprocess functions' => array('u21_content_preprocess_google_maps'),
-    ),
     'u21_content_taxonomy_links' => array(
       'arguments' => array('node' => NULL, 'path_prefix' => NULL, 
                            'vocabulary' => NULL, 'main_type' => NULL,
@@ -177,25 +172,6 @@ function u21_content_preprocess_region_calendar_link(&$variables, $hook) {
 
   $link = $node->field_external_calendar[0];
   $variables['link'] = l($link['title'], $link['url'], array('attributes' => array('rel' => 'external')));
-}
-
-/**
- * Preprocess hook for the google maps.
- */
-function u21_content_preprocess_google_maps(&$variables, $hook) {
-  $node = $variables['node'];
-  $locations = $node->locations;
-
-  if (isset($locations[0])) {
-    $variables['title'] = check_plain($node->title);
-    $variables['map'] = gmap_simple_map($locations[0]['latitude'],
-                                        $locations[0]['longitude'],
-                                        '',
-                                        check_plain($node->title),
-                                        $variables['zoom'],
-                                        $variables['width'].'px',
-                                        $variables['height'].'px');
-  }
 }
 
 /**
