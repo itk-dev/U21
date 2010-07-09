@@ -22,6 +22,21 @@ function u21_gmap_ctools_plugin_directory($module, $plugin) {
 }
 
 /**
+ * Implementation of hook_menu().
+ */
+function u21_gmap_menu() {
+  $items = array();
+  $items['u21_gmap/list'] = array(
+    'title' => '',
+    'page callback' => 'u21_gmap_load_regional_locations',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
  * Implementation of hook_theme().
  */
 function u21_gmap_theme($existing, $type, $theme, $path) {
@@ -51,4 +66,157 @@ function u21_gmap_preprocess_google_maps(&$variables, $hook) {
                                         $variables['width'].'px',
                                         $variables['height'].'px');
   }
+}
+
+function u21_gmap_block($op = 'list', $delta = 0, $edit = array()) {
+  switch ($op) {
+    case 'list':
+      $blocks[0]['info'] = t('Regional overview map');
+      break;
+
+    case 'view':
+      if ($delta == 0) {
+
+        // Extra setting
+        $settings['controltype'] = 'none';
+        $settings['behavior']['nomousezoom'] = '1';
+
+
+        // Build block
+        $blocks['subject'] = t('Regional map');
+        $blocks['content'] = u21_gmap_multi_location(
+                variable_get('gmap_regional_overview_center_latitude', '56.151108'),
+                variable_get('gmap_regional_overview_center_longitude', '9.989191'),
+                array(),
+                variable_get('gmap_regional_overview_zoom', '6'),
+                variable_get('gmap_regional_overview_size_width', '280') . 'px',
+                variable_get('gmap_regional_overview_size_height', '280') . 'px',
+                $settings);
+        
+        // Add js (have to be runned af after block content)
+        drupal_add_js(drupal_get_path('module','u21_gmap').'/u21_gmap_markers.js');
+      }
+      break;
+
+    case 'configure':
+      if ($delta == 0) {
+        // Center
+        $form['center'] = array(
+          '#type' => 'fieldset',
+          '#title' => t('Centering map'),
+          '#collapsible' => TRUE,
+          '#collapsed' => FALSE,
+        );
+        $form['center']['latitude'] = array(
+          '#type' => 'textfield',
+          '#title' => t('Latiude'),
+          '#required' => TRUE,
+          '#default_value' => variable_get('gmap_regional_overview_center_latitude', '56.151108'),
+        );
+        $form['center']['longitude'] = array(
+          '#type' => 'textfield',
+          '#title' => t('Longitude'),
+          '#required' => TRUE,
+          '#default_value' => variable_get('gmap_regional_overview_center_longitude', '9.989191'),
+        );
+
+        // Zoom level
+        $form['zoom'] = array(
+          '#type' => 'textfield',
+          '#title' => t('Zoom level'),
+          '#required' => TRUE,
+          '#default_value' => variable_get('gmap_regional_overview_zoom', '6'),
+        );
+        
+        // Map size
+        $form['size'] = array(
+          '#type' => 'fieldset',
+          '#title' => t('Map size'),
+          '#collapsible' => TRUE,
+          '#collapsed' => FALSE,
+        );
+        $form['size']['width'] = array(
+          '#type' => 'textfield',
+          '#title' => t('Width in pixel'),
+          '#required' => TRUE,
+          '#default_value' => variable_get('gmap_regional_overview_size_width', '280'),
+        );
+        $form['size']['height'] = array(
+          '#type' => 'textfield',
+          '#title' => t('Height in pixel'),
+          '#required' => TRUE,
+          '#default_value' => variable_get('gmap_regional_overview_size_height', '280'),
+        );
+      }
+      return $form;
+      break;
+
+    case 'save':
+      if ($delta == 0) {
+        variable_set('gmap_regional_overview_center_latitude', $edit['latitude']);
+        variable_set('gmap_regional_overview_center_longitude', $edit['longitude']);
+        variable_set('gmap_regional_overview_zoom', $edit['zoom']);
+        variable_set('gmap_regional_overview_size_width', $edit['width']);
+        variable_set('gmap_regional_overview_size_height', $edit['height']);
+      }
+      break;
+  }
+
+  return $blocks;
+}
+
+function u21_gmap_multi_location($latitude, $longitude, $markers = array(),
+                                  $zoom = 'default', $width = 'default',
+                                  $height = 'default', $map = NULL) {
+  $settings = array(
+    // Get an id for the map
+    'id' => gmap_get_auto_mapid(),
+
+    // Center the map
+    'latitude' => $latitude,
+    'longitude' => $longitude,
+  );
+
+  if ($zoom != 'default') {
+    $settings['zoom'] = $zoom;
+  }
+  if ($width != 'default') {
+    $settings['width'] = $width;
+  }
+  if ($height != 'default') {
+    $settings['height'] = $height;
+  }
+
+  if (!empty($markers)) {
+    $settings['markers'] = $markers;
+  }
+
+  if (!empty($map)) {
+    $settings = array_merge($settings, $map);
+  }
+
+  return theme('gmap', array('#settings' => $settings));
+}
+
+function u21_gmap_load_regional_locations() {
+
+  $markers = array();
+
+  $result = db_query('SELECT ps.slug, n.title, l.latitude, l.longitude
+                      FROM {location_instance} li
+                        INNER JOIN {node} n ON li.nid = n.nid
+                        INNER JOIN {location} l ON li.lid = l.lid
+                        INNER JOIN {panels_slug} ps ON li.nid = ps.nid
+                      WHERE n.type = "region"');
+  while ($row = db_fetch_array($result)) {
+    array_push($markers, array(
+      'latitude' => $row['latitude'],
+      'longitude' => $row['longitude'],
+      'title' => $row['title'],
+      'url' => '/location/' . $row['slug'] . '/',
+    ));
+  }
+  
+  // Return information
+  echo drupal_to_js($markers);
 }
