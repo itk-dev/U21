@@ -351,7 +351,6 @@ function nodeasblock_block($op = 'list', $delta = 0) {
     // Load view if one is give in settings    
     $view_name = variable_get('nodeasblock_view_name_'.$type, NULL);
     $view_display_id = variable_get('nodeasblock_view_display_id_'.$type, NULL);
-    echo 'name: ',$view_name;
     if ($view_name && $view_display_id) { // Display block as view
       // Don't show nodes in other languages than current. Integration with i18n node languages.
       global $language;
