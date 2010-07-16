@@ -1,5 +1,5 @@
 <?php
-// $Id: nodeasblock.module,v 1.8.2.4 2009/08/20 04:23:01 herc Exp $
+// $Id: $
 
 /**
  * @file
@@ -117,12 +117,31 @@ function nodeasblock_form_node_type_form_alter($form, $form_state) {
       '#options' => $regions,
       '#default_value' => variable_get('nodeasblock_default_region_'. $node_type, system_default_region($theme)),
     );
+    $form['nodeasblockset']['nodeasblock_published_state'] = array(
+      '#type' => 'select',
+      '#title' => t('Node published state'),
+      '#options' => array(1 => 'Yes', 0 => 'No'),
+      '#description' => t('Is puslished state required for the block to be displayed'),
+      '#default_value' => variable_get('nodeasblock_published_state_'. $node_type, 0),
+    );
+    $form['nodeasblockset']['nodeasblock_view_name'] = array(
+      '#type' => 'textfield',
+      '#title' => t('View name'),
+      '#description' => t('If view name and display id are given. The view will be used to display the node.'),
+      '#default_value' => variable_get('nodeasblock_view_name_'. $node_type, ''),
+    );
+    $form['nodeasblockset']['nodeasblock_view_display_id'] = array(
+      '#type' => 'textfield',
+      '#title' => t('View display id'),
+      '#description' => t('If view name and display id are given. The view will be used to display the node. The display id is e.g page_1 or block_1.'),
+      '#default_value' => variable_get('nodeasblock_view_display_id_'. $node_type, ''),
+    );
     $form['nodeasblockset']['nodeasblock_default_weight'] = array(
       '#type' => 'weight',
       '#title' => t('Default weight'),
       '#options' => $regions,
       '#default_value' => variable_get('nodeasblock_default_weight_'. $node_type, 0),
-    );   
+    );
   }
 }
 
@@ -285,7 +304,6 @@ function nodeasblock_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
  * @param $node
  *   The node object. 
  */
-
 function nodeasblock_save_block($node) {
   // Fetch block data.
   $block = $node->nodeasblockset;
@@ -326,15 +344,42 @@ function nodeasblock_block($op = 'list', $delta = 0) {
     if (arg(0) == 'node' && arg(1) == $delta) {
       return;
     }
-    // Load the node if it's published. 
-    if ($node = node_load(array('nid' => $delta, 'status' => 1))) {
+
+    // Get node type (need to load configuration)
+    $type = db_fetch_object(db_query('SELECT type FROM {node} WHERE nid = %s', $delta))->type;
+    
+    // Load view if one is give in settings    
+    $view_name = variable_get('nodeasblock_view_name_'.$type, NULL);
+    $view_display_id = variable_get('nodeasblock_view_display_id_'.$type, NULL);
+    echo 'name: ',$view_name;
+    if ($view_name && $view_display_id) { // Display block as view
       // Don't show nodes in other languages than current. Integration with i18n node languages.
       global $language;
       if (empty($node->language) || $node->language == $language->language) {
         return array(
-          'subject' => l($node->title, 'node/'. $node->nid),
-          'content' => nodeasblock_block_content($node),
+          'subject' => '<none>',
+          'content' => views_embed_view($view_name, $view_display_id, $delta),
         );
+      }
+    }
+    else { // Display block as node
+      // Load the node based on published state.
+      if (!variable_get('nodeasblock_published_state_'.$type, 0)) {
+        $node = node_load(array('nid' => $delta));
+      }
+      else {
+        $node = node_load(array('nid' => $delta, 'status' => 1));
+      }
+
+      if ($node) {
+        // Don't show nodes in other languages than current. Integration with i18n node languages.
+        global $language;
+        if (empty($node->language) || $node->language == $language->language) {
+          return array(
+            'subject' => l($node->title, 'node/'. $node->nid),
+            'content' => nodeasblock_block_content($node),
+          );
+        }
       }
     }
   }
