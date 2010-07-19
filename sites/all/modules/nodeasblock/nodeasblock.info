@@ -1,5 +1,0 @@
-; $Id $
-name = Node As Block
-description = Enables creation of blocks showing node teasers (Modified version).
-core = 6.x
-
