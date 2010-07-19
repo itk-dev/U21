@@ -309,10 +309,8 @@ function u21_content_preprocess_sidebar(&$variables, $hook) {
   // Set title
   $variables['title'] = t('Sidebar');
 
-  // Build file list
-  $data = filter_xss($variables['node']->field_sidebar[0]['value']);
-  if (!empty($data)) {
-    $variables['sidebar'] = $data;
+  if (!empty($variables['node']->field_sidebar[0]['value'])) {
+    $variables['sidebar'] = $variables['node']->field_sidebar[0]['value'];
   }
 }
 
