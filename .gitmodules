@@ -1,3 +1,6 @@
 [submodule "sites/all/modules/panels_slug"]
 	path = sites/all/modules/panels_slug
 	url = git://github.com/cableman/panels_slug.git
+[submodule "sites/all/modules/nodeasblock"]
+	path = sites/all/modules/nodeasblock
+	url = git@github.com:cableman/nodeasblock.git
