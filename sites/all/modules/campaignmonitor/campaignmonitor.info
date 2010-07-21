@@ -1,6 +1,0 @@
-; $Id$
-name = Campaign Monitor
-description = Simple campaing monitor interagtion (create signup block and listing of campaings sent).
-package = e-Marketing
-core = 6.x
-php = 5.2
