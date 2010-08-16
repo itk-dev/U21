@@ -65,4 +65,20 @@ function u21dk2011_breadcrumb($breadcrumb) {
   }
 } 
 
+/**
+ * Generate the HTML output for a menu item and submenu.
+ *
+ * @ingroup themeable
+ */
+function u21dk2011_menu_item_link($link) {
+  if (empty($link['localized_options'])) {
+    $link['localized_options'] = array();
+  }
 
+  $hover = '';
+  if (isset($link['options']['attributes']['title'])) {
+    $hover = '<div class="menu-hover">'.$link['options']['attributes']['title'].'</div>';
+  }
+
+  return l($link['title'], $link['href'], $link['localized_options']) . $hover;
+}
