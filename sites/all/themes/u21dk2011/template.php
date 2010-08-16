@@ -76,7 +76,7 @@ function u21dk2011_menu_item_link($link) {
   }
 
   $hover = '';
-  if (isset($link['options']['attributes']['title'])) {
+  if (isset($link['options']['attributes']['title']) && $link['options']['attributes']['title'] != '') {
     $hover = '<div class="menu-hover">'.$link['options']['attributes']['title'].'</div>';
   }
 
