@@ -3548,6 +3548,112 @@ function u21_views_settings_views_default_views() {
   $handler->override_option('link_to_view', 0);
   $handler->override_option('inherit_panels_path', '1');
   $handler = $view->new_display('panel_pane', 'Top news promoted to front (global)', 'panel_pane_2');
+  $handler->override_option('fields', array(
+    'title' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'link_to_node' => 1,
+      'exclude' => 0,
+      'id' => 'title',
+      'table' => 'node',
+      'field' => 'title',
+      'relationship' => 'none',
+    ),
+    'field_titleimage_imceimage_path' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'link_to_node' => 0,
+      'label_type' => 'none',
+      'format' => 'news_title_default',
+      'multiple' => array(
+        'group' => TRUE,
+        'multiple_number' => '',
+        'multiple_from' => '',
+        'multiple_reversed' => FALSE,
+      ),
+      'exclude' => 0,
+      'id' => 'field_titleimage_imceimage_path',
+      'table' => 'node_data_field_titleimage',
+      'field' => 'field_titleimage_imceimage_path',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+    'view_node' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'text' => 'Read the full story',
+      'exclude' => 0,
+      'id' => 'view_node',
+      'table' => 'node',
+      'field' => 'view_node',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+  ));
   $handler->override_option('arguments', array());
   $handler->override_option('filters', array(
     'field_promote_value' => array(
@@ -3605,7 +3711,46 @@ function u21_views_settings_views_default_views() {
       'relationship' => 'none',
     ),
   ));
-  $handler->override_option('items_per_page', 3);
+  $handler->override_option('footer', '<a href="/news">See all new on u21denmark2011.com</a>');
+  $handler->override_option('footer_format', '3');
+  $handler->override_option('footer_empty', 0);
+  $handler->override_option('items_per_page', 5);
+  $handler->override_option('style_plugin', 'slideshow');
+  $handler->override_option('style_options', array(
+    'type' => 'ul',
+    'mode' => 'views_slideshow_singleframe',
+    'views_slideshow_singleframe-prefix' => '',
+    'views_slideshow_singleframe' => array(
+      'timeout' => '5000',
+      'delay' => '0',
+      'speed' => '700',
+      'start_paused' => 0,
+      'fixed_height' => '1',
+      'random' => '0',
+      'pause' => '1',
+      'pause_on_click' => '0',
+      'pause_when_hidden' => 0,
+      'pause_when_hidden_type' => 'full',
+      'amount_allowed_visible' => '',
+      'remember_slide' => 0,
+      'remember_slide_days' => '1',
+      'controls' => '2',
+      'pager' => '2',
+      'pager_type' => 'Numbered',
+      'pager_hover' => '2',
+      'pager_click_to_page' => 1,
+      'image_count' => '0',
+      'items_per_slide' => '1',
+      'effect' => 'fade',
+      'sync' => '1',
+      'nowrap' => '0',
+      'advanced' => '',
+      'ie' => array(
+        'cleartype' => 'true',
+        'cleartypenobg' => 'false',
+      ),
+    ),
+  ));
   $handler->override_option('pane_title', 'Frontpage top news stories (global)');
   $handler->override_option('pane_description', 'Displays news stories promoted to the frontpage');
   $handler->override_option('pane_category', array(
