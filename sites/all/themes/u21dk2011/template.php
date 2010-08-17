@@ -82,3 +82,20 @@ function u21dk2011_menu_item_link($link) {
 
   return l($link['title'], $link['href'], $link['localized_options']) . $hover;
 }
+
+function u21dk2011_views_slideshow_singleframe_controls($vss_id, $view, $options) {
+  $classes = array(
+    'views_slideshow_singleframe_controls',
+    'views_slideshow_controls',
+  );
+
+  $attributes['class'] = implode(' ', $classes);
+  $attributes['id'] = "views_slideshow_singleframe_controls_" . $vss_id;
+  $attributes = drupal_attributes($attributes);
+
+  $output .= theme('views_slideshow_singleframe_control_previous', $vss_id, $view, $options);
+  $output .= theme('views_slideshow_singleframe_control_next', $vss_id, $view, $options);
+  
+  return $output;
+}
+
