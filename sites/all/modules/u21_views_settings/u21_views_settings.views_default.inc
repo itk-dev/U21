@@ -3711,7 +3711,7 @@ function u21_views_settings_views_default_views() {
       'relationship' => 'none',
     ),
   ));
-  $handler->override_option('footer', '<a href="/news">See all new on u21denmark2011.com</a>');
+  $handler->override_option('footer', '<a href="/news">See all news on u21denmark2011.com</a>');
   $handler->override_option('footer_format', '3');
   $handler->override_option('footer_empty', 0);
   $handler->override_option('items_per_page', 5);
