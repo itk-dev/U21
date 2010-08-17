@@ -1,3 +1,112 @@
+/* ----- / layouts ------ */
+
+body {
+  background: #eff2f4 url(../images/body-back-1680.jpg) center top no-repeat;
+}
+
+
+/* ----- / Secondary Menus ----- */
+
+#region-secondary-menu {
+  background: transparent url(../images/back-menu-secondary.png) left top repeat;
+  background: rgba(148,170,185,0.15);
+}
+
+  #region-secondary-menu ul {
+    width: 960px;
+    margin: 0 auto;
+    padding: 0;
+    line-height: 30px;
+    overflow: hidden;
+  }
+  
+  #region-secondary-menu ul>li {
+    float:right;
+    list-style: none;
+    padding: 0 10px 0 6px;
+  }
+  
+  #region-secondary-menu a:link,
+  #region-secondary-menu a:visited {
+    color: #fff;
+    font-size: 11px;
+  }
+  
+  
+/* ----- / Region Menus ----- */
+
+#region-city-menu {
+  clear: both;
+  overflow: hidden;
+  float: right;
+  width: 316px;
+  margin-top: 9px;
+  line-height: 32px;
+  background: transparent url(../images/back-menu-region.png) center top no-repeat;
+}
+
+  #region-city-menu ul>li {
+    float: left;
+    width: 79px;
+    text-align: center;
+    font-size: 13px;
+    list-style: none;
+  }
+  
+  #region-city-menu a:link,
+  #region-city-menu a:visited {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+/* ----- / Main Menus ----- */
+
+#region-main-menu {
+  clear: both;
+}
+
+  #region-main-menu a:link,
+  #region-main-menu a:visited {
+    color: #fff;
+    font-size: 13px;
+    text-decoration: none;
+  }
+  
+  #region-main-menu li {
+    padding: 4px 8px;
+    margin-right: 10px;
+    display: inline-block;
+  }
+
+
+/* ----- / Branding elementer ----- */
+
+#header {
+  margin-top: 14px;
+}
+
+#site-logo {
+  float: left;
+}
+
+#tournament-logo {
+  margin: 36px 0 0 80px;
+  float: left;
+}
+
+#tournament-date {
+  float: right;
+  margin-top: 36px;
+  margin-right: -10px;
+}
+
+/* =============================================
+
+   GAMMELT SLAM
+
+   ============================================ */
+
+
 .clear {
   clear: both;
 }
