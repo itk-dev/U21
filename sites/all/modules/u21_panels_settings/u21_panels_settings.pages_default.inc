@@ -79,7 +79,7 @@ function u21_panels_settings_default_page_manager_handlers() {
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = '%node:title';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
@@ -249,7 +249,7 @@ function u21_panels_settings_default_page_manager_handlers() {
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = '%node:title';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
@@ -262,14 +262,14 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->access = array();
     $pane->configuration = array(
       'fields_override' => array(
+        'field_titleimage_imceimage_path' => 1,
         'field_teaser_value' => 1,
         'created' => 1,
-        'field_titleimage_fid' => 1,
         'field_content_value' => 1,
         'field_related_nodes_nid' => 1,
       ),
       'override_title' => 1,
-      'override_title_text' => '%node:title',
+      'override_title_text' => '',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -361,6 +361,30 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->position = 0;
     $display->content['new-4'] = $pane;
     $display->panels['top'][0] = 'new-4';
+    $pane = new stdClass;
+    $pane->api_version = 1;
+    $pane->pid = 'new-5';
+    $pane->panel = 'top';
+    $pane->type = 'page_title';
+    $pane->subtype = 'page_title';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'markup' => 'h1',
+      'class' => '',
+      'id' => 'page-title',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $display->content['new-5'] = $pane;
+    $display->panels['top'][1] = 'new-5';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -1063,7 +1087,7 @@ function u21_panels_settings_default_page_manager_handlers() {
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = '%node:title';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
@@ -1250,7 +1274,7 @@ function u21_panels_settings_default_page_manager_handlers() {
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = '%node:title';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
@@ -1391,9 +1415,9 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->configuration = array(
       'markup' => 'h1',
       'class' => '',
-      'id' => '',
-      'override_title' => 1,
-      'override_title_text' => '%node:title',
+      'id' => 'page-title',
+      'override_title' => 0,
+      'override_title_text' => '',
     );
     $pane->cache = array();
     $pane->style = array(
