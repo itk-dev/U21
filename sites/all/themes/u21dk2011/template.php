@@ -31,6 +31,7 @@ function u21dk2011_theme(&$existing, $type, $theme, $path){
  */
 function u21dk2011_preprocess_page(&$vars, $hook) {
   global $theme;
+  global $theme_path;
 
   // Don't display empty help from node_help().
   if ($vars['help'] == "<div class=\"help\"> \n</div>") {
@@ -51,13 +52,13 @@ function u21dk2011_preprocess_page(&$vars, $hook) {
   }  
 
   if (!empty($vars['mission'])) {
-    $vars['tournament_logo'] = '<img id="tournament-logo" src="'. path_to_theme() .'/images/graphic-dk2011.png" alt="'. $vars['mission'] .'" />';
+    $vars['tournament_logo'] = '<img id="tournament-logo" src="/'. $theme_path .'/images/graphic-dk2011.png" alt="'. $vars['mission'] .'" />';
   } else {
     $vars['tournament_logo'] = '';
   }
   
   if (!empty($vars['site_slogan'])) {
-    $vars['tournament_date'] = '<img id="tournament-date" src="'. path_to_theme() .'/images/graphic-date.png" alt="'. $vars['site_slogan'] .'" />';
+    $vars['tournament_date'] = '<img id="tournament-date" src="/'. $theme_path .'/images/graphic-date.png" alt="'. $vars['site_slogan'] .'" />';
   } else {
     $vars['tournament_date'] = '';
   }

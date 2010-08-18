@@ -37,7 +37,7 @@
         <?php endif; ?>        
     </div><!-- /header -->
 
-    <?php print $breadcrumb; ?>
+    <?php /* print $breadcrumb; */ ?>
 
     <?php if ($region_top): ?>
       <div id="region-top" class="region grid-12">

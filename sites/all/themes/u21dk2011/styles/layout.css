@@ -30,6 +30,13 @@ body {
   #region-secondary-menu a:visited {
     color: #fff;
     font-size: 11px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  #region-secondary-menu a:hover {
+    border-bottom: 1px dotted #fff;
+    margin-bottom: -1px;
   }
   
   
@@ -59,30 +66,53 @@ body {
     text-decoration: none;
   }
   
+  #region-city-menu a:hover {
+    border-bottom: 1px dotted #fff;
+    margin-bottom: -1px;
+  }
+  
 /* ----- / Main Menus ----- */
 
 #region-main-menu {
   clear: both;
+  float: left;
+  margin-top: 15px;
 }
 
   #region-main-menu a:link,
   #region-main-menu a:visited {
     color: #fff;
-    font-size: 13px;
     text-decoration: none;
   }
   
   #region-main-menu li {
-    padding: 4px 8px;
-    margin-right: 10px;
+    margin-right: 6px;
     display: inline-block;
   }
 
+  #region-main-menu a {
+    display: inline-block;
+    padding: 3px 10px 5px;
+    border-radius: 6px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -o-border-radius: 6px;
+  }
+  
+  #region-main-menu a.active {
+    background: url(../images/back-menu-main-active.png) left top repeat-x;
+    font-weight: bold;
+  }
+
+  #region-main-menu a:hover {
+    background: url(../images/back-menu-main-hover.png) left top repeat-x;
+  }
 
 /* ----- / Branding elementer ----- */
 
 #header {
   margin-top: 14px;
+  height: 185px;
 }
 
 #site-logo {
