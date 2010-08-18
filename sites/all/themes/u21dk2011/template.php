@@ -31,6 +31,7 @@ function u21dk2011_theme(&$existing, $type, $theme, $path){
  */
 function u21dk2011_preprocess_page(&$vars, $hook) {
   global $theme;
+  global $theme_path;
 
   // Don't display empty help from node_help().
   if ($vars['help'] == "<div class=\"help\"> \n</div>") {
@@ -49,12 +50,24 @@ function u21dk2011_preprocess_page(&$vars, $hook) {
     $vars['logo_alt_text'] = (empty($vars['logo_alt_text']) ? variable_get('site_name', '') : $vars['logo_alt_text']);
     $vars['site_logo'] = '<a id="site-logo" href="'. $vars['front_page'] .'" title="'. t('Home page') .'" rel="home"><img src="'. $vars['logo'] .'" alt="'. $vars['logo_alt_text'] .'" /></a>';
   }  
+
+  if (!empty($vars['mission'])) {
+    $vars['tournament_logo'] = '<img id="tournament-logo" src="/'. $theme_path .'/images/graphic-dk2011.png" alt="'. $vars['mission'] .'" />';
+  } else {
+    $vars['tournament_logo'] = '';
+  }
+  
+  if (!empty($vars['site_slogan'])) {
+    $vars['tournament_date'] = '<img id="tournament-date" src="/'. $theme_path .'/images/graphic-date.png" alt="'. $vars['site_slogan'] .'" />';
+  } else {
+    $vars['tournament_date'] = '';
+  }
+  
 }
 
 /**
  * Add current page to breadcrumb
  */
-
 function u21dk2011_breadcrumb($breadcrumb) {
   if (!empty($breadcrumb)) {
     $title = drupal_get_title();

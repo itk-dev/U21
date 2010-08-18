@@ -1,5 +1,7 @@
 body {
-  font-size: 12px;
+  font:13px/18px "Helvetica Neue",Arial,sans-serif;
+  color: #444;
+  -webkit-font-smoothing: antialiased;
 }
 
 p {

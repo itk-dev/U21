@@ -11,38 +11,33 @@
 
 <body class="<?php print $body_classes; ?> show-grid">
   
-  <div id="wrapper" class="container-12">
-  
-    <div id="header" class="clearfix">
-      
-      <div id="branding" class="grid-12">
-        <?php print $site_logo; ?>
-        <?php if ($site_slogan): ?>
-        <div id="site-slogan" class=""><?php print $site_slogan; ?></div>
-        <?php endif; ?>
-      </div>
+  <?php if ($region_secondary_menu): ?>
+    <div id="region-secondary-menu">
+    <?php print $region_secondary_menu; ?>
+    </div>
+  <?php endif; ?>
 
-      <?php if ($region_secondary_menu): ?>
-        <div id="region-secondary-menu" class="grid-12">
-        <?php print $region_secondary_menu; ?>
-        </div>
-      <?php endif; ?>
-      <div id="main-menus" class="grid-12">
-        <h1>Denmark 2011</h1>
+  <div id="wrapper" class="container-12">
+
+    <div id="header" class="grid-12">
+        <?php print $site_logo; ?>
+        <?php print $tournament_logo; ?>
+        <?php print $tournament_date; ?>
+      
         <?php if ($region_city_menu): ?>
           <div id="region-city-menu">
           <?php print $region_city_menu; ?>
           </div>
         <?php endif; ?>
+
         <?php if ($region_main_menu): ?>
           <div id="region-main-menu">
           <?php print $region_main_menu; ?>
           </div>
         <?php endif; ?>        
-      </div>
     </div><!-- /header -->
 
-    <?php print $breadcrumb; ?>
+    <?php /* print $breadcrumb; */ ?>
 
     <?php if ($region_top): ?>
       <div id="region-top" class="region grid-12">

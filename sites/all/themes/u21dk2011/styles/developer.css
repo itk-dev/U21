@@ -6,52 +6,6 @@
 /* End hide from IE Mac */
 
 /* Menu settings and header*/
-#header {
-  height: 190px;
-}
-
-#header ul {
-  list-style: none;
-  margin: 0px;
-  padding: 0px;
-}
-#header li {
-  padding: 0px;
-  display: inline;
-}
-
-#header a {
-  color: blue;
-}
-
-#header li a:hover {
-  color: black;
-}
-
-#header #region-secondary-menu div {
-  float: right;
-  margin-bottom: 10px;
-}
-
-#header #region-secondary-menu li a {
-  padding: 2px;
-}
-
-#header #region-secondary-menu li {
-  margin-left: 20px;
-}
-
-#header #main-menus {
-  border: 1px solid #BBB;
-  height: 96px;
-}
-
-#header #main-menus h1 {
-  text-align: center;
-  margin-top: 25px;
-  margin-bottom: 10px;
-}
-
 #header #main-menus #region-city-menu {
   position: absolute;
   right: -1px;
@@ -98,13 +52,11 @@
 #main-content #news-top-news,
 #main-content #news-top-region-news,
 #main-content #news-related-stories {
-  border: 1px dashed #BBB;
   padding: 10px 10px 0px 10px;
 }
 
   #main-content #news-top-news,
   #main-content #news-top-region-news {
-    background: #eee;
     border: none;
   }
 
@@ -119,7 +71,6 @@
 
 #main-content #events-top-event,
 #main-content #events-region-topevents {
-  background: #eee;
   padding: 10px 10px 0px 10px;
 }
 
