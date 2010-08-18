@@ -3,6 +3,7 @@
 
    :link : #034582
    :visited :
+   em,i : #f0e2a6
   
 /* --------------- */
 
@@ -22,9 +23,16 @@ p {
   margin-left: 20px;
 }
 
+.field-content-value ul>li,
+.field-content-value ol>li {
+  margin-bottom: 0.2em;
+}
+
 h1 {
   font-size: 24px;
-  font-weight: normal;
+  font-weight: bold;
+  color: #333;
+  line-height: 30px;
 }
 
 h2 {
@@ -43,6 +51,22 @@ h3 {
   margin: 1em 0 0.2em;
   font-weight: bold;
   color: #222;
+}
+
+.field-content-value em, .field-content-value i {
+  font-style: normal;
+  background: #f6ff00;
+  background: rgba(246,255,0,0,5);
+  padding-left: 1px;
+  padding-right: 1px;
+}
+
+quote {
+  font-style: italic;
+}
+
+strong, bold {
+  font-weight: bold;
 }
 
 
@@ -75,12 +99,12 @@ a:hover {
 .field-content-value a[href$='.rtf'],
 .field-content-value a[href$='.txt'] {
   padding-left: 17px;
-  background: transparent url(../images/16x16/Document%2016x16.png) 0% 50% no-repeat;
+  background: transparent url(../images/16x16/Document-16x16.png) 0% 50% no-repeat;
 }
 
 .field-content-value p a[href^='http://'] {
   padding-left: 19px;
-  background: transparent url(../images/16x16/Out%2016x16.png) 0% 50% no-repeat; 
+  background: transparent url(../images/16x16/Out-16x16.png) 0% 50% no-repeat; 
 }
 
 .field-content-value a[href^='http://www.u21denmark2011.com'],
@@ -90,6 +114,13 @@ a:hover {
   padding-left: 0;
   background: transparent;
 }
+
+/* ----- / Submenu ----- */
+.pane-menu-tree ul li {
+  font-size: 11px;
+  line-height: 13px;
+}
+
 
 
 /* ------ / REGION TITLE ----- */

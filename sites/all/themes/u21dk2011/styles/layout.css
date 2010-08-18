@@ -22,6 +22,7 @@
 #site-logo {
   float: left;
   border: none;
+  margin-bottom: 0;
 }
 
 #tournament-logo {
@@ -87,7 +88,6 @@
     float: left;
     width: 79px;
     text-align: center;
-    font-size: 13px;
     list-style: none;
   }
   
@@ -141,6 +141,53 @@
     background: url(../images/back-menu-main-hover.png) left top repeat-x;
   }
 
+/* ======================================== */
+/*  SUB + REGIONAL MENUS                    */
+/* ======================================== */
+
+/* ----- / Submenu ----- */
+.pane-menu-tree .pane-content {
+  background: transparent url(../images/back-groove.png) left top repeat-x;
+  padding-top: 10px;
+}
+
+.pane-menu-tree ul {
+  padding-left: 6px;
+}
+
+.pane-menu-tree li {
+  list-style-type: none;
+}
+
+
+.pane-menu-tree li:hover>a {
+  background: transparent url(../images/16x16/Checkbox-16x16.png) 0% 50% no-repeat;
+}
+
+.pane-menu-tree li a:link,
+.pane-menu-tree li a:visited {
+  padding-left: 18px;
+  border: none;
+  margin-bottom: 6px;
+  text-decoration: underline;
+  display: inline-block;
+}
+
+.pane-menu-tree li li {
+  padding-left: 8px;
+}
+
+.pane-menu-tree li a.active {
+  background: transparent url(../images/16x16/Checkbox-16x16.png) 0% 50% no-repeat;
+  font-weight: bold;
+  color: #444;
+}
+
+/* ----- / Regional submenu ----- */
+.pane-region-menu ul {
+
+}
+
 
 
 /* ======================================== */
@@ -151,6 +198,46 @@
   margin-top: 20px;
 }
 
+#content>.tabs {
+  clear: both;
+}
+
+#page-title {
+  height: 52px;
+  padding: 0 8px;
+}
+
+/* ----- /Region header ----- */
+#region-title-menu h1 {
+  display: inline-block;
+  width: 300px;
+}
+
+#region-title-menu>div {
+  display: inline-block;
+  width: 500px;
+}
+
+
+/* ----- / Content formatting ----- */
+.field-content-value img {
+  margin: 0 -8px;
+  border: 8px #fff solid;
+}
+
+
+
+/* ----- / View: Static pages ------ */
+.view-static-pages .field-content-value {
+ padding: 0 8px; 
+}
+
+
+/* ----- / View: News ----- */
+.view-News .field-content-value {
+  width: 444px;
+  padding: 0 8px;
+}
 
 
 
@@ -174,15 +261,6 @@
 }
 
 /* ----- / Regions ------ */
-.panel-col-left .pane-menu-tree {
-  border-top: 1px solid #ccc;
-  padding-top: 8px;
-}
-
-.panel-col-left .pane-menu-tree ul {
-  margin-left: 20px;
-}
-
 #region-title-menu {
   border-top: 1px solid #ccc;
   padding-top: 8px;

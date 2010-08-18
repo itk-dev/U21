@@ -1,7 +1,4 @@
-#main-content #region-title-menu h1 {
-  float: left;
-  width: 300px;
-}
+
 
 #main-content #region-title-menu ul {
   padding-top: 10px;
@@ -34,4 +31,8 @@
 
 .menu-hover {
   display: none;
+}
+
+.panel-col-left {
+  clear: left;
 }
