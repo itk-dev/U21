@@ -11,15 +11,16 @@
 
 <body class="<?php print $body_classes; ?> show-grid">
   
+   <div id="wrapper">
   <?php if ($region_secondary_menu): ?>
     <div id="region-secondary-menu">
     <?php print $region_secondary_menu; ?>
     </div>
   <?php endif; ?>
 
-  <div id="wrapper" class="container-12">
+ 
 
-    <div id="header" class="grid-12">
+    <div id="header" class="container-12">
         <?php print $site_logo; ?>
         <?php print $tournament_logo; ?>
         <?php print $tournament_date; ?>
@@ -40,12 +41,12 @@
     <?php /* print $breadcrumb; */ ?>
 
     <?php if ($region_top): ?>
-      <div id="region-top" class="region grid-12">
+      <div id="region-top" class="region container-12">
       <?php print $region_top; ?>
       </div>
     <?php endif; ?>
        
-    <div id="content" class="grid-12 clear">
+    <div id="content" class="container-12 clear">
       <?php if ($title): ?>
         <h1 class="title" id="page-title"><?php print $title; ?></h1>
       <?php endif; ?>
@@ -54,12 +55,12 @@
       <?php endif; ?>
       <?php print $messages; ?>
       <?php print $help; ?>
-      <div id="main-content" class="region clear-block">
+      <div id="main-content" class="grid-12 region">
         <?php print $content; ?>
       </div>
     </div><!-- /content -->
 
-    <div id="secondary-content" class="clear clearfix">
+    <div id="secondary-content" class="container-12 clear">
       <?php if ($region_middle): ?>
         <div id="region-middle" class="region grid-12">
         <?php print $region_middle; ?>
@@ -89,7 +90,7 @@
     </div><!-- /Secondary content -->
   
     <?php if ($footer_1 || $footer_2 || $footer_3 || $footer_4): ?>
-    <ul id="footer" class="clear clearfix">
+    <ul id="footer" class="container-12 clear">
         <?php if ($footer_1): ?>        
         <li class="region grid-3">
           <?php print $footer_1; ?>

@@ -1,7 +1,38 @@
 /* ----- / layouts ------ */
 
-body {
+#wrapper {
   background: #eff2f4 url(../images/body-back-1680.jpg) center top no-repeat;
+  overflow: hidden;
+}
+
+/* ======================================== */
+/*  HEADER                                  */
+/* ======================================== */
+
+#header {
+  margin-top: 14px;
+  height: 185px;
+  padding: 0 10px;
+  width: 940px;
+}
+
+
+/* ----- / Branding elementer ----- */
+
+#site-logo {
+  float: left;
+  border: none;
+}
+
+#tournament-logo {
+  margin: 36px 0 0 80px;
+  float: left;
+}
+
+#tournament-date {
+  float: right;
+  margin-top: 36px;
+  margin-right: -10px;
 }
 
 
@@ -83,6 +114,7 @@ body {
   #region-main-menu a:visited {
     color: #fff;
     text-decoration: none;
+    border: none;
   }
   
   #region-main-menu li {
@@ -99,7 +131,8 @@ body {
     -o-border-radius: 6px;
   }
   
-  #region-main-menu a.active {
+  #region-main-menu a.active,
+  #region-main-menu a.active-trail {
     background: url(../images/back-menu-main-active.png) left top repeat-x;
     font-weight: bold;
   }
@@ -108,46 +141,36 @@ body {
     background: url(../images/back-menu-main-hover.png) left top repeat-x;
   }
 
-/* ----- / Branding elementer ----- */
 
-#header {
-  margin-top: 14px;
-  height: 185px;
+
+/* ======================================== */
+/*  CONTENT                                 */
+/* ======================================== */
+
+#content {
+  margin-top: 20px;
 }
 
-#site-logo {
-  float: left;
-}
 
-#tournament-logo {
-  margin: 36px 0 0 80px;
-  float: left;
-}
 
-#tournament-date {
-  float: right;
-  margin-top: 36px;
-  margin-right: -10px;
-}
+
+
 
 /* =============================================
 
-   GAMMELT SLAM
+   GAMMELT SLAM */
 
-   ============================================ */
+
 
 
 .clear {
   clear: both;
 }
 
-#content {
 
-}
 
 #secondary-content {
   padding: 10px 0;
-  background: #efefef;
 }
 
 /* ----- / Regions ------ */

@@ -1,3 +1,11 @@
+/* --------------- 
+   Colours
+
+   :link : #034582
+   :visited :
+  
+/* --------------- */
+
 body {
   font:13px/18px "Helvetica Neue",Arial,sans-serif;
   color: #444;
@@ -5,10 +13,11 @@ body {
 }
 
 p {
-  margin-bottom: 0.5em;
+  margin-bottom: 1em;
 }
 
-.field-content-value ul, .field-content-value ol {
+.field-content-value ul, 
+.field-content-value ol {
   margin-bottom: 0.5em;
   margin-left: 20px;
 }
@@ -20,7 +29,9 @@ h1 {
 
 h2 {
   font-size: 18px;
-  margin: 2em 0 0.2em;
+  margin: 1.5em 0 0.2em;
+  font-weight: bold;
+  color: #222;
 }
 
   li>h2 {
@@ -30,8 +41,55 @@ h2 {
 h3 {
   font-size: 14px;
   margin: 1em 0 0.2em;
+  font-weight: bold;
+  color: #222;
 }
 
+
+
+/* ------ / Link typography ------ */
+
+a:link, a:visited {
+  color: #034582;
+  text-decoration: none;
+  border-bottom: 1px dotted #034582;
+  margin-bottom: -1px;
+}
+
+a:hover {
+  border: none;
+  margin-bottom: 0;
+}
+
+.field-content-value a[href$='.pdf'],
+.field-content-value a[href$='.doc'],
+.field-content-value a[href$='.docx'],
+.field-content-value a[href$='.tif'],
+.field-content-value a[href$='.tiff'],
+.field-content-value a[href$='.png'],
+.field-content-value a[href$='.jpg'],
+.field-content-value a[href$='.jpeg'],
+.field-content-value a[href$='.zip'],
+.field-content-value a[href$='.ppt'],
+.field-content-value a[href$='.pptx'],
+.field-content-value a[href$='.rtf'],
+.field-content-value a[href$='.txt'] {
+  padding-left: 17px;
+  background: transparent url(../images/16x16/Document%2016x16.png) 0% 50% no-repeat;
+}
+
+.field-content-value p a[href^='http://'] {
+  padding-left: 19px;
+  background: transparent url(../images/16x16/Out%2016x16.png) 0% 50% no-repeat; 
+}
+
+.field-content-value a[href^='http://www.u21denmark2011.com'],
+.field-content-value a[href^='http://u21denmark2011.com'],
+.field-content-value a[href^='http://u21.etek.dk'],
+.field-content-value a[href^='http://dev.u21.etek.dk'] {
+  padding-left: 0;
+  background: transparent;
+}
 
 
 /* ------ / REGION TITLE ----- */

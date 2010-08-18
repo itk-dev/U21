@@ -1,39 +1,3 @@
-.clearfix:after {content:"."; display:block; height:0;
-                 clear:both; visibility:hidden; }
-.clearfix       {display:inline-block;}
-/* Hide from IE Mac */
-.clearfix       {display:block;}
-/* End hide from IE Mac */
-
-/* Menu settings and header*/
-#header #main-menus #region-city-menu {
-  position: absolute;
-  right: -1px;
-  bottom: 4px;
-}
-
-#header #main-menus #region-main-menu {
-  position: absolute;
-  bottom: -24px;
-  left: -1px;
-}
-
-#header #main-menus #region-city-menu li a,
-#header #main-menus #region-main-menu li a {
-  border: 1px solid #BBB;
-}
-
-#header #main-menus #region-city-menu li a.active,
-#header #main-menus #region-main-menu li a.active {
-  background-color: #FFF;
-}
-
-#header #main-menus #region-city-menu li a,
-#header #main-menus #region-main-menu li a {
-  background-color: #EEE;
-  padding: 5px 10px 5px 10px;
-}
-
 #main-content #region-title-menu h1 {
   float: left;
   width: 300px;
@@ -49,47 +13,6 @@
 }
 
 /* Main content */
-#main-content #news-top-news,
-#main-content #news-top-region-news,
-#main-content #news-related-stories {
-  padding: 10px 10px 0px 10px;
-}
-
-  #main-content #news-top-news,
-  #main-content #news-top-region-news {
-    border: none;
-  }
-
-  #main-content #news-list,
-  #main-content #news-list-taxonomy  {
-    border: none;
-  }
-
-  #news-list-taxonomy .pane-title {
-    display: none;
-  }
-
-#main-content #events-top-event,
-#main-content #events-region-topevents {
-  padding: 10px 10px 0px 10px;
-}
-
-#main-content #events-practical-information table {
-  width: 300px;
-}
-
-#main-content #events-practical-information table td {
-  border: 1px solid #BBB;
-  padding: 4px;
-}
-
-#main-content #events-practical-information table td.label {
-  width: 25%;
-}
-
-#main-content #related-news-stories {
-  margin-top: 20px;
-}
 
 .pane-taxonomy-links .pane-content h2,
 .pane-slug-links .pane-content h2,
@@ -107,14 +30,6 @@
 .pane-taxonomy-links-context ul,
 .pane-type-links ul {
   margin-left: 20px;
-}
-
-/* secondary-content */
-#secondary-content {
-}
-
-#footer {
-  background-color: #ccc;
 }
 
 .menu-hover {

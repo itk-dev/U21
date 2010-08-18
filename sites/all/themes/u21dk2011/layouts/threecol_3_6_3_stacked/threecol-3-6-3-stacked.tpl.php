@@ -5,19 +5,19 @@
   <?php } ?>
   
   <?php if ($content['left']) { ?>
-    <div class="grid-3 alpha panel-col-left">
+    <div class="grid-2 alpha panel-col-left">
       <?php print $content['left']; ?>
     </div>
   <?php } ?>
 
   <?php if ($content['center']) { ?>
-  <div class="<?php if (!$content['left']) { ?>prefix-3 alpha <?php } ?><?php if (!$content['right']) { ?><?php } ?>grid-6 panel-col-center">
+  <div class="<?php if (!$content['left']) { ?>prefix-2 alpha <?php } ?><?php if (!$content['right']) { ?><?php } ?>grid-6 panel-col-center">
     <?php print $content['center']; ?>
   </div>
   <?php } ?>
   
   <?php if ($content['right']) { ?>
-  <div class="grid-3 omega panel-col-right">
+  <div class="grid-4 omega panel-col-right">
     <?php print $content['right']; ?>
   </div>
   <?php } ?>
