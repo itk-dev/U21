@@ -298,6 +298,45 @@
 
 
 
+/* ======================================== */
+/*  SIDEBAR                                 */
+/* ======================================== */
+
+.pane-page-content,
+.pane-maps {
+  margin-bottom: 28px;
+  background: transparent url(../images/back-groove.png) left top repeat-x;
+  padding-top: 12px;
+}
+
+.pane-page-content .pane-content {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.pane-page-content .pane-content>h2:first-child {
+  margin-top: 0;
+  padding-bottom: 8px;
+}
+
+
+#news-related-stories h2 {
+  background: transparent url(../images/back-groove.png) left top repeat-x;
+  padding: 12px 8px 8px;  
+}
+
+#news-related-stories .news-item {
+  list-style: none;
+  padding: 0 8px;
+}
+
+#news-related-stories a.active {
+  color: 
+}
+
+
+
+
 /* =============================================
 
    GAMMELT SLAM */

@@ -18,13 +18,15 @@ p {
 }
 
 .field-content-value ul, 
-.field-content-value ol {
+.field-content-value ol,
+.pane-page-content li {
   margin-bottom: 0.5em;
   margin-left: 20px;
 }
 
 .field-content-value ul>li,
-.field-content-value ol>li {
+.field-content-value ol>li,
+.pane-page-content li {
   margin-bottom: 0.2em;
 }
 
@@ -73,14 +75,15 @@ strong, bold {
 
 /* ------ / Link typography ------ */
 
-a:link, a:visited {
+a:link, a:visited, li a.active {
   color: #034582;
   text-decoration: none;
   border-bottom: 1px dotted #034582;
   margin-bottom: -1px;
 }
 
-a:hover {
+a:hover,
+li a.active:hover {
   border: none;
   margin-bottom: 0;
 }
@@ -129,6 +132,18 @@ a:hover {
   font-weight: normal;
   font-size: 18px;
 }
+
+
+/* ----- / Sidebar ----- */
+#news-related-stories .created-date {
+  font-style: italic;
+  font-size: 11px;
+}
+
+#news-related-stories strong {
+  font-weight: normal;
+}
+
 
 /* ----- / Metadata ------ */
 
