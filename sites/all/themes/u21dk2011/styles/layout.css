@@ -208,7 +208,16 @@
   width: 924px
 }
 
-/* ----- /Region header ----- */
+.pane-page-title {
+  padding-top: 20px;
+  clear: left;
+}
+
+/* ----- / Region header ----- */
+#region-title-menu {
+  padding: 0 8px;
+}
+
 #region-title-menu h1 {
   display: inline-block;
   width: 300px;
@@ -220,27 +229,72 @@
 }
 
 
+/* ----- / Teaser + date ----- */
+.panel-col-left .field-teaser-value {
+  font-size: 20px;
+  line-height: 25px;
+  padding: 0 8px;
+  margin-bottom: 26px;
+}
+
+.panel-col-left .view-News .field-teaser-value {
+  background: transparent url(../images/back-groove.png) left bottom repeat-x;
+  margin-bottom: 0;
+  padding-bottom: 10px;
+}
+
+.field-teaser-value strong {
+  font-weight: normal;
+}
+
+.view-events .field-date-value {
+  padding: 8px 8px 0;
+  background: transparent url(../images/back-groove.png) left top repeat-x;
+}
+
+.view-events .address {
+  padding: 0 8px 8px;
+  background: transparent url(../images/back-groove.png) left bottom repeat-x;
+  margin-bottom: 20px;  
+}
+
+.view-News .created {
+  padding: 6px 8px 8px;
+  background: transparent url(../images/back-groove.png) left bottom repeat-x;
+  margin-bottom: 20px;
+}
+
+
+
 /* ----- / Content formatting ----- */
+.view-static-pages .field-content-value {
+ padding: 0 8px; 
+}
+
+.view-News .field-content-value,
+.view-events .field-content-value {
+  width: 444px;
+  padding: 0 8px;
+}
+
 .field-content-value img {
   margin: 0 -8px;
   border: 8px #fff solid;
 }
 
-
-
-/* ----- / View: Static pages ------ */
-.view-static-pages .field-content-value {
- padding: 0 8px; 
+/* ----- / Title image ----- */
+.field-titleimage-imceimage-path {
+  padding: 7px;
+  background: #fff;
+  border: 1px #ddd solid;
+  margin-bottom: 15px;
 }
 
-
-/* ----- / View: News ----- */
-.view-News .field-content-value {
-  width: 444px;
-  padding: 0 8px;
+.field-titleimage-imceimage-path img {
+  display: block;
+  max-width: 604px;
+  height: auto;
 }
-
-
 
 
 
@@ -256,23 +310,7 @@
 }
 
 
-
-#secondary-content {
-  padding: 10px 0;
-}
-
-/* ----- / Regions ------ */
-#region-title-menu {
-  border-top: 1px solid #ccc;
-  padding-top: 8px;
-}
-
-
 /* ------ / News ------ */
-.title-image img {
-  display: block;
-}
-
 #news-top-news {
   margin-bottom: 20px;
 }
