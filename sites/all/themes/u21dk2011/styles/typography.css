@@ -144,6 +144,31 @@ li a.active:hover {
   font-weight: normal;
 }
 
+/* ----- / News Slider ----- */
+#news-top-news .title a:link,
+#news-top-news .title a:visited {
+  border: none;
+  font-weight: bold;
+  color: #fff;
+  font-size: 40px;
+  line-height: 40px;
+}
+
+#news-top-news .view-node a:link,
+#news-top-news .view-node a:visited,
+#news-top-news .view-footer a:link,
+#news-top-news .view-footer a:visited {
+  color: #fea92f;
+  font-weight: bold;
+  border-bottom: 1px dotted #fea92f;
+  line-height: 18px;
+}
+
+#news-top-news .view-node a:hover,
+#news-top-news .view-footer a:hover {
+  border-bottom: none;
+  padding-bottom: 1px;
+}
 
 /* ----- / Metadata ------ */
 
