@@ -33,6 +33,14 @@ function u21dk2011_preprocess_page(&$vars, $hook) {
   global $theme;
   global $theme_path;
 
+  // Detect if page is shown in a regional context
+  $vars['is_region'] = FALSE;
+  if ($hook == 'page') {
+    if ($vars['node']->field_slug_ref[0]['nid']) {
+      $vars['is_region'] = TRUE;
+    }
+  }
+
   // Don't display empty help from node_help().
   if ($vars['help'] == "<div class=\"help\"> \n</div>") {
     $vars['help'] = '';
@@ -51,11 +59,7 @@ function u21dk2011_preprocess_page(&$vars, $hook) {
     $vars['site_logo'] = '<a id="site-logo" href="'. $vars['front_page'] .'" title="'. t('Home page') .'" rel="home"><img src="'. $vars['logo'] .'" alt="'. $vars['logo_alt_text'] .'" /></a>';
   }  
 
-  if (!empty($vars['mission'])) {
-    $vars['tournament_logo'] = '<img id="tournament-logo" src="/'. $theme_path .'/images/graphic-dk2011.png" alt="'. $vars['mission'] .'" />';
-  } else {
-    $vars['tournament_logo'] = '';
-  }
+  $vars['tournament_logo'] = '<img id="tournament-logo" src="/'. $theme_path .'/images/graphic-dk2011.png" alt="Denmark 2011" />';
   
   if (!empty($vars['site_slogan'])) {
     $vars['tournament_date'] = '<img id="tournament-date" src="/'. $theme_path .'/images/graphic-date.png" alt="'. $vars['site_slogan'] .'" />';
