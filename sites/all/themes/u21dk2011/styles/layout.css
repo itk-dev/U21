@@ -339,7 +339,8 @@
 /*  TOP NEWS                                */
 /* ======================================== */
 
-#news-top-news {
+#news-top-news,
+#events-top-event {
   position: relative;
   width: 620px;
   height: 330px;
@@ -348,31 +349,49 @@
 
 
 #news-top-news .title,
-#news-top-news .view-node {
+#events-top-event .title,
+#news-top-news .view-node,
+#events-top-event .view-node,
+#events-top-event .field-date-value,
+#events-top-event .address {
   background: url(../images/back-black-50pct.png) left top repeat;
   background: rgba(0,0,0,0.5);
   z-index: 20;
   position: relative;
 }
 
-#news-top-news .title {
+#news-top-news .title,
+#events-top-event .title {
   margin-top: 20px;
   max-width: 480px;
 }
 
-#news-top-news .title a {
+#news-top-news .title a,
+#events-top-event .title a {
   display: inline-block;
   padding: 8px 16px;
   margin-bottom: 0;
 }
 
-#news-top-news .view-node {
+#news-top-news .view-node,
+#events-top-event .view-node,
+#events-top-event .field-date-value,
+#events-top-event .address {
   display: inline-block;
-  margin-top: 6px;
+  margin: 6px 0 0;
   padding: 2px 16px 4px;
 }
 
-#news-top-news .field-titleimage-imceimage-path {
+#events-top-event .adr .fn:after {
+  content: ', ';
+}
+
+#events-top-event .view-node {
+  margin-right: 50%;
+}
+
+#news-top-news .field-titleimage-imceimage-path,
+#events-top-event .field-titleimage-imceimage-path {
   position: absolute;
   border: none;
   z-index: 10;
@@ -381,16 +400,19 @@
   top: 0;
 }
 
-#news-top-news .field-titleimage-imceimage-path img {
+#news-top-news .field-titleimage-imceimage-path img,
+#events-top-event .field-titleimage-imceimage-path img {
   max-width: none;
 }
 
-#news-top-news .views_slideshow_main:hover .field-titleimage-imceimage-path img {
+#news-top-news .views_slideshow_main:hover .field-titleimage-imceimage-path img,
+#events-top-event .views_slideshow_main:hover .field-titleimage-imceimage-path img {
   opacity: 0.9;
 }
 
 /* ----- / Next/Prev controls ----- */
-#news-top-news .views-slideshow-controls-bottom {
+#news-top-news .views-slideshow-controls-bottom,
+#events-top-event .views-slideshow-controls-bottom {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -400,7 +422,8 @@
   background: rgba(0,0,0,0.5);
 }
 
-#news-top-news .views_slideshow_previous {
+#news-top-news .views_slideshow_previous,
+#events-top-event .views_slideshow_previous {
   position: absolute;
   width: 38px;
   height: 70px;
@@ -410,12 +433,13 @@
   text-indent: -999em;
 }
 
-#news-top-news .views_slideshow_previous:hover {
+#news-top-news .views_slideshow_previous:hover,
+#events-top-event .views_slideshow_previous:hover {
   background: url(../images/button-slideshow-prev-hover.png) left top no-repeat;    
 }
 
-
-#news-top-news .views_slideshow_next {
+#news-top-news .views_slideshow_next,
+#events-top-event .views_slideshow_next {
   position: absolute;
   width: 38px;
   height: 70px;
@@ -425,7 +449,8 @@
   text-indent: -999em;
 }
 
-#news-top-news .views_slideshow_next:hover {
+#news-top-news .views_slideshow_next:hover,
+#events-top-event .views_slideshow_next:hover {
   background: url(../images/button-slideshow-next-hover.png) left top no-repeat;    
 }
 
@@ -434,7 +459,13 @@
 #news-top-news .views_slideshow_next:focus,
 #news-top-news .views_slideshow_previous:focus,
 #news-top-news .pager-item a:active,
-#news-top-news .pager-item a:focus {
+#news-top-news .pager-item a:focus,
+#events-top-event .views_slideshow_next:active,
+#events-top-event .views_slideshow_previous:active,
+#events-top-event .views_slideshow_next:focus,
+#events-top-event .views_slideshow_previous:focus,
+#events-top-event .pager-item a:active,
+#events-top-event .pager-item a:focus {
   outline: none;
   border: 1px dotted #fea92f;
   margin: -1px;
@@ -442,11 +473,13 @@
 
 /* ----- / Pager ----- */
 
-#news-top-news .views_slideshow_singleframe_pager {
+#news-top-news .views_slideshow_singleframe_pager,
+#events-top-event .views_slideshow_singleframe_pager {
   padding: 8px 16px 2px;
 }
 
-#news-top-news .pager-item a {
+#news-top-news .pager-item a,
+#events-top-event .pager-item a {
   background: url(../images/button-pager.png) left top no-repeat;
   width: 12px;
   height: 12px;
@@ -455,12 +488,15 @@
 }
 
 #news-top-news .activeSlide a,
-#news-top-news .pager-item a:hover {
+#news-top-news .pager-item a:hover,
+#events-top-event .activeSlide a,
+#events-top-event .pager-item a:hover {
   background: url(../images/button-pager-active.png) left top no-repeat;
 }
 
 /* ----- / Read more link ----- */
-#news-top-news .view-footer {
+#news-top-news .view-footer,
+#events-top-event .view-footer {
   float: right;
   position: absolute;
   z-index: 30;

@@ -146,7 +146,9 @@ li a.active:hover {
 
 /* ----- / News Slider ----- */
 #news-top-news .title a:link,
-#news-top-news .title a:visited {
+#news-top-news .title a:visited,
+#events-top-event .title a:link,
+#events-top-event .title a:visited {
   border: none;
   font-weight: bold;
   color: #fff;
@@ -157,7 +159,11 @@ li a.active:hover {
 #news-top-news .view-node a:link,
 #news-top-news .view-node a:visited,
 #news-top-news .view-footer a:link,
-#news-top-news .view-footer a:visited {
+#news-top-news .view-footer a:visited,
+#events-top-event .view-node a:link,
+#events-top-event .view-node a:visited,
+#events-top-event .view-footer a:link,
+#events-top-event .view-footer a:visited {
   color: #fea92f;
   font-weight: bold;
   border-bottom: 1px dotted #fea92f;
@@ -165,10 +171,19 @@ li a.active:hover {
 }
 
 #news-top-news .view-node a:hover,
-#news-top-news .view-footer a:hover {
+#news-top-news .view-footer a:hover,
+#events-top-event .view-node a:hover,
+#events-top-event .view-footer a:hover {
   border-bottom: none;
   padding-bottom: 1px;
 }
+
+#events-top-event .address span,
+#events-top-event .field-date-value span {
+  color: #fff;
+  font-weight: bold;
+  padding-bottom: 1px;
+} 
 
 /* ----- / Metadata ------ */
 
