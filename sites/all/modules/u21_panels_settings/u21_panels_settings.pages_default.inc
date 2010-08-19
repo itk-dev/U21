@@ -92,11 +92,11 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->access = array();
     $pane->configuration = array(
       'fields_override' => array(
-        'title' => 1,
+        'field_titleimage_imceimage_path' => 1,
         'field_teaser_value' => 1,
         'created' => 1,
-        'field_titleimage_fid' => 1,
         'field_content_value' => 1,
+        'field_related_nodes_nid' => 1,
       ),
       'override_title' => 1,
       'override_title_text' => '',
@@ -431,7 +431,14 @@ function u21_panels_settings_default_page_manager_handlers() {
   $display->api_version = 1;
   $display->layout = 'twocol_8_4_stacked';
   $display->layout_settings = array();
-  $display->panel_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'top' => NULL,
+      'left' => NULL,
+      'right' => NULL,
+    ),
+  );
   $display->cache = array();
   $display->title = '';
   $display->content = array();
@@ -450,8 +457,8 @@ function u21_panels_settings_default_page_manager_handlers() {
       'items_per_page' => '3',
       'fields_override' => array(
         'title' => 1,
-        'created' => 1,
-        'field_teaser_value' => 1,
+        'field_titleimage_imceimage_path' => 1,
+        'view_node' => 1,
       ),
       'context' => array(
         0 => 'argument_nid_1',
@@ -460,10 +467,12 @@ function u21_panels_settings_default_page_manager_handlers() {
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array(
-      'css_id' => 'news-top-region-news',
-      'css_class' => '',
+      'css_id' => 'news-top-news',
+      'css_class' => 'news-top-region-news',
     );
     $pane->extras = array();
     $pane->position = 0;
@@ -483,7 +492,9 @@ function u21_panels_settings_default_page_manager_handlers() {
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
@@ -510,7 +521,9 @@ function u21_panels_settings_default_page_manager_handlers() {
       'override_title_text' => 'Eventkalender',
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array(
       'css_id' => 'events-region-topevents',
       'css_class' => '',
@@ -533,7 +546,9 @@ function u21_panels_settings_default_page_manager_handlers() {
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
@@ -679,7 +694,7 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'map_width' => '220',
+      'map_width' => '300',
       'map_height' => '250',
       'map_zoom' => '14',
       'context' => 'argument_nid_1',
@@ -791,7 +806,13 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->subtype = 'page_title';
     $pane->shown = TRUE;
     $pane->access = array();
-    $pane->configuration = array();
+    $pane->configuration = array(
+      'markup' => 'h1',
+      'class' => '',
+      'id' => 'page-title',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
@@ -933,7 +954,7 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'map_width' => '220',
+      'map_width' => '300',
       'map_height' => '200',
       'map_zoom' => '14',
       'context' => 'argument_nid_1',
@@ -1105,10 +1126,11 @@ function u21_panels_settings_default_page_manager_handlers() {
       'offset' => '0',
       'path' => '',
       'fields_override' => array(
-        'title' => 1,
-        'address' => 1,
         'field_date_value' => 1,
+        'address' => 1,
+        'field_titleimage_imceimage_path' => 1,
         'field_teaser_value' => 1,
+        'field_content_value' => 1,
       ),
       'override_title' => 0,
       'override_title_text' => '',
@@ -2242,7 +2264,7 @@ function u21_panels_settings_default_page_manager_pages() {
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'events-panel_pane_2';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array(
       'use_pager' => 0,
@@ -2324,7 +2346,14 @@ function u21_panels_settings_default_page_manager_pages() {
   $display->api_version = 1;
   $display->layout = 'twocol_8_4_stacked';
   $display->layout_settings = array();
-  $display->panel_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'top' => NULL,
+      'left' => NULL,
+      'right' => NULL,
+    ),
+  );
   $display->cache = array();
   $display->title = '';
   $display->content = array();
@@ -2352,7 +2381,9 @@ function u21_panels_settings_default_page_manager_pages() {
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array(
       'css_id' => 'news-list',
       'css_class' => '',
@@ -2377,7 +2408,9 @@ function u21_panels_settings_default_page_manager_pages() {
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
@@ -2409,7 +2442,9 @@ function u21_panels_settings_default_page_manager_pages() {
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
@@ -2445,7 +2480,9 @@ function u21_panels_settings_default_page_manager_pages() {
       ),
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 2;
@@ -2467,7 +2504,9 @@ function u21_panels_settings_default_page_manager_pages() {
       ),
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 3;
@@ -2502,14 +2541,16 @@ return TRUE;',
       'path' => 'news/%/rss',
       'fields_override' => array(
         'title' => 1,
-        'created' => 1,
-        'field_teaser_value' => 1,
+        'field_titleimage_imceimage_path' => 1,
+        'view_node' => 1,
       ),
       'override_title' => 1,
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array(
       'css_id' => 'news-top-news',
       'css_class' => '',
