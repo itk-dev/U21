@@ -248,12 +248,12 @@
 }
 
 .view-events .field-date-value {
-  padding: 8px 8px 0;
+  padding: 10px 8px 0;
   background: transparent url(../images/back-groove.png) left top repeat-x;
 }
 
 .view-events .address {
-  padding: 0 8px 8px;
+  padding: 0 8px 10px;
   background: transparent url(../images/back-groove.png) left bottom repeat-x;
   margin-bottom: 20px;  
 }
@@ -264,6 +264,14 @@
   margin-bottom: 20px;
 }
 
+#calendar-icon {
+  background: url(../images/Calendar-alt-48x48.png) 50% 50% no-repeat;
+  float:left;
+  height:40px;
+  margin-right:12px;
+  margin-top: -3px;
+  width:40px;
+}
 
 
 /* ----- / Content formatting ----- */
@@ -303,20 +311,29 @@
 /* ======================================== */
 
 .pane-page-content,
-.pane-maps {
+.pane-maps,
+#events-practical-information {
   margin-bottom: 28px;
   background: transparent url(../images/back-groove.png) left top repeat-x;
   padding-top: 12px;
 }
 
-.pane-page-content .pane-content {
+.pane-page-content .pane-content,
+#events-practical-information {
   padding-left: 8px;
   padding-right: 8px;
 }
 
-.pane-page-content .pane-content>h2:first-child {
+.pane-page-content .pane-content>h2:first-child,
+#events-practical-information>h2:first-child {
   margin-top: 0;
   padding-bottom: 8px;
+}
+
+#events-practical-information tr td:first-child {
+  line-height:18px;
+  padding-bottom:4px;
+  width:80px;
 }
 
 

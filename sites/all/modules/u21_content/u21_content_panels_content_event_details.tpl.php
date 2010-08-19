@@ -1,4 +1,3 @@
-<h2><?php print $title ?></h2>
 <table>
   <tr>
     <td class="label"><?php print t('Date') ?>:</td>
