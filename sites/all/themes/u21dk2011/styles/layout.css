@@ -418,6 +418,12 @@
   top: 0;
 }
 
+#news-top-news .field-titleimage-imceimage-path a,
+#events-top-event .field-titleimage-imceimage-path a {
+  display: block;
+  padding: 0;
+}
+
 #news-top-news .field-titleimage-imceimage-path img,
 #events-top-event .field-titleimage-imceimage-path img {
   max-width: none;
