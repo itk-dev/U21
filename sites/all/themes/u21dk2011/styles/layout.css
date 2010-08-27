@@ -234,6 +234,10 @@ body {
   clear: left;
 }
 
+.panel-col-top {
+  padding-bottom: 20px;
+}
+
 /* ----- / Region header ----- */
 #region-title-menu {
   padding: 0 8px;
@@ -333,7 +337,8 @@ body {
 
 .pane-page-content,
 .pane-maps,
-#events-practical-information {
+#events-practical-information,
+.panel-col-right .panel-pane {
   margin-bottom: 28px;
   background: transparent url(../images/back-groove.png) left top repeat-x;
   padding-top: 12px;
@@ -347,7 +352,8 @@ body {
 
 .pane-page-content .pane-content>h2:first-child,
 .pane-page-content .pane-content>h3:first-child,
-#events-practical-information>h2:first-child {
+#events-practical-information>h2:first-child,
+.panel-col-right .panel-pane>h2:first-child {
   margin-top: 0;
   padding-bottom: 8px;
 }
@@ -371,6 +377,12 @@ body {
 
 #news-related-stories a.active {
   color: 
+}
+
+.panel-col-right ul.links li {
+  display: list-item;
+  list-style: square outside none;
+  padding: 0;
 }
 
 
@@ -443,6 +455,7 @@ body {
 #events-top-event .field-titleimage-imceimage-path a {
   display: block;
   padding: 0;
+  border: none;
 }
 
 #news-top-news .field-titleimage-imceimage-path img,
@@ -549,13 +562,14 @@ body {
   right: 0;
   bottom: 0;
   padding-right: 16px;
+  line-height: 30px;
 }
 
 /* ----- / Regional slider ----- */
-.news-top-region-news {
+/* .news-top-region-news {
   border-top: 1px solid transparent;
   margin-top: 19px;
-}
+} */
 
 /* ======================================== */
 /*  NEWS LIST                               */
@@ -587,6 +601,23 @@ body {
 .list-teaser {
   margin-top: 4px;
   font-weight: normal;
+}
+
+/* ======================================== */
+/*  PAGER                                   */
+/* ======================================== */
+
+.pager {
+  padding: 8px;
+  float: left;
+}
+
+/* ======================================== */
+/*  FEED ICON                               */
+/* ======================================== */
+
+div.feed-icon {
+  padding: 8px;
 }
 
 
