@@ -4,6 +4,11 @@ body {
   background: #eff1f3 url(../images/back-content.png) center top repeat-y;
 } 
 
+body.environment-indicator-adjust.environment-indicator-left.admin-expanded.admin-vertical.admin-nw, body.environment-indicator-adjust.environment-indicator-left.admin-expanded.admin-vertical.admin-sw,
+body.environment-indicator-adjust.environment-indicator-left {
+  margin: 0 auto !important;
+}
+
 #wrapper {
   background: transparent url(../images/body-back-1680.jpg) center top no-repeat;
   overflow: hidden;
