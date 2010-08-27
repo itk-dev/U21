@@ -46,9 +46,12 @@ h2 {
   color: #222;
 }
 
-  li>h2 {
+  li>h2:first-child,
+  .view-static-pages .field-content-value>h2:first-child {
     margin-top: 0;
   }
+  
+  
 
 h3 {
   font-size: 14px;
