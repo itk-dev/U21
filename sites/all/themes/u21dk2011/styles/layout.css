@@ -1,8 +1,25 @@
 /* ----- / layouts ------ */
 
+body {
+  background: #eff1f3 url(../images/back-content.png) center top repeat-y;
+} 
+
 #wrapper {
-  background: #eff2f4 url(../images/body-back-1680.jpg) center top no-repeat;
+  background: transparent url(../images/body-back-1680.jpg) center top no-repeat;
   overflow: hidden;
+}
+
+#secondary-content {
+  background: #e9ebec url(../images/back-secondary-content.png) center top repeat-y;
+  background-image: url(../images/back-secondary-content.png), url(../images/back-secondary-content-pattern.jpg);
+  background-repeat: repeat-y, no-repeat;
+  background-position: center top;
+  overflow: hidden;
+  padding-top: 30px;
+}
+
+.clear {
+  clear: both;
 }
 
 /* ======================================== */
@@ -196,6 +213,10 @@
 
 #content {
   margin-top: 20px;
+}
+
+#main-content {
+  padding-bottom: 30px;
 }
 
 #content>.tabs {
@@ -536,6 +557,38 @@
   margin-top: 19px;
 }
 
+/* ======================================== */
+/*  NEWS LIST                               */
+/* ======================================== */
+
+#news-list .views-list>li {
+  padding: 8px 8px 8px 158px;
+}
+
+#news-list li h2,
+#news-list li h2 a {
+}
+
+#news-list .post-date {
+  margin-left: -150px;
+  float: left;
+}
+
+#news-list .region-link {
+  background: #aaa;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -o-border-radius: 6px;
+  padding: 0 8px;
+  margin: 4px 0;
+  }
+
+#news-list .region-link a {
+
+}
+
+
 
 /* =============================================
 
@@ -544,30 +597,7 @@
 
 
 
-.clear {
-  clear: both;
-}
 
-
-/* ------ / News ------ */
-.post-date {
-  float: left;
-  padding-right: 3px;
-  margin-right: 3px;
-  border-right: 1px solid #ccc;
-}
-
-.region-link {
-  float: left;
-  padding: 0px 3px;
-  margin-right: 3px;
-  background: blue;
-}
-
-.region-link a:link,
-.region-link a:visited {
-    color: #fff;
-}
 
 /* ----- / Events ------ */
 .views-list .location {
