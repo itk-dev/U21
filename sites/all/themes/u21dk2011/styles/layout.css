@@ -582,7 +582,7 @@ body {
 /*  NEWS LIST                               */
 /* ======================================== */
 
-#news-list .views-list>li {
+.list-news-list .views-list>li {
   padding: 8px;
   background: transparent url(../images/back-groove.png) left top repeat-x;
   padding-top: 16px;
@@ -617,6 +617,7 @@ body {
 .pager {
   padding: 8px;
   float: left;
+  margin-top: 25px;
 }
 
 /* ======================================== */
@@ -625,6 +626,7 @@ body {
 
 div.feed-icon {
   padding: 8px;
+  margin-top: 25px;
 }
 
 
