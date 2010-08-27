@@ -43,6 +43,7 @@
   ; Support conditional styles. Module included in theme
 
   ;conditional-stylesheets[if lte IE 6][all][] = css/ie/ie6.css
+  conditional-stylesheets[if IE 7][all][] = css/ie/ie7.css
 
 ;----------// Panels layouts. 
 

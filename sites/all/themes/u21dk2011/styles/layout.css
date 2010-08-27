@@ -94,15 +94,18 @@ body {
 #region-city-menu {
   clear: both;
   overflow: hidden;
-  float: right;
-  width: 316px;
-  margin-top: 9px;
-  line-height: 32px;
-  background: transparent url(../images/back-menu-region.png) center top no-repeat;
+  background: transparent url(../images/back-menu-region.png) top center no-repeat;
 }
 
-  #region-city-menu ul>li {
+#region-city-menu ul {
+  float: right;
+  margin: 10px 0 0;
+  width: 316px;
+}
+
+#region-city-menu ul>li {
     float: left;
+    line-height: 30px;
     width: 79px;
     text-align: center;
     list-style: none;
@@ -124,7 +127,6 @@ body {
 #region-main-menu {
   clear: both;
   float: left;
-  margin-top: 15px;
 }
 
   #region-main-menu a:link,
@@ -133,10 +135,15 @@ body {
     text-decoration: none;
     border: none;
   }
+
+  #region-main-menu ul {
+    margin: 18px 0 0;
+    width: 940px;
+  }
   
   #region-main-menu li {
     margin-right: 6px;
-    display: inline-block;
+    display: inline;
   }
 
   #region-main-menu a {
