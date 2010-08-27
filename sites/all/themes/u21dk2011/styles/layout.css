@@ -601,8 +601,8 @@ body {
   clear: left;
 }
 
-.list-event-list .views-list>li:first-child, {
-.list-news-list .views-list>li:first-child
+.list-event-list .views-list>li:first-child, 
+.list-news-list .views-list>li:first-child {
   padding-top: 8px;
   margin-top: 0;
   background: transparent;
