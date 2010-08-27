@@ -569,16 +569,16 @@ body {
 /* ======================================== */
 
 #news-list .views-list>li {
-  padding: 8px 8px 8px 158px;
+  padding: 8px;
+  background: transparent url(../images/back-groove.png) left top repeat-x;
+  padding-top: 16px;
+  margin-top: 2px;
 }
 
-#news-list li h2,
-#news-list li h2 a {
-}
-
-#news-list .post-date {
-  margin-left: -150px;
-  float: left;
+#news-list .views-list>li:first-child {
+  padding-top: 8px;
+  margin-top: 0;
+  background: transparent;
 }
 
 #news-list .region-link {
@@ -591,8 +591,9 @@ body {
   margin: 4px 0;
   }
 
-#news-list .region-link a {
-
+.list-teaser {
+  margin-top: 4px;
+  font-weight: normal;
 }
 
 
