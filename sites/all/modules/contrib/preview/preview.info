@@ -1,0 +1,11 @@
+; $Id: preview.info,v 1.1.2.1 2009/04/22 17:49:16 doq Exp $
+name = Preview
+description = Hides preview button on nodes.
+core = 6.x
+
+; Information added by drupal.org packaging script on 2009-04-22
+version = "6.x-1.0-rc2"
+core = "6.x"
+project = "preview"
+datestamp = "1240424502"
+
