@@ -60,58 +60,63 @@
       </div>
     </div><!-- /content -->
 
-    <div id="secondary-content" class="container-12 clear">
-      <?php if ($region_middle): ?>
-        <div id="region-middle" class="region grid-12">
-        <?php print $region_middle; ?>
-        </div>
-      <?php endif; ?>
-      <?php if ($region_middle_left): ?>
-        <div id="region-middle-left" class="region grid-4">
-        <?php print $region_middle_left; ?>
-        </div>
-      <?php endif; ?>
-      <?php if ($region_middle_center): ?>
-        <div id="region-middle-center" class="region grid-4">
-        <?php print $region_middle_center; ?>
-        </div>
-      <?php endif; ?>
-      <?php if ($region_middle_right): ?>
-        <div id="region-middle-right" class="region grid-4">
-        <?php print $region_middle_right; ?>
-        </div>
-      <?php endif; ?>
-      <?php if ($region_bottom): ?>
-        <div id="region-bottom" class="region grid-12">
-        <?php print $region_bottom; ?>
-        </div>
-      <?php endif; ?>
-    
+    <div id="secondary-content" class="clear">
+      <div id="secondary-content-inner" class="container-12">
+        <?php if ($region_middle): ?>
+          <div id="region-middle" class="region grid-12">
+          <?php print $region_middle; ?>
+          </div>
+        <?php endif; ?>
+        <?php if ($region_middle_left): ?>
+          <div id="region-middle-left" class="region grid-4">
+          <?php print $region_middle_left; ?>
+          </div>
+        <?php endif; ?>
+        <?php if ($region_middle_center): ?>
+          <div id="region-middle-center" class="region grid-4">
+          <?php print $region_middle_center; ?>
+          </div>
+        <?php endif; ?>
+        <?php if ($region_middle_right): ?>
+          <div id="region-middle-right" class="region grid-4">
+          <?php print $region_middle_right; ?>
+          </div>
+        <?php endif; ?>
+        <?php if ($region_bottom): ?>
+          <div id="region-bottom" class="region grid-12">
+          <?php print $region_bottom; ?>
+          </div>
+        <?php endif; ?>
+      </div>
     </div><!-- /Secondary content -->
   
     <?php if ($footer_1 || $footer_2 || $footer_3 || $footer_4): ?>
-    <ul id="footer" class="container-12 clear">
-        <?php if ($footer_1): ?>        
-        <li class="region grid-3">
-          <?php print $footer_1; ?>
-        </li>
-        <?php endif; ?>
-        <?php if ($footer_2): ?>        
-        <li class="region grid-3">
-          <?php print $footer_2; ?>
-        </li>
-        <?php endif; ?>
-        <?php if ($footer_3): ?>        
-        <li class="region grid-3">
-          <?php print $footer_3; ?>
-        </li>
-        <?php endif; ?>
-        <?php if ($footer_4): ?>        
-        <li class="region grid-3">
-          <?php print $footer_4; ?>
-        </li>
-        <?php endif; ?>
-    </ul><!-- /footer -->
+    <div id="footer" class="clear">
+      <div id="footer-inner">
+        <ul id="footer-regions" class="container-12 clear">
+            <?php if ($footer_1): ?>        
+            <li class="region grid-3">
+              <?php print $footer_1; ?>
+            </li>
+            <?php endif; ?>
+            <?php if ($footer_2): ?>        
+            <li class="region grid-3">
+              <?php print $footer_2; ?>
+            </li>
+            <?php endif; ?>
+            <?php if ($footer_3): ?>        
+            <li class="region grid-3">
+              <?php print $footer_3; ?>
+            </li>
+            <?php endif; ?>
+            <?php if ($footer_4): ?>        
+            <li class="region grid-3">
+              <?php print $footer_4; ?>
+            </li>
+            <?php endif; ?>
+        </ul>
+      </div>
+    </div><!-- /footer -->
     <?php endif; ?>
 
   </div><!-- /wrapper -->

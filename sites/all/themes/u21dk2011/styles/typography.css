@@ -39,6 +39,7 @@ h1 {
 
 h2 {
   font-size: 18px;
+  line-height: 20px;
   margin: 1.5em 0 0.2em;
   font-weight: bold;
   color: #222;
@@ -70,8 +71,6 @@ quote {
 strong, bold {
   font-weight: bold;
 }
-
-
 
 /* ------ / Link typography ------ */
 
@@ -116,6 +115,19 @@ li a.active:hover {
 .field-content-value a[href^='http://dev.u21.etek.dk'] {
   padding-left: 0;
   background: transparent;
+}
+
+.region-link a:link,
+.region-link a:visited {
+  color: #fff;
+  border: none;
+  font-size: 11px;
+  line-height: 12px;
+}
+
+.region-link a:hover,
+.region-link a:active {
+  text-decoration: underline;
 }
 
 /* ----- / Submenu ----- */
