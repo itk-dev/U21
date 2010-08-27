@@ -205,6 +205,7 @@ li a.active:hover {
 .views-list .date-display-separator,
 .views-list .location {
   font-size: 14px;
+  margin-bottom: 6px;
 }
 
 .views-list .location em,

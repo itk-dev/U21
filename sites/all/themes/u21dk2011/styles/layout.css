@@ -279,12 +279,12 @@ body {
   font-weight: normal;
 }
 
-.view-events .field-date-value {
+.page-node .view-events .field-date-value {
   padding: 10px 8px 0;
   background: transparent url(../images/back-groove.png) left top repeat-x;
 }
 
-.view-events .address {
+.page-node .view-events .address {
   padding: 0 8px 10px;
   background: transparent url(../images/back-groove.png) left bottom repeat-x;
   margin-bottom: 20px;  
@@ -323,14 +323,21 @@ body {
 }
 
 /* ----- / Title image ----- */
-.field-titleimage-imceimage-path {
+.field-titleimage-imceimage-path,
+.title-image {
   padding: 7px;
   background: #fff;
   border: 1px #ddd solid;
   margin-bottom: 15px;
 }
 
-.field-titleimage-imceimage-path img {
+.list-event-list .title-image {
+  margin-left: -8px;
+  margin-right: -8px;
+}
+
+.field-titleimage-imceimage-path img,
+.title-image img {
   display: block;
   max-width: 604px;
   height: auto;
@@ -579,23 +586,28 @@ body {
 } */
 
 /* ======================================== */
-/*  NEWS LIST                               */
+/*  NEWS / EVENTS LIST                      */
 /* ======================================== */
 
-.list-news-list .views-list>li {
+.list-news-list .views-list>li,
+.list-event-list .views-list>li {
   padding: 8px;
   background: transparent url(../images/back-groove.png) left top repeat-x;
   padding-top: 16px;
   margin-top: 2px;
 }
 
-#news-list .views-list>li:first-child {
+.list-event-list .views-list>li>div {
+  clear: left;
+}
+
+.list-event-list .views-list>li:first-child {
   padding-top: 8px;
   margin-top: 0;
   background: transparent;
 }
 
-#news-list .region-link {
+.list-event-list .region-link {
   background: #aaa;
   border-radius: 6px;
   -moz-border-radius: 6px;
@@ -608,6 +620,15 @@ body {
 .list-teaser {
   margin-top: 4px;
   font-weight: normal;
+}
+
+.list-event-list h2 {
+  margin-bottom: 12px;
+}
+
+/* ----- / External calendar link ----- */
+.pane-region-calendar-link {
+  padding: 8px;
 }
 
 /* ======================================== */
@@ -648,16 +669,6 @@ div.feed-icon {
 #events-top-event {
   margin-bottom: 20px;
 }
-
-.view-events .views-list li {
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #ccc;
-}
-
-  .view-events .views-list li.last {
-    border-bottom: none;
-  }
 
 
 /* ------ / Views ------ */
