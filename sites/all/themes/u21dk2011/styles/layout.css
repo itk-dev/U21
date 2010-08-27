@@ -262,14 +262,14 @@ body {
 
 
 /* ----- / Teaser + date ----- */
-.panel-col-left .field-teaser-value {
+.page-node .panel-col-left .field-teaser-value {
   font-size: 20px;
   line-height: 25px;
   padding: 0 8px;
   margin-bottom: 26px;
 }
 
-.panel-col-left .view-News .field-teaser-value {
+.page-node .panel-col-left .view-News .field-teaser-value {
   background: transparent url(../images/back-groove.png) left bottom repeat-x;
   margin-bottom: 0;
   padding-bottom: 10px;
@@ -597,7 +597,8 @@ body {
   margin-top: 2px;
 }
 
-.list-event-list .views-list>li>div, {
+.list-event-list .views-list>li>div,
+.list-news-list .views-list>li>div {
   clear: left;
 }
 
@@ -608,7 +609,13 @@ body {
   background: transparent;
 }
 
-.list-event-list .region-link {
+.list-news-list .views-list .region-link,
+.list-news-list .views-list .post-date {
+  display: inline-block;
+}
+
+.list-event-list .region-link,
+.list-news-list .region-link {
   background: #aaa;
   border-radius: 6px;
   -moz-border-radius: 6px;
@@ -616,6 +623,7 @@ body {
   -o-border-radius: 6px;
   padding: 0 8px;
   margin: 4px 0;
+
   }
 
 .list-teaser {
@@ -625,6 +633,10 @@ body {
 
 .list-event-list h2 {
   margin-bottom: 12px;
+}
+
+.list-event-list .location {
+  float: left;
 }
 
 /* ----- / External calendar link ----- */
@@ -661,15 +673,6 @@ div.feed-icon {
 
 
 
-
-/* ----- / Events ------ */
-.views-list .location {
-  float: left;
-}
-
-#events-top-event {
-  margin-bottom: 20px;
-}
 
 
 /* ------ / Views ------ */
