@@ -1,4 +1,4 @@
-$Id: README.txt,v 1.1.4.2.2.7 2010/08/23 17:15:00 yhahn Exp $
+$Id: README.txt,v 1.1.4.2.2.6 2010/08/11 16:00:25 yhahn Exp $
 
 Context 3.x for Drupal 6.x
 --------------------------
@@ -45,9 +45,7 @@ For a more in-depth overview of the UI components, see the Context UI
 Upgrading from Context 2.x for Drupal 6.x
 -----------------------------------------
 - Download latest Context 3.x and latest CTools release and place in modules
-  directory. Make sure to *remove* the existing Context 2.x directory before
-  unpacking Context 3.x. There are stale files in the 2.x branch that need to
-  be removed.
+  directory.
 - Run `update.php` or `drush updatedb`.
 - If your site contains contexts defined in code they will be overridden.
   Re-export them to code again. If you are using any custom conditions or

@@ -1,5 +1,5 @@
 <?php
-// $Id: context_reaction_block.theme.inc,v 1.1.2.13 2010/08/23 14:29:09 yhahn Exp $
+// $Id: context_reaction_block.theme.inc,v 1.1.2.12 2010/08/05 07:30:55 yhahn Exp $
 
 /**
  * Block form.
@@ -116,7 +116,5 @@ function template_preprocess_context_block_editable_region(&$vars) {
  */
 function template_preprocess_context_block_editable_block(&$vars) {
   $vars['empty'] = empty($vars['block']->content);
-  if (isset($vars['block']->context)) {
-    $vars['block']->content .= "<a id='context-block-{$vars['block']->module}-{$vars['block']->delta}' class='context-block editable edit-{$vars['block']->context}'></a>";
-  }
+  $vars['block']->content .= "<a id='context-block-{$vars['block']->module}-{$vars['block']->delta}' class='context-block editable edit-{$vars['block']->context}'></a>";
 }
