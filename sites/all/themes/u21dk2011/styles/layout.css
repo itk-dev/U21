@@ -711,8 +711,12 @@ div.feed-icon {
   top: -20px;
   font-size: 14px;
   line-height: 16px;
-  margin: 0 -8px -12px;
+  margin: 0 -8px -19px;
   padding: 6px 8px;
+}
+
+#secondary-content .block-block h3 + p {
+  padding-top: 8px;
 }
 
 /* ----- / Upcoming events / Spotbox ----- */
