@@ -313,16 +313,16 @@ function u21_content_preprocess_sidebar(&$variables, $hook) {
 
 function u21_content_preprocess_event_details(&$variables, $hook) {
   $node = $variables['node'];
-
+  
   // Convert date and start time into local time zone
   $timezone = date_default_timezone_name();
-  $date = date_make_date($node->field_date[0]['value'], 'UTC', DATE_ISO);
+  $date = date_make_date($node->field_date[0]['value'], $node->field_date[0]['timezone_db'], DATE_ISO);
   date_timezone_set($date, timezone_open($timezone));
   $variables['date'] = date_format_date($date, 'custom', 'd. M, Y');
   $variables['time_start'] = date_format_date($date, 'custom', 'H:i');
 
   // Convert end time
-  $date = date_make_date($node->field_date[0]['value2'], 'UTC', DATE_ISO);
+  $date = date_make_date($node->field_date[0]['value2'], $node->field_date[0]['timezone_db'], DATE_ISO);
   date_timezone_set($date, timezone_open($timezone));
   $variables['time_end'] = date_format_date($date, 'custom', 'H:i');
 
