@@ -3834,21 +3834,17 @@ function u21_views_settings_views_default_views() {
   $handler->override_option('row_plugin', 'semanticviews_fields');
   $handler->override_option('row_options', array(
     'semantic_html' => array(
+      'field_date_value' => array(
+        'element_type' => 'div',
+        'class' => 'date',
+      ),
       'title' => array(
         'element_type' => 'h3',
         'class' => '',
       ),
-      'field_titleimage_imceimage_path' => array(
-        'element_type' => 'div',
-        'class' => '',
-      ),
       'address' => array(
-        'element_type' => 'p',
-        'class' => 'address',
-      ),
-      'field_date_value' => array(
-        'element_type' => 'div',
-        'class' => 'date',
+        'element_type' => '',
+        'class' => '',
       ),
       'field_teaser_value' => array(
         'element_type' => 'div',
