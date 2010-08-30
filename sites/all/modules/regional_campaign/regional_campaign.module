@@ -189,10 +189,16 @@ function theme_regional_campaign($campaings, $type) {
   $output  = '<div class="regional-campaign-random '. $type .'">';
   foreach ($campaings as $campaign) {
     if (isset($campaign['url'])) {
-      $output .= '<div id="regional-campaign-'. $count .'" class="random-regional-campaign"><a href="'. $campaign['url'] .'" rel="'. $campaign['rel'] .'"><img alt="'. $campaign['alt'] .'" src="/'. $campaign['img'] .'" /></a></div>';
+      $output .= '<div id="regional-campaign-'. $count .'" class="random-regional-campaign">
+                    <a href="'. $campaign['url'] .'" rel="'. $campaign['rel'] .'">
+                      '.theme('imagecache', 'regional_campaign', $campaign['img'], $campaign['alt']).'
+                    </a>
+                  </div>';
     }
     else {
-      $output .= '<div id="regional-campaign-'. $count .'" class="random-regional-campaign"><img alt="'. $campaign['alt'] .'" src="/'. $campaign['img'] .'" /></div>';
+      $output .= '<div id="regional-campaign-'. $count .'" class="random-regional-campaign">
+                    '.theme('imagecache', 'regional_campaign', $campaign['img'], $campaign['alt']).'
+                  </div>';
     }
     $count++;
   }
