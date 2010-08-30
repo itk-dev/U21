@@ -3645,7 +3645,7 @@ function u21_views_settings_views_default_views() {
     'panel_pane_7' => 0,
   ));
   $handler->override_option('sitename_title', FALSE);
-  $handler = $view->new_display('panel_pane', 'Upcoming events (global)', 'panel_pane_8');
+  $handler = $view->new_display('panel_pane', 'Upcoming events', 'panel_pane_8');
   $handler->override_option('fields', array(
     'field_date_value' => array(
       'label' => '',
@@ -3857,24 +3857,33 @@ function u21_views_settings_views_default_views() {
     ),
     'skip_blank' => 0,
   ));
-  $handler->override_option('pane_title', 'Upcoming Events (global)');
+  $handler->override_option('pane_title', 'Upcoming Events');
   $handler->override_option('pane_description', '');
   $handler->override_option('pane_category', array(
     'name' => 'Event panes',
     'weight' => '0',
   ));
   $handler->override_option('allow', array(
-    'use_pager' => FALSE,
-    'items_per_page' => FALSE,
-    'offset' => FALSE,
-    'link_to_view' => FALSE,
-    'more_link' => FALSE,
-    'path_override' => FALSE,
-    'title_override' => FALSE,
-    'exposed_form' => FALSE,
-    'fields_override' => FALSE,
+    'use_pager' => 0,
+    'items_per_page' => 0,
+    'offset' => 0,
+    'link_to_view' => 0,
+    'more_link' => 0,
+    'path_override' => 'path_override',
+    'title_override' => 'title_override',
+    'exposed_form' => 0,
+    'fields_override' => 0,
   ));
-  $handler->override_option('argument_input', array());
+  $handler->override_option('argument_input', array(
+    'field_slug_ref_nid' => array(
+      'type' => 'panel',
+      'context' => 'string.html_safe',
+      'context_optional' => 0,
+      'panel' => '0',
+      'fixed' => '',
+      'label' => 'Content: Tilknytning (field_slug_ref)',
+    ),
+  ));
   $handler->override_option('link_to_view', 0);
   $handler->override_option('inherit_panels_path', 0);
   $views[$view->name] = $view;

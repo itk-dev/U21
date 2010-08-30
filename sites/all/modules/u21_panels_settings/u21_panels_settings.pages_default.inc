@@ -505,25 +505,11 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->pid = 'new-3';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
-    $pane->subtype = 'events-panel_pane_4';
+    $pane->subtype = 'events-panel_pane_8';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'use_pager' => 0,
-      'pager_id' => '',
-      'items_per_page' => '2',
-      'offset' => '0',
       'path' => 'events/rss',
-      'fields_override' => array(
-        'title' => 1,
-        'field_titleimage_imceimage_path' => 0,
-        'address' => 1,
-        'field_date_value' => 1,
-        'field_teaser_value' => 1,
-      ),
-      'context' => array(
-        0 => 'argument_nid_1',
-      ),
       'override_title' => 1,
       'override_title_text' => 'Kommende arrangementer i %node:panels_slug',
     );
