@@ -472,7 +472,7 @@ function u21_panels_settings_default_page_manager_handlers() {
     );
     $pane->css = array(
       'css_id' => 'news-top-news',
-      'css_class' => 'news-top-region-news',
+      'css_class' => 'top-slideshow',
     );
     $pane->extras = array();
     $pane->position = 0;
@@ -495,7 +495,10 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->style = array(
       'settings' => NULL,
     );
-    $pane->css = array();
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => '',
+    );
     $pane->extras = array();
     $pane->position = 1;
     $display->content['new-2'] = $pane;
@@ -2224,7 +2227,7 @@ function u21_panels_settings_default_page_manager_pages() {
     );
     $pane->css = array(
       'css_id' => 'events-top-event',
-      'css_class' => '',
+      'css_class' => 'top-slideshow',
     );
     $pane->extras = array();
     $pane->position = 0;
@@ -2313,7 +2316,7 @@ function u21_panels_settings_default_page_manager_pages() {
     );
     $pane->css = array(
       'css_id' => 'news-top-news',
-      'css_class' => '',
+      'css_class' => 'top-slideshow',
     );
     $pane->extras = array();
     $pane->position = 0;
@@ -2633,7 +2636,7 @@ return TRUE;',
     );
     $pane->css = array(
       'css_id' => 'news-top-news',
-      'css_class' => '',
+      'css_class' => 'top-slideshow',
     );
     $pane->extras = array();
     $pane->position = 0;

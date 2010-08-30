@@ -1039,7 +1039,7 @@ function u21_views_settings_views_default_views() {
   $handler->override_option('cache', array(
     'type' => 'none',
   ));
-  $handler->override_option('empty', 'Events was not found!');
+  $handler->override_option('empty', '<p>Der var ingen arrangementer i den valgte kategori.</p>');
   $handler->override_option('empty_format', '1');
   $handler->override_option('items_per_page', 2);
   $handler->override_option('use_pager', '1');
@@ -1374,7 +1374,7 @@ function u21_views_settings_views_default_views() {
       'empty_zero' => 0,
       'link_to_node' => 0,
       'label_type' => 'none',
-      'format' => 'date_only',
+      'format' => 'date_only_long',
       'multiple' => array(
         'multiple_number' => '',
         'multiple_from' => '',
@@ -3672,7 +3672,7 @@ function u21_views_settings_views_default_views() {
       'empty_zero' => 0,
       'link_to_node' => 0,
       'label_type' => 'none',
-      'format' => 'short',
+      'format' => 'date_only_long',
       'multiple' => array(
         'multiple_number' => '',
         'multiple_from' => '',
@@ -3810,7 +3810,12 @@ function u21_views_settings_views_default_views() {
     ),
   ));
   $handler->override_option('title', 'Kommende arrangementer');
+  $handler->override_option('footer', '<a href="/events/">Se alle arrangementer</a>');
+  $handler->override_option('footer_format', '3');
+  $handler->override_option('footer_empty', 0);
   $handler->override_option('use_pager', '0');
+  $handler->override_option('use_more', 0);
+  $handler->override_option('use_more_always', 0);
   $handler->override_option('style_plugin', 'semanticviews_default');
   $handler->override_option('style_options', array(
     'grouping' => '',
@@ -4422,6 +4427,53 @@ function u21_views_settings_views_default_views() {
       ),
       'relationship' => 'none',
     ),
+    'field_date_value' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '<span>[field_date_value]</span>',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 1,
+      'empty_zero' => 0,
+      'link_to_node' => 0,
+      'label_type' => 'none',
+      'format' => 'date_only_long',
+      'multiple' => array(
+        'multiple_number' => '',
+        'multiple_from' => '',
+        'multiple_to' => '',
+        'group' => '',
+      ),
+      'repeat' => array(
+        'show_repeat_rule' => '',
+      ),
+      'fromto' => array(
+        'fromto' => 'value',
+      ),
+      'exclude' => 0,
+      'id' => 'field_date_value',
+      'table' => 'node_data_field_date',
+      'field' => 'field_date_value',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
     'view_node' => array(
       'label' => '',
       'alter' => array(
@@ -4480,6 +4532,8 @@ function u21_views_settings_views_default_views() {
       'operator' => 'in',
       'value' => array(
         'articles' => 'articles',
+        'blogs' => 'blogs',
+        'event' => 'event',
       ),
       'group' => '0',
       'exposed' => FALSE,
@@ -4516,7 +4570,7 @@ function u21_views_settings_views_default_views() {
   $handler->override_option('footer', '<a href="/news">See all news on u21denmark2011.com</a>');
   $handler->override_option('footer_format', '3');
   $handler->override_option('footer_empty', 0);
-  $handler->override_option('items_per_page', 5);
+  $handler->override_option('items_per_page', 8);
   $handler->override_option('style_plugin', 'slideshow');
   $handler->override_option('style_options', array(
     'type' => 'ul',
@@ -6387,9 +6441,8 @@ function u21_views_settings_views_default_views() {
       'relationship' => 'none',
     ),
   ));
-  $handler->override_option('footer', '<a href="news/">See all local news</a>');
   $handler->override_option('footer_format', '2');
-  $handler->override_option('footer_empty', 1);
+  $handler->override_option('footer_empty', 0);
   $handler->override_option('items_per_page', 6);
   $handler->override_option('style_plugin', 'slideshow');
   $handler->override_option('style_options', array(
