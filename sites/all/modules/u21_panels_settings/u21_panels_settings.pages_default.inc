@@ -505,29 +505,33 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->pid = 'new-3';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
-    $pane->subtype = 'events-panel_pane_7';
+    $pane->subtype = 'events-panel_pane_4';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
+      'use_pager' => 0,
+      'pager_id' => '',
       'items_per_page' => '2',
-      'path' => '',
+      'offset' => '0',
+      'path' => 'events/rss',
       'fields_override' => array(
         'title' => 1,
+        'field_titleimage_imceimage_path' => 0,
         'address' => 1,
         'field_date_value' => 1,
         'field_teaser_value' => 1,
       ),
+      'context' => array(
+        0 => 'argument_nid_1',
+      ),
       'override_title' => 1,
-      'override_title_text' => 'Eventkalender',
+      'override_title_text' => 'Kommende arrangementer i %node:panels_slug',
     );
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
     );
-    $pane->css = array(
-      'css_id' => 'events-region-topevents',
-      'css_class' => '',
-    );
+    $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
     $display->content['new-3'] = $pane;
@@ -1504,7 +1508,13 @@ function u21_panels_settings_default_page_manager_pages() {
   $display->api_version = 1;
   $display->layout = 'twocol_8_4';
   $display->layout_settings = array();
-  $display->panel_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'left' => NULL,
+      'right' => NULL,
+    ),
+  );
   $display->cache = array();
   $display->title = '';
   $display->content = array();
@@ -1536,8 +1546,13 @@ function u21_panels_settings_default_page_manager_pages() {
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array();
-    $pane->css = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'list-event-list',
+    );
     $pane->extras = array();
     $pane->position = 0;
     $display->content['new-1'] = $pane;
@@ -1558,7 +1573,9 @@ function u21_panels_settings_default_page_manager_pages() {
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
@@ -1594,7 +1611,9 @@ function u21_panels_settings_default_page_manager_pages() {
       ),
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
@@ -1681,7 +1700,14 @@ function u21_panels_settings_default_page_manager_pages() {
   $display->api_version = 1;
   $display->layout = 'twocol_8_4_stacked';
   $display->layout_settings = array();
-  $display->panel_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'top' => NULL,
+      'left' => NULL,
+      'right' => NULL,
+    ),
+  );
   $display->cache = array();
   $display->title = '';
   $display->content = array();
@@ -1715,8 +1741,13 @@ function u21_panels_settings_default_page_manager_pages() {
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array();
-    $pane->css = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'list-event-list',
+    );
     $pane->extras = array();
     $pane->position = 0;
     $display->content['new-1'] = $pane;
@@ -1733,11 +1764,13 @@ function u21_panels_settings_default_page_manager_pages() {
       'node_type' => 'region',
       'slug_path' => 'location/%slug/events',
       'global_path' => 'events',
-      'override_title' => 0,
-      'override_title_text' => '',
+      'override_title' => 1,
+      'override_title_text' => 'Vælg region',
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
@@ -1756,8 +1789,8 @@ function u21_panels_settings_default_page_manager_pages() {
       'vocabulary' => '1',
       'node_type' => 'event',
       'context' => 'argument_panels_slug_1',
-      'override_title' => 0,
-      'override_title_text' => '',
+      'override_title' => 1,
+      'override_title_text' => 'Emner',
       'main_type' => 'event',
       'node_types' => array(
         'event' => 'event',
@@ -1765,6 +1798,7 @@ function u21_panels_settings_default_page_manager_pages() {
         'panel' => 0,
         'articles' => 0,
         'blogs' => 0,
+        'global_campaigns' => 0,
         'kampagne' => 0,
         'newsletter' => 0,
         'photo' => 0,
@@ -1774,7 +1808,9 @@ function u21_panels_settings_default_page_manager_pages() {
       ),
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
@@ -1794,7 +1830,9 @@ function u21_panels_settings_default_page_manager_pages() {
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
@@ -1864,7 +1902,14 @@ function u21_panels_settings_default_page_manager_pages() {
   $display->api_version = 1;
   $display->layout = 'twocol_8_4_stacked';
   $display->layout_settings = array();
-  $display->panel_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'top' => NULL,
+      'left' => NULL,
+      'right' => NULL,
+    ),
+  );
   $display->cache = array();
   $display->title = '';
   $display->content = array();
@@ -1896,8 +1941,13 @@ function u21_panels_settings_default_page_manager_pages() {
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array();
-    $pane->css = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'list-event-list',
+    );
     $pane->extras = array();
     $pane->position = 0;
     $display->content['new-1'] = $pane;
@@ -1916,7 +1966,9 @@ function u21_panels_settings_default_page_manager_pages() {
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
@@ -1934,11 +1986,13 @@ function u21_panels_settings_default_page_manager_pages() {
       'node_type' => 'region',
       'slug_path' => 'location/%slug/events',
       'global_path' => 'events',
-      'override_title' => 0,
-      'override_title_text' => '',
+      'override_title' => 1,
+      'override_title_text' => 'Vælg region',
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
@@ -1957,8 +2011,8 @@ function u21_panels_settings_default_page_manager_pages() {
       'vocabulary' => '1',
       'node_type' => 'event',
       'context' => 'argument_panels_slug_1',
-      'override_title' => 0,
-      'override_title_text' => '',
+      'override_title' => 1,
+      'override_title_text' => 'Emner',
       'main_type' => 'event',
       'node_types' => array(
         'event' => 'event',
@@ -1966,6 +2020,7 @@ function u21_panels_settings_default_page_manager_pages() {
         'panel' => 0,
         'articles' => 0,
         'blogs' => 0,
+        'global_campaigns' => 0,
         'kampagne' => 0,
         'newsletter' => 0,
         'photo' => 0,
@@ -1975,7 +2030,9 @@ function u21_panels_settings_default_page_manager_pages() {
       ),
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
@@ -1995,7 +2052,9 @@ function u21_panels_settings_default_page_manager_pages() {
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
@@ -2040,7 +2099,14 @@ function u21_panels_settings_default_page_manager_pages() {
   $display->api_version = 1;
   $display->layout = 'twocol_8_4_stacked';
   $display->layout_settings = array();
-  $display->panel_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'top' => NULL,
+      'left' => NULL,
+      'right' => NULL,
+    ),
+  );
   $display->cache = array();
   $display->title = '';
   $display->content = array();
@@ -2069,10 +2135,12 @@ function u21_panels_settings_default_page_manager_pages() {
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array(
       'css_id' => 'events-list-global',
-      'css_class' => '',
+      'css_class' => 'list-event-list',
     );
     $pane->extras = array();
     $pane->position = 0;
@@ -2091,10 +2159,12 @@ function u21_panels_settings_default_page_manager_pages() {
       'slug_path' => 'location/%slug/events',
       'global_path' => 'events',
       'override_title' => 1,
-      'override_title_text' => 'Se kanlender for din by',
+      'override_title_text' => 'Vælg region',
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
@@ -2112,8 +2182,8 @@ function u21_panels_settings_default_page_manager_pages() {
       'path_prefix' => 'events',
       'vocabulary' => '1',
       'node_type' => 'event',
-      'override_title' => 0,
-      'override_title_text' => '',
+      'override_title' => 1,
+      'override_title_text' => 'Emner',
       'main_type' => 'event',
       'node_types' => array(
         'event' => 'event',
@@ -2121,6 +2191,7 @@ function u21_panels_settings_default_page_manager_pages() {
         'panel' => 0,
         'articles' => 0,
         'blogs' => 0,
+        'global_campaigns' => 0,
         'kampagne' => 0,
         'newsletter' => 0,
         'photo' => 0,
@@ -2130,7 +2201,9 @@ function u21_panels_settings_default_page_manager_pages() {
       ),
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
@@ -2160,7 +2233,9 @@ function u21_panels_settings_default_page_manager_pages() {
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array(
       'css_id' => 'events-top-event',
       'css_class' => '',
@@ -2263,15 +2338,15 @@ function u21_panels_settings_default_page_manager_pages() {
     $pane->pid = 'new-2';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
-    $pane->subtype = 'events-panel_pane_2';
-    $pane->shown = FALSE;
+    $pane->subtype = 'events-panel_pane_1';
+    $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
       'use_pager' => 0,
       'pager_id' => '',
       'items_per_page' => '2',
       'offset' => '0',
-      'path' => '',
+      'path' => 'events/rss',
       'fields_override' => array(
         'title' => 1,
         'address' => 1,
@@ -2279,16 +2354,13 @@ function u21_panels_settings_default_page_manager_pages() {
         'field_teaser_value' => 1,
       ),
       'override_title' => 1,
-      'override_title_text' => 'Eventkalender',
+      'override_title_text' => 'Kommende arrangementer',
     );
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
     );
-    $pane->css = array(
-      'css_id' => 'events-top-event',
-      'css_class' => '',
-    );
+    $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
     $display->content['new-2'] = $pane;
@@ -2386,7 +2458,7 @@ function u21_panels_settings_default_page_manager_pages() {
     );
     $pane->css = array(
       'css_id' => 'news-list',
-      'css_class' => '',
+      'css_class' => 'list-news-list',
     );
     $pane->extras = array();
     $pane->position = 0;
@@ -2396,33 +2468,9 @@ function u21_panels_settings_default_page_manager_pages() {
     $pane->api_version = 1;
     $pane->pid = 'new-2';
     $pane->panel = 'right';
-    $pane->type = 'slug_links';
-    $pane->subtype = 'slug_links';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'node_type' => 'region',
-      'slug_path' => 'location/%slug/news',
-      'global_path' => 'news',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $display->content['new-2'] = $pane;
-    $display->panels['right'][0] = 'new-2';
-    $pane = new stdClass;
-    $pane->api_version = 1;
-    $pane->pid = 'new-3';
-    $pane->panel = 'right';
     $pane->type = 'type_links';
     $pane->subtype = 'type_links';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array(
       'node_type' => array(
@@ -2447,6 +2495,30 @@ function u21_panels_settings_default_page_manager_pages() {
     );
     $pane->css = array();
     $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-2'] = $pane;
+    $display->panels['right'][0] = 'new-2';
+    $pane = new stdClass;
+    $pane->api_version = 1;
+    $pane->pid = 'new-3';
+    $pane->panel = 'right';
+    $pane->type = 'slug_links';
+    $pane->subtype = 'slug_links';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'node_type' => 'region',
+      'slug_path' => 'location/%slug/news',
+      'global_path' => 'news',
+      'override_title' => 1,
+      'override_title_text' => 'Vælg region',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
     $pane->position = 1;
     $display->content['new-3'] = $pane;
     $display->panels['right'][1] = 'new-3';
@@ -2463,7 +2535,7 @@ function u21_panels_settings_default_page_manager_pages() {
       'vocabulary' => '1',
       'node_type' => 'articles',
       'override_title' => 1,
-      'override_title_text' => 'Kategori',
+      'override_title_text' => 'Emner',
       'main_type' => 'articles',
       'node_types' => array(
         'articles' => 'articles',
@@ -2472,6 +2544,7 @@ function u21_panels_settings_default_page_manager_pages() {
         'region' => 0,
         'panel' => 0,
         'event' => 0,
+        'global_campaigns' => 0,
         'kampagne' => 0,
         'newsletter' => 0,
         'profile' => 0,
@@ -2640,7 +2713,14 @@ return TRUE;',
   $display->api_version = 1;
   $display->layout = 'twocol_8_4_stacked';
   $display->layout_settings = array();
-  $display->panel_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'top' => NULL,
+      'left' => NULL,
+      'right' => NULL,
+    ),
+  );
   $display->cache = array();
   $display->title = '';
   $display->content = array();
@@ -2671,10 +2751,12 @@ return TRUE;',
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array(
       'css_id' => 'news-list-taxonomy',
-      'css_class' => '',
+      'css_class' => 'list-news-list',
     );
     $pane->extras = array();
     $pane->position = 0;
@@ -2696,7 +2778,9 @@ return TRUE;',
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
@@ -2733,7 +2817,9 @@ return TRUE;',
       ),
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
@@ -2755,7 +2841,9 @@ return TRUE;',
       ),
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 2;
@@ -2775,7 +2863,9 @@ return TRUE;',
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
@@ -3074,7 +3164,14 @@ return FALSE;',
   $display->api_version = 1;
   $display->layout = 'twocol_8_4_stacked';
   $display->layout_settings = array();
-  $display->panel_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'top' => NULL,
+      'left' => NULL,
+      'right' => NULL,
+    ),
+  );
   $display->cache = array();
   $display->title = '%str';
   $display->content = array();
@@ -3101,8 +3198,13 @@ return FALSE;',
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array();
-    $pane->css = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'list-news-list',
+    );
     $pane->extras = array();
     $pane->position = 0;
     $display->content['new-1'] = $pane;
@@ -3111,31 +3213,9 @@ return FALSE;',
     $pane->api_version = 1;
     $pane->pid = 'new-2';
     $pane->panel = 'right';
-    $pane->type = 'slug_links';
-    $pane->subtype = 'slug_links';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'node_type' => 'region',
-      'slug_path' => 'location/%slug/news',
-      'global_path' => 'news',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array();
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $display->content['new-2'] = $pane;
-    $display->panels['right'][0] = 'new-2';
-    $pane = new stdClass;
-    $pane->api_version = 1;
-    $pane->pid = 'new-3';
-    $pane->panel = 'right';
     $pane->type = 'type_links';
     $pane->subtype = 'type_links';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array(
       'node_type' => array(
@@ -3155,7 +3235,33 @@ return FALSE;',
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-2'] = $pane;
+    $display->panels['right'][0] = 'new-2';
+    $pane = new stdClass;
+    $pane->api_version = 1;
+    $pane->pid = 'new-3';
+    $pane->panel = 'right';
+    $pane->type = 'slug_links';
+    $pane->subtype = 'slug_links';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'node_type' => 'region',
+      'slug_path' => 'location/%slug/news',
+      'global_path' => 'news',
+      'override_title' => 1,
+      'override_title_text' => 'Vælg region',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
@@ -3174,24 +3280,27 @@ return FALSE;',
       'vocabulary' => '1',
       'node_type' => 'articles',
       'override_title' => 1,
-      'override_title_text' => 'Kategori',
+      'override_title_text' => 'Emne',
       'main_type' => 'articles',
       'node_types' => array(
         'articles' => 'articles',
-        'blogs' => 'blogs',
-        'photo' => 'photo',
         'region' => 0,
         'panel' => 0,
+        'blogs' => 0,
         'event' => 0,
+        'global_campaigns' => 0,
         'kampagne' => 0,
         'newsletter' => 0,
+        'photo' => 0,
         'profile' => 0,
         'static_page' => 0,
         'subsite' => 0,
       ),
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 2;
@@ -3213,7 +3322,9 @@ return FALSE;',
       ),
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 3;
@@ -3456,7 +3567,14 @@ return FALSE;',
   $display->api_version = 1;
   $display->layout = 'twocol_8_4_stacked';
   $display->layout_settings = array();
-  $display->panel_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'top' => NULL,
+      'left' => NULL,
+      'right' => NULL,
+    ),
+  );
   $display->cache = array();
   $display->title = '';
   $display->content = array();
@@ -3487,8 +3605,13 @@ return FALSE;',
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array();
-    $pane->css = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'list-news-list',
+    );
     $pane->extras = array();
     $pane->position = 0;
     $display->content['new-1'] = $pane;
@@ -3505,11 +3628,13 @@ return FALSE;',
       'node_type' => 'region',
       'slug_path' => 'location/%slug/news',
       'global_path' => 'news',
-      'override_title' => 0,
-      'override_title_text' => '',
+      'override_title' => 1,
+      'override_title_text' => 'Vælg region',
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
@@ -3528,8 +3653,8 @@ return FALSE;',
       'vocabulary' => '1',
       'node_type' => 'articles',
       'context' => 'argument_panels_slug_1',
-      'override_title' => 0,
-      'override_title_text' => '',
+      'override_title' => 1,
+      'override_title_text' => 'Emner',
       'main_type' => 'articles',
       'node_types' => array(
         'articles' => 'articles',
@@ -3537,6 +3662,7 @@ return FALSE;',
         'panel' => 0,
         'blogs' => 0,
         'event' => 0,
+        'global_campaigns' => 0,
         'kampagne' => 0,
         'newsletter' => 0,
         'photo' => 0,
@@ -3546,7 +3672,9 @@ return FALSE;',
       ),
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
@@ -3568,7 +3696,9 @@ return FALSE;',
       ),
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 2;
@@ -3588,7 +3718,9 @@ return FALSE;',
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
@@ -3602,3 +3734,4 @@ return FALSE;',
 
  return $pages;
 }
+
