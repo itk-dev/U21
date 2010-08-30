@@ -68,6 +68,14 @@ function u21dk2011_preprocess_page(&$vars, $hook) {
     $vars['tournament_date'] = '';
   }
   
+  // Add regional context to body classes
+  if (!$vars['is_front']) {
+    $path_request = explode('/', $_SERVER['REQUEST_URI']);
+    if ($path_request[1] == "location") {
+      $vars['body_classes'] .= ' page-regional';
+    }
+  }
+  
 }
 
 /**

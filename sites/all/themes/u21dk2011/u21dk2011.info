@@ -38,6 +38,9 @@
   ; Developer styles
   stylesheets[all][] = styles/developer.css
   
+  ; Overwrite stylesheets
+  stylesheets[all][] =  styles.css
+  
   
 ;----------// IE Conditional Stylesheets
   ; Support conditional styles. Module included in theme

@@ -10,10 +10,11 @@
  * go grap the code and send john Albin a beer :)
  * drupal.org/project/zen
  */
+
 include_once './' . drupal_get_path('theme', 'mothership') . '/theme-settings.php';
 
 
-function SUBTHEME_settings($saved_settings) {
+function u21dk2011_settings($saved_settings) {
   // Get the default values from the .info file.
   $defaults = mothership_theme_get_default_settings('SUBTHEME');
 
@@ -24,4 +25,4 @@ function SUBTHEME_settings($saved_settings) {
 
   // Return the form
   return $form;
-}
+} 
