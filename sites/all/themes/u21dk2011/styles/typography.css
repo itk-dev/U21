@@ -127,10 +127,14 @@ li a.active:hover {
 }
 
 .field-content-value a[target=_blank],
-.pane-sidebar-content a[target=_blank],
-#footer-regions a[target=_blank] {
+.pane-sidebar-content a[target=_blank] {
   padding-left: 19px;
   background: transparent url(../images/16x16/Out-16x16.png) 0% 50% no-repeat; 
+}
+
+#footer-regions a[target=_blank] {
+  padding-left: 19px;
+  background: transparent url(../images/16x16/Out-16x16-blue.png) 0% 50% no-repeat; 
 }
 
 .region-link a:link,

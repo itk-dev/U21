@@ -250,6 +250,10 @@ body.environment-indicator-adjust.environment-indicator-left {
   padding-bottom: 20px;
 }
 
+.page-node .panel-col-top {
+  padding-bottom: 0;
+}
+
 /* ----- / Region header ----- */
 #region-title-menu {
   padding: 0 8px;
@@ -408,6 +412,7 @@ body.environment-indicator-adjust.environment-indicator-left {
 .panel-col-right .pane-events-panel-pane-8 {
   margin:0;
   padding:0;
+  background: transparent;
 }
 
 #content .pane-events-panel-pane-8 h2.pane-title {
@@ -423,6 +428,11 @@ body.environment-indicator-adjust.environment-indicator-left {
   background: #fff url(../images/back-block-upcomingevents.jpg) left top no-repeat;
   padding: 78px 8px 8px;
   font-size: 12px;
+}
+
+.pane-events-panel-pane-8 li.last {
+  padding-top: 12px;
+  background: url(../images/back-list-top.png) center 2px no-repeat;
 }
 
 .pane-events-panel-pane-8 .date-display-single, 
