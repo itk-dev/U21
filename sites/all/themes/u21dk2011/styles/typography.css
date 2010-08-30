@@ -127,7 +127,8 @@ li a.active:hover {
 }
 
 .field-content-value a[target=_blank],
-.pane-sidebar-content a[target=_blank] {
+.pane-sidebar-content a[target=_blank],
+.block-block a[target=_blank] {
   padding-left: 19px;
   background: transparent url(../images/16x16/Out-16x16.png) 0% 50% no-repeat; 
 }
@@ -149,6 +150,13 @@ li a.active:hover {
 .region-link a:active {
   text-decoration: underline;
 }
+
+.field-campaing-image-imceimage-path a:link,
+.field-campaing-image-imceimage-path a:visited {
+  border-bottom: none;
+}
+
+
 
 /* ----- / Table styles ----- */
 table {
