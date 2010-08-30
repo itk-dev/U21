@@ -7,10 +7,11 @@
  */
  
 function u21dk2011_theme(&$existing, $type, $theme, $path){
-  
+  global $theme_path;
+
   // Compute the conditional stylesheets.
   if (!module_exists('conditional_styles')) {
-    include_once $base_path . drupal_get_path('theme', 'u21dk2011') . '/includes/template.conditional-styles.inc';
+    include_once $theme_path . '/includes/template.conditional-styles.inc';
     // _conditional_styles_theme() only needs to be run once.
     if ($theme == 'u21dk2011') {
       _conditional_styles_theme($existing, $type, $theme, $path);
