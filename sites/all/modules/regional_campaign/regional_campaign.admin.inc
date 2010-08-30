@@ -225,4 +225,13 @@ function _regional_campaign_update_name($old, $new) {
   $result = db_query('UPDATE {content_type_kampagne}
                       SET field_campaign_type_value = \'%s\'
                       WHERE field_campaign_type_value = \'%s\'', $new, $old);
+
+  $active_types = variable_get(REGIONAL_CAMPAIGN_ACTIVE_TYPES, array());
+  $count = count($active_types);
+  for($i = 0; $i < $count; $i++ ) {
+     if ($active_types[$i] == $old) {
+       $active_types[$i] = $new;
+     }
+  }
+  variable_set(REGIONAL_CAMPAIGN_ACTIVE_TYPES, $active_types);
 }
