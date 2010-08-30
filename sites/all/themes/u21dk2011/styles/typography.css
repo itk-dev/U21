@@ -7,7 +7,8 @@
   
 /* --------------- */
 
-body {
+body,
+.mceContentBody {
   font:13px/18px "Helvetica Neue",Arial,sans-serif;
   color: #444;
   -webkit-font-smoothing: antialiased;
@@ -51,14 +52,18 @@ h2 {
     margin-top: 0;
   }
   
-  
-
 h3 {
   font-size: 14px;
   margin: 1em 0 0.2em;
   font-weight: bold;
   color: #222;
 }
+
+  #footer-regions h3,
+  #footer-regions h2 {
+    font-size: 14px;
+    margin-bottom: 1em;
+  }
 
 .field-content-value em, .field-content-value i {
   font-style: normal;
@@ -103,22 +108,29 @@ li a.active:hover {
 .field-content-value a[href$='.ppt'],
 .field-content-value a[href$='.pptx'],
 .field-content-value a[href$='.rtf'],
-.field-content-value a[href$='.txt'] {
+.field-content-value a[href$='.txt'],
+.pane-sidebar-content a[href$='.pdf'],
+.pane-sidebar-content a[href$='.doc'],
+.pane-sidebar-content a[href$='.docx'],
+.pane-sidebar-content a[href$='.tif'],
+.pane-sidebar-content a[href$='.tiff'],
+.pane-sidebar-content a[href$='.png'],
+.pane-sidebar-content a[href$='.jpg'],
+.pane-sidebar-content a[href$='.jpeg'],
+.pane-sidebar-content a[href$='.zip'],
+.pane-sidebar-content a[href$='.ppt'],
+.pane-sidebar-content a[href$='.pptx'],
+.pane-sidebar-content a[href$='.rtf'],
+.pane-sidebar-content a[href$='.txt'] {
   padding-left: 17px;
   background: transparent url(../images/16x16/Document-16x16.png) 0% 50% no-repeat;
 }
 
-.field-content-value p a[href^='http://'] {
+.field-content-value a[target=_blank],
+.pane-sidebar-content a[target=_blank],
+#footer-regions a[target=_blank] {
   padding-left: 19px;
   background: transparent url(../images/16x16/Out-16x16.png) 0% 50% no-repeat; 
-}
-
-.field-content-value a[href^='http://www.u21denmark2011.com'],
-.field-content-value a[href^='http://u21denmark2011.com'],
-.field-content-value a[href^='http://u21.etek.dk'],
-.field-content-value a[href^='http://dev.u21.etek.dk'] {
-  padding-left: 0;
-  background: transparent;
 }
 
 .region-link a:link,
@@ -134,13 +146,41 @@ li a.active:hover {
   text-decoration: underline;
 }
 
+/* ----- / Table styles ----- */
+table {
+  width: 99%;
+
+}
+
+table td {
+  vertical-align: top;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.layout-table {
+  zoom: 1;
+}
+
+table.layout-table {
+  border: 0;
+}
+
+.field-content-value table img {
+  border: none;
+  margin: 0;
+  display: block;
+}
+
+.mceContentBody td {
+  font-size: 13px;
+}
+
 /* ----- / Submenu ----- */
 .pane-menu-tree ul li {
   font-size: 11px;
   line-height: 13px;
 }
-
-
 
 /* ------ / REGION TITLE ----- */
 
@@ -220,4 +260,19 @@ li a.active:hover {
 
 .views-list .locality:after {
   content: ", ";
+}
+
+/* ----- / Footer ----- */
+#footer-regions,
+#footer-regions h2,
+#footer-regions h3,
+#footer-regions p,
+#footer-regions li {
+  color: #fff;
+}
+
+#footer-regions a:link,
+#footer-regions a:visited {
+  color: #47a7ff;
+  font-weight: bold;
 }

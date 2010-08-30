@@ -674,6 +674,37 @@ div.feed-icon {
 }
 
 
+/* ======================================== */
+/*  Footer                                  */
+/* ======================================== */
+
+#footer, #footer-inner, #footer-regions {
+  overflow: hidden;
+}
+
+#footer {
+  background: #e9ebec url(../images/back-footer-outer.jpg) left bottom repeat-x;
+}
+
+#footer-inner {
+  background: url(../images/back-footer-inner.jpg) 50% 0% no-repeat;
+}
+
+#footer-regions {
+  min-height: 236px;
+  margin-top: 208px;
+  background: #0b0100 url(../images/back-footer-outer.jpg) left bottom repeat-x;
+}
+
+#footer-regions>li {
+  border-top: 1px #ccc solid;
+}
+
+#footer-regions>li>* {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
 
 /* =============================================
 
@@ -695,19 +726,6 @@ div.feed-icon {
   float: left;
   list-style: none;
   margin-right: 8px;
-}
-
-/* ----- / Regions ----- */
-#region-middle-left>div,
-#region-middle-center>div,
-#region-middle-right>div,
-#footer .region>div {
-  border: 3px dashed #666;
-  padding: 10px;
-}
-
-#footer .region>div {
-  margin: 10px 0;
 }
 
 
