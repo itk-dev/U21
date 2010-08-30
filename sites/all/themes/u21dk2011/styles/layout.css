@@ -585,29 +585,29 @@ img {
 /*  NEWS / EVENTS LIST                      */
 /* ======================================== */
 
-.top-slideshow .views-list>li {
+.list-news-list .views-list>li {
   padding: 8px;
   background: transparent url(../images/back-groove.png) left top repeat-x;
   padding-top: 16px;
   margin-top: 2px;
 }
 
-.top-slideshow .views-list>li>div {
+.list-news-list .views-list>li>div {
   clear: left;
 }
 
-.top-slideshow .views-list>li:first-child {
+.list-news-list .views-list>li:first-child {
   padding-top: 8px;
   margin-top: 0;
   background: transparent;
 }
 
-.top-slideshow .views-list .region-link,
-.top-slideshow .views-list .post-date {
+.list-news-list .views-list .region-link,
+.list-news-list .views-list .post-date {
   display: inline-block;
 }
 
-.top-slideshow .region-link {
+.list-news-list .region-link {
   background: #aaa;
   border-radius: 6px;
   -moz-border-radius: 6px;
@@ -623,13 +623,13 @@ img {
   font-weight: normal;
 }
 
-.top-slideshow h2 {
+.list-news-list h2 {
   margin-bottom: 12px;
 }
 
-.top-slideshow .location {
+/* .top-slideshow .location {
   float: left;
-}
+} */
 
 .view-events .view-footer {
   padding-left: 32px;
