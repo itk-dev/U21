@@ -705,8 +705,7 @@ div.feed-icon {
   margin: -8px -8px 0;
 }
 
-#secondary-content .block-block h3,
-#secondary-content .block-u21-gmap h3 {
+#secondary-content .block-block h3 {
   background: url(../images/back-spotbox.png) left top no-repeat;
   color: #fff;
   position: relative;
@@ -716,6 +715,16 @@ div.feed-icon {
   margin: 0 -8px -19px;
   padding: 6px 8px;
 }
+
+#secondary-content .block-u21-gmap h3 {
+  background: url(../images/back-spotbox.png) left top no-repeat;
+  color: #fff;
+  position: relative;
+  font-size: 14px;
+  line-height: 16px;
+  padding: 6px 8px;
+}
+
 
 #secondary-content .block-block h3 + p {
   padding-top: 8px;
