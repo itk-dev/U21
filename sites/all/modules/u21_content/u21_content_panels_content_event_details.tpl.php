@@ -12,7 +12,7 @@
     <td><?php print $price ?></td>
   </tr>
   <tr>
-    <td class="label"><?php print t('Location') ?>:</td>
+    <td class="label"><?php print t('Event location') ?>:</td>
     <td>
       <b><?php print $address_name ?></b><br/>
       <?php print $address_street ?><br/>
