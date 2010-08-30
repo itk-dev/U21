@@ -2339,7 +2339,7 @@ function u21_panels_settings_default_page_manager_pages() {
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'events-panel_pane_1';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array(
       'use_pager' => 0,
@@ -2365,6 +2365,27 @@ function u21_panels_settings_default_page_manager_pages() {
     $pane->position = 0;
     $display->content['new-2'] = $pane;
     $display->panels['right'][0] = 'new-2';
+    $pane = new stdClass;
+    $pane->api_version = 1;
+    $pane->pid = 'new-3';
+    $pane->panel = 'right';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'events-panel_pane_8';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array();
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'spotbox',
+    );
+    $pane->extras = array();
+    $pane->position = 1;
+    $display->content['new-3'] = $pane;
+    $display->panels['right'][1] = 'new-3';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -3734,4 +3755,3 @@ return FALSE;',
 
  return $pages;
 }
-
