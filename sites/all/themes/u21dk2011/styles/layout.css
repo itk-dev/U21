@@ -29,6 +29,10 @@ body.environment-indicator-adjust.environment-indicator-left {
   clear: both;
 }
 
+img {
+  display: block;
+}
+
 /* ======================================== */
 /*  HEADER                                  */
 /* ======================================== */
@@ -248,12 +252,13 @@ body.environment-indicator-adjust.environment-indicator-left {
   clear: left;
 }
 
-.panel-col-top {
-  padding-bottom: 20px;
-}
-
 .page-node .panel-col-top {
   padding-bottom: 0;
+}
+
+.panel-col-top,
+.node-type-region .panel-col-top {
+  padding-bottom: 20px;
 }
 
 /* ----- / Region header ----- */
@@ -344,7 +349,7 @@ body.environment-indicator-adjust.environment-indicator-left {
   margin-bottom: 15px;
 }
 
-.list-event-list .title-image {
+.top-slideshow .title-image {
   margin-left: -8px;
   margin-right: -8px;
 }
@@ -607,33 +612,33 @@ body.environment-indicator-adjust.environment-indicator-left {
 /*  NEWS / EVENTS LIST                      */
 /* ======================================== */
 
-.list-news-list .views-list>li,
-.list-event-list .views-list>li {
+.top-slideshow .views-list>li,
+.top-slideshow .views-list>li {
   padding: 8px;
   background: transparent url(../images/back-groove.png) left top repeat-x;
   padding-top: 16px;
   margin-top: 2px;
 }
 
-.list-event-list .views-list>li>div,
-.list-news-list .views-list>li>div {
+.top-slideshow .views-list>li>div,
+.top-slideshow .views-list>li>div {
   clear: left;
 }
 
-.list-event-list .views-list>li:first-child, 
-.list-news-list .views-list>li:first-child {
+.top-slideshow .views-list>li:first-child, 
+.top-slideshow .views-list>li:first-child {
   padding-top: 8px;
   margin-top: 0;
   background: transparent;
 }
 
-.list-news-list .views-list .region-link,
-.list-news-list .views-list .post-date {
+.top-slideshow .views-list .region-link,
+.top-slideshow .views-list .post-date {
   display: inline-block;
 }
 
-.list-event-list .region-link,
-.list-news-list .region-link {
+.top-slideshow .region-link,
+.top-slideshow .region-link {
   background: #aaa;
   border-radius: 6px;
   -moz-border-radius: 6px;
@@ -649,18 +654,58 @@ body.environment-indicator-adjust.environment-indicator-left {
   font-weight: normal;
 }
 
-.list-event-list h2 {
+.top-slideshow h2 {
   margin-bottom: 12px;
 }
 
-.list-event-list .location {
+.top-slideshow .location {
   float: left;
 }
+
+.view-events .view-footer {
+  padding-left: 32px;
+  padding-top: 8px;
+  background: url(../images/icon-link-events.png) left bottom no-repeat;
+  
+}
+
 
 /* ----- / External calendar link ----- */
 .pane-region-calendar-link {
   padding: 8px;
 }
+
+/* ======================================== */
+/*  REGIONAL CAMPAIGNS                      */
+/* ======================================== */
+
+.pane-regional-campaign a:link,
+.pane-regional-campaign a:visited {
+  display: block;
+  border-bottom: none;
+}
+
+.pane-regional-campaign a:hover,
+.pane-regional-campaign a:hover {
+  margin: -8px;
+  border: 8px solid #fff;
+}
+
+.campaign-type-ii .random-regional-campaign {
+  float: left;
+  width: 300px;
+  margin-bottom: 10px;
+}
+
+.campaign-type-ii .random-regional-campaign:first-child {
+  margin-right: 19px;
+}
+
+.campaign-type-i .random-regional-campaign {
+  width: 620px;
+  margin-bottom: 10px;
+}
+
 
 /* ======================================== */
 /*  PAGER                                   */
@@ -723,6 +768,7 @@ div.feed-icon {
   font-size: 14px;
   line-height: 16px;
   padding: 6px 8px;
+  margin-top: 0;
 }
 
 
@@ -821,6 +867,8 @@ div.feed-icon {
 }
 
 
+
+
 /* =============================================
 
    GAMMELT SLAM */
@@ -847,8 +895,7 @@ div.feed-icon {
 /* ----- / Campaigns ----- */
 .campaign-type-ii .random-regional-campaign {
   float: left;
-  width: 298px;
-  border: 1px dashed silver;
+  width: 300px;
   margin-bottom: 10px;
 }
 
@@ -857,7 +904,6 @@ div.feed-icon {
 }
 
 .campaign-type-i .random-regional-campaign {
-  width: 618px;
-  border: 1px dashed silver;
+  width: 620px;
   margin-bottom: 10px;
 }
