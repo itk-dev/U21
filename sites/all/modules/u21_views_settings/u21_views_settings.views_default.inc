@@ -1559,7 +1559,7 @@ function u21_views_settings_views_default_views() {
   $handler->override_option('footer', '<a href="/events/">Vis alle arrangementer</a>');
   $handler->override_option('footer_format', '2');
   $handler->override_option('footer_empty', 0);
-  $handler->override_option('items_per_page', 3);
+  $handler->override_option('items_per_page', 6);
   $handler->override_option('use_pager', FALSE);
   $handler->override_option('style_plugin', 'slideshow');
   $handler->override_option('style_options', array(
@@ -1567,10 +1567,10 @@ function u21_views_settings_views_default_views() {
     'mode' => 'views_slideshow_singleframe',
     'views_slideshow_singleframe-prefix' => '',
     'views_slideshow_singleframe' => array(
-      'timeout' => '5000',
-      'delay' => '0',
+      'timeout' => '10000',
+      'delay' => '4000',
       'speed' => '700',
-      'start_paused' => 0,
+      'start_paused' => 1,
       'fixed_height' => '1',
       'random' => '0',
       'pause' => '1',
@@ -1584,7 +1584,7 @@ function u21_views_settings_views_default_views() {
       'pager' => '2',
       'pager_type' => 'Numbered',
       'pager_hover' => '2',
-      'pager_click_to_page' => 0,
+      'pager_click_to_page' => 1,
       'image_count' => '0',
       'items_per_slide' => '1',
       'effect' => 'fade',
@@ -1952,6 +1952,207 @@ function u21_views_settings_views_default_views() {
   $handler->override_option('link_to_view', 0);
   $handler->override_option('inherit_panels_path', 0);
   $handler = $view->new_display('panel_pane', 'Events overview (region)', 'panel_pane_4');
+  $handler->override_option('fields', array(
+    'title' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'link_to_node' => 1,
+      'exclude' => 0,
+      'id' => 'title',
+      'table' => 'node',
+      'field' => 'title',
+      'relationship' => 'none',
+    ),
+    'field_titleimage_imceimage_path' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'link_to_node' => 0,
+      'label_type' => 'none',
+      'format' => 'news_title_default',
+      'multiple' => array(
+        'group' => TRUE,
+        'multiple_number' => '',
+        'multiple_from' => '',
+        'multiple_reversed' => FALSE,
+      ),
+      'exclude' => 0,
+      'id' => 'field_titleimage_imceimage_path',
+      'table' => 'node_data_field_titleimage',
+      'field' => 'field_titleimage_imceimage_path',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+    'address' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'hide' => array(
+        'street' => 'street',
+        'additional' => 'additional',
+        'province' => 'province',
+        'postal_code' => 'postal_code',
+        'country' => 'country',
+        'locpick' => 'locpick',
+        'province_name' => 'province_name',
+        'country_name' => 'country_name',
+        'map_link' => 'map_link',
+        'coords' => 'coords',
+        'name' => 0,
+        'city' => 0,
+      ),
+      'exclude' => 0,
+      'id' => 'address',
+      'table' => 'location',
+      'field' => 'address',
+      'relationship' => 'none',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+    ),
+    'field_date_value' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'link_to_node' => 0,
+      'label_type' => 'none',
+      'format' => 'default',
+      'multiple' => array(
+        'multiple_number' => '',
+        'multiple_from' => '',
+        'multiple_to' => '',
+        'group' => TRUE,
+      ),
+      'repeat' => array(
+        'show_repeat_rule' => '',
+      ),
+      'fromto' => array(
+        'fromto' => 'both',
+      ),
+      'exclude' => 0,
+      'id' => 'field_date_value',
+      'table' => 'node_data_field_date',
+      'field' => 'field_date_value',
+      'relationship' => 'none',
+    ),
+    'field_teaser_value' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'link_to_node' => 0,
+      'label_type' => 'none',
+      'format' => 'default',
+      'multiple' => array(
+        'group' => TRUE,
+        'multiple_number' => '',
+        'multiple_from' => '',
+        'multiple_reversed' => FALSE,
+      ),
+      'exclude' => 0,
+      'id' => 'field_teaser_value',
+      'table' => 'node_data_field_teaser',
+      'field' => 'field_teaser_value',
+      'relationship' => 'none',
+    ),
+  ));
   $handler->override_option('arguments', array(
     'field_slug_ref_nid' => array(
       'default_action' => 'empty',
@@ -2416,6 +2617,207 @@ function u21_views_settings_views_default_views() {
   $handler->override_option('link_to_view', 0);
   $handler->override_option('inherit_panels_path', 0);
   $handler = $view->new_display('panel_pane', 'Events overview term (region)', 'panel_pane_6');
+  $handler->override_option('fields', array(
+    'title' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'link_to_node' => 1,
+      'exclude' => 0,
+      'id' => 'title',
+      'table' => 'node',
+      'field' => 'title',
+      'relationship' => 'none',
+    ),
+    'field_titleimage_imceimage_path' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'link_to_node' => 0,
+      'label_type' => 'none',
+      'format' => 'news_title_default',
+      'multiple' => array(
+        'group' => TRUE,
+        'multiple_number' => '',
+        'multiple_from' => '',
+        'multiple_reversed' => FALSE,
+      ),
+      'exclude' => 0,
+      'id' => 'field_titleimage_imceimage_path',
+      'table' => 'node_data_field_titleimage',
+      'field' => 'field_titleimage_imceimage_path',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+    'address' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'hide' => array(
+        'street' => 'street',
+        'additional' => 'additional',
+        'province' => 'province',
+        'postal_code' => 'postal_code',
+        'country' => 'country',
+        'locpick' => 'locpick',
+        'province_name' => 'province_name',
+        'country_name' => 'country_name',
+        'map_link' => 'map_link',
+        'coords' => 'coords',
+        'name' => 0,
+        'city' => 0,
+      ),
+      'exclude' => 0,
+      'id' => 'address',
+      'table' => 'location',
+      'field' => 'address',
+      'relationship' => 'none',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+    ),
+    'field_date_value' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'link_to_node' => 0,
+      'label_type' => 'none',
+      'format' => 'default',
+      'multiple' => array(
+        'multiple_number' => '',
+        'multiple_from' => '',
+        'multiple_to' => '',
+        'group' => TRUE,
+      ),
+      'repeat' => array(
+        'show_repeat_rule' => '',
+      ),
+      'fromto' => array(
+        'fromto' => 'both',
+      ),
+      'exclude' => 0,
+      'id' => 'field_date_value',
+      'table' => 'node_data_field_date',
+      'field' => 'field_date_value',
+      'relationship' => 'none',
+    ),
+    'field_teaser_value' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'link_to_node' => 0,
+      'label_type' => 'none',
+      'format' => 'default',
+      'multiple' => array(
+        'group' => TRUE,
+        'multiple_number' => '',
+        'multiple_from' => '',
+        'multiple_reversed' => FALSE,
+      ),
+      'exclude' => 0,
+      'id' => 'field_teaser_value',
+      'table' => 'node_data_field_teaser',
+      'field' => 'field_teaser_value',
+      'relationship' => 'none',
+    ),
+  ));
   $handler->override_option('arguments', array(
     'field_slug_ref_nid' => array(
       'default_action' => 'empty',
@@ -2524,6 +2926,52 @@ function u21_views_settings_views_default_views() {
       'validate_user_restrict_roles' => 0,
       'validate_argument_php' => '',
     ),
+  ));
+  $handler->override_option('style_plugin', 'semanticviews_default');
+  $handler->override_option('style_options', array(
+    'grouping' => '',
+    'group' => array(
+      'element_type' => 'h3',
+      'class' => 'title',
+    ),
+    'list' => array(
+      'element_type' => 'ul',
+      'class' => 'views-list',
+    ),
+    'row' => array(
+      'element_type' => 'li',
+      'class' => '',
+      'last_every_nth' => '0',
+      'first_class' => 'first',
+      'last_class' => 'last',
+      'striping_classes' => 'odd even',
+    ),
+  ));
+  $handler->override_option('row_plugin', 'semanticviews_fields');
+  $handler->override_option('row_options', array(
+    'semantic_html' => array(
+      'title' => array(
+        'element_type' => 'h2',
+        'class' => '',
+      ),
+      'field_titleimage_imceimage_path' => array(
+        'element_type' => 'div',
+        'class' => 'title-image',
+      ),
+      'address' => array(
+        'element_type' => '',
+        'class' => '',
+      ),
+      'field_date_value' => array(
+        'element_type' => '',
+        'class' => '',
+      ),
+      'field_teaser_value' => array(
+        'element_type' => 'div',
+        'class' => '',
+      ),
+    ),
+    'skip_blank' => 1,
   ));
   $handler->override_option('pane_title', 'Events overview term (Region list)');
   $handler->override_option('pane_description', 'Displays regional event list (term)');
@@ -3705,7 +4153,7 @@ function u21_views_settings_views_default_views() {
       'label' => '',
       'alter' => array(
         'alter_text' => 0,
-        'text' => '',
+        'text' => '[field_titleimage_imceimage_path]',
         'make_link' => 0,
         'path' => '',
         'link_class' => '',
@@ -3726,7 +4174,7 @@ function u21_views_settings_views_default_views() {
       'empty_zero' => 0,
       'link_to_node' => 1,
       'label_type' => 'none',
-      'format' => 'news_slider_linked',
+      'format' => 'news_slider_default',
       'multiple' => array(
         'group' => TRUE,
         'multiple_number' => '',
@@ -3834,17 +4282,17 @@ function u21_views_settings_views_default_views() {
     ),
   ));
   $handler->override_option('footer', '<a href="/news">See all news on u21denmark2011.com</a>');
-  $handler->override_option('footer_format', '3');
+  $handler->override_option('footer_format', '2');
   $handler->override_option('footer_empty', 0);
-  $handler->override_option('items_per_page', 5);
+  $handler->override_option('items_per_page', 6);
   $handler->override_option('style_plugin', 'slideshow');
   $handler->override_option('style_options', array(
     'type' => 'ul',
     'mode' => 'views_slideshow_singleframe',
     'views_slideshow_singleframe-prefix' => '',
     'views_slideshow_singleframe' => array(
-      'timeout' => '5000',
-      'delay' => '0',
+      'timeout' => '10000',
+      'delay' => '4000',
       'speed' => '700',
       'start_paused' => 1,
       'fixed_height' => '1',
@@ -5513,9 +5961,66 @@ function u21_views_settings_views_default_views() {
       'relationship' => 'none',
     ),
   ));
+  $handler->override_option('filters', array(
+    'status' => array(
+      'operator' => '=',
+      'value' => '1',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'status',
+      'table' => 'node',
+      'field' => 'status',
+      'relationship' => 'none',
+    ),
+    'type_1' => array(
+      'operator' => 'in',
+      'value' => array(
+        'articles' => 'articles',
+        'blogs' => 'blogs',
+        'event' => 'event',
+        'photo' => 'photo',
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'type_1',
+      'table' => 'node',
+      'field' => 'type',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+    'field_promote_regional_value' => array(
+      'operator' => '=',
+      'value' => '1',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'case' => 0,
+      'id' => 'field_promote_regional_value',
+      'table' => 'node_data_field_promote_regional',
+      'field' => 'field_promote_regional_value',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+  ));
   $handler->override_option('footer', '<a href="news/">See all local news</a>');
   $handler->override_option('footer_format', '2');
   $handler->override_option('footer_empty', 1);
+  $handler->override_option('items_per_page', 6);
   $handler->override_option('style_plugin', 'slideshow');
   $handler->override_option('style_options', array(
     'type' => 'ul',
@@ -5759,5 +6264,7 @@ function u21_views_settings_views_default_views() {
 
   return $views;
 }
+
+
 
 
