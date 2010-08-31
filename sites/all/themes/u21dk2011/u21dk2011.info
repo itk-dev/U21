@@ -29,6 +29,7 @@
   stylesheets[all][] = styles/typography.css
   stylesheets[all][] = styles/layout.css
   stylesheets[all][] = styles/blocks.css
+  stylesheets[all][] = styles/menus.css
   stylesheets[print][] = styles/print.css
   stylesheets[handheld][] = styles/mobile.css
 
