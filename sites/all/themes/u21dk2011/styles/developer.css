@@ -36,3 +36,7 @@
 .panel-col-left {
   clear: left;
 }
+
+none {
+  display: none !important;
+}

@@ -43,38 +43,30 @@
 
 /* ----- / Secondary content blocks ----- */
 #secondary-content .block-block {
+  padding: 0;
+}
+
+#secondary-content .block-block-content {
   background: #fff;
-  margin-top: 20px;
   padding: 0 8px 8px;
 }
 
 #secondary-content .block-block img {
   display: block;
-  margin: -8px -8px 0;
+  margin: 0 -8px;
 }
 
-#secondary-content .block-block h3 {
+#secondary-content .block>h2 {
   background: url(../images/back-spotbox.png) left top no-repeat;
   color: #fff;
-  position: relative;
-  top: -20px;
   font-size: 14px;
-  line-height: 16px;
-  margin: 0 -8px 0px;
+  line-height: 17px;
   padding: 6px 8px;
-}
-
-#secondary-content .block-u21-gmap h3 {
-  background: url(../images/back-spotbox.png) left top no-repeat;
-  color: #fff;
-  position: relative;
-  font-size: 14px;
-  line-height: 16px;
-  padding: 6px 8px;
-  margin-top: 0;
+  margin: 0;
 }
 
 
+/*
 #secondary-content .block-block h3 + p {
   padding-top: 8px;
 }
@@ -90,6 +82,13 @@
   position: relative;
   top: -19px;
 }
+*/
+
+#region-middle h2,
+#region-bottom h2 {
+  display: none;
+}
+
 
 /* ----- / Upcoming events / Spotbox ----- */
 .panel-col-right .pane-events-panel-pane-8 {
@@ -155,5 +154,5 @@
   position: absolute;
   bottom: 8px;
   left: 8px;
-  
 }
+
