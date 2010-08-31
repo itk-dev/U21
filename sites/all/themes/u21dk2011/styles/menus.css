@@ -1,5 +1,5 @@
 /* ======================================== */
-/*  ACTIVE STYLES                           */
+/*  ACTIVE + HOVER STYLES                   */
 /* ======================================== */
 
 .panel-col-top a.active-trail,
@@ -20,6 +20,22 @@
 .panel-col-left a.active-trail:visited {
   color: #fff;
   border: none;
+}
+
+.panel-col-top li:hover>a {
+  background: transparent url(../images/back-menu-hover.png) 0% top no-repeat;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -o-border-radius: 6px;
+  display: inline-block;
+  padding: 2px 6px 3px;
+  border: none;
+}
+
+.panel-col-left li:hover>a {
+  border: none;
+  padding-bottom: 0;
 }
 
 /* ----- / Secondary Menus ----- */
@@ -152,10 +168,6 @@
 }
 
 
-.pane-menu-tree li:hover>a {
-  background: transparent url(../images/16x16/Checkbox-16x16.png) 0% 50% no-repeat;
-}
-
 .pane-menu-tree li a:link,
 .pane-menu-tree li a:visited {
   padding-left: 18px;
@@ -167,12 +179,6 @@
 
 .pane-menu-tree li li {
   padding-left: 8px;
-}
-
-.pane-menu-tree li a.active {
-  background: transparent url(../images/16x16/Checkbox-16x16.png) 0% 50% no-repeat;
-  font-weight: bold;
-  color: #444;
 }
 
 /* ----- / Regional submenu ----- */
