@@ -1,3 +1,9 @@
+/* ----- / Overwrite system.css ----- */
+.block ul {
+  padding: 0;
+}
+
+
 /* ------ / SMS UPDATE BANNER ----- */
 .sms-updates {
   display: block;
@@ -46,8 +52,10 @@
   padding: 0;
 }
 
-#secondary-content .block-block-content {
+#secondary-content .block-block-content,
+#secondary-content .block-views-content {
   background: #fff;
+  overflow: hidden;
   padding: 0 8px 8px;
 }
 
@@ -65,24 +73,20 @@
   margin: 0;
 }
 
+#secondary-content .block .post-date {
+  font-weight: bold;
+  font-size: 12px;
+}
 
-/*
-#secondary-content .block-block h3 + p {
+#secondary-content .block-views li {
+  padding-top: 12px;
+  background: url(../images/back-list-top.png) center 2px no-repeat;
+}
+
+#secondary-content .block-views li.first {
   padding-top: 8px;
+  background: transparent;
 }
-
-#secondary-content .block-block h3 + p a:first-child {
-  margin-top: -8px;
-}
-
-#secondary-content .block-block>p,
-#secondary-content .block-block>table,
-#secondary-content .block-block>ul,
-#secondary-content .block-block>ol {
-  position: relative;
-  top: -19px;
-}
-*/
 
 #region-middle h2,
 #region-bottom h2 {
