@@ -79,12 +79,13 @@
 }
 
 #secondary-content .block-views li {
-  padding-top: 12px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   background: url(../images/back-list-top.png) center 2px no-repeat;
 }
 
 #secondary-content .block-views li.first {
-  padding-top: 8px;
+  padding-top: 0;
   background: transparent;
 }
 
