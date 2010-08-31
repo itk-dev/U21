@@ -61,7 +61,7 @@ function u21_content_region_content_type_render($subtype, $conf, $panel_args, $c
       $block->content = theme('u21_content_region_calendar_link', $node);
       break;
 
-    case 'region_banner': // XXX HACK -> fix later on
+    case 'region_banner': // XXX HACK -> fix later
       $nid = $context->data->nid;
       switch ($nid) {
         case 1: // Aalborg
@@ -77,12 +77,12 @@ function u21_content_region_content_type_render($subtype, $conf, $panel_args, $c
           $bid = 13;
           break;
       }
-      $block = db_fetch_object(db_query('SELECT title, body
-                                         FROM boxes bx, blocks bs
-                                         WHERE bx.bid = bs.delta
-                                           AND bx.bid = %d
-                                           AND theme = "u21dk2011"', $bid));
-      $block->content = '<div class="sms-updates"><h2>'.$block->title.'</h2>'.$block->body.'</div>';
+      $date = db_fetch_object(db_query('SELECT title, body
+                                        FROM boxes bx, blocks bs
+                                        WHERE bx.bid = bs.delta
+                                          AND bx.bid = %d
+                                          AND theme = "u21dk2011"', $bid));
+      $block->content = '<div class="sms-updates"><h2>'.$data->title.'</h2>'.$data->body.'</div>';
       break;
   }
   return $block;
