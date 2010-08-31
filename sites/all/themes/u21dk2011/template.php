@@ -5,7 +5,8 @@
  * For more information: http://msdn.microsoft.com/en-us/library/ms537512.aspx
  * template.php implementation based on Genesis Theme by jmburnz.
  */
- 
+
+/* 
 function u21dk2011_theme(&$existing, $type, $theme, $path){
   global $theme_path;
 
@@ -21,6 +22,7 @@ function u21dk2011_theme(&$existing, $type, $theme, $path){
   $templates += drupal_find_theme_templates($existing, '.tpl.php', $path);
   return $templates;
 }
+*/
 
 /**
  * Override or insert variables into page templates.
@@ -47,11 +49,11 @@ function u21dk2011_preprocess_page(&$vars, $hook) {
     $vars['help'] = '';
   }
 
-  // Add conditional stylesheets.
+/*  // Add conditional stylesheets.
   if (!module_exists('conditional_styles')) {
     $vars['styles'] .= $vars['conditional_styles'] = variable_get('conditional_styles_' . $GLOBALS['theme'], '');
   }
-
+*/
 
   // Set variables for the logo and site_name.
   if (!empty($vars['logo'])) {
