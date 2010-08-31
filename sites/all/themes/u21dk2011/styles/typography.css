@@ -36,6 +36,9 @@ h1 {
   font-weight: bold;
   color: #333;
   line-height: 30px;
+}
+
+.page-news h1 {
   text-transform: capitalize;
 }
 

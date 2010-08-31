@@ -856,6 +856,11 @@ div.feed-icon {
 
 
 
+body.context-editing a.context-block-region, 
+body.context-editing a.context-block {
+  display: block !important;
+}
+
 
 /* =============================================
 
