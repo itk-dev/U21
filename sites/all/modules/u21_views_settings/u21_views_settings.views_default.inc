@@ -4567,7 +4567,7 @@ function u21_views_settings_views_default_views() {
       'relationship' => 'none',
     ),
   ));
-  $handler->override_option('footer', '<a href="/news">See all news on u21denmark2011.com</a>');
+  $handler->override_option('footer', '<a href="/news">Se alle nyheder på u21denmark2011.com</a>');
   $handler->override_option('footer_format', '3');
   $handler->override_option('footer_empty', 0);
   $handler->override_option('items_per_page', 8);
@@ -5531,6 +5531,8 @@ function u21_views_settings_views_default_views() {
     'type' => 'none',
   ));
   $handler->override_option('title', 'News');
+  $handler->override_option('footer_format', '2');
+  $handler->override_option('footer_empty', 0);
   $handler->override_option('empty', 'No news found!');
   $handler->override_option('empty_format', '1');
   $handler->override_option('style_options', array(
@@ -6441,8 +6443,6 @@ function u21_views_settings_views_default_views() {
       'relationship' => 'none',
     ),
   ));
-  $handler->override_option('footer_format', '2');
-  $handler->override_option('footer_empty', 0);
   $handler->override_option('items_per_page', 6);
   $handler->override_option('style_plugin', 'slideshow');
   $handler->override_option('style_options', array(
@@ -6687,5 +6687,3 @@ function u21_views_settings_views_default_views() {
 
   return $views;
 }
-
-
