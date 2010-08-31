@@ -691,7 +691,8 @@ table img {
 .pager {
   padding: 8px;
   float: left;
-  margin-top: 25px;
+  margin-top: 12px;
+  margin-bottom: 12px;
 }
 
 /* ======================================== */
@@ -700,7 +701,8 @@ table img {
 
 div.feed-icon {
   padding: 8px;
-  margin-top: 25px;
+  margin-top: 12px;
+  margin-bottom: 12px;
 }
 
 
