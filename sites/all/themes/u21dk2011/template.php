@@ -75,7 +75,6 @@ function u21dk2011_preprocess_page(&$vars, $hook) {
       $vars['body_classes'] .= ' page-regional';
     }
   }
-  
 }
 
 /**
@@ -106,6 +105,28 @@ function u21dk2011_menu_item_link($link) {
     $hover = '<div class="menu-hover">'.$link['options']['attributes']['title'].'</div>';
   }
 
+  // THIS IS A HACK XXXXX FIX ME LATER
+  $region_links = array('node/1','node/2','node/3','node/4');
+  if (in_array($link['href'], $region_links)) {
+    $tmp = split('/', $_SERVER[ 'REQUEST_URI']);
+    if ($tmp[2] == 'herning' && $link['href'] == 'node/4') {
+        $link['localized_options']['attributes']['class'] = 'active-trail';
+        return l($link['title'], $link['href'], $link['localized_options']) . $hover;
+    }
+    else if ($tmp[2] == 'viborg' && $link['href'] == 'node/3') {
+        $link['localized_options']['attributes']['class'] = 'active-trail';
+        return l($link['title'], $link['href'], $link['localized_options']) . $hover;
+    }
+    else if ($tmp[2] == 'aarhus' && $link['href'] == 'node/2') {
+        $link['localized_options']['attributes']['class'] = 'active-trail';
+        return l($link['title'], $link['href'], $link['localized_options']) . $hover;
+    }
+    else if ($tmp[2] == 'aalborg' && $link['href'] == 'node/1') {
+        $link['localized_options']['attributes']['class'] = 'active-trail';
+        return l($link['title'], $link['href'], $link['localized_options']) . $hover;
+    }
+  }
+
   return l($link['title'], $link['href'], $link['localized_options']) . $hover;
 }
 
@@ -124,4 +145,3 @@ function u21dk2011_views_slideshow_singleframe_controls($vss_id, $view, $options
   
   return $output;
 }
-
