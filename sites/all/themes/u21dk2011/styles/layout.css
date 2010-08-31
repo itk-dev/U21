@@ -349,7 +349,7 @@ img {
   margin-bottom: 15px;
 }
 
-.top-slideshow .title-image {
+.list-event-list .title-image {
   margin-left: -8px;
   margin-right: -8px;
 }
@@ -634,16 +634,11 @@ img {
   margin-bottom: 12px;
 }
 
-/* .top-slideshow .location {
+.list-event-list .location {
   float: left;
-} */
+} 
 
-.view-events .view-footer {
-  padding-left: 32px;
-  padding-top: 8px;
-  background: url(../images/icon-link-events.png) left bottom no-repeat;
-  
-}
+
 
 
 /* ----- / External calendar link ----- */
@@ -806,7 +801,12 @@ div.feed-icon {
   content: ", ";
 }
  
-
+.spotbox .view-events .view-footer {
+  padding-left: 32px;
+  padding-top: 8px;
+  background: url(../images/icon-link-events.png) left bottom no-repeat;
+  
+}
 
 /* ======================================== */
 /*  Footer                                  */
