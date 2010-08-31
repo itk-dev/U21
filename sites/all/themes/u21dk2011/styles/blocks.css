@@ -161,3 +161,8 @@
   left: 8px;
 }
 
+/* ----- / Redakt¿rbanner ----- */
+.field-campaing-image-imceimage-path a:hover {
+  margin: -8px;
+  border: 8px solid #fff;
+}
