@@ -16,7 +16,7 @@ include_once './' . drupal_get_path('theme', 'mothership') . '/theme-settings.ph
 
 function u21dk2011_settings($saved_settings) {
   // Get the default values from the .info file.
-  $defaults = mothership_theme_get_default_settings('SUBTHEME');
+  $defaults = mothership_theme_get_default_settings('u21dk2011');
 
   $settings = array_merge($defaults, $saved_settings);
   // Add the base theme's settings.
