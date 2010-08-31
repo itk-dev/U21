@@ -162,6 +162,11 @@
 }
 
 /* ----- / Redakt¿rbanner ----- */
+.field-campaing-image-imceimage-path a {
+  display: block;
+  margin-bottom: 0;
+}
+
 .field-campaing-image-imceimage-path a:hover {
   margin: -8px;
   border: 8px solid #fff;
