@@ -1,0 +1,35 @@
+.sms-updates {
+  display: block;
+  height: 138px;
+  padding: 16px;
+  background: #0f1141 url(../images/banner-620x170.jpg) left top no-repeat;
+}
+
+.sms-updates h2 {
+  margin-top: 8px;
+  font-size: 26px;
+  line-height: 1;
+  height: 26px;
+  color: #fff;
+  padding-bottom: 16px;
+}
+
+.sms-updates .subscribe {
+  width: 40%;
+  line-height: 1;
+  float: left;
+  color: #fff;
+  font-size: 26px;
+}
+
+.sms-updates .sms-message,
+.sms-updates .sms-number {
+  font-weight: bold;
+  color: #fea92f; 
+}
+
+.sms-updates .notice {
+  padding: 0 0 0 50%;
+  font-size: 13px;
+  color: #fff;
+}
