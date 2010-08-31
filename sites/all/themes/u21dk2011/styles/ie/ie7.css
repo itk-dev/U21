@@ -1,3 +1,12 @@
 #region-city-menu ul {
-  padding: 5px 0 0;
+  padding: 0px 0 0;
+}
+
+.panel-col-right .panel-pane {
+  /* border-top: 1px solid transparent; */
+  width: 300px;
+}
+
+.top-slideshow .views_slideshow_singleframe_pager {
+  padding-top: 2px;
 }

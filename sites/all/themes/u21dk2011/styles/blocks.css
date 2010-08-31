@@ -39,3 +39,121 @@
 .pane-region-banner {
   padding-bottom: 16px;
 }
+
+
+/* ----- / Secondary content blocks ----- */
+#secondary-content .block-block {
+  background: #fff;
+  margin-top: 20px;
+  padding: 0 8px 8px;
+}
+
+#secondary-content .block-block img {
+  display: block;
+  margin: -8px -8px 0;
+}
+
+#secondary-content .block-block h3 {
+  background: url(../images/back-spotbox.png) left top no-repeat;
+  color: #fff;
+  position: relative;
+  top: -20px;
+  font-size: 14px;
+  line-height: 16px;
+  margin: 0 -8px 0px;
+  padding: 6px 8px;
+}
+
+#secondary-content .block-u21-gmap h3 {
+  background: url(../images/back-spotbox.png) left top no-repeat;
+  color: #fff;
+  position: relative;
+  font-size: 14px;
+  line-height: 16px;
+  padding: 6px 8px;
+  margin-top: 0;
+}
+
+
+#secondary-content .block-block h3 + p {
+  padding-top: 8px;
+}
+
+#secondary-content .block-block h3 + p a:first-child {
+  margin-top: -8px;
+}
+
+#secondary-content .block-block>p,
+#secondary-content .block-block>table,
+#secondary-content .block-block>ul,
+#secondary-content .block-block>ol {
+  position: relative;
+  top: -19px;
+}
+
+/* ----- / Upcoming events / Spotbox ----- */
+.panel-col-right .pane-events-panel-pane-8 {
+  margin:0;
+  padding:0;
+  background: transparent;
+  margin-bottom: 20px;
+}
+
+#content .pane-events-panel-pane-8 h2.pane-title {
+  background: url(../images/back-spotbox.png) left top no-repeat;
+  color: #fff;
+  font-size: 14px;
+  line-height: 17px;
+  padding: 6px 8px 6px;
+  margin: 0;
+}
+
+.pane-events-panel-pane-8 .pane-content {
+  background: #fff url(../images/back-block-upcomingevents.jpg) left top no-repeat;
+  padding: 78px 8px 34px;
+  font-size: 12px;
+  min-height: 189px;
+  position: relative;
+}
+
+.pane-events-panel-pane-8 li.last {
+  padding-top: 12px;
+  background: url(../images/back-list-top.png) center 2px no-repeat;
+}
+
+.pane-events-panel-pane-8 .date-display-single, 
+.pane-events-panel-pane-8 .date-display-start, 
+.pane-events-panel-pane-8 .date-display-end, 
+.pane-events-panel-pane-8 .date-display-separator {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.pane-events-panel-pane-8 h3 {
+  margin-top: 0;
+  font-size: 13px;
+}
+
+.pane-events-panel-pane-8 .location {
+  margin-bottom: 2px;
+}
+
+.pane-events-panel-pane-8 .adr,
+.pane-events-panel-pane-8 .adr .locality {
+  font-size: 12px;
+  font-style: italic;
+}
+
+.pane-events-panel-pane-8 .adr .fn:after {
+  content: ", ";
+}
+ 
+.spotbox .view-events .view-footer {
+  padding-left: 32px;
+  padding-top: 8px;
+  background: url(../images/icon-link-events.png) left bottom no-repeat;
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  
+}
