@@ -30,9 +30,6 @@
   
   <?php if ($content['lower_right']) { ?>
   <div class="<?php if (!$content['lower_left']) { ?>prefix-8 alpha <?php } ?>grid-4 omega panel-col-lowright">
-    <?php print $content['lower_left']; ?>
+    <?php print $content['lower_right']; ?>
   </div>
-  <?php } ?>  
-
-
-<?php if ($content['VAR']) { ?>  <?php } ?>
+  <?php } ?>

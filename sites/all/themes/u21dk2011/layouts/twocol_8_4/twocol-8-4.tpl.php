@@ -9,5 +9,3 @@
     <?php print $content['right']; ?>
   </div>
   <?php } ?>
-
-

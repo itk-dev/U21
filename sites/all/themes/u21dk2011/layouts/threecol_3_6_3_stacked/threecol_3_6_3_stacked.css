@@ -28,7 +28,7 @@
 }
 
 #panels-dnd-main .panel-col-lowleft {
-  clear: left;
+  clear: both;
   float: left;
   width: 65%;
   padding: 3px;
