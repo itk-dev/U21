@@ -77,7 +77,7 @@ function u21_content_region_content_type_render($subtype, $conf, $panel_args, $c
           $bid = 13;
           break;
       }
-      $date = db_fetch_object(db_query('SELECT title, body
+      $data = db_fetch_object(db_query('SELECT title, body
                                         FROM boxes bx, blocks bs
                                         WHERE bx.bid = bs.delta
                                           AND bx.bid = %d
