@@ -1,6 +1,7 @@
+/* ------ / SMS UPDATE BANNER ----- */
 .sms-updates {
   display: block;
-  height: 138px;
+  height: 123px;
   padding: 16px;
   background: #0f1141 url(../images/banner-620x170.jpg) left top no-repeat;
 }
@@ -32,4 +33,9 @@
   padding: 0 0 0 50%;
   font-size: 13px;
   color: #fff;
+}
+
+/* ----- / REGIONAL SMS BANNER ----- */
+.pane-region-banner {
+  padding-bottom: 16px;
 }

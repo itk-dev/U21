@@ -365,6 +365,9 @@ table img {
   height: auto;
 }
 
+.panel-col-center {
+  padding-bottom: 16px;
+}
 
 
 /* ======================================== */
@@ -616,6 +619,7 @@ table img {
   display: inline-block;
   color: #777;
   padding-bottom: 2px;
+  margin-right: 8px;
 }
 
 .list-news-list .region-link,
