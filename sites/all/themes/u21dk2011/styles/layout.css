@@ -33,6 +33,10 @@ img {
   display: block;
 }
 
+table img {
+  display: inline;
+}
+
 /* ======================================== */
 /*  HEADER                                  */
 /* ======================================== */
@@ -610,6 +614,8 @@ img {
 .list-event-list .views-list .region-link,
 .list-event-list .views-list .post-date {
   display: inline-block;
+  color: #777;
+  padding-bottom: 2px;
 }
 
 .list-news-list .region-link,
@@ -631,7 +637,7 @@ img {
 
 .list-news-list h2,
 .list-event-list h2 {
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .list-event-list .location {
@@ -752,6 +758,7 @@ div.feed-icon {
   margin:0;
   padding:0;
   background: transparent;
+  margin-bottom: 20px;
 }
 
 #content .pane-events-panel-pane-8 h2.pane-title {
@@ -765,8 +772,10 @@ div.feed-icon {
 
 .pane-events-panel-pane-8 .pane-content {
   background: #fff url(../images/back-block-upcomingevents.jpg) left top no-repeat;
-  padding: 78px 8px 8px;
+  padding: 78px 8px 34px;
   font-size: 12px;
+  min-height: 189px;
+  position: relative;
 }
 
 .pane-events-panel-pane-8 li.last {
@@ -805,6 +814,9 @@ div.feed-icon {
   padding-left: 32px;
   padding-top: 8px;
   background: url(../images/icon-link-events.png) left bottom no-repeat;
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
   
 }
 
