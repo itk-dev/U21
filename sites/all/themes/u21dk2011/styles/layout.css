@@ -648,9 +648,6 @@ table img {
   float: left;
 } 
 
-
-
-
 /* ----- / External calendar link ----- */
 .pane-region-calendar-link {
   padding: 8px;
@@ -715,7 +712,7 @@ div.feed-icon {
 /* ======================================== */
 
 #secondary-content-inner>div {
-  margin-bottom: 12px;
+  margin-bottom: 20px;
 }
 
 #secondary-content-inner #region-bottom {
