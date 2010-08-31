@@ -36,6 +36,9 @@ h1 {
   font-weight: bold;
   color: #333;
   line-height: 30px;
+}
+
+.page-news h1 {
   text-transform: capitalize;
 }
 
@@ -66,11 +69,12 @@ h3 {
   }
 
 .field-content-value em, .field-content-value i {
-  font-style: normal;
+ /* font-style: normal;
   background: #f6ff00;
   background: rgba(246,255,0,0,5);
   padding-left: 1px;
-  padding-right: 1px;
+  padding-right: 1px; */
+  font-style: italic;
 }
 
 quote {
@@ -181,7 +185,6 @@ table.layout-table {
 .field-content-value table img {
   border: none;
   margin: 0;
-  display: block;
 }
 
 .mceContentBody td {
