@@ -7,9 +7,9 @@
 /* ------ / SMS UPDATE BANNER ----- */
 .sms-updates {
   display: block;
-  height: 123px;
+  height: 118px;
   padding: 16px;
-  background: #0f1141 url(../images/banner-620x170.jpg) left top no-repeat;
+  background: #0f1141 url(../images/banner-620x170-lighter.jpg) left top no-repeat;
 }
 
 .sms-updates h2 {
