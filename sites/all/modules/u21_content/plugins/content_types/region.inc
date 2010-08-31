@@ -36,6 +36,12 @@ function u21_content_region_content_type_content_types() {
       'category' => t('Region page'),
       'required context' => new ctools_context_required(t('Node'), 'node'),
     ),
+    'region_banner' => array(
+      'title' => t('Region based banners loaded from blocks'),
+      'description' => t('Displays banner blocks.'),
+      'category' => t('Region page'),
+      'required context' => new ctools_context_required(t('Node'), 'node'),
+    )
   );
   return $types;
 }
@@ -54,6 +60,30 @@ function u21_content_region_content_type_render($subtype, $conf, $panel_args, $c
     case 'region_calendar_link':
       $block->content = theme('u21_content_region_calendar_link', $node);
       break;
+
+    case 'region_banner': // XXX HACK -> fix later on
+      $nid = $context->data->nid;
+      switch ($nid) {
+        case 1: // Aalborg
+          $bid = 14;
+          break;
+        case 2: // Aarhus
+          $bid = 11;
+          break;
+        case 3: // Viborg
+          $bid = 12;
+          break;
+        case 4: // Herning
+          $bid = 13;
+          break;
+      }
+      $block = db_fetch_object(db_query('SELECT title, body
+                                         FROM boxes bx, blocks bs
+                                         WHERE bx.bid = bs.delta
+                                           AND bx.bid = %d
+                                           AND theme = "u21dk2011"', $bid));
+      $block->content = '<div class="sms-updates"><h2>'.$block->title.'</h2>'.$block->body.'</div>';
+      break;
   }
   return $block;
 }
@@ -67,6 +97,8 @@ function u21_content_region_content_type_admin_title($subtype, $conf, $context) 
       return t('"@s":  Region title and menu', array('@s' => $context->identifier));
     case 'region_calendar_link':
       return t('"@s":  Region calendar link', array('@s' => $context->identifier));
+    case 'region_banner':
+      return t('"@s":  Region banner blocks', array('@s' => $context->identifier));
   }
 }
 
