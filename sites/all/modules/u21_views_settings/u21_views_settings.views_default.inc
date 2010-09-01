@@ -4136,7 +4136,53 @@ function u21_views_settings_views_default_views() {
     'hide_empty' => 0,
   ));
   $handler = $view->new_display('panel_pane', 'News overview (global)', 'panel_pane_1');
+  $handler->override_option('relationships', array(
+    'field_slug_ref_nid' => array(
+      'label' => 'Tilknytning',
+      'required' => 0,
+      'delta' => -1,
+      'id' => 'field_slug_ref_nid',
+      'table' => 'node_data_field_slug_ref',
+      'field' => 'field_slug_ref_nid',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+  ));
   $handler->override_option('fields', array(
+    'slug' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'exclude' => 1,
+      'id' => 'slug',
+      'table' => 'panels_slug',
+      'field' => 'slug',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'field_slug_ref_nid',
+    ),
     'title' => array(
       'label' => '',
       'alter' => array(
@@ -4207,7 +4253,7 @@ function u21_views_settings_views_default_views() {
         'alter_text' => 0,
         'text' => '',
         'make_link' => 1,
-        'path' => 'location/[field_slug_ref_nid]/news',
+        'path' => 'location/[slug]/news',
         'link_class' => 'regional_news_link',
         'alt' => '',
         'prefix' => '',
@@ -5595,7 +5641,53 @@ function u21_views_settings_views_default_views() {
     'hide_empty' => 0,
   ));
   $handler = $view->new_display('panel_pane', 'News overview (regional)', 'panel_pane_1');
+  $handler->override_option('relationships', array(
+    'field_slug_ref_nid' => array(
+      'label' => 'Tilknytning',
+      'required' => 0,
+      'delta' => -1,
+      'id' => 'field_slug_ref_nid',
+      'table' => 'node_data_field_slug_ref',
+      'field' => 'field_slug_ref_nid',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+  ));
   $handler->override_option('fields', array(
+    'slug' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'exclude' => 0,
+      'id' => 'slug',
+      'table' => 'panels_slug',
+      'field' => 'slug',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'field_slug_ref_nid',
+    ),
     'title' => array(
       'label' => '',
       'alter' => array(
@@ -5666,7 +5758,7 @@ function u21_views_settings_views_default_views() {
         'alter_text' => 0,
         'text' => '',
         'make_link' => 1,
-        'path' => 'location/[field_slug_ref_nid]/news',
+        'path' => 'location/[slug]/news',
         'link_class' => 'regional_news_link',
         'alt' => '',
         'prefix' => '',
