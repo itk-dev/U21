@@ -116,7 +116,7 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->panel = 'left';
     $pane->type = 'block';
     $pane->subtype = 'block-10';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array(
       'override_title' => 0,
@@ -331,7 +331,7 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->panel = 'left';
     $pane->type = 'region';
     $pane->subtype = 'region_banner';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array(
       'context' => 'relationship_related_node_1',
@@ -572,7 +572,7 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->panel = 'left';
     $pane->type = 'region';
     $pane->subtype = 'region_banner';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array(
       'context' => 'argument_nid_1',
@@ -624,7 +624,7 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->configuration = array(
       'path' => 'events/rss',
       'override_title' => 1,
-      'override_title_text' => 'Kommende arrangementer i %node:panels_slug',
+      'override_title_text' => 'Næste arrangement i %node:panels_slug',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -644,7 +644,7 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->panel = 'right';
     $pane->type = 'block';
     $pane->subtype = 'block-15';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array(
       'override_title' => 0,
@@ -818,7 +818,7 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->panel = 'lower_left';
     $pane->type = 'region';
     $pane->subtype = 'region_banner';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array(
       'context' => 'relationship_related_node_1',
@@ -1121,7 +1121,7 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->panel = 'lower_left';
     $pane->type = 'block';
     $pane->subtype = 'block-10';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array(
       'override_title' => 0,
@@ -1365,7 +1365,7 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->panel = 'left';
     $pane->type = 'block';
     $pane->subtype = 'block-10';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array(
       'override_title' => 0,
@@ -1595,7 +1595,7 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->panel = 'left';
     $pane->type = 'region';
     $pane->subtype = 'region_banner';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array(
       'context' => 'relationship_related_node_1',
@@ -1859,7 +1859,7 @@ function u21_panels_settings_default_page_manager_pages() {
     $pane->panel = 'left';
     $pane->type = 'block';
     $pane->subtype = 'block-10';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array(
       'override_title' => 0,
@@ -2078,7 +2078,7 @@ function u21_panels_settings_default_page_manager_pages() {
     $pane->panel = 'left';
     $pane->type = 'region';
     $pane->subtype = 'region_banner';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array(
       'context' => 'argument_panels_slug_1',
@@ -2322,7 +2322,7 @@ function u21_panels_settings_default_page_manager_pages() {
     $pane->panel = 'left';
     $pane->type = 'region';
     $pane->subtype = 'region_banner';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array(
       'context' => 'argument_panels_slug_1',
@@ -2572,7 +2572,7 @@ function u21_panels_settings_default_page_manager_pages() {
     $pane->panel = 'left';
     $pane->type = 'block';
     $pane->subtype = 'block-10';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array(
       'override_title' => 0,
@@ -2769,7 +2769,7 @@ function u21_panels_settings_default_page_manager_pages() {
     $pane->panel = 'left';
     $pane->type = 'block';
     $pane->subtype = 'block-10';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array(
       'override_title' => 0,
@@ -2846,7 +2846,7 @@ function u21_panels_settings_default_page_manager_pages() {
     $pane->panel = 'right';
     $pane->type = 'block';
     $pane->subtype = 'block-15';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array(
       'override_title' => 0,
@@ -3013,7 +3013,7 @@ return TRUE;',
     $pane->panel = 'left';
     $pane->type = 'block';
     $pane->subtype = 'block-10';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array(
       'override_title' => 0,
@@ -3309,7 +3309,7 @@ return TRUE;',
     $pane->panel = 'left';
     $pane->type = 'region';
     $pane->subtype = 'region_banner';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array(
       'context' => 'argument_panels_slug_1',
@@ -3778,7 +3778,7 @@ return FALSE;',
     $pane->panel = 'left';
     $pane->type = 'block';
     $pane->subtype = 'block-10';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array(
       'override_title' => 0,
@@ -4209,7 +4209,7 @@ return FALSE;',
     $pane->panel = 'left';
     $pane->type = 'region';
     $pane->subtype = 'region_banner';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array(
       'context' => 'argument_panels_slug_1',
