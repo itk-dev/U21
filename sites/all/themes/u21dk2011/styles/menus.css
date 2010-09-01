@@ -3,7 +3,8 @@
 /* ======================================== */
 
 .panel-col-top a.active-trail,
-.panel-col-left a.active-trail {
+.panel-col-left a.active-trail,
+.panel-col-right a.active {
   background: url(../images/back-menu-active.png) left top repeat-x;
   font-weight: bold;
   border-radius: 6px;
@@ -18,7 +19,9 @@
 .panel-col-top a.active-trail:link,
 .panel-col-left a.active-trail:link,
 .panel-col-top a.active-trail:visited,
-.panel-col-left a.active-trail:visited {
+.panel-col-left a.active-trail:visited,
+.panel-col-right a.active:link,
+.panel-col-right a.active:visited {
   color: #fff;
   border: none;
   text-decoration: none;
@@ -41,7 +44,8 @@
   color: #fff;
 }
 
-.panel-col-left .pane-menu-tree li a:hover {
+.panel-col-left .pane-menu-tree li a:hover,
+.panel-col-right li a:hover {
   text-decoration: none;
 }
 
@@ -50,6 +54,7 @@
 #region-secondary-menu {
   background: transparent url(../images/back-menu-secondary.png) left top repeat;
   background: rgba(148,170,185,0.15);
+  min-height: 31px;
 }
 
   #region-secondary-menu ul {
@@ -206,4 +211,18 @@
 
 /* ----- / Regional submenu ----- */
 .pane-region-menu ul {
+}
+
+/* ----- / News Menu ----- */
+.pane-slug-links li a:link,
+.pane-slug-links li a:visited,
+.pane-taxonomy-links li a:link,
+.pane-taxonomy-links li a:visited,
+.pane-taxonomy-links-context li a:link,
+.pane-taxonomy-links-context li a:visited {
+  padding-left: 8px;
+  border: none;
+  margin-bottom: 6px;
+  text-decoration: underline;
+  display: inline-block;
 }

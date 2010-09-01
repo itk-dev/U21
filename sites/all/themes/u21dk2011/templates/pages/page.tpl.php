@@ -12,11 +12,9 @@
 <body class="<?php print $body_classes; ?> show-grid">
   
    <div id="wrapper">
-  <?php if ($region_secondary_menu): ?>
     <div id="region-secondary-menu">
     <?php print $region_secondary_menu; ?>
     </div>
-  <?php endif; ?>
 
  
 

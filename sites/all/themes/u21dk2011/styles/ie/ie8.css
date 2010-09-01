@@ -1,4 +1,4 @@
-#secondary-content .block-block img {
-  position: relative;
-  top: -18px;
+#secondary-content .block-block-content p a:link,
+#secondary-content .block-block-content p a:visited {
+  display: block;
 }

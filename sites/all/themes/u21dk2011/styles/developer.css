@@ -30,3 +30,8 @@
 none {
   display: none !important;
 }
+
+a:link object,
+a:visited object {
+  cursor: pointer;
+}
