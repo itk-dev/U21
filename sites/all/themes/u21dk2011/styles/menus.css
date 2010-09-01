@@ -21,6 +21,7 @@
 .panel-col-left a.active-trail:visited {
   color: #fff;
   border: none;
+  text-decoration: none;
 }
 
 .panel-col-top li:hover>a {
@@ -40,9 +41,8 @@
   color: #fff;
 }
 
-.panel-col-left li:hover>a {
-  border: none;
-  padding-bottom: 0;
+.panel-col-left .pane-menu-tree li a:hover {
+  text-decoration: none;
 }
 
 /* ----- / Secondary Menus ----- */
@@ -193,7 +193,7 @@
 
 .pane-menu-tree li a:link,
 .pane-menu-tree li a:visited {
-  padding-left: 18px;
+  padding-left: 8px;
   border: none;
   margin-bottom: 6px;
   text-decoration: underline;
@@ -201,7 +201,7 @@
 }
 
 .pane-menu-tree li li {
-  padding-left: 8px;
+  padding-left: 12px;
 }
 
 /* ----- / Regional submenu ----- */
