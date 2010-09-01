@@ -12,6 +12,7 @@
   -o-border-radius: 6px;
   display: inline-block;
   padding: 2px 6px 3px;
+  margin: 0;
 }
 
 .panel-col-top a.active-trail:link,
@@ -23,7 +24,7 @@
 }
 
 .panel-col-top li:hover>a {
-  background: transparent url(../images/back-menu-hover.png) 0% top no-repeat;
+  background: transparent url(../images/back-menu-hover.png) left top repeat-x;
   border-radius: 6px;
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
@@ -31,6 +32,12 @@
   display: inline-block;
   padding: 2px 6px 3px;
   border: none;
+  margin: 0;
+}
+
+.panel-col-top li:hover>a:link,
+.panel-col-top li:hover>a:visited {
+  color: #fff;
 }
 
 .panel-col-left li:hover>a {
@@ -152,6 +159,22 @@
 /* ======================================== */
 /*  SUB + REGIONAL MENUS                    */
 /* ======================================== */
+
+
+#main-content #region-title-menu ul {
+  padding-top: 10px;
+}
+
+#main-content #region-title-menu li {
+  display: inline;
+  margin-left: 2px;
+}
+
+.panel-col-top li a {
+  display: inline-block;
+  padding: 2px 0px 0;
+  margin: 0 6px 3px;
+}
 
 /* ----- / Submenu ----- */
 .pane-menu-tree .pane-content {
