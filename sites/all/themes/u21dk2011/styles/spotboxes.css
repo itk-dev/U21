@@ -1,0 +1,173 @@
+/* ----- / Overwrite system.css ----- */
+.block ul {
+  padding: 0;
+}
+
+
+/* ------ / SMS UPDATE BANNER ----- */
+.sms-updates {
+  display: block;
+  height: 118px;
+  padding: 16px;
+  background: #0f1141 url(../images/banner-620x170-lighter.jpg) left top no-repeat;
+}
+
+.sms-updates h2 {
+  margin-top: 8px;
+  font-size: 26px;
+  line-height: 1;
+  height: 26px;
+  color: #fff;
+  padding-bottom: 16px;
+}
+
+.sms-updates .subscribe {
+  width: 40%;
+  line-height: 1;
+  float: left;
+  color: #fff;
+  font-size: 26px;
+}
+
+.sms-updates .sms-message,
+.sms-updates .sms-number {
+  font-weight: bold;
+  color: #fea92f; 
+}
+
+.sms-updates .notice {
+  padding: 0 0 0 50%;
+  font-size: 13px;
+  color: #fff;
+}
+
+/* ----- / REGIONAL SMS BANNER ----- */
+.pane-region-banner {
+  padding-bottom: 16px;
+}
+
+
+/* ----- / Secondary content blocks ----- */
+#secondary-content .block-block {
+  padding: 0;
+}
+
+#secondary-content .block-block-content,
+#secondary-content .block-views-content {
+  background: #fff;
+  overflow: hidden;
+  padding: 0 8px 8px;
+}
+
+#secondary-content .block-block img {
+  display: block;
+  margin: 0 -8px;
+}
+
+#secondary-content .block>h2 {
+  background: url(../images/back-spotbox.png) left top no-repeat;
+  color: #fff;
+  font-size: 14px;
+  line-height: 17px;
+  padding: 6px 8px;
+  margin: 0;
+}
+
+#secondary-content .block .post-date {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+#secondary-content .block-views li {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  background: url(../images/back-list-top.png) center 2px no-repeat;
+}
+
+#secondary-content .block-views li.first {
+  padding-top: 0;
+  background: transparent;
+}
+
+#region-middle h2,
+#region-bottom h2 {
+  display: none;
+}
+
+
+/* ----- / Upcoming events / Spotbox ----- */
+.panel-col-right .pane-events-panel-pane-8 {
+  margin:0;
+  padding:0;
+  background: transparent;
+  margin-bottom: 20px;
+}
+
+#content .pane-events-panel-pane-8 h2.pane-title {
+  background: url(../images/back-spotbox.png) left top no-repeat;
+  color: #fff;
+  font-size: 14px;
+  line-height: 17px;
+  padding: 6px 8px 6px;
+  margin: 0;
+}
+
+.pane-events-panel-pane-8 .pane-content {
+  background: #fff url(../images/back-block-upcomingevents.jpg) left top no-repeat;
+  padding: 78px 8px 34px;
+  font-size: 12px;
+  min-height: 189px;
+  position: relative;
+}
+
+.pane-events-panel-pane-8 li.last {
+  padding-top: 12px;
+  background: url(../images/back-list-top.png) center 2px no-repeat;
+}
+
+.pane-events-panel-pane-8 .date-display-single, 
+.pane-events-panel-pane-8 .date-display-start, 
+.pane-events-panel-pane-8 .date-display-end, 
+.pane-events-panel-pane-8 .date-display-separator {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.pane-events-panel-pane-8 h3 {
+  margin-top: 0;
+  font-size: 13px;
+}
+
+.pane-events-panel-pane-8 .location {
+  margin-bottom: 2px;
+}
+
+.pane-events-panel-pane-8 .adr,
+.pane-events-panel-pane-8 .adr .locality {
+  font-size: 12px;
+  font-style: italic;
+}
+
+.pane-events-panel-pane-8 .adr .fn:after {
+  content: ", ";
+}
+ 
+.spotbox .view-events .view-footer {
+  padding-left: 32px;
+  padding-top: 8px;
+  background: url(../images/icon-link-events.png) left bottom no-repeat;
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+}
+
+/* ----- / Redakt¿rbanner ----- */
+.field-campaing-image-imceimage-path a {
+  display: block;
+  margin-bottom: 0;
+}
+
+.field-campaing-image-imceimage-path a:hover {
+  margin: -8px;
+  border: 8px solid #fff;
+}
