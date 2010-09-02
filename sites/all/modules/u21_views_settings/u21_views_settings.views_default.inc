@@ -1535,9 +1535,9 @@ function u21_views_settings_views_default_views() {
     'views_slideshow_singleframe-prefix' => '',
     'views_slideshow_singleframe' => array(
       'timeout' => '10000',
-      'delay' => '4000',
+      'delay' => '5000',
       'speed' => '700',
-      'start_paused' => 1,
+      'start_paused' => 0,
       'fixed_height' => '1',
       'random' => '0',
       'pause' => '1',
@@ -1586,6 +1586,88 @@ function u21_views_settings_views_default_views() {
   $handler->override_option('inherit_panels_path', 0);
   $handler = $view->new_display('panel_pane', 'Events displaying event', 'panel_pane_3');
   $handler->override_option('fields', array(
+    'field_titleimage_imceimage_path' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 1,
+      'empty_zero' => 0,
+      'link_to_node' => 0,
+      'label_type' => 'none',
+      'format' => 'news_title_default',
+      'multiple' => array(
+        'group' => TRUE,
+        'multiple_number' => '',
+        'multiple_from' => '',
+        'multiple_reversed' => FALSE,
+      ),
+      'exclude' => 0,
+      'id' => 'field_titleimage_imceimage_path',
+      'table' => 'node_data_field_titleimage',
+      'field' => 'field_titleimage_imceimage_path',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+    'field_teaser_value' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'link_to_node' => 0,
+      'label_type' => 'none',
+      'format' => 'default',
+      'multiple' => array(
+        'group' => TRUE,
+        'multiple_number' => '',
+        'multiple_from' => '',
+        'multiple_reversed' => FALSE,
+      ),
+      'exclude' => 0,
+      'id' => 'field_teaser_value',
+      'table' => 'node_data_field_teaser',
+      'field' => 'field_teaser_value',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
     'field_date_value' => array(
       'label' => '',
       'alter' => array(
@@ -1678,88 +1760,6 @@ function u21_views_settings_views_default_views() {
       'override' => array(
         'button' => 'Use default',
       ),
-    ),
-    'field_titleimage_imceimage_path' => array(
-      'label' => '',
-      'alter' => array(
-        'alter_text' => 0,
-        'text' => '',
-        'make_link' => 0,
-        'path' => '',
-        'link_class' => '',
-        'alt' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'target' => '',
-        'help' => '',
-        'trim' => 0,
-        'max_length' => '',
-        'word_boundary' => 1,
-        'ellipsis' => 1,
-        'html' => 0,
-        'strip_tags' => 0,
-      ),
-      'empty' => '',
-      'hide_empty' => 1,
-      'empty_zero' => 0,
-      'link_to_node' => 0,
-      'label_type' => 'none',
-      'format' => 'news_title_default',
-      'multiple' => array(
-        'group' => TRUE,
-        'multiple_number' => '',
-        'multiple_from' => '',
-        'multiple_reversed' => FALSE,
-      ),
-      'exclude' => 0,
-      'id' => 'field_titleimage_imceimage_path',
-      'table' => 'node_data_field_titleimage',
-      'field' => 'field_titleimage_imceimage_path',
-      'override' => array(
-        'button' => 'Use default',
-      ),
-      'relationship' => 'none',
-    ),
-    'field_teaser_value' => array(
-      'label' => '',
-      'alter' => array(
-        'alter_text' => 0,
-        'text' => '',
-        'make_link' => 0,
-        'path' => '',
-        'link_class' => '',
-        'alt' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'target' => '',
-        'help' => '',
-        'trim' => 0,
-        'max_length' => '',
-        'word_boundary' => 1,
-        'ellipsis' => 1,
-        'html' => 0,
-        'strip_tags' => 0,
-      ),
-      'empty' => '',
-      'hide_empty' => 0,
-      'empty_zero' => 0,
-      'link_to_node' => 0,
-      'label_type' => 'none',
-      'format' => 'default',
-      'multiple' => array(
-        'group' => TRUE,
-        'multiple_number' => '',
-        'multiple_from' => '',
-        'multiple_reversed' => FALSE,
-      ),
-      'exclude' => 0,
-      'id' => 'field_teaser_value',
-      'table' => 'node_data_field_teaser',
-      'field' => 'field_teaser_value',
-      'override' => array(
-        'button' => 'Use default',
-      ),
-      'relationship' => 'none',
     ),
     'field_content_value' => array(
       'label' => '',
@@ -3614,6 +3614,47 @@ function u21_views_settings_views_default_views() {
   $handler->override_option('sitename_title', FALSE);
   $handler = $view->new_display('panel_pane', 'Upcoming events', 'panel_pane_8');
   $handler->override_option('fields', array(
+    'field_titleimage_imceimage_path' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'link_to_node' => 0,
+      'label_type' => 'none',
+      'format' => 'spotbox-titleimage_linked',
+      'multiple' => array(
+        'group' => TRUE,
+        'multiple_number' => '',
+        'multiple_from' => '',
+        'multiple_reversed' => FALSE,
+      ),
+      'exclude' => 0,
+      'id' => 'field_titleimage_imceimage_path',
+      'table' => 'node_data_field_titleimage',
+      'field' => 'field_titleimage_imceimage_path',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
     'field_date_value' => array(
       'label' => '',
       'alter' => array(
@@ -3776,10 +3817,11 @@ function u21_views_settings_views_default_views() {
       'relationship' => 'none',
     ),
   ));
-  $handler->override_option('title', 'Kommende arrangementer');
+  $handler->override_option('title', 'Næste arrangement');
   $handler->override_option('footer', '<a href="/events/">Se alle arrangementer</a>');
   $handler->override_option('footer_format', '3');
   $handler->override_option('footer_empty', 0);
+  $handler->override_option('items_per_page', 1);
   $handler->override_option('use_pager', '0');
   $handler->override_option('use_more', 0);
   $handler->override_option('use_more_always', 0);
@@ -3791,15 +3833,15 @@ function u21_views_settings_views_default_views() {
       'class' => '',
     ),
     'list' => array(
-      'element_type' => 'ul',
-      'class' => 'views-list',
+      'element_type' => '',
+      'class' => '',
     ),
     'row' => array(
-      'element_type' => 'li',
+      'element_type' => '',
       'class' => '',
       'last_every_nth' => '0',
       'first_class' => 'first',
-      'last_class' => 'last',
+      'last_class' => '',
       'striping_classes' => 'odd even',
     ),
   ));
@@ -4082,7 +4124,7 @@ function u21_views_settings_views_default_views() {
   $handler->override_option('cache', array(
     'type' => 'none',
   ));
-  $handler->override_option('title', 'News');
+  $handler->override_option('title', 'Mest læste nyheder');
   $handler->override_option('empty', 'No news found!');
   $handler->override_option('empty_format', '1');
   $handler->override_option('style_options', array(
@@ -4094,7 +4136,53 @@ function u21_views_settings_views_default_views() {
     'hide_empty' => 0,
   ));
   $handler = $view->new_display('panel_pane', 'News overview (global)', 'panel_pane_1');
+  $handler->override_option('relationships', array(
+    'field_slug_ref_nid' => array(
+      'label' => 'Tilknytning',
+      'required' => 0,
+      'delta' => -1,
+      'id' => 'field_slug_ref_nid',
+      'table' => 'node_data_field_slug_ref',
+      'field' => 'field_slug_ref_nid',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+  ));
   $handler->override_option('fields', array(
+    'slug' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'exclude' => 1,
+      'id' => 'slug',
+      'table' => 'panels_slug',
+      'field' => 'slug',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'field_slug_ref_nid',
+    ),
     'title' => array(
       'label' => '',
       'alter' => array(
@@ -4165,7 +4253,7 @@ function u21_views_settings_views_default_views() {
         'alter_text' => 0,
         'text' => '',
         'make_link' => 1,
-        'path' => 'location/[field_slug_ref_nid]/news',
+        'path' => 'location/[slug]/news',
         'link_class' => 'regional_news_link',
         'alt' => '',
         'prefix' => '',
@@ -4511,10 +4599,10 @@ function u21_views_settings_views_default_views() {
     'mode' => 'views_slideshow_singleframe',
     'views_slideshow_singleframe-prefix' => '',
     'views_slideshow_singleframe' => array(
-      'timeout' => '5000',
-      'delay' => '0',
+      'timeout' => '10000',
+      'delay' => '5000',
       'speed' => '700',
-      'start_paused' => 1,
+      'start_paused' => 0,
       'fixed_height' => '1',
       'random' => '0',
       'pause' => '1',
@@ -4679,7 +4767,7 @@ function u21_views_settings_views_default_views() {
         'strip_tags' => 0,
       ),
       'empty' => '',
-      'hide_empty' => 0,
+      'hide_empty' => 1,
       'empty_zero' => 0,
       'link_to_node' => 0,
       'label_type' => 'none',
@@ -5139,6 +5227,47 @@ function u21_views_settings_views_default_views() {
       'field' => 'created',
       'relationship' => 'none',
     ),
+    'field_teaser_value' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'link_to_node' => 0,
+      'label_type' => 'none',
+      'format' => 'plain',
+      'multiple' => array(
+        'group' => TRUE,
+        'multiple_number' => '',
+        'multiple_from' => '',
+        'multiple_reversed' => FALSE,
+      ),
+      'exclude' => 0,
+      'id' => 'field_teaser_value',
+      'table' => 'node_data_field_teaser',
+      'field' => 'field_teaser_value',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
   ));
   $handler->override_option('sorts', array(
     'totalcount' => array(
@@ -5211,7 +5340,41 @@ function u21_views_settings_views_default_views() {
       'relationship' => 'none',
     ),
   ));
-  $handler->override_option('items_per_page', 5);
+  $handler->override_option('items_per_page', 3);
+  $handler->override_option('style_plugin', 'semanticviews_default');
+  $handler->override_option('style_options', array(
+    'grouping' => '',
+    'group' => array(
+      'element_type' => 'h3',
+      'class' => 'title',
+    ),
+    'list' => array(
+      'element_type' => 'ul',
+      'class' => 'views-list',
+    ),
+    'row' => array(
+      'element_type' => 'li',
+      'class' => '',
+      'last_every_nth' => '0',
+      'first_class' => 'first',
+      'last_class' => 'last',
+      'striping_classes' => 'odd even',
+    ),
+  ));
+  $handler->override_option('row_plugin', 'semanticviews_fields');
+  $handler->override_option('row_options', array(
+    'semantic_html' => array(
+      'title' => array(
+        'element_type' => 'h3',
+        'class' => '',
+      ),
+      'created' => array(
+        'element_type' => 'div',
+        'class' => 'post-date',
+      ),
+    ),
+    'skip_blank' => 0,
+  ));
   $handler->override_option('block_description', 'Populære nyheder (sidste 30 day)');
   $handler->override_option('block_caching', -1);
   $views[$view->name] = $view;
@@ -5478,7 +5641,53 @@ function u21_views_settings_views_default_views() {
     'hide_empty' => 0,
   ));
   $handler = $view->new_display('panel_pane', 'News overview (regional)', 'panel_pane_1');
+  $handler->override_option('relationships', array(
+    'field_slug_ref_nid' => array(
+      'label' => 'Tilknytning',
+      'required' => 0,
+      'delta' => -1,
+      'id' => 'field_slug_ref_nid',
+      'table' => 'node_data_field_slug_ref',
+      'field' => 'field_slug_ref_nid',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+  ));
   $handler->override_option('fields', array(
+    'slug' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'exclude' => 0,
+      'id' => 'slug',
+      'table' => 'panels_slug',
+      'field' => 'slug',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'field_slug_ref_nid',
+    ),
     'title' => array(
       'label' => '',
       'alter' => array(
@@ -5549,7 +5758,7 @@ function u21_views_settings_views_default_views() {
         'alter_text' => 0,
         'text' => '',
         'make_link' => 1,
-        'path' => 'location/[field_slug_ref_nid]/news',
+        'path' => 'location/[slug]/news',
         'link_class' => 'regional_news_link',
         'alt' => '',
         'prefix' => '',
@@ -6345,7 +6554,7 @@ function u21_views_settings_views_default_views() {
       'delay' => '5000',
       'speed' => '700',
       'start_paused' => 0,
-      'fixed_height' => '1',
+      'fixed_height' => '0',
       'random' => '0',
       'pause' => '1',
       'pause_on_click' => '0',

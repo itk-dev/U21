@@ -30,8 +30,8 @@
   stylesheets[all][] = styles/layout.css
   ;stylesheets[all][] = styles/spotboxes.css
   stylesheets[all][] = styles/menus.css
-  stylesheets[print][] = styles/print.css
-  stylesheets[handheld][] = styles/mobile.css
+  ;stylesheets[print][] = styles/print.css
+  ;stylesheets[handheld][] = styles/mobile.css
 
   ; Debug styles
   ;stylesheets[all] = styles/debug.css
