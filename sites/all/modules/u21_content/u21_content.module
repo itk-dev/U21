@@ -51,12 +51,17 @@ function u21_content_node_info() {
  * Remove the promote and sticky options form all forms
  */
 function u21_content_form_alter(&$form, $form_state, $form_id) {
-  global $user;
-  if ($user->uid != 1) {
-    unset($form[options][promote]);
-    unset($form[options][sticky]);
+  if (isset($form['type']) && isset($form['#node']) && $form['type']['#value'] .'_node_form' == $form_id) {
+    global $user;
+    if ($user->uid != 1) {
+      unset($form[options][promote]);
+      unset($form[options][sticky]);
+    }
   }
 }
+
+
+ 
 
 /**
  * Implementation of hook_views_api() {
