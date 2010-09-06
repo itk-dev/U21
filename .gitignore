@@ -16,3 +16,4 @@ nbproject
 CVS
 *.patch
 *~
+/sites/all/modules/contrib/devel_themer
