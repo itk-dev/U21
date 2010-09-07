@@ -194,7 +194,7 @@ table.blue-header {
 }
 
 table.blue-header td {
-  background-image: none;
+  background: #fff;
   border: 1px solid #bbb;
   border-collapse: collapse;
 }
