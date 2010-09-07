@@ -31,16 +31,20 @@ p {
   margin-bottom: 0.2em;
 }
 
-h1 {
+.page-news h1 {
+  text-transform: capitalize;
+}
+
+h1,
+.page-node h1 {
   font-size: 24px;
   font-weight: bold;
   color: #333;
   line-height: 30px;
+  text-transform: none;
 }
 
-.page-news h1 {
-  text-transform: capitalize;
-}
+
 
 h2 {
   font-size: 18px;
