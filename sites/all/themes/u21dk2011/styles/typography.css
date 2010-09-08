@@ -178,11 +178,6 @@ table td {
   padding: 2px 4px 4px;
 }
 
-table tr:first-child td,
-table th {
-  font-weight: bold;
-}
-
 .zebra {
   background-color: #d8dfe6;
 }
