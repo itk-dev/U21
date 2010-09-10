@@ -31,16 +31,20 @@ p {
   margin-bottom: 0.2em;
 }
 
-h1 {
+.page-news h1 {
+  text-transform: capitalize;
+}
+
+h1,
+.page-node h1 {
   font-size: 24px;
   font-weight: bold;
   color: #333;
   line-height: 30px;
+  text-transform: none;
 }
 
-.page-news h1 {
-  text-transform: capitalize;
-}
+
 
 h2 {
   font-size: 18px;
@@ -164,23 +168,60 @@ li a.active:hover {
 
 /* ----- / Table styles ----- */
 table {
-  width: 99%;
+  width: 100%;
 
 }
 
 table td {
   vertical-align: top;
+  background: transparent url(../images/back-groove-content.png) left bottom repeat-x;
+  padding: 2px 4px 4px;
+}
+
+.zebra {
+  background-color: #d8dfe6;
+}
+
+
+table.blue-header {
+  width: 442px;
+  background: transparent url(../images/back-table-header.png) left top no-repeat;
+}
+
+table.blue-header td {
+  border: 1px solid #bbb;
+  border-collapse: collapse;
+}
+
+table.blue-header tbody td {
+  background: #fff;
+}
+
+table.blue-header thead td,
+table.blue-header thead th {
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  line-height: 18px;
+  height: 18x;
+}
+
+table.layout-table,
+table.layout-table td,
+table.layout-table tr,
+table.layout-table th {
+  background: transparent;
+  border: 0;
   padding: 0;
   margin-bottom: 0;
 }
 
-.layout-table {
-  zoom: 1;
+table.layout-table tr:first-child td,
+table.layout-table th {
+  font-weight: normal;
 }
 
-table.layout-table {
-  border: 0;
-}
+
 
 .field-content-value table img {
   border: none;
