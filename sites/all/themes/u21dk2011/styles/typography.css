@@ -283,3 +283,8 @@ table.layout-table {
   color: #47a7ff;
   font-weight: bold;
 }
+
+#disclaimer p {
+  font-size: 10px;
+  color: #CCC;
+}
