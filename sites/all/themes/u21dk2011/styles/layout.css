@@ -223,6 +223,12 @@ table img {
   padding-top: 12px;
 }
 
+/* Remove styling from banner ads */
+.panel-col-right .pane-block-15 {
+  padding-top: 0;
+  background: none;
+}
+
 .pane-page-content .pane-content,
 #events-practical-information {
   padding-left: 8px;
