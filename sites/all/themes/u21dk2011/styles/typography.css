@@ -221,8 +221,6 @@ table.layout-table th {
   font-weight: normal;
 }
 
-
-
 .field-content-value table img {
   border: none;
   margin: 0;
@@ -323,4 +321,9 @@ table.layout-table th {
 #footer-regions a:visited {
   color: #47a7ff;
   font-weight: bold;
+}
+
+#disclaimer p {
+  font-size: 10px;
+  color: #CCC;
 }

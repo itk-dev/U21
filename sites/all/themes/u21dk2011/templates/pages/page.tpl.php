@@ -113,6 +113,13 @@
             </li>
             <?php endif; ?>
         </ul>
+	<?php if ($footer_message): ?>
+          <div id="disclaimer" class="container-12 clear">
+            <div id="disclaimer-inner">
+              <p><?php print $footer_message; ?></p>
+            </div>
+          </div>
+        <?php endif; ?>
       </div>
     </div><!-- /footer -->
     <?php endif; ?>

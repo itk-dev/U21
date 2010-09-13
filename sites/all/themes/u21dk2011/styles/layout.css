@@ -582,7 +582,7 @@ div.feed-icon {
 }
 
 #footer {
-  background: #e9ebec url(../images/back-footer-outer.jpg) left bottom repeat-x;
+  background: #e9ebec url(../images/back-footer-outer-large.jpg) 0 50px repeat-x;
   position: relative;
   z-index: 5;
   margin-top: -30px;
@@ -593,9 +593,9 @@ div.feed-icon {
 }
 
 #footer-regions {
-  min-height: 236px;
+  min-height: 186px;
   margin-top: 208px;
-  background: #0b0100 url(../images/back-footer-outer.jpg) left bottom repeat-x;
+  /* background: #0b0100 url(../images/back-footer-outer-large.jpg) left bottom repeat-x; */
 }
 
 #footer-regions>li {
@@ -607,7 +607,15 @@ div.feed-icon {
   padding-right: 8px;
 }
 
+#disclaimer-inner {
+  background: transparent url(../images/back-groove.png) left top repeat-x;
+  margin: 0 0 20px 10px;
+  width: 935px;
+}
 
+#disclaimer p {
+  padding: 31px 8px 10px 8px;
+}
 
 body.context-editing a.context-block-region, 
 body.context-editing a.context-block {
