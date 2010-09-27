@@ -668,7 +668,7 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->configuration = array(
       'path' => 'events/rss',
       'override_title' => 1,
-      'override_title_text' => 'Næste arrangement i %node:panels_slug',
+      'override_title_text' => 'Næste arrangement i %node:title',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -4408,4 +4408,3 @@ return FALSE;',
 
  return $pages;
 }
-
