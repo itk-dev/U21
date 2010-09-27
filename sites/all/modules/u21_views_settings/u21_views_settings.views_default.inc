@@ -1146,7 +1146,7 @@ function u21_views_settings_views_default_views() {
       'empty_zero' => 0,
       'link_to_node' => 0,
       'label_type' => 'none',
-      'format' => 'default',
+      'format' => 'long',
       'multiple' => array(
         'multiple_number' => '',
         'multiple_from' => '',
@@ -1164,6 +1164,9 @@ function u21_views_settings_views_default_views() {
       'table' => 'node_data_field_date',
       'field' => 'field_date_value',
       'relationship' => 'none',
+      'override' => array(
+        'button' => 'Use default',
+      ),
     ),
     'field_teaser_value' => array(
       'label' => '',
@@ -4684,7 +4687,53 @@ function u21_views_settings_views_default_views() {
   ));
   $handler->override_option('sitename_title', FALSE);
   $handler = $view->new_display('panel_pane', 'News overview taxonomy all types (global)', 'panel_pane_5');
+  $handler->override_option('relationships', array(
+    'field_slug_ref_nid' => array(
+      'label' => 'Tilknytning',
+      'required' => 0,
+      'delta' => -1,
+      'id' => 'field_slug_ref_nid',
+      'table' => 'node_data_field_slug_ref',
+      'field' => 'field_slug_ref_nid',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+  ));
   $handler->override_option('fields', array(
+    'slug' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'exclude' => 1,
+      'id' => 'slug',
+      'table' => 'panels_slug',
+      'field' => 'slug',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'field_slug_ref_nid',
+    ),
     'title' => array(
       'label' => '',
       'alter' => array(
@@ -4752,7 +4801,7 @@ function u21_views_settings_views_default_views() {
         'alter_text' => 0,
         'text' => '',
         'make_link' => 1,
-        'path' => 'location/[field_slug_ref_nid]/news/%1',
+        'path' => 'location/[slug]/news/%1',
         'link_class' => '',
         'alt' => '',
         'prefix' => '',
@@ -5679,7 +5728,7 @@ function u21_views_settings_views_default_views() {
       'empty' => '',
       'hide_empty' => 0,
       'empty_zero' => 0,
-      'exclude' => 0,
+      'exclude' => 1,
       'id' => 'slug',
       'table' => 'panels_slug',
       'field' => 'slug',
@@ -6787,3 +6836,6 @@ function u21_views_settings_views_default_views() {
 
   return $views;
 }
+
+
+
