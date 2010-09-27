@@ -1039,8 +1039,9 @@ function u21_views_settings_views_default_views() {
   $handler->override_option('cache', array(
     'type' => 'none',
   ));
-  $handler->override_option('empty', '<p>Der var ingen arrangementer i den valgte kategori.</p>');
-  $handler->override_option('empty_format', '1');
+  $handler->override_option('empty', '<img class="default-event-image" src="/sites/all/themes/u21dk2011/images/arrangement_default.jpg" alt="Næste arrangement i byen vil blive offentliggjort her." />
+<p>Næste arrangement i byen vil blive offentliggjort her.</p>');
+  $handler->override_option('empty_format', '2');
   $handler->override_option('items_per_page', 2);
   $handler->override_option('use_pager', '1');
   $handler = $view->new_display('panel_pane', 'Events overview (global) ', 'panel_pane_1');
@@ -3272,6 +3273,7 @@ function u21_views_settings_views_default_views() {
     ),
   ));
   $handler->override_option('empty', 'No topenvents found');
+  $handler->override_option('empty_format', '1');
   $handler->override_option('pane_title', 'Events topevents (region)');
   $handler->override_option('pane_description', 'Events that have been promoted to the frontpage (regional)');
   $handler->override_option('pane_category', array(
@@ -6836,6 +6838,3 @@ function u21_views_settings_views_default_views() {
 
   return $views;
 }
-
-
-

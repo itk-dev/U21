@@ -35,3 +35,10 @@ a:link object,
 a:visited object {
   cursor: pointer;
 }
+
+.default-event-image {
+  border:medium none;
+  display:block;
+  margin:0 -8px 8px;
+  padding:0;
+}
