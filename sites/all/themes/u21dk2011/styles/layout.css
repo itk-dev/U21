@@ -694,3 +694,9 @@ a.imagecache-spotbox-titleimage:visited {
   width: 620px;
   margin-bottom: 10px;
 }
+
+
+#secondary-content .block-block object {
+  display:block;
+  margin:0 -8px;
+}
