@@ -1,5 +1,5 @@
 <?php
-// $Id: node.inc,v 1.1.4.8 2009/12/30 18:00:51 kiam Exp $
+// $Id: node.inc,v 1.1.4.10 2010/03/21 13:11:23 kiam Exp $
 
 /**
  * @file
@@ -7,21 +7,12 @@
  */
 
 /**
- * @addtogroup nodewords
- * @{
- */
-
-/**
  * Implements hook_nodewords_type_id().
  */
-function node_nodewords_type_id($arg) {
+function node_nodewords_type_id(&$result, $arg) {
   if ($arg[0] == 'node') {
     // Node paths: node/$nid.
-    if (isset($arg[1]) && is_numeric($arg[1])) {
-      if (!($node = menu_get_object())) {
-        return array(NODEWORDS_TYPE_NONE, 0);
-      }
-
+    if (isset($arg[1]) && is_numeric($arg[1]) && ($node = menu_get_object())) {
       $bool = (
         (
           $node->type == 'poll' &&
@@ -30,14 +21,10 @@ function node_nodewords_type_id($arg) {
         ) ||
         !isset($arg[2])
       );
-
       if ($bool) {
-        return array(NODEWORDS_TYPE_NODE, array($node->nid));
+        $result['type'] = NODEWORDS_TYPE_NODE;
+        $result['id'] = $node->nid;
       }
     }
   }
 }
-
-/**
- * @} End of "addtogroup nodewords".
- */

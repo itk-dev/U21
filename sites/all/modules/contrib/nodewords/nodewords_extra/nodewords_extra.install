@@ -1,9 +1,9 @@
 <?php
-// $Id: nodewords_extra.install,v 1.1.2.11 2009/12/25 03:09:13 kiam Exp $
+// $Id: nodewords_extra.install,v 1.1.2.14 2010/03/21 13:11:24 kiam Exp $
 
 /**
  * @file
- * Installation file for Nodewords - extra meta tags.
+ * Install, update and uninstall functions for the Extra meta tags module.
  */
 
 /**
@@ -15,7 +15,7 @@ function nodewords_extra_install() {
 
 /**
  * Next update ID: 6106.
- */
+*/
 
 /**
  * Implements hook_uninstall().

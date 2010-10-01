@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.inc,v 1.1.4.7 2009/12/30 18:00:51 kiam Exp $
+// $Id: taxonomy.inc,v 1.1.4.9 2010/03/21 13:11:23 kiam Exp $
 
 /**
  * @file
@@ -7,33 +7,24 @@
  */
 
 /**
- * @addtogroup nodewords
- * @{
- */
-
-/**
  * Implements hook_nodewords_type_id().
  */
-function taxonomy_nodewords_type_id($arg) {
+function taxonomy_nodewords_type_id(&$result, $arg) {
   if ($arg[0] == 'taxonomy') {
     // Taxonomy paths: taxonomy/term/$tid , taxonomy/term/$tid1+$tid2.
     if (isset($arg[1]) && isset($arg[2]) && $arg[1] == 'term') {
       $ids = preg_split('![+, ]!', $arg[2]);
 
       if (count($ids)) {
-        // Verify that $ids contains all numeric values.
+        // Take the first ID that is numeric.
         foreach ($ids as $id) {
-          if (!is_numeric($id)) {
-            return array(NODEWORDS_TYPE_NONE, 0);
+          if (is_numeric($id)) {
+            $result['type'] = NODEWORDS_TYPE_TERM;
+            $result['id'] = $id;
+            return;
           }
         }
-
-        return array(NODEWORDS_TYPE_TERM, $ids);
       }
     }
   }
 }
-
-/**
- * @} End of "addtogroup nodewords".
- */

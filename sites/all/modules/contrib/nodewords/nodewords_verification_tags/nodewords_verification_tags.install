@@ -1,10 +1,30 @@
 <?php
-// $Id: nodewords_verification_tags.install,v 1.1.2.7 2009/12/25 03:09:09 kiam Exp $
+// $Id: nodewords_verification_tags.install,v 1.1.2.10 2010/03/21 13:11:24 kiam Exp $
 
 /**
  * @file
- * Installation file for Nodewords - site verification meta tags.
+ * Install, update and uninstall functions for the Site verification meta tags module.
  */
+
+/**
+ * Implements hook_requirements().
+ */
+function nodewords_verification_tags_requirements($phase) {
+  $requirements = array();
+
+  if ($phase == 'runtime') {
+    if (module_exists('site_verify')) {
+      $requirements['nodewords_verification_tags'] = array(
+        'title' => t('Site verification meta tags'),
+        'description' => t('You have enabled two modules with similar purpose (site_verify.module and nodewords_verification_tags.module.'),
+        'severity' => REQUIREMENT_ERROR,
+        'value' => t('Disable one of the modules in <a href="@modules-page">modules page</a>'. array('@modules-page' => url('admin/build/modules'))),
+      );
+    }
+  }
+
+  return $requirements;
+}
 
 /**
  * Implements hook_install().
