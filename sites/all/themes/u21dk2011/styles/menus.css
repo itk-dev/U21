@@ -226,3 +226,8 @@
   text-decoration: underline;
   display: inline-block;
 }
+
+.pane-taxonomy-links li span {
+  display: inline-block;
+  padding-bottom: 4px;
+}
