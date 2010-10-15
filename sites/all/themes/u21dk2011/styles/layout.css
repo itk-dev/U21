@@ -661,8 +661,13 @@ body.context-editing a.context-block {
   display: inline-block;
 }
 
+#main-content .pane-block-15 a,
 #main-content .pane-block-17 a {
   border: 0;
+}
+
+#main-content .pane-block-15 img {
+  display: inline-block;
 }
 
 a.imagecache-spotbox-titleimage:link,
