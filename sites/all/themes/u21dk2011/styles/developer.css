@@ -42,3 +42,9 @@ a:visited object {
   margin:0 -8px 8px;
   padding:0;
 }
+
+/* Empty arrangementer overviews */
+.view-empty .imagecache-spotbox-titleimage {
+  margin:0 -8px 8px;
+  padding:0;
+}
