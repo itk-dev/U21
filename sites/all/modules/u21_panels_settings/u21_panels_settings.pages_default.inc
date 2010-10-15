@@ -884,7 +884,7 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->panel = 'right';
     $pane->type = 'block';
     $pane->subtype = 'block-15';
-    $pane->shown = FALSE;
+    $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
       'override_title' => 1,
@@ -1189,7 +1189,7 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->panel = 'right';
     $pane->type = 'block';
     $pane->subtype = 'block-15';
-    $pane->shown = FALSE;
+    $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
       'override_title' => 1,
