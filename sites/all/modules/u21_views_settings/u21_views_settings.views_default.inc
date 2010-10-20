@@ -627,7 +627,7 @@ function u21_view_settings_views_default_views() {
       'validate_argument_php' => '',
     ),
     'nid' => array(
-      'default_action' => 'not found',
+      'default_action' => 'ignore',
       'style_plugin' => 'default_summary',
       'style_options' => array(),
       'wildcard' => 'all',
@@ -6905,5 +6905,3 @@ function u21_view_settings_views_default_views() {
 
   return $views;
 }
-
-
