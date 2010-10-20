@@ -3,7 +3,7 @@
 /**
  * Implementation of hook_views_default_views().
  */
-function u21_view_settings_views_default_views() {
+function u21_views_settings_views_default_views() {
   /*
    * View 'News'
    */
