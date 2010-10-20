@@ -145,6 +145,11 @@ function u21_content_theme($existing, $type, $theme, $path) {
       'template' => 'u21_content_panels_content_event_details',
       'preprocess functions' => array('u21_content_preprocess_event_details'),
     ),
+    'u21_content_panels_content_related' => array(
+      'arguments' => array('node' => NULL, 'fieldname' => NULL),
+      'template' => 'u21_content_panels_content_related',
+      'preprocess functions' => array('u21_content_preprocess_related_content'),
+    ),
   );
 }
 
@@ -344,4 +349,14 @@ function u21_content_preprocess_event_details(&$variables, $hook) {
   $variables['address_name'] = $node->location['name'];
   $variables['address_street'] = $node->location['street'];
   $variables['address_city'] = $node->location['postal_code'] .' '. $node->location['city'];
+}
+
+function u21_content_preprocess_related_content(&$variables, $hook) {
+  $ref = $variables['fieldname'];
+  $ref = $variables['node']->$ref;
+  
+  if (!empty($variables['node']->field_sidebar[0]['value'])) {
+    //$variables['sidebar'] = $variables['node']->field_sidebar[0]['value'];
+    $variables['sidebar'] = check_markup($variables['node']->field_sidebar[0]['value']);
+  }
 }

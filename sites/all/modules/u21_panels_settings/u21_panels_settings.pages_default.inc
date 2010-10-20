@@ -208,7 +208,7 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'News-panel_pane_4';
-    $pane->shown = FALSE;
+    $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
       'items_per_page' => '2',
@@ -220,6 +220,7 @@ function u21_panels_settings_default_page_manager_handlers() {
       ),
       'context' => array(
         0 => 'relationship_term_from_node_1',
+        1 => 'argument_nid_1',
       ),
       'override_title' => 1,
       'override_title_text' => 'Relaterede nyheder',

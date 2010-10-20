@@ -3,7 +3,7 @@
 /**
  * Implementation of hook_views_default_views().
  */
-function u21_views_settings_views_default_views() {
+function u21_view_settings_views_default_views() {
   /*
    * View 'News'
    */
@@ -626,6 +626,66 @@ function u21_views_settings_views_default_views() {
       'validate_user_restrict_roles' => 0,
       'validate_argument_php' => '',
     ),
+    'nid' => array(
+      'default_action' => 'not found',
+      'style_plugin' => 'default_summary',
+      'style_options' => array(),
+      'wildcard' => 'all',
+      'wildcard_substitution' => 'All',
+      'title' => '',
+      'breadcrumb' => '',
+      'default_argument_type' => 'fixed',
+      'default_argument' => '',
+      'validate_type' => 'none',
+      'validate_fail' => 'not found',
+      'break_phrase' => 0,
+      'not' => 1,
+      'id' => 'nid',
+      'table' => 'node',
+      'field' => 'nid',
+      'validate_user_argument_type' => 'uid',
+      'validate_user_roles' => array(
+        '2' => 0,
+        '3' => 0,
+        '7' => 0,
+        '6' => 0,
+        '8' => 0,
+        '9' => 0,
+        '4' => 0,
+        '5' => 0,
+      ),
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+      'default_options_div_prefix' => '',
+      'default_argument_fixed' => '',
+      'default_argument_user' => 0,
+      'default_argument_php' => '',
+      'validate_argument_node_type' => array(
+        'region' => 0,
+        'panel' => 0,
+        'articles' => 0,
+        'blogs' => 0,
+        'event' => 0,
+        'global_campaigns' => 0,
+        'kampagne' => 0,
+        'newsletter' => 0,
+        'photo' => 0,
+        'profile' => 0,
+        'static_page' => 0,
+        'subsite' => 0,
+      ),
+      'validate_argument_node_access' => 0,
+      'validate_argument_nid_type' => 'nid',
+      'validate_argument_vocabulary' => array(
+        '1' => 0,
+      ),
+      'validate_argument_type' => 'tid',
+      'validate_argument_transform' => 0,
+      'validate_user_restrict_roles' => 0,
+      'validate_argument_php' => '',
+    ),
   ));
   $handler->override_option('items_per_page', 2);
   $handler->override_option('style_plugin', 'semanticviews_default');
@@ -691,6 +751,14 @@ function u21_views_settings_views_default_views() {
       'panel' => '0',
       'fixed' => '',
       'label' => 'Taxonomy: Term ID',
+    ),
+    'nid' => array(
+      'type' => 'context',
+      'context' => 'node.nid',
+      'context_optional' => 0,
+      'panel' => '0',
+      'fixed' => '',
+      'label' => 'Node: Nid',
     ),
   ));
   $handler->override_option('link_to_view', 0);
@@ -1039,8 +1107,7 @@ function u21_views_settings_views_default_views() {
   $handler->override_option('cache', array(
     'type' => 'none',
   ));
-  $handler->override_option('empty', '<img class="default-event-image" src="/sites/all/themes/u21dk2011/images/arrangement_default.jpg" alt="Næste arrangement i byen vil blive offentliggjort her." />
-<p>Næste arrangement i byen vil blive offentliggjort her.</p>');
+  $handler->override_option('empty', '<p>Næste arrangement i byen vil blive offentliggjort her.</p>');
   $handler->override_option('empty_format', '2');
   $handler->override_option('items_per_page', 2);
   $handler->override_option('use_pager', '1');
@@ -6838,3 +6905,5 @@ function u21_views_settings_views_default_views() {
 
   return $views;
 }
+
+

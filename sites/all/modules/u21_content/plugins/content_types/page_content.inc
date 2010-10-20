@@ -36,6 +36,12 @@ function u21_content_page_content_content_type_content_types() {
       'category' => t('Page content'),
       'required context' => new ctools_context_required(t('Node'), 'node'),
     ),
+    'related_content' => array(
+      'title' => t('Related content (defined by the user)'),
+      'description' => t('Information related to the page displayed'),
+      'category' => t('Page content'),
+      'required context' => new ctools_context_required(t('Node'), 'node'),
+    ),
   );
   return $types;
 }
@@ -56,6 +62,9 @@ function u21_content_page_content_content_type_render($subtype, $conf, $panel_ar
     case 'sidebar_content':
       $block->content = theme('u21_content_panels_content_sidebar', $node);
       break;
+    case 'related_content':
+      $block->content = theme('u21_content_panels_content_related', $node, check_plain($conf['fieldname']));
+      break;
   }
   return $block;
 }
@@ -74,16 +83,36 @@ function u21_content_page_content_content_type_admin_title($subtype, $conf, $con
     case 'sidebar_content':
       return t('"@s": Sidebar', array('@s' => $context->identifier));
       break;
+    case 'related_content':
+      return t('"@s": Related content', array('@s' => $context->identifier));
+      break;
   }
 }
 
 /**
  * Returns an edit form for the content type.
  */
-function u21_content_page_content_content_type_edit_form(&$form, &$form_state) { }
+function u21_content_page_content_content_type_edit_form(&$form, &$form_state) { 
+  $conf = $form_state['conf'];
+  switch ($form_state['subtype_name']) {
+    case 'related_content':
+      $form['fieldname'] = array(
+        '#type' => 'textfield',
+        '#title' => t('The name of the cck field'),
+        '#default_value' => $conf['fieldname'],
+      );
+      break;
+  }
+}
 
 /**
  * Submit handler for the content type editing form.
  */
-function u21_content_page_content_content_type_edit_form_submit(&$form, &$form_state) { }
+function u21_content_page_content_content_type_edit_form_submit(&$form, &$form_state) {
+  switch ($form_state['subtype_name']) {
+    case 'related_content':
+      $form_state['conf']['fieldname'] = $form_state['values']['fieldname'];
+      break;
+  }
+}
 
