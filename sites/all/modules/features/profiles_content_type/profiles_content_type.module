@@ -1,0 +1,3 @@
+<?php
+
+include_once('profiles_content_type.features.inc');
