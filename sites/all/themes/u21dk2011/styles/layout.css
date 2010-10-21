@@ -625,7 +625,7 @@ body.context-editing a.context-block {
 
 /* =============================================
 
-   GAMMELT SLAM */
+   Kandidater til oprydning */
 
 /* Indhold fra spotbox stylesheetet */
 .sms-updates{background:#0f1141 url(../images/banner-620x170-lighter.jpg) left top no-repeat;display:block;height:118px;padding:16px;}.sms-updates h2{color:#fff;font-size:26px;height:26px;line-height:1;margin-top:8px;padding-bottom:16px;}.sms-updates .subscribe{color:#fff;float:left;font-size:26px;line-height:1;width:40%;}.sms-updates .sms-message,.sms-updates .sms-number{color:#fea92f;font-weight:700;}.sms-updates .notice{color:#fff;font-size:13px;padding:0 0 0 50%;}.pane-region-banner{padding-bottom:16px;}
@@ -715,4 +715,16 @@ a.imagecache-spotbox-titleimage:visited {
 #secondary-content .block-block object {
   display:block;
   margin:0 -8px;
+}
+
+/* ======================================== */
+/*  CONTEXT INLINE EDITOR                   */
+/* ======================================== */
+
+/* Hide context inline editor for select regions in the theme - menus included */
+
+#region-secondary-menu .context-block-region,
+#region-city-menu .context-block-region,
+#region-main-menu .context-block-region {
+  display: none !important;
 }
