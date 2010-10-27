@@ -48,3 +48,36 @@ a:visited object {
   margin:0 -8px 8px;
   padding:0;
 }
+
+/* Profile faktabokse */
+.faktaboks .label {
+  display: inline-block;
+  width: 80px;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.faktaboks div .label {
+  float: left; 
+  width: 80px;
+  margin-left: -90px;
+}
+
+.faktaboks div {
+  padding-left: 90px;
+  margin-bottom: 0.4em;
+  background:url("../images/back-groove.png") repeat-x scroll left top transparent;
+  margin-top: 0.4em;
+  padding-top: 0.4em;
+}
+
+.faktaboks div p {
+  margin-bottom: 0.2em;
+}
+
+.faktaboks>p {
+  background:url("../images/back-groove.png") repeat-x scroll left top transparent;
+  margin-top: 0.4em;
+  padding-top: 0.4em;
+  margin-bottom: 0.4em;
+}

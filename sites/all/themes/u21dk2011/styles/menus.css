@@ -4,6 +4,7 @@
 
 .panel-col-top a.active-trail,
 .panel-col-left a.active-trail,
+.panel-col-left a.active,
 .panel-col-right a.active {
   background: url(../images/back-menu-active.png) left top repeat-x;
   font-weight: bold;
@@ -19,6 +20,8 @@
 .panel-col-top a.active-trail:link,
 .panel-col-left a.active-trail:link,
 .panel-col-top a.active-trail:visited,
+.panel-col-left a.active:visited,
+.panel-col-left a.active:link,
 .panel-col-left a.active-trail:visited,
 .panel-col-right a.active:link,
 .panel-col-right a.active:visited {
