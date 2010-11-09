@@ -61,7 +61,7 @@ div.ctools-modal-content .modal-content .modal-throbber-wrapper img {
 /** modal forms CSS **/
 div.ctools-modal-content .form-item label {
   width: 15em;
-  float: left;
+/*  float: left; */
 }
 
 div.ctools-modal-content .form-item label.option {
