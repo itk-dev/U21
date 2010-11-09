@@ -4,6 +4,7 @@
 
 .panel-col-top a.active-trail,
 .panel-col-left a.active-trail,
+.panel-col-left a.active,
 .panel-col-right a.active {
   background: url(../images/back-menu-active.png) left top repeat-x;
   font-weight: bold;
@@ -19,6 +20,8 @@
 .panel-col-top a.active-trail:link,
 .panel-col-left a.active-trail:link,
 .panel-col-top a.active-trail:visited,
+.panel-col-left a.active:visited,
+.panel-col-left a.active:link,
 .panel-col-left a.active-trail:visited,
 .panel-col-right a.active:link,
 .panel-col-right a.active:visited {
@@ -238,4 +241,70 @@
 .pane-taxonomy-links li span {
   display: inline-block;
   padding-bottom: 4px;
+}
+
+
+/* ======================================== */
+/*  Tabbed Menus                            */
+/* ======================================== */
+
+.tabbed-menu ul,
+ul.ui-tabs-nav {
+  padding: 4px 8px 0;
+  border-bottom: 1px solid #bbb; 
+}
+
+.tabbed-menu li,
+.ui-tabs-nav li {
+  display: inline-block;
+  margin-right: 4px;
+  position: relative;
+}
+
+.tabbed-menu li a,
+.ui-tabs-nav li a {
+  display: inline-block;
+  padding: 3px 8px 4px;
+  top: 1px;
+  position: relative;
+  -moz-border-radius: 6px 6px 0 0;
+  -webkit-border-radius: 6px 6px 0 0;
+  -o-border-radius: 6px 6px 0 0;
+  border-radius: 6px 6px 0 0;
+  border: none;
+  font-weight: bold;
+}
+
+.tabbed-menu li a.active,
+.tabbed-menu li a:hover,
+.ui-tabs-nav li.ui-state-active a {
+  border: 1px solid #bbb;
+  border-bottom: none;
+  background: #eff1f3;
+}
+
+.tabbed-menu a.active:link,
+.tabbed-menu a.active:visited,
+.ui-tabs-nav .ui-state-active a:link,
+.ui-tabs-nav .ui-state-active a:visited  {
+  text-decoration: none;
+  margin-bottom: 0;
+  padding-bottom: 4px;
+}
+
+.tabbed-menu li a:hover,
+.ui-tabs-nav li a:hover {
+  text-decoration: underline;
+}
+
+
+.tabbed-menu li a:active,
+.ui-tabs-nav li a:active {
+  outline: none;
+}
+
+/* ----- / Hide content related to tabbed menu ----- */
+
+.ui-tabs-hide {
+  display: none;
 }

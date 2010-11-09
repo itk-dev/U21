@@ -48,13 +48,7 @@ function u21dk2011_preprocess_page(&$vars, $hook) {
   if ($vars['help'] == "<div class=\"help\"> \n</div>") {
     $vars['help'] = '';
   }
-
-/*  // Add conditional stylesheets.
-  if (!module_exists('conditional_styles')) {
-    $vars['styles'] .= $vars['conditional_styles'] = variable_get('conditional_styles_' . $GLOBALS['theme'], '');
-  }
-*/
-
+  
   // Set variables for the logo and site_name.
   if (!empty($vars['logo'])) {
     // Return the site_name even when site_name is disabled in theme settings.
@@ -75,6 +69,16 @@ function u21dk2011_preprocess_page(&$vars, $hook) {
     $path_request = explode('/', $_SERVER['REQUEST_URI']);
     if ($path_request[1] == "location") {
       $vars['body_classes'] .= ' page-regional';
+    }
+  }
+
+  // Add profiles js
+  if (isset($vars['node'])) {
+    $node = $vars['node'];
+    if ($node->type == 'profile') {
+      jquery_ui_add('ui.tabs');
+      drupal_add_js(path_to_theme().'/scripts/profiles.js');
+      $vars['scripts'] = drupal_get_js();
     }
   }
 }

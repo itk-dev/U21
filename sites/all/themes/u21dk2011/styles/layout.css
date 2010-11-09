@@ -78,7 +78,7 @@ table img {
 }
 
 #main-content {
-  /*padding-bottom: 30px;*/
+  padding-bottom: 30px;
 }
 
 #content>.tabs {
@@ -193,7 +193,10 @@ table img {
   margin-bottom: 15px;
 }
 
-.list-event-list .title-image {
+
+
+.list-event-list .title-image,
+.pane-field-profilephoto .title-image {
   margin-left: -8px;
   margin-right: -8px;
 }
