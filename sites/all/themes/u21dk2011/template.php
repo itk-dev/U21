@@ -101,7 +101,16 @@ function u21dk2011_menu_item_link($link) {
   if (empty($link['localized_options'])) {
     $link['localized_options'] = array();
   }
+  
+  // Add mlid to all menu-items and not only $primary-links and $secondary-links
+  if (empty($link['localized_options']['attributes']['class'])) {
+    $link['localized_options']['attributes']['class'] = 'menu-'. $link['mlid'];
+  }
+  else {
+  }
 
+  // Create variable with link title wrapped in div. 
+  // Used to supply additional information about a menu item on hover.
   $hover = '';
   if (isset($link['options']['attributes']['title']) && $link['options']['attributes']['title'] != '') {
     $hover = '<div class="menu-hover">'.$link['options']['attributes']['title'].'</div>';
@@ -132,6 +141,9 @@ function u21dk2011_menu_item_link($link) {
   return l($link['title'], $link['href'], $link['localized_options']) . $hover;
 }
 
+
+
+// What?
 function u21dk2011_views_slideshow_singleframe_controls($vss_id, $view, $options) {
   $classes = array(
     'views_slideshow_singleframe_controls',
