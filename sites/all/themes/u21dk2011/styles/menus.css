@@ -80,6 +80,7 @@
     font-size: 11px;
     font-weight: bold;
     text-decoration: none;
+    border-bottom: none;
   }
   
   #region-secondary-menu a:hover {
@@ -87,6 +88,13 @@
     margin-bottom: -1px;
   }
   
+/* ----- / Add Union Jack icon to specific menu items ----- */
+
+#region-secondary-menu .menu-2083 {
+  padding-left: 20px;
+  background: transparent url(../images/gb.png) 0% 45% no-repeat;
+} 
+
   
 /* ----- / Region Menus ----- */
 
