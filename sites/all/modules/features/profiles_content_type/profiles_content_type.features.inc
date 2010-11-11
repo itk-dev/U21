@@ -29,8 +29,8 @@ function profiles_content_type_imagecache_default_presets() {
         ),
       ),
     ),
-    'spotbox-titleimage' => array(
-      'presetname' => 'spotbox-titleimage',
+    'profile_spotbox' => array(
+      'presetname' => 'profile_spotbox',
       'actions' => array(
         '0' => array(
           'weight' => '0',
@@ -38,7 +38,7 @@ function profiles_content_type_imagecache_default_presets() {
           'action' => 'imagecache_scale_and_crop',
           'data' => array(
             'width' => '300',
-            'height' => '97',
+            'height' => '150',
           ),
         ),
       ),
