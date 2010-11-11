@@ -29,6 +29,20 @@ function profiles_content_type_imagecache_default_presets() {
         ),
       ),
     ),
+    'spotbox-titleimage' => array(
+      'presetname' => 'spotbox-titleimage',
+      'actions' => array(
+        '0' => array(
+          'weight' => '0',
+          'module' => 'imagecache',
+          'action' => 'imagecache_scale_and_crop',
+          'data' => array(
+            'width' => '300',
+            'height' => '97',
+          ),
+        ),
+      ),
+    ),
   );
   return $items;
 }

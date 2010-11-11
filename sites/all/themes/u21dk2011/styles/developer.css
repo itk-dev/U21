@@ -50,7 +50,8 @@ a:visited object {
 }
 
 /* Profile faktabokse */
-.faktaboks .label {
+.faktaboks .label,
+.spotbox .label {
   display: inline-block;
   width: 80px;
   margin-right: 10px;
@@ -75,7 +76,8 @@ a:visited object {
   margin-bottom: 0.2em;
 }
 
-.faktaboks>p {
+.faktaboks>p,
+.spotbox p {
   background:url("../images/back-groove.png") repeat-x scroll left top transparent;
   margin-top: 0.4em;
   padding-top: 0.4em;
