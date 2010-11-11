@@ -695,6 +695,10 @@ a.imagecache-spotbox-titleimage:visited {
 
 /* ----- / Profile spotboxes ----- */
 
+views_slideshow_singleframe_teaser_section_profile-block_2 {
+  height: 360px !important;
+}
+
 #secondary-content .block-views-content .view-id-profile {
   margin: 0 -8px;
 }
