@@ -637,8 +637,7 @@ body.context-editing a.context-block {
 .sms-updates{background:#0f1141 url(../images/banner-620x170-lighter.jpg) left top no-repeat;display:block;height:118px;padding:16px;}.sms-updates h2{color:#fff;font-size:26px;height:26px;line-height:1;margin-top:8px;padding-bottom:16px;}.sms-updates .subscribe{color:#fff;float:left;font-size:26px;line-height:1;width:40%;}.sms-updates .sms-message,.sms-updates .sms-number{color:#fea92f;font-weight:700;}.sms-updates .notice{color:#fff;font-size:13px;padding:0 0 0 50%;}.pane-region-banner{padding-bottom:16px;}
 
 #secondary-content .block-block-content,
-#secondary-content .block-views-content,
-#secondary-content .block-nodeasblock {
+#secondary-content .block-views-content {
   background:#fff;
   overflow:hidden;
   padding:0 8px 8px;
@@ -694,6 +693,10 @@ a.imagecache-spotbox-titleimage:visited {
 
 
 /* ----- / Profile spotboxes ----- */
+
+#views_slideshow_singleframe_teaser_section_profile-block_2 {
+  overflow: visible;
+}
 
 #secondary-content .block-views-content .view-id-profile {
   margin: 0 -8px;
