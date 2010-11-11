@@ -928,74 +928,7 @@ function profiles_content_type_views_default_views() {
       'relationship' => 'none',
     ),
   ));
-  $handler->override_option('arguments', array(
-    'name' => array(
-      'default_action' => 'empty',
-      'style_plugin' => 'default_summary',
-      'style_options' => array(),
-      'wildcard' => 'all',
-      'wildcard_substitution' => 'All',
-      'title' => '',
-      'breadcrumb' => '',
-      'default_argument_type' => 'fixed',
-      'default_argument' => '',
-      'validate_type' => 'none',
-      'validate_fail' => 'not found',
-      'glossary' => 0,
-      'limit' => '0',
-      'case' => 'none',
-      'path_case' => 'none',
-      'transform_dash' => 0,
-      'add_table' => 0,
-      'require_value' => 0,
-      'id' => 'name',
-      'table' => 'term_data',
-      'field' => 'name',
-      'validate_user_argument_type' => 'uid',
-      'validate_user_roles' => array(
-        '2' => 0,
-        '3' => 0,
-        '7' => 0,
-        '6' => 0,
-        '8' => 0,
-        '9' => 0,
-        '4' => 0,
-        '5' => 0,
-      ),
-      'override' => array(
-        'button' => 'Use default',
-      ),
-      'relationship' => 'none',
-      'default_options_div_prefix' => '',
-      'default_argument_fixed' => '',
-      'default_argument_user' => 0,
-      'default_argument_php' => '',
-      'validate_argument_node_type' => array(
-        'profile' => 0,
-        'region' => 0,
-        'panel' => 0,
-        'articles' => 0,
-        'blogs' => 0,
-        'event' => 0,
-        'global_campaigns' => 0,
-        'kampagne' => 0,
-        'newsletter' => 0,
-        'photo' => 0,
-        'static_page' => 0,
-        'subsite' => 0,
-      ),
-      'validate_argument_node_access' => 0,
-      'validate_argument_nid_type' => 'nid',
-      'validate_argument_vocabulary' => array(
-        '1' => 0,
-        '2' => 0,
-      ),
-      'validate_argument_type' => 'tid',
-      'validate_argument_transform' => 0,
-      'validate_user_restrict_roles' => 0,
-      'validate_argument_php' => '',
-    ),
-  ));
+  $handler->override_option('arguments', array());
   $handler->override_option('style_options', array(
     'grouping' => 'field_profile_position_value',
     'group' => array(
@@ -1041,16 +974,7 @@ function profiles_content_type_views_default_views() {
     'exposed_form' => FALSE,
     'fields_override' => FALSE,
   ));
-  $handler->override_option('argument_input', array(
-    'name' => array(
-      'type' => 'panel',
-      'context' => 'node.termpath-raw',
-      'context_optional' => 0,
-      'panel' => '0',
-      'fixed' => '',
-      'label' => 'Taxonomy: Term',
-    ),
-  ));
+  $handler->override_option('argument_input', array());
   $handler->override_option('link_to_view', 0);
   $handler->override_option('inherit_panels_path', 0);
   $handler = $view->new_display('block', 'Profile: Spotbox (specific)', 'block_1');
