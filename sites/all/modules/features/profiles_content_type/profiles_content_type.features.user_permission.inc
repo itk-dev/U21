@@ -46,6 +46,12 @@ function profiles_content_type_user_default_permissions() {
     ),
   );
 
+  // Exported permission: edit field_profile_shirtname
+  $permissions['edit field_profile_shirtname'] = array(
+    'name' => 'edit field_profile_shirtname',
+    'roles' => array(),
+  );
+
   // Exported permission: edit field_profile_teams
   $permissions['edit field_profile_teams'] = array(
     'name' => 'edit field_profile_teams',
@@ -68,6 +74,18 @@ function profiles_content_type_user_default_permissions() {
     'roles' => array(
       '0' => 'redaktør',
     ),
+  );
+
+  // Exported permission: edit field_profilepos_x
+  $permissions['edit field_profilepos_x'] = array(
+    'name' => 'edit field_profilepos_x',
+    'roles' => array(),
+  );
+
+  // Exported permission: edit field_profilepos_y
+  $permissions['edit field_profilepos_y'] = array(
+    'name' => 'edit field_profilepos_y',
+    'roles' => array(),
   );
 
   // Exported permission: edit field_profilesecondary
@@ -139,6 +157,12 @@ function profiles_content_type_user_default_permissions() {
     ),
   );
 
+  // Exported permission: view field_profile_shirtname
+  $permissions['view field_profile_shirtname'] = array(
+    'name' => 'view field_profile_shirtname',
+    'roles' => array(),
+  );
+
   // Exported permission: view field_profile_teams
   $permissions['view field_profile_teams'] = array(
     'name' => 'view field_profile_teams',
@@ -164,6 +188,18 @@ function profiles_content_type_user_default_permissions() {
       '0' => 'anonymous user',
       '1' => 'authenticated user',
     ),
+  );
+
+  // Exported permission: view field_profilepos_x
+  $permissions['view field_profilepos_x'] = array(
+    'name' => 'view field_profilepos_x',
+    'roles' => array(),
+  );
+
+  // Exported permission: view field_profilepos_y
+  $permissions['view field_profilepos_y'] = array(
+    'name' => 'view field_profilepos_y',
+    'roles' => array(),
   );
 
   // Exported permission: view field_profilesecondary

@@ -332,6 +332,68 @@ Angriber',
     ),
   );
 
+  // Exported field: field_profile_shirtname
+  $fields['profile-field_profile_shirtname'] = array(
+    'field_name' => 'field_profile_shirtname',
+    'type_name' => 'profile',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'nodeasblock teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'nodeasblock full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'text',
+    'required' => '0',
+    'multiple' => '0',
+    'module' => 'text',
+    'active' => '1',
+    'text_processing' => '0',
+    'max_length' => '',
+    'allowed_values' => '',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'rows' => 5,
+      'size' => '60',
+      'default_value' => array(
+        '0' => array(
+          'value' => '',
+          '_error_element' => 'default_value_widget][field_profile_shirtname][0][value',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Trøjenavn',
+      'weight' => '13',
+      'description' => '',
+      'type' => 'text_textfield',
+      'module' => 'text',
+    ),
+  );
+
   // Exported field: field_profile_teams
   $fields['profile-field_profile_teams'] = array(
     'field_name' => 'field_profile_teams',
@@ -521,6 +583,130 @@ Angriber',
     ),
   );
 
+  // Exported field: field_profilepos_x
+  $fields['profile-field_profilepos_x'] = array(
+    'field_name' => 'field_profilepos_x',
+    'type_name' => 'profile',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'nodeasblock teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'nodeasblock full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'number_integer',
+    'required' => '0',
+    'multiple' => '0',
+    'module' => 'number',
+    'active' => '1',
+    'prefix' => '',
+    'suffix' => 'px',
+    'min' => '-300',
+    'max' => '300',
+    'allowed_values' => '',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'default_value' => array(
+        '0' => array(
+          'value' => '',
+          '_error_element' => 'default_value_widget][field_profilepos_x][0][value',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Position: X',
+      'weight' => '11',
+      'description' => '',
+      'type' => 'number',
+      'module' => 'number',
+    ),
+  );
+
+  // Exported field: field_profilepos_y
+  $fields['profile-field_profilepos_y'] = array(
+    'field_name' => 'field_profilepos_y',
+    'type_name' => 'profile',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'nodeasblock teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'nodeasblock full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'number_integer',
+    'required' => '0',
+    'multiple' => '0',
+    'module' => 'number',
+    'active' => '1',
+    'prefix' => '',
+    'suffix' => 'px',
+    'min' => '-150',
+    'max' => '150',
+    'allowed_values' => '',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'default_value' => array(
+        '0' => array(
+          'value' => '',
+          '_error_element' => 'default_value_widget][field_profilepos_y][0][value',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Position: Y',
+      'weight' => '12',
+      'description' => '',
+      'type' => 'number',
+      'module' => 'number',
+    ),
+  );
+
   // Exported field: field_profilesecondary
   $fields['profile-field_profilesecondary'] = array(
     'field_name' => 'field_profilesecondary',
@@ -576,7 +762,7 @@ Angriber',
       ),
       'default_value_php' => NULL,
       'label' => 'Bag om profilen',
-      'weight' => '-2',
+      'weight' => 0,
       'description' => '',
       'type' => 'text_textarea',
       'module' => 'text',
@@ -640,7 +826,7 @@ Angriber',
       'default_value_php' => NULL,
       'semantic_cck_use_semantic_instance' => 0,
       'label' => 'Spillerprofil',
-      'weight' => '-3',
+      'weight' => '-2',
       'description' => '',
       'type' => 'text_textarea',
       'module' => 'text',
@@ -693,7 +879,7 @@ Angriber',
       'default_value_php' => NULL,
       'semantic_cck_use_semantic_instance' => 0,
       'label' => 'Inkluder i slideshow',
-      'weight' => 0,
+      'weight' => '2',
       'description' => '',
       'type' => 'optionwidgets_buttons',
       'module' => 'optionwidgets',
@@ -710,8 +896,11 @@ Angriber',
   t('Klubkarriere');
   t('Landshold');
   t('Position');
+  t('Position: X');
+  t('Position: Y');
   t('Profilbillede');
   t('Spillerprofil');
+  t('Trøjenavn');
   t('Vægt');
 
   return $fields;
