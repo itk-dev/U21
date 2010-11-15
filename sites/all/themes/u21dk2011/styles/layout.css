@@ -629,6 +629,46 @@ body.context-editing a.context-block {
 }
 
 
+/* ======================================== */
+/*  Profile Overviews                       */
+/* ======================================== */
+
+/* ----- / Player positions ----- */
+
+.playingfield-wide {
+  position: relative;
+  background: transparent url(../images/back-playingfield-wide.jpg) left top no-repeat;
+  width: 940px;
+  height: 608px;
+}
+
+.playingfield-wide .player-marker {
+  background: transparent url(../images/back-player-position.png) left top no-repeat;
+  width: 64px;
+  height: 53px;
+  display: block;
+  list-style: none;
+  position: absolute;
+  left: 0; /* default value. Overridden by inline styles */
+  top: 0; /* ditto */
+}
+
+.js .playingfield-wide .player-marker {
+  cursor: pointer;
+}
+
+.player-shirtname {
+  text-align: center;
+  font-size: 11px;
+  color: #fff;
+  padding-top: 23px;
+}
+
+.playingfield-wide .player-info {
+ display: none;
+}
+
+
 /* =============================================
 
    Kandidater til oprydning */
