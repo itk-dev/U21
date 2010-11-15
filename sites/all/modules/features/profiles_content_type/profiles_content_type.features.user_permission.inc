@@ -6,6 +6,94 @@
 function profiles_content_type_user_default_permissions() {
   $permissions = array();
 
+  // Exported permission: edit field_profile_birth
+  $permissions['edit field_profile_birth'] = array(
+    'name' => 'edit field_profile_birth',
+    'roles' => array(
+      '0' => 'redaktør',
+    ),
+  );
+
+  // Exported permission: edit field_profile_clubs
+  $permissions['edit field_profile_clubs'] = array(
+    'name' => 'edit field_profile_clubs',
+    'roles' => array(
+      '0' => 'redaktør',
+    ),
+  );
+
+  // Exported permission: edit field_profile_current_club
+  $permissions['edit field_profile_current_club'] = array(
+    'name' => 'edit field_profile_current_club',
+    'roles' => array(
+      '0' => 'redaktør',
+    ),
+  );
+
+  // Exported permission: edit field_profile_height
+  $permissions['edit field_profile_height'] = array(
+    'name' => 'edit field_profile_height',
+    'roles' => array(
+      '0' => 'redaktør',
+    ),
+  );
+
+  // Exported permission: edit field_profile_position
+  $permissions['edit field_profile_position'] = array(
+    'name' => 'edit field_profile_position',
+    'roles' => array(
+      '0' => 'redaktør',
+    ),
+  );
+
+  // Exported permission: edit field_profile_teams
+  $permissions['edit field_profile_teams'] = array(
+    'name' => 'edit field_profile_teams',
+    'roles' => array(
+      '0' => 'redaktør',
+    ),
+  );
+
+  // Exported permission: edit field_profile_weight
+  $permissions['edit field_profile_weight'] = array(
+    'name' => 'edit field_profile_weight',
+    'roles' => array(
+      '0' => 'redaktør',
+    ),
+  );
+
+  // Exported permission: edit field_profilephoto
+  $permissions['edit field_profilephoto'] = array(
+    'name' => 'edit field_profilephoto',
+    'roles' => array(
+      '0' => 'redaktør',
+    ),
+  );
+
+  // Exported permission: edit field_profilesecondary
+  $permissions['edit field_profilesecondary'] = array(
+    'name' => 'edit field_profilesecondary',
+    'roles' => array(
+      '0' => 'redaktør',
+    ),
+  );
+
+  // Exported permission: edit field_profiletext
+  $permissions['edit field_profiletext'] = array(
+    'name' => 'edit field_profiletext',
+    'roles' => array(
+      '0' => 'redaktør',
+    ),
+  );
+
+  // Exported permission: edit field_promote
+  $permissions['edit field_promote'] = array(
+    'name' => 'edit field_promote',
+    'roles' => array(
+      '0' => 'redaktør',
+    ),
+  );
+
   // Exported permission: view field_profile_birth
   $permissions['view field_profile_birth'] = array(
     'name' => 'view field_profile_birth',
