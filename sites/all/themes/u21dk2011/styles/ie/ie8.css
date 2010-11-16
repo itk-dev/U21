@@ -2,3 +2,7 @@
 #secondary-content .block-block-content p a:visited {
   display: block;
 }
+
+.spotbox .spotbox-image img {
+  display: inline;
+}
