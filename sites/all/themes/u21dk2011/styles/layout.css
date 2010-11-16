@@ -633,6 +633,39 @@ body.context-editing a.context-block {
 /*  Profile Overviews                       */
 /* ======================================== */
 
+/* ----- / Profile Player Overview ----- */
+
+.profile-player-overview .view-content {
+  background: #fff;
+  overflow-y: hidden;
+}
+
+.profile-player-overview .views-column {
+  float: left;
+  width: 138px;
+  border-left: 1px dashed #ccc;
+  padding: 8px;
+  min-height: 234px;
+}
+
+.profile-player-overview .views-column:first-child {
+  border: none;
+}
+
+.profile-player-overview h3 {
+  margin-top: 0;
+}
+
+.profile-player-overview ul {
+  list-style: square;
+  margin-left: 12px;
+  font-size: 11px;
+}
+
+.profile-player-overview ul li {
+  margin-bottom: 2px;
+}
+
 /* ----- / Player positions ----- */
 
 .playingfield-wide {
