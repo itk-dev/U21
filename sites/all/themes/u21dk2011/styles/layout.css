@@ -659,15 +659,86 @@ body.context-editing a.context-block {
 
 .player-shirtname {
   text-align: center;
-  font-size: 11px;
+  font-size: 10px;
+  font-weight: normal;
   color: #fff;
-  padding-top: 23px;
+  padding-top: 24px;
 }
 
 .playingfield-wide .player-info {
- display: none;
+  display: none;
+  width: 224px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -o-border-radius: 8px;
+  border-radius: 8px;
+  background: #fff;
+  position: absolute;
+  left: -10px;
+  top: 70px;
+  z-index: 1000;
 }
 
+.playingfield-wide .player-info-inner {
+  position: absolute;
+  top: -53px;
+  left: 40px;
+  z-index: 1010;
+  width: 61px;
+  height: 53px;
+  background: transparent url(../images/back-bubble-arrow.png) left top no-repeat;
+}
+
+.player-info h4 {
+  font-size: 13px;
+  margin-bottom: 3px;
+}
+
+.player-info p {
+  margin-left: 55px;
+  margin-bottom: 0;
+  font-size: 11px;
+}
+
+.player-info .label {
+  font-weight: bold;
+}
+
+.player-info .profile-image {
+  float: left;
+  
+}
+
+.playingfield-wide .active-bubble {
+  outline: none;
+  border: 1px dotted #333;
+  margin: -1px;
+}
+
+.active-bubble .close-button {
+  text-indent: -9999em;
+  display: block;
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background: blue url(../images/icon-button-close.png) left top no-repeat;
+  border: none;
+}
+
+.active-bubble .close-button:focus {
+  outline: none;
+  border: 1px dotted #333;
+  margin: -1px;
+}
+
+.player-info h4 {
+  font-size: 13px;
+  
+}
 
 /* =============================================
 

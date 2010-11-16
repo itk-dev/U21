@@ -33,6 +33,7 @@
 <h3 class="player-shirtname"><?php print $fields[field_profile_shirtname_value]->content; ?></h3>
   
 <div class="player-info">
+
 <?php foreach ($fields as $id => $field): ?>
 
   <?php if ($id != field_profilepos_x_value && $id != field_profilepos_y_value && $id != field_profile_shirtname_value): ?>
@@ -62,5 +63,6 @@
   <?php endif; ?>
 
 <?php endforeach; ?>
+  <div class="player-info-inner"></div>
 </div>
 </li>
