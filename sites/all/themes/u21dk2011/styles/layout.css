@@ -789,6 +789,7 @@ body.context-editing a.context-block {
   background:#fff;
   overflow:hidden;
   padding:0 8px 8px;
+  min-height: 326px;
 }
 
 #secondary-content .block-nodeasblock {
