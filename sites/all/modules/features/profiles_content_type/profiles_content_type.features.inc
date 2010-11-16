@@ -15,6 +15,20 @@ function profiles_content_type_ctools_plugin_api() {
  */
 function profiles_content_type_imagecache_default_presets() {
   $items = array(
+    'profile_bubble' => array(
+      'presetname' => 'profile_bubble',
+      'actions' => array(
+        '0' => array(
+          'weight' => '0',
+          'module' => 'imagecache',
+          'action' => 'imagecache_scale_and_crop',
+          'data' => array(
+            'width' => '45px',
+            'height' => '45px',
+          ),
+        ),
+      ),
+    ),
     'profile_image' => array(
       'presetname' => 'profile_image',
       'actions' => array(

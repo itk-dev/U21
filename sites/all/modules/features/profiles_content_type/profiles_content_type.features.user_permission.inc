@@ -104,14 +104,6 @@ function profiles_content_type_user_default_permissions() {
     ),
   );
 
-  // Exported permission: edit field_promote
-  $permissions['edit field_promote'] = array(
-    'name' => 'edit field_promote',
-    'roles' => array(
-      '0' => 'redaktør',
-    ),
-  );
-
   // Exported permission: view field_profile_birth
   $permissions['view field_profile_birth'] = array(
     'name' => 'view field_profile_birth',
@@ -223,6 +215,30 @@ function profiles_content_type_user_default_permissions() {
   // Exported permission: view field_promote
   $permissions['view field_promote'] = array(
     'name' => 'view field_promote',
+    'roles' => array(
+      '0' => 'anonymous user',
+      '1' => 'authenticated user',
+    ),
+  );
+
+  // Exported permission: view imagecache profile_bubble
+  $permissions['view imagecache profile_bubble'] = array(
+    'name' => 'view imagecache profile_bubble',
+    'roles' => array(),
+  );
+
+  // Exported permission: view imagecache profile_image
+  $permissions['view imagecache profile_image'] = array(
+    'name' => 'view imagecache profile_image',
+    'roles' => array(
+      '0' => 'anonymous user',
+      '1' => 'authenticated user',
+    ),
+  );
+
+  // Exported permission: view imagecache profile_spotbox
+  $permissions['view imagecache profile_spotbox'] = array(
+    'name' => 'view imagecache profile_spotbox',
     'roles' => array(
       '0' => 'anonymous user',
       '1' => 'authenticated user',

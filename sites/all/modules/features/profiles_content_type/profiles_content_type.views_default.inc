@@ -2272,7 +2272,7 @@ function profiles_content_type_views_default_views() {
       'empty_zero' => 0,
       'link_to_node' => 0,
       'label_type' => 'none',
-      'format' => 'news_title_default',
+      'format' => 'profile_bubble_linked',
       'multiple' => array(
         'group' => TRUE,
         'multiple_number' => '',
@@ -2284,6 +2284,9 @@ function profiles_content_type_views_default_views() {
       'table' => 'node_data_field_profilephoto',
       'field' => 'field_profilephoto_imceimage_path',
       'relationship' => 'none',
+      'override' => array(
+        'button' => 'Use default',
+      ),
     ),
     'field_profile_position_value' => array(
       'label' => 'Position',

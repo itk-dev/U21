@@ -280,7 +280,7 @@ function profiles_content_type_default_page_manager_pages() {
     'title' => 'Team Overview',
     'no_blocks' => 0,
     'pipeline' => 'standard',
-    'css_id' => '',
+    'css_id' => 'profile-lineup',
     'css' => '',
     'contexts' => array(),
     'relationships' => array(),
@@ -298,7 +298,7 @@ function profiles_content_type_default_page_manager_pages() {
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = 'Holdoversigt: %team:name';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
@@ -342,7 +342,10 @@ function profiles_content_type_default_page_manager_pages() {
     $pane->style = array(
       'settings' => NULL,
     );
-    $pane->css = array();
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'profile-player-overview',
+    );
     $pane->extras = array();
     $pane->position = 0;
     $display->content['new-2'] = $pane;
