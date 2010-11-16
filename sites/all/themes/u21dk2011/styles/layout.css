@@ -635,6 +635,10 @@ body.context-editing a.context-block {
 
 /* ----- / Profile Player Overview ----- */
 
+.page-profile #page-title {
+  text-transform: capitalize;
+}
+
 .profile-player-overview .view-content {
   background: #fff;
   overflow-y: hidden;
@@ -643,7 +647,7 @@ body.context-editing a.context-block {
 .profile-player-overview .views-column {
   float: left;
   width: 138px;
-  border-left: 1px dashed #ccc;
+  border-left: 1px solid #eff0f4;
   padding: 8px;
   min-height: 234px;
 }
