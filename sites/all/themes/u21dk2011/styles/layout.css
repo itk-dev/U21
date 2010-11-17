@@ -792,7 +792,7 @@ body.context-editing a.context-block {
   min-height: 326px;
 }
 
-#secondary-content .block-nodeasblock {
+#secondary-content .block-nodespotbox {
   background:#fff;
   overflow:hidden;
   padding:0 0 8px;
@@ -844,7 +844,7 @@ a.imagecache-spotbox-titleimage:visited {
 /* ----- / Profile spotboxes ----- */
 
 #views_slideshow_singleframe_teaser_section_profile-block_2,
-.block-nodeasblock div.spotbox {
+.block-nodespotbox div.spotbox {
   height: 355px !important;
 }
 
@@ -853,11 +853,11 @@ a.imagecache-spotbox-titleimage:visited {
 }
 
 .view-profile .views_slideshow_singleframe_main p,
-.block-nodeasblock .view-profile p {
+.block-nodespotbox .view-profile p {
   padding: 0 8px;
 }
 
-.block-nodeasblock .spotbox {
+.block-nodespotbox .spotbox {
   background: #fff;
 }
 
@@ -872,7 +872,7 @@ h2.spotbox a:visited {
 }
 
 .block-views-content .spotbox p,
-.block-nodeasblock .spotbox p {
+.block-nodespotbox .spotbox p {
   padding-top: 0.4em;
 }
 
