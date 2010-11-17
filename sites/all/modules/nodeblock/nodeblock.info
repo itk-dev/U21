@@ -1,4 +1,0 @@
-; $Id:$
-name = Nodeblock
-description = Enables use of specified node types as custom blocks (Modified version).
-core = 6.x
