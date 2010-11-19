@@ -3,21 +3,19 @@
 class uefaParser extends FeedsParser {
 
   public function parse(FeedsImportBatch $batch, FeedsSource $source) {
-    $data_raw = $batch->getRaw();
-  
-
+ 
     // Parser data
     $items = array();
-    $xml = new SimpleXMLElement($data_raw);
+    $xml = new SimpleXMLElement($batch->getRaw());
 
     // Run through news items
     foreach ($xml->news as $news) {
       $item = array();
-      $item['newsId'] = $news['newsId'];
-      $item['newsTitle'] = $news->newsTitle;
-      $item['newsDate'] = $news->newsDate;
-      $item['newsComment'] = $news->newsComment;
-      $item['newsLink'] = $news->newsLink;
+      $item['newsId'] = (string)$news['newsId'];
+      $item['newsTitle'] = (string)$news->newsTitle;
+      $item['newsDate'] = strtotime((string)$news->newsDate);
+      $item['newsComment'] = (string)$news->newsComment;
+      $item['newsLink'] = (string)$news->newsLink;
       $items[] = $item;
     }
 
