@@ -1,0 +1,6 @@
+; $Id$
+name = U21 UEFA feeds
+description = Feed extension to download content from UEFA CDW
+package = "U21"
+core = 6.x
+dependencies[] = feeds

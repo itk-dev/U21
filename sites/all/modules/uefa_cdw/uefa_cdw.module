@@ -1,0 +1,21 @@
+<?php
+
+function uefa_cdw_feeds_plugins() {
+  $info = array();
+  $info['uefaParser'] = array(
+    'name' => "UEFA CDW Parser",
+    'description' => t('Parse data from UEFA CDW'),
+    'handler' => array(
+      'parent' => 'FeedsPaser',
+      'class' => 'uefaParser',
+      'file' => 'uefaParser.inc',
+      'path' => drupal_get_path('module', 'uefa_cdw') .'/plugins',
+    ),
+  );
+  return $info;
+}
+
+function uefa_cdw_enable() {
+  cache_clear_all('plugins:feeds:plugins', 'cache');
+}
+
