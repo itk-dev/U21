@@ -17,6 +17,14 @@
   margin: 0;
 }
 
+/* Override for regional news listings */
+.panel-col-left .region-link a.active, 
+.panel-col-right .region-link a.active {
+  border-radius: 0;
+  background: transparent;
+  padding: 2px 0 0;
+}
+
 .panel-col-top a.active-trail:link,
 .panel-col-left a.active-trail:link,
 .panel-col-top a.active-trail:visited,
