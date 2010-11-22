@@ -11,6 +11,9 @@
 Drupal.behaviors.viewsSlideshowSingleFrame = function (context) {
   $('.views_slideshow_singleframe_main:not(.viewsSlideshowSingleFrame-processed)', context).addClass('viewsSlideshowSingleFrame-processed').each(function() {
     var fullId = '#' + $(this).attr('id');
+    if (!Drupal.settings.viewsSlideshowSingleFrame || !Drupal.settings.viewsSlideshowSingleFrame[fullId]) {
+      return;
+    }
     var settings = Drupal.settings.viewsSlideshowSingleFrame[fullId];
     settings.targetId = '#' + $(fullId + " :first").attr('id');
     settings.paused = false;
@@ -112,6 +115,7 @@ Drupal.behaviors.viewsSlideshowSingleFrame = function (context) {
 
     // Add additional settings.
 		if (settings.advanced != "\n") {
+		  settings.advanced.toString();
       var advanced = settings.advanced.split("\n");
       for (i=0; i<advanced.length; i++) {
         var prop = '';

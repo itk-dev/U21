@@ -11,6 +11,10 @@
 Drupal.behaviors.viewsSlideshowThumbnailHover = function (context) {
   $('.views_slideshow_thumbnailhover_main:not(.viewsSlideshowThumbnailHover-processed)', context).addClass('viewsSlideshowThumbnailHover-processed').each(function() {
     var fullId = '#' + $(this).attr('id');
+    if (!Drupal.settings.viewsSlideshowThumbnailHover || !Drupal.settings.viewsSlideshowThumbnailHover[fullId]) {
+      return;
+    }
+
     var settings = Drupal.settings.viewsSlideshowThumbnailHover[fullId];
     settings.targetId = '#' + $(fullId + " :first").attr('id');
 		settings.paused = false;
@@ -96,7 +100,8 @@ Drupal.behaviors.viewsSlideshowThumbnailHover = function (context) {
     }
     
     // Add additional settings.
-		if (settings.advanced != "\n") {
+		if (settings.advanced  && settings.advanced != "\n") {
+		  settings.advanced = settings.advanced.toString();
       var advanced = settings.advanced.split("\n");
       for (i=0; i<advanced.length; i++) {
         var prop = '';
