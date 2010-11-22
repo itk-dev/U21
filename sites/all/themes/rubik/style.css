@@ -452,3 +452,32 @@ h2.node-title {
   font-weight:normal;
   font-size:16px;
   }
+
+/* Fix off date picker UI */
+.ui-datepicker-header select.ui-datepicker-month {
+  background:none repeat scroll 0 0 #E6E6E6;
+  border:1px solid #D3D3D3;
+  color:#555555;
+  font-size:1em;
+  left:45px;
+  line-height:1.4em;
+  margin:0 !important;
+  padding:0 !important;
+  position:absolute;
+  top:0.5em;
+}
+
+.ui-datepicker-header select.ui-datepicker-year {
+  background:none repeat scroll 0 0 #E6E6E6;
+  border:1px solid #D3D3D3;
+  color:#555555;
+  font-size:1em;
+  left:100px;
+  line-height:1.4em;
+  margin:0 !important;
+  padding:0 !important;
+  position:absolute;
+  top:0.5em;
+}
+
+
