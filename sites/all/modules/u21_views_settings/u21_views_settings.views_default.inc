@@ -1,4 +1,4 @@
-<?php
+<?
 
 /**
  * Implementation of hook_views_default_views().
@@ -1276,6 +1276,7 @@ function u21_views_settings_views_default_views() {
     ),
   ));
   $handler->override_option('arguments', array());
+  $handler->override_option('empty', '');
   $handler->override_option('style_plugin', 'semanticviews_default');
   $handler->override_option('style_options', array(
     'grouping' => '',
@@ -1597,6 +1598,7 @@ function u21_views_settings_views_default_views() {
   $handler->override_option('footer', '<a href="/events/">Vis alle arrangementer</a>');
   $handler->override_option('footer_format', '2');
   $handler->override_option('footer_empty', 0);
+  $handler->override_option('empty', '<p>Næste arrangement vil blive offentliggjort her.</p>');
   $handler->override_option('items_per_page', 6);
   $handler->override_option('use_pager', FALSE);
   $handler->override_option('style_plugin', 'slideshow');
@@ -6918,5 +6920,3 @@ function u21_views_settings_views_default_views() {
 
   return $views;
 }
-
-
