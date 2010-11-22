@@ -64,6 +64,8 @@
          echo theme('imagecache', 'spotbox-titleimage', 'sites/all/themes/u21dk2011/images/arrangement_default.jpg', 'Foldboldfans');
        } else if ($classes_array[3] == 'view-display-id-panel_pane_4') {
          echo theme('imagecache', 'event_title', 'sites/all/themes/u21dk2011/images/arrangement_default.jpg', 'Foldboldfans');
+       } else if ($classes_array[3] == 'view-display-id-panel_pane_2') {
+         echo theme('imagecache', 'event_title', 'sites/all/themes/u21dk2011/images/arrangement_default.jpg', 'Foldboldfans');
        }
       ?>
       <?php print $empty; ?>
