@@ -122,7 +122,7 @@ function securepages_form_alter(&$form, &$form_state, $form_id) {
 /**
  * Implementation of hook_link_alter().
  */
-function securepages_link_alter(&$links, &$node) {
+function securepages_link_alter(&$links, $node) {
   if (!variable_get('securepages_enable', 0)) {
     return;
   }

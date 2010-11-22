@@ -10,3 +10,18 @@
 .top-slideshow .views_slideshow_singleframe_pager {
   padding-top: 2px;
 }
+
+
+/* ---- / Tabbed menu ----- */
+/* Fix missing support for inline-block on <li> */
+
+.tabbed-menu li,
+.ui-tabs-nav {
+  overflow: hidden;
+}
+
+.tabbed-menu li,
+.ui-tabs-nav li {
+  float:left;
+  list-style: none;
+}
