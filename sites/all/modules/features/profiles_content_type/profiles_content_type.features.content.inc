@@ -62,16 +62,16 @@ function profiles_content_type_content_default_fields() {
       'default_value_code' => '',
       'default_value2' => 'blank',
       'default_value_code2' => '',
-      'input_format' => 'j M Y - H:i:s',
+      'input_format' => 'j M Y',
       'input_format_custom' => '',
-      'increment' => 1,
+      'increment' => '1',
       'text_parts' => array(),
       'year_range' => '-3:+3',
       'label_position' => 'above',
       'label' => 'Født',
       'weight' => '13',
       'description' => '',
-      'type' => 'date_text',
+      'type' => 'date_popup',
       'module' => 'date',
     ),
   );
@@ -243,13 +243,13 @@ function profiles_content_type_content_default_fields() {
     'module' => 'number',
     'active' => '1',
     'prefix' => '',
-    'suffix' => 'cm',
+    'suffix' => ' cm',
     'min' => '',
     'max' => '',
     'allowed_values' => '',
     'allowed_values_php' => '',
     'precision' => '10',
-    'scale' => '1',
+    'scale' => '0',
     'decimal' => ',',
     'widget' => array(
       'default_value' => array(
@@ -260,7 +260,7 @@ function profiles_content_type_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Højde',
-      'weight' => '11',
+      'weight' => '12',
       'description' => '',
       'type' => 'number',
       'module' => 'number',
@@ -311,10 +311,7 @@ function profiles_content_type_content_default_fields() {
     'max_length' => '',
     'allowed_values' => 'Målmand
 Forsvar
-Wing
-Defensiv Midtbane
 Midtbane
-Offensiv Midtbane
 Angriber',
     'allowed_values_php' => '',
     'widget' => array(
@@ -498,13 +495,13 @@ Angriber',
     'module' => 'number',
     'active' => '1',
     'prefix' => '',
-    'suffix' => 'Kg',
+    'suffix' => ' kg',
     'min' => '',
     'max' => '',
     'allowed_values' => '',
     'allowed_values_php' => '',
     'precision' => '10',
-    'scale' => '1',
+    'scale' => '0',
     'decimal' => '.',
     'widget' => array(
       'default_value' => array(
@@ -515,7 +512,7 @@ Angriber',
       ),
       'default_value_php' => NULL,
       'label' => 'Vægt',
-      'weight' => '12',
+      'weight' => '11',
       'description' => '',
       'type' => 'number',
       'module' => 'number',
