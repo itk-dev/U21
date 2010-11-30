@@ -813,7 +813,31 @@ body.context-editing a.context-block {
 }
 
 
-#secondary-content .block-block img{display:block;margin:0 -8px;}#secondary-content .block-views li{background:url(../images/back-list-top.png) center 2px no-repeat;padding-bottom:8px;padding-top:8px;}#secondary-content .block-views li.first{background:transparent;padding-top:0;}#region-middle h2,#region-bottom h2{display:none;}.panel-col-right .pane-events-panel-pane-8{background:transparent;margin:0 0 20px;padding:0;}.pane-events-panel-pane-8 .pane-content{background:#fff;font-size:12px;min-height:267px;padding:0 8px 34px;position:relative;}.pane-events-panel-pane-8 li.last{background:url(../images/back-list-top.png) center 2px no-repeat;padding-top:12px;}.pane-events-panel-pane-8 h3{font-size:13px;margin-top:0;}.pane-events-panel-pane-8 .location{margin-bottom:2px;}.pane-events-panel-pane-8 .adr,.pane-events-panel-pane-8 .adr .locality{font-size:12px;font-style:italic;}.pane-events-panel-pane-8 .adr .fn:after{content:", ";}.spotbox .view-events .view-footer{background:url(../images/icon-link-events.png) left bottom no-repeat;bottom:8px;left:8px;padding-left:32px;padding-top:8px;position:absolute;}.field-campaing-image-imceimage-path a{display:block;margin-bottom:0;}.field-campaing-image-imceimage-path a:hover{border:8px solid #fff;margin:-8px;}.block ul,#secondary-content .block-block{padding:0;}#secondary-content .block>h2,#secondary-content h2.spotbox,#content .pane-events-panel-pane-8 h2.pane-title{background:url(../images/back-spotbox.png) left top no-repeat;color:#fff;font-size:14px;line-height:17px;margin:0;padding:6px 8px;}#secondary-content .block .post-date,.pane-events-panel-pane-8 .date-display-single,.pane-events-panel-pane-8 .date-display-start,.pane-events-panel-pane-8 .date-display-end,.pane-events-panel-pane-8 .date-display-separator{font-size:12px;font-weight:700;}
+#secondary-content .block-block img{display:block;margin:0 -8px;}#secondary-content .block-views li{background:url(../images/back-list-top.png) center 2px no-repeat;padding-bottom:8px;padding-top:8px;}#secondary-content .block-views li.first{background:transparent;padding-top:0;}#region-middle h2,#region-bottom h2{display:none;}
+
+/* ----- / Spotbox style designs ----- */
+.panel-col-right .pane-events-panel-pane-8 {
+  background:transparent;
+  margin:0 0 20px;
+  padding:0;
+  }
+.pane-events-panel-pane-8 .pane-content { 
+  background:#fff;
+  font-size:12px;
+  min-height:267px;
+  padding:0 8px 34px;
+  position:relative;
+  }
+ 
+  
+.pane-events-panel-pane-8 li.last{background:url(../images/back-list-top.png) center 2px no-repeat;padding-top:12px;}.pane-events-panel-pane-8 h3{font-size:13px;margin-top:0;}
+.pane-events-panel-pane-8 .location{margin-bottom:2px;}
+.pane-events-panel-pane-8 .adr,
+.pane-events-panel-pane-8 .adr .locality{font-size:12px;font-style:italic;}
+.pane-events-panel-pane-8 .adr .fn:after{content:", ";}
+.spotbox .view-events .view-footer{background:url(../images/icon-link-events.png) left bottom no-repeat;bottom:8px;left:8px;padding-left:32px;padding-top:8px;position:absolute;}
+
+.field-campaing-image-imceimage-path a{display:block;margin-bottom:0;}.field-campaing-image-imceimage-path a:hover{border:8px solid #fff;margin:-8px;}.block ul,#secondary-content .block-block{padding:0;}#secondary-content .block>h2,#secondary-content h2.spotbox,#content .pane-events-panel-pane-8 h2.pane-title{background:url(../images/back-spotbox.png) left top no-repeat;color:#fff;font-size:14px;line-height:17px;margin:0;padding:6px 8px;}#secondary-content .block .post-date,.pane-events-panel-pane-8 .date-display-single,.pane-events-panel-pane-8 .date-display-start,.pane-events-panel-pane-8 .date-display-end,.pane-events-panel-pane-8 .date-display-separator{font-size:12px;font-weight:700;}
 
 #main-content .imagecache-regional_campaign,
 #main-content .sverige-banner {
@@ -837,6 +861,35 @@ a.imagecache-spotbox-titleimage:visited {
   border: none;
   padding: 0;
   margin-bottom: 8px;
+}
+
+/* ----- / Content spotboxes ----- */
+.panel-col-right div[class*=pane-nodespotbox-] {
+  background: transparent;
+  margin-top: 0;
+  padding: 0;
+}
+
+.panel-col-right .view-Spotbox h2 {
+  background:url(../images/back-spotbox.png) left top no-repeat;
+  color:#fff;
+  font-size:14px;
+  line-height:17px;
+  margin:0;
+  padding:6px 8px;
+}
+
+.view-Spotbox a.spotbox-blockimage,
+.view-Spotbox a.spotbox-blockimage:hover {
+  display: block;
+  border: none;
+  margin-bottom: 0;
+}
+
+.view-Spotbox .spotbox-text {
+  background: #fff;
+  overflow: hidden;
+  padding: 8px;
 }
 
 
