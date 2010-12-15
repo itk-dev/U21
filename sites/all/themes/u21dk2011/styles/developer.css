@@ -61,11 +61,11 @@ a:visited object {
 .faktaboks div .label {
   float: left; 
   width: 80px;
-  margin-left: -90px;
+  margin-left: -95px;
 }
 
 .faktaboks div {
-  padding-left: 90px;
+  padding-left: 95px;
   margin-bottom: 0.4em;
   background:url("../images/back-groove.png") repeat-x scroll left top transparent;
   margin-top: 0.4em;
