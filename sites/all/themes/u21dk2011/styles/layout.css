@@ -204,12 +204,18 @@ table img {
 }
 
 .field-titleimage-imceimage-path img,
-.title-image img,
-.field-profilephoto img {
+.title-image img {
   display: block;
   max-width: 604px;
   height: auto;
 }
+
+.field-profilephoto {
+  float: left;
+  margin-right: 8px;
+  margin-bottom: 4px;
+}
+
 
 .panel-col-center {
   padding-bottom: 16px;
@@ -698,12 +704,12 @@ body.context-editing a.context-block {
   font-size: 10px;
   font-weight: normal;
   color: #fff;
-  padding-top: 24px;
+  padding-top: 23px;
 }
 
 .playingfield-wide .player-info {
   display: none;
-  width: 224px;
+  width: 200px;
   padding: 8px;
   border: 1px solid #ccc;
   -moz-border-radius: 8px;
