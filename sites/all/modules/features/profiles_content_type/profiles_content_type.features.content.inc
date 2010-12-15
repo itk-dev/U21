@@ -131,7 +131,7 @@ function profiles_content_type_content_default_fields() {
         ),
       ),
       'default_value_php' => NULL,
-      'label' => 'Klubkarriere',
+      'label' => 'Karriere',
       'weight' => '14',
       'description' => '',
       'type' => 'text_textarea',
@@ -309,7 +309,7 @@ function profiles_content_type_content_default_fields() {
     'active' => '1',
     'text_processing' => '0',
     'max_length' => '',
-    'allowed_values' => 'Målmand
+    'allowed_values' => 'Målmænd
 Forsvar
 Midtbane
 Angriber',
@@ -454,6 +454,61 @@ Angriber',
     ),
   );
 
+  // Exported field: field_profile_video
+  $fields['profile-field_profile_video'] = array(
+    'field_name' => 'field_profile_video',
+    'type_name' => 'profile',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'text',
+    'required' => '0',
+    'multiple' => '1',
+    'module' => 'text',
+    'active' => '1',
+    'text_processing' => '1',
+    'max_length' => '',
+    'allowed_values' => '',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'rows' => '5',
+      'size' => 60,
+      'default_value' => array(
+        '0' => array(
+          'value' => '',
+          'format' => '4',
+          '_error_element' => 'default_value_widget][field_profile_video][0][value',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Filmklip',
+      'weight' => '2',
+      'description' => '',
+      'type' => 'text_textarea',
+      'module' => 'text',
+    ),
+  );
+
   // Exported field: field_profile_weight
   $fields['profile-field_profile_weight'] = array(
     'field_name' => 'field_profile_weight',
@@ -573,7 +628,7 @@ Angriber',
       'default_value_php' => NULL,
       'semantic_cck_use_semantic_instance' => 0,
       'label' => 'Profilbillede',
-      'weight' => '-4',
+      'weight' => '-3',
       'description' => 'Profilfoto af spillerprofilen. Billedet vises øverst på profilsiderne.',
       'type' => 'imceimage',
       'module' => 'imceimage',
@@ -759,7 +814,7 @@ Angriber',
       ),
       'default_value_php' => NULL,
       'label' => 'Bag om profilen',
-      'weight' => 0,
+      'weight' => '1',
       'description' => '',
       'type' => 'text_textarea',
       'module' => 'text',
@@ -823,7 +878,7 @@ Angriber',
       'default_value_php' => NULL,
       'semantic_cck_use_semantic_instance' => 0,
       'label' => 'Spillerprofil',
-      'weight' => '-2',
+      'weight' => 0,
       'description' => '',
       'type' => 'text_textarea',
       'module' => 'text',
@@ -876,7 +931,7 @@ Angriber',
       'default_value_php' => NULL,
       'semantic_cck_use_semantic_instance' => 0,
       'label' => 'Inkluder i slideshow',
-      'weight' => '2',
+      'weight' => '4',
       'description' => '',
       'type' => 'optionwidgets_buttons',
       'module' => 'optionwidgets',
@@ -886,11 +941,12 @@ Angriber',
   // Translatables
   // Included for use with string extractors like potx.
   t('Bag om profilen');
+  t('Filmklip');
   t('Født');
   t('Højde');
   t('Inkluder i slideshow');
+  t('Karriere');
   t('Klub');
-  t('Klubkarriere');
   t('Landshold');
   t('Position');
   t('Position: X');

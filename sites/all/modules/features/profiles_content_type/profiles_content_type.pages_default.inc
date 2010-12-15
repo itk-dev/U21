@@ -87,16 +87,16 @@ function profiles_content_type_default_page_manager_handlers() {
     $pane->api_version = 1;
     $pane->pid = 'new-2';
     $pane->panel = 'center';
-    $pane->type = 'content_field';
-    $pane->subtype = 'field_profilesecondary';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'profile-panel_pane_6';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'label' => 'normal',
-      'formatter' => 'default',
-      'context' => 'argument_nid_1',
-      'override_title' => 0,
+      'override_title' => 1,
       'override_title_text' => '',
+      'context' => array(
+        0 => 'argument_nid_1',
+      ),
     );
     $pane->cache = array();
     $pane->style = array(
@@ -113,6 +113,33 @@ function profiles_content_type_default_page_manager_handlers() {
     $pane = new stdClass;
     $pane->api_version = 1;
     $pane->pid = 'new-3';
+    $pane->panel = 'center';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'profile-panel_pane_7';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'context' => array(
+        0 => 'argument_nid_1',
+      ),
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => 'profile-tab-video',
+      'css_class' => '',
+    );
+    $pane->extras = array();
+    $pane->position = 2;
+    $display->content['new-3'] = $pane;
+    $display->panels['center'][2] = 'new-3';
+    $pane = new stdClass;
+    $pane->api_version = 1;
+    $pane->pid = 'new-4';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
     $pane->subtype = 'profile-panel_pane_2';
@@ -133,11 +160,11 @@ function profiles_content_type_default_page_manager_handlers() {
     );
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-3'] = $pane;
-    $display->panels['left'][0] = 'new-3';
+    $display->content['new-4'] = $pane;
+    $display->panels['left'][0] = 'new-4';
     $pane = new stdClass;
     $pane->api_version = 1;
-    $pane->pid = 'new-4';
+    $pane->pid = 'new-5';
     $pane->panel = 'right';
     $pane->type = 'block';
     $pane->subtype = 'block-15';
@@ -154,11 +181,11 @@ function profiles_content_type_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-4'] = $pane;
-    $display->panels['right'][0] = 'new-4';
+    $display->content['new-5'] = $pane;
+    $display->panels['right'][0] = 'new-5';
     $pane = new stdClass;
     $pane->api_version = 1;
-    $pane->pid = 'new-5';
+    $pane->pid = 'new-6';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'profile-panel_pane_1';
@@ -176,8 +203,8 @@ function profiles_content_type_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
-    $display->content['new-5'] = $pane;
-    $display->panels['right'][1] = 'new-5';
+    $display->content['new-6'] = $pane;
+    $display->panels['right'][1] = 'new-6';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

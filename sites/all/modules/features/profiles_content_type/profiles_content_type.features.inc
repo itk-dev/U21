@@ -24,7 +24,7 @@ function profiles_content_type_imagecache_default_presets() {
           'action' => 'imagecache_scale_and_crop',
           'data' => array(
             'width' => '45px',
-            'height' => '45px',
+            'height' => '54px',
           ),
         ),
       ),
@@ -37,8 +37,8 @@ function profiles_content_type_imagecache_default_presets() {
           'module' => 'imagecache',
           'action' => 'imagecache_scale_and_crop',
           'data' => array(
-            'width' => '460px',
-            'height' => '225px',
+            'width' => '100px',
+            'height' => '120px',
           ),
         ),
       ),

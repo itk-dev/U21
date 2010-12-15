@@ -417,6 +417,39 @@ function profiles_content_type_views_default_views() {
   $handler->override_option('row_plugin', 'semanticviews_fields');
   $handler = $view->new_display('panel_pane', 'Profile: Faktaboks', 'panel_pane_1');
   $handler->override_option('fields', array(
+    'title' => array(
+      'label' => 'Navn',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'link_to_node' => 0,
+      'exclude' => 0,
+      'id' => 'title',
+      'table' => 'node',
+      'field' => 'title',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
     'field_profile_position_value' => array(
       'label' => 'Position',
       'alter' => array(
@@ -455,8 +488,8 @@ function profiles_content_type_views_default_views() {
       'field' => 'field_profile_position_value',
       'relationship' => 'none',
     ),
-    'field_profile_current_club_value' => array(
-      'label' => 'Klub',
+    'field_profile_height_value' => array(
+      'label' => 'Højde',
       'alter' => array(
         'alter_text' => 0,
         'text' => '',
@@ -473,7 +506,7 @@ function profiles_content_type_views_default_views() {
         'word_boundary' => 1,
         'ellipsis' => 1,
         'html' => 0,
-        'strip_tags' => 1,
+        'strip_tags' => 0,
       ),
       'empty' => '',
       'hide_empty' => 0,
@@ -488,12 +521,47 @@ function profiles_content_type_views_default_views() {
         'multiple_reversed' => FALSE,
       ),
       'exclude' => 0,
-      'id' => 'field_profile_current_club_value',
-      'table' => 'node_data_field_profile_current_club',
-      'field' => 'field_profile_current_club_value',
-      'override' => array(
-        'button' => 'Use default',
+      'id' => 'field_profile_height_value',
+      'table' => 'node_data_field_profile_height',
+      'field' => 'field_profile_height_value',
+      'relationship' => 'none',
+    ),
+    'field_profile_weight_value' => array(
+      'label' => 'Vægt',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
       ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'link_to_node' => 0,
+      'label_type' => 'widget',
+      'format' => 'default',
+      'multiple' => array(
+        'group' => TRUE,
+        'multiple_number' => '',
+        'multiple_from' => '',
+        'multiple_reversed' => FALSE,
+      ),
+      'exclude' => 0,
+      'id' => 'field_profile_weight_value',
+      'table' => 'node_data_field_profile_weight',
+      'field' => 'field_profile_weight_value',
       'relationship' => 'none',
     ),
     'field_profile_birth_value' => array(
@@ -540,8 +608,8 @@ function profiles_content_type_views_default_views() {
       'field' => 'field_profile_birth_value',
       'relationship' => 'none',
     ),
-    'field_profile_weight_value' => array(
-      'label' => 'Vægt',
+    'field_profile_current_club_value' => array(
+      'label' => 'Klub',
       'alter' => array(
         'alter_text' => 0,
         'text' => '',
@@ -558,7 +626,7 @@ function profiles_content_type_views_default_views() {
         'word_boundary' => 1,
         'ellipsis' => 1,
         'html' => 0,
-        'strip_tags' => 0,
+        'strip_tags' => 1,
       ),
       'empty' => '',
       'hide_empty' => 0,
@@ -573,47 +641,12 @@ function profiles_content_type_views_default_views() {
         'multiple_reversed' => FALSE,
       ),
       'exclude' => 0,
-      'id' => 'field_profile_weight_value',
-      'table' => 'node_data_field_profile_weight',
-      'field' => 'field_profile_weight_value',
-      'relationship' => 'none',
-    ),
-    'field_profile_height_value' => array(
-      'label' => 'Højde',
-      'alter' => array(
-        'alter_text' => 0,
-        'text' => '',
-        'make_link' => 0,
-        'path' => '',
-        'link_class' => '',
-        'alt' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'target' => '',
-        'help' => '',
-        'trim' => 0,
-        'max_length' => '',
-        'word_boundary' => 1,
-        'ellipsis' => 1,
-        'html' => 0,
-        'strip_tags' => 0,
+      'id' => 'field_profile_current_club_value',
+      'table' => 'node_data_field_profile_current_club',
+      'field' => 'field_profile_current_club_value',
+      'override' => array(
+        'button' => 'Use default',
       ),
-      'empty' => '',
-      'hide_empty' => 0,
-      'empty_zero' => 0,
-      'link_to_node' => 0,
-      'label_type' => 'widget',
-      'format' => 'default',
-      'multiple' => array(
-        'group' => TRUE,
-        'multiple_number' => '',
-        'multiple_from' => '',
-        'multiple_reversed' => FALSE,
-      ),
-      'exclude' => 0,
-      'id' => 'field_profile_height_value',
-      'table' => 'node_data_field_profile_height',
-      'field' => 'field_profile_height_value',
       'relationship' => 'none',
     ),
     'field_profile_clubs_value' => array(
@@ -777,19 +810,19 @@ function profiles_content_type_views_default_views() {
   ));
   $handler->override_option('row_options', array(
     'semantic_html' => array(
+      'title' => array(
+        'element_type' => 'p',
+        'class' => '',
+        'label_element_type' => 'span',
+        'label_class' => 'label',
+      ),
       'field_profile_position_value' => array(
         'element_type' => 'p',
         'class' => '',
         'label_element_type' => 'span',
         'label_class' => 'label',
       ),
-      'field_profile_current_club_value' => array(
-        'element_type' => 'p',
-        'class' => '',
-        'label_element_type' => 'span',
-        'label_class' => 'label',
-      ),
-      'field_profile_birth_value' => array(
+      'field_profile_height_value' => array(
         'element_type' => 'p',
         'class' => '',
         'label_element_type' => 'span',
@@ -801,7 +834,13 @@ function profiles_content_type_views_default_views() {
         'label_element_type' => 'span',
         'label_class' => 'label',
       ),
-      'field_profile_height_value' => array(
+      'field_profile_birth_value' => array(
+        'element_type' => 'p',
+        'class' => '',
+        'label_element_type' => 'span',
+        'label_class' => 'label',
+      ),
+      'field_profile_current_club_value' => array(
         'element_type' => 'p',
         'class' => '',
         'label_element_type' => 'span',
@@ -2411,39 +2450,6 @@ function profiles_content_type_views_default_views() {
       ),
       'relationship' => 'none',
     ),
-    'view_node' => array(
-      'label' => '',
-      'alter' => array(
-        'alter_text' => 0,
-        'text' => '',
-        'make_link' => 0,
-        'path' => '',
-        'link_class' => '',
-        'alt' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'target' => '',
-        'help' => '',
-        'trim' => 0,
-        'max_length' => '',
-        'word_boundary' => 1,
-        'ellipsis' => 1,
-        'html' => 0,
-        'strip_tags' => 0,
-      ),
-      'empty' => '',
-      'hide_empty' => 0,
-      'empty_zero' => 0,
-      'text' => 'Se profil',
-      'exclude' => 0,
-      'id' => 'view_node',
-      'table' => 'node',
-      'field' => 'view_node',
-      'override' => array(
-        'button' => 'Use default',
-      ),
-      'relationship' => 'none',
-    ),
   ));
   $handler->override_option('arguments', array(
     'name' => array(
@@ -2729,6 +2735,212 @@ function profiles_content_type_views_default_views() {
     'skip_blank' => 1,
   ));
   $handler->override_option('pane_title', 'Profile Main Tab');
+  $handler->override_option('pane_description', '');
+  $handler->override_option('pane_category', array(
+    'name' => 'Profile',
+    'weight' => '0',
+  ));
+  $handler->override_option('allow', array(
+    'use_pager' => 0,
+    'items_per_page' => 0,
+    'offset' => 0,
+    'link_to_view' => 0,
+    'more_link' => 0,
+    'path_override' => 0,
+    'title_override' => 'title_override',
+    'exposed_form' => 0,
+    'fields_override' => 0,
+  ));
+  $handler->override_option('argument_input', array(
+    'nid' => array(
+      'type' => 'context',
+      'context' => 'node.nid',
+      'context_optional' => 0,
+      'panel' => '0',
+      'fixed' => '',
+      'label' => 'Node: Nid',
+    ),
+  ));
+  $handler->override_option('link_to_view', 0);
+  $handler->override_option('inherit_panels_path', 0);
+  $handler = $view->new_display('panel_pane', 'Profile: Secondary tab', 'panel_pane_6');
+  $handler->override_option('fields', array(
+    'field_profilesecondary_value' => array(
+      'label' => 'Bag om profilen',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 1,
+      'empty_zero' => 0,
+      'link_to_node' => 0,
+      'label_type' => 'widget',
+      'format' => 'default',
+      'multiple' => array(
+        'group' => TRUE,
+        'multiple_number' => '',
+        'multiple_from' => '',
+        'multiple_reversed' => FALSE,
+      ),
+      'exclude' => 0,
+      'id' => 'field_profilesecondary_value',
+      'table' => 'node_data_field_profilesecondary',
+      'field' => 'field_profilesecondary_value',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+  ));
+  $handler->override_option('style_options', array(
+    'grouping' => '',
+    'group' => array(
+      'element_type' => 'h3',
+      'class' => 'title',
+    ),
+    'list' => array(
+      'element_type' => '',
+      'class' => '',
+    ),
+    'row' => array(
+      'element_type' => 'div',
+      'class' => '',
+      'last_every_nth' => '0',
+      'first_class' => 'first',
+      'last_class' => 'last',
+      'striping_classes' => 'odd even',
+    ),
+  ));
+  $handler->override_option('row_options', array(
+    'semantic_html' => array(
+      'field_profilesecondary_value' => array(
+        'element_type' => '',
+        'class' => '',
+        'label_element_type' => 'h2',
+        'label_class' => 'pane-title',
+      ),
+    ),
+    'skip_blank' => 1,
+  ));
+  $handler->override_option('pane_title', 'Profile: Secondary tab');
+  $handler->override_option('pane_description', '');
+  $handler->override_option('pane_category', array(
+    'name' => 'Profile',
+    'weight' => '0',
+  ));
+  $handler->override_option('allow', array(
+    'use_pager' => 0,
+    'items_per_page' => 0,
+    'offset' => 0,
+    'link_to_view' => 0,
+    'more_link' => 0,
+    'path_override' => 0,
+    'title_override' => 'title_override',
+    'exposed_form' => 0,
+    'fields_override' => 0,
+  ));
+  $handler->override_option('argument_input', array(
+    'nid' => array(
+      'type' => 'context',
+      'context' => 'node.nid',
+      'context_optional' => 0,
+      'panel' => '0',
+      'fixed' => '',
+      'label' => 'Node: Nid',
+    ),
+  ));
+  $handler->override_option('link_to_view', 0);
+  $handler->override_option('inherit_panels_path', 0);
+  $handler = $view->new_display('panel_pane', 'Profile: Video tab', 'panel_pane_7');
+  $handler->override_option('fields', array(
+    'field_profile_video_value' => array(
+      'label' => 'Filmklip',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'link_to_node' => 0,
+      'label_type' => 'widget',
+      'format' => 'default',
+      'multiple' => array(
+        'group' => 1,
+        'multiple_number' => '',
+        'multiple_from' => '',
+        'multiple_reversed' => 0,
+      ),
+      'exclude' => 0,
+      'id' => 'field_profile_video_value',
+      'table' => 'node_data_field_profile_video',
+      'field' => 'field_profile_video_value',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+  ));
+  $handler->override_option('style_options', array(
+    'grouping' => '',
+    'group' => array(
+      'element_type' => 'h3',
+      'class' => 'title',
+    ),
+    'list' => array(
+      'element_type' => '',
+      'class' => '',
+    ),
+    'row' => array(
+      'element_type' => '',
+      'class' => '',
+      'last_every_nth' => '0',
+      'first_class' => 'first',
+      'last_class' => 'last',
+      'striping_classes' => 'odd even',
+    ),
+  ));
+  $handler->override_option('row_options', array(
+    'semantic_html' => array(
+      'field_profile_video_value' => array(
+        'element_type' => 'div',
+        'class' => '',
+        'label_element_type' => 'h2',
+        'label_class' => 'pane-title',
+      ),
+    ),
+    'skip_blank' => 0,
+  ));
+  $handler->override_option('pane_title', 'Profile: Video tab');
   $handler->override_option('pane_description', '');
   $handler->override_option('pane_category', array(
     'name' => 'Profile',

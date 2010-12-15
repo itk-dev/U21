@@ -46,7 +46,7 @@ function profiles_content_type_fieldgroup_default_groups() {
         ),
       ),
     ),
-    'weight' => '1',
+    'weight' => '3',
     'fields' => array(
       '0' => 'field_profile_position',
       '1' => 'field_profile_current_club',
@@ -98,7 +98,7 @@ function profiles_content_type_fieldgroup_default_groups() {
         ),
       ),
     ),
-    'weight' => '3',
+    'weight' => '5',
     'fields' => array(
       '0' => 'field_profilepos_x',
       '1' => 'field_profilepos_y',

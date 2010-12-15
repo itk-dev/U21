@@ -62,6 +62,12 @@ function profiles_content_type_user_default_permissions() {
     ),
   );
 
+  // Exported permission: edit field_profile_video
+  $permissions['edit field_profile_video'] = array(
+    'name' => 'edit field_profile_video',
+    'roles' => array(),
+  );
+
   // Exported permission: edit field_profile_weight
   $permissions['edit field_profile_weight'] = array(
     'name' => 'edit field_profile_weight',
@@ -167,6 +173,15 @@ function profiles_content_type_user_default_permissions() {
   // Exported permission: view field_profile_teams
   $permissions['view field_profile_teams'] = array(
     'name' => 'view field_profile_teams',
+    'roles' => array(
+      '0' => 'anonymous user',
+      '1' => 'authenticated user',
+    ),
+  );
+
+  // Exported permission: view field_profile_video
+  $permissions['view field_profile_video'] = array(
+    'name' => 'view field_profile_video',
     'roles' => array(
       '0' => 'anonymous user',
       '1' => 'authenticated user',
