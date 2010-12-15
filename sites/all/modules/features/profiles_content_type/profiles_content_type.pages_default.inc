@@ -38,7 +38,6 @@ function profiles_content_type_default_page_manager_handlers() {
     ),
   );
   $display = new panels_display;
-  $display->api_version = 1;
   $display->layout = 'threecol_3_6_3_stacked';
   $display->layout_settings = array();
   $display->panel_settings = array(
@@ -57,7 +56,6 @@ function profiles_content_type_default_page_manager_handlers() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-1';
     $pane->panel = 'center';
     $pane->type = 'views_panes';
@@ -84,7 +82,6 @@ function profiles_content_type_default_page_manager_handlers() {
     $display->content['new-1'] = $pane;
     $display->panels['center'][0] = 'new-1';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-2';
     $pane->panel = 'center';
     $pane->type = 'views_panes';
@@ -111,7 +108,6 @@ function profiles_content_type_default_page_manager_handlers() {
     $display->content['new-2'] = $pane;
     $display->panels['center'][1] = 'new-2';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-3';
     $pane->panel = 'center';
     $pane->type = 'views_panes';
@@ -138,7 +134,6 @@ function profiles_content_type_default_page_manager_handlers() {
     $display->content['new-3'] = $pane;
     $display->panels['center'][2] = 'new-3';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-4';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
@@ -163,7 +158,6 @@ function profiles_content_type_default_page_manager_handlers() {
     $display->content['new-4'] = $pane;
     $display->panels['left'][0] = 'new-4';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-5';
     $pane->panel = 'right';
     $pane->type = 'block';
@@ -184,7 +178,6 @@ function profiles_content_type_default_page_manager_handlers() {
     $display->content['new-5'] = $pane;
     $display->panels['right'][0] = 'new-5';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-6';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
@@ -262,7 +255,6 @@ function profiles_content_type_default_page_manager_pages() {
     'relationships' => array(),
   );
   $display = new panels_display;
-  $display->api_version = 1;
   $display->layout = 'twocol_8_4_stacked_bottom';
   $display->layout_settings = array();
   $display->panel_settings = array(
@@ -278,7 +270,6 @@ function profiles_content_type_default_page_manager_pages() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-1';
     $pane->panel = 'bottom';
     $pane->type = 'views_panes';
@@ -302,7 +293,6 @@ function profiles_content_type_default_page_manager_pages() {
     $display->content['new-1'] = $pane;
     $display->panels['bottom'][0] = 'new-1';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-2';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
@@ -327,7 +317,6 @@ function profiles_content_type_default_page_manager_pages() {
     $display->content['new-2'] = $pane;
     $display->panels['left'][0] = 'new-2';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-3';
     $pane->panel = 'right';
     $pane->type = 'block';
