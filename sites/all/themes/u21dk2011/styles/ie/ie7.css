@@ -25,3 +25,14 @@
   float:left;
   list-style: none;
 }
+
+/* ---- / Player info bubbles ---- */
+/* Fix z-index-bug */
+
+.player-marker {
+  z-index: 100;
+}
+
+.player-marker.active-bubble {
+  z-index: 400;
+}

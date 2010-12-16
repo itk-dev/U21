@@ -186,8 +186,7 @@ table img {
 
 /* ----- / Title image ----- */
 .field-titleimage-imceimage-path,
-.title-image,
-.field-profilephoto {
+.title-image {
   padding: 7px;
   background: #fff;
   border: 1px #ddd solid;
@@ -197,8 +196,7 @@ table img {
 
 
 .list-event-list .title-image,
-.pane-field-profilephoto .title-image,
-.field-profilephoto {
+.pane-field-profilephoto .title-image {
   margin-left: -8px;
   margin-right: -8px;
 }
@@ -213,7 +211,8 @@ table img {
 .field-profilephoto {
   float: left;
   margin-right: 8px;
-  margin-bottom: 4px;
+  margin-bottom: 3px;
+  margin-top: 3px;
 }
 
 

@@ -6,3 +6,7 @@
 .spotbox .spotbox-image img {
   display: inline;
 }
+
+.player-info .profile-image img {
+  display: inline-block;
+}
