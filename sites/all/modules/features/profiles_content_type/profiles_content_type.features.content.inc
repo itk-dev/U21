@@ -501,7 +501,7 @@ Angriber',
         ),
       ),
       'default_value_php' => NULL,
-      'label' => 'Filmklip',
+      'label' => 'Video',
       'weight' => '2',
       'description' => '',
       'type' => 'text_textarea',
@@ -941,7 +941,6 @@ Angriber',
   // Translatables
   // Included for use with string extractors like potx.
   t('Bag om profilen');
-  t('Filmklip');
   t('Født');
   t('Højde');
   t('Inkluder i slideshow');
@@ -954,6 +953,7 @@ Angriber',
   t('Profilbillede');
   t('Spillerprofil');
   t('Trøjenavn');
+  t('Video');
   t('Vægt');
 
   return $fields;

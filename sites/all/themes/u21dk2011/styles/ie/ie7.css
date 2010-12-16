@@ -33,6 +33,6 @@
   z-index: 100;
 }
 
-.player-marker.active-bubble {
-  z-index: 400;
+.active-bubble {
+  z-index: 900;
 }

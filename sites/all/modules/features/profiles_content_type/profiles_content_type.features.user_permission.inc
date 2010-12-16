@@ -65,7 +65,9 @@ function profiles_content_type_user_default_permissions() {
   // Exported permission: edit field_profile_video
   $permissions['edit field_profile_video'] = array(
     'name' => 'edit field_profile_video',
-    'roles' => array(),
+    'roles' => array(
+      '0' => 'redaktør',
+    ),
   );
 
   // Exported permission: edit field_profile_weight
