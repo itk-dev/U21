@@ -85,9 +85,14 @@ a:visited object {
 }
 
 /* Styling sitemap */
+.not-logged-in.page-sitemap #page-title {
+  height: 24px
+}
+
 #main-content h2.sitemap-header {
   clear: left;
   padding: 12px 8px 8px;
+  margin: 0;
   background:url("../images/back-groove.png") repeat-x scroll left bottom transparent;
 }
 
@@ -113,6 +118,7 @@ a:visited object {
   padding-top: 0px;
 }
 
+.panel-col-top .pane-menu-tree li a:visited,
 .panel-col-top .pane-menu-tree li:hover>a {
   background: none;
   border: medium none;
@@ -131,4 +137,6 @@ a:visited object {
 
 #main-content .panel-col-bottom .pane-slug-links .links li a {
   margin: 0;
+  font-size: 11px;
+  line-height: 13px;
 }
