@@ -13,7 +13,18 @@ function sitemap_default_page_manager_pages() {
   $page->admin_description = '';
   $page->path = 'sitemap';
   $page->access = array();
-  $page->menu = array();
+  $page->menu = array(
+    'type' => 'normal',
+    'title' => 'Sitemap',
+    'name' => 'secondary-links',
+    'weight' => '0',
+    'parent' => array(
+      'type' => 'none',
+      'title' => '',
+      'name' => 'navigation',
+      'weight' => '0',
+    ),
+  );
   $page->arguments = array();
   $page->conf = array();
   $page->default_handlers = array();
