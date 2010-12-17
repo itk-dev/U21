@@ -83,3 +83,52 @@ a:visited object {
   padding-top: 0.4em;
   margin-bottom: 0.4em;
 }
+
+/* Styling sitemap */
+#main-content h2.sitemap-header {
+  clear: left;
+  padding: 12px 8px 8px;
+  background:url("../images/back-groove.png") repeat-x scroll left bottom transparent;
+}
+
+#main-content .panel-col-top .pane-menu-tree,
+#main-content .panel-col-middle .pane-menu-tree,
+#main-content .panel-col-bottom .pane-slug-links {
+  width: 200px;
+  padding: 0 20px 10px 10px;
+  float: left;
+}
+
+#main-content .panel-col-top .pane-menu-tree h2,
+#main-content .panel-col-middle .pane-menu-tree h2,
+#main-content .panel-col-bottom .pane-slug-links h2 {
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+#main-content .panel-col-top .pane-menu-tree .pane-content,
+#main-content .panel-col-middle .pane-menu-tree .pane-content,
+#main-content .panel-col-bottom .pane-slug-links .pane-content {
+  background: none;
+  padding-top: 0px;
+}
+
+.panel-col-top .pane-menu-tree li:hover>a {
+  background: none;
+  border: medium none;
+  display: inline-block;
+  margin: 0 6px 6px 6px;
+  padding: 2px 0 0 8px;
+  color: #034582;
+  text-decoration: underline;
+}
+
+#main-content .panel-col-bottom .pane-slug-links .links li {
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+
+#main-content .panel-col-bottom .pane-slug-links .links li a {
+  margin: 0;
+}
