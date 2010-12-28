@@ -251,6 +251,35 @@
   padding-bottom: 4px;
 }
 
+/* ======================================== */
+/*  Tabbed Menus                            */
+/* ======================================== */
+.page-sitemap .pane-menu-tree ul,
+.page-sitemap .pane-menu-tree li a:link, 
+.page-sitemap .pane-menu-tree li a:visited,
+.page-sitemap .panel-col-top .pane-menu-tree li:hover > a,
+.page-sitemap .pane-slug-links li a:link, 
+.page-sitemap .pane-slug-links li a:visited {
+  padding-left: 0;
+}
+
+.page-sitemap .panel-col-top li a,
+.page-sitemap .panel-col-top .pane-menu-tree li:hover > a,
+.page-sitemap .pane-slug-links ul {
+  margin-left: 0;
+
+}
+
+.page-sitemap .panel-col-top .pane-menu-tree li:hover > a,
+.page-sitemap .panel-col-middle .pane-menu-tree li:hover > a,
+.page-sitemap .panel-col-bottom .pane-slug-links li:hover > a {
+  text-decoration: none;
+}
+
+.page-sitemap .panel-col-top a.active-trail {
+  padding: 2px 0 0;
+  background: none;
+}
 
 /* ======================================== */
 /*  Tabbed Menus                            */
