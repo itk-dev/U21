@@ -318,6 +318,78 @@ function profiles_content_type_default_page_manager_pages() {
     $display->panels['left'][0] = 'new-2';
     $pane = new stdClass;
     $pane->pid = 'new-3';
+    $pane->panel = 'left';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'profile-panel_pane_8';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'context' => array(
+        0 => 'argument_term_1',
+      ),
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'profile-player-overview',
+    );
+    $pane->extras = array();
+    $pane->position = 1;
+    $display->content['new-3'] = $pane;
+    $display->panels['left'][1] = 'new-3';
+    $pane = new stdClass;
+    $pane->pid = 'new-4';
+    $pane->panel = 'left';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'profile-panel_pane_9';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'context' => array(
+        0 => 'argument_term_1',
+      ),
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'profile-player-overview',
+    );
+    $pane->extras = array();
+    $pane->position = 2;
+    $display->content['new-4'] = $pane;
+    $display->panels['left'][2] = 'new-4';
+    $pane = new stdClass;
+    $pane->pid = 'new-5';
+    $pane->panel = 'left';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'profile-panel_pane_10';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'context' => array(
+        0 => 'argument_term_1',
+      ),
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'profile-player-overview',
+    );
+    $pane->extras = array();
+    $pane->position = 3;
+    $display->content['new-5'] = $pane;
+    $display->panels['left'][3] = 'new-5';
+    $pane = new stdClass;
+    $pane->pid = 'new-6';
     $pane->panel = 'right';
     $pane->type = 'block';
     $pane->subtype = 'block-15';
@@ -334,8 +406,8 @@ function profiles_content_type_default_page_manager_pages() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-3'] = $pane;
-    $display->panels['right'][0] = 'new-3';
+    $display->content['new-6'] = $pane;
+    $display->panels['right'][0] = 'new-6';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

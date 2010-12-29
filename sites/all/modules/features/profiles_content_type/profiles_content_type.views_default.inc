@@ -1925,7 +1925,7 @@ function profiles_content_type_views_default_views() {
   ));
   $handler->override_option('block_description', '');
   $handler->override_option('block_caching', -1);
-  $handler = $view->new_display('panel_pane', 'Profile Team Overview', 'panel_pane_3');
+  $handler = $view->new_display('panel_pane', 'Profile: Overview: Målmænd', 'panel_pane_3');
   $handler->override_option('fields', array(
     'title' => array(
       'label' => '',
@@ -2070,6 +2070,59 @@ function profiles_content_type_views_default_views() {
       'validate_argument_php' => '',
     ),
   ));
+  $handler->override_option('filters', array(
+    'type' => array(
+      'operator' => 'in',
+      'value' => array(
+        'profile' => 'profile',
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'type',
+      'table' => 'node',
+      'field' => 'type',
+      'relationship' => 'none',
+    ),
+    'status' => array(
+      'operator' => '=',
+      'value' => '1',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'status',
+      'table' => 'node',
+      'field' => 'status',
+      'override' => array(
+        'button' => 'Override',
+      ),
+      'relationship' => 'none',
+    ),
+    'field_profile_position_value' => array(
+      'operator' => '=',
+      'value' => 'Målmænd',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'case' => 0,
+      'id' => 'field_profile_position_value',
+      'table' => 'node_data_field_profile_position',
+      'field' => 'field_profile_position_value',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+  ));
   $handler->override_option('items_per_page', 0);
   $handler->override_option('style_options', array(
     'grouping' => 'field_profile_position_value',
@@ -2099,7 +2152,7 @@ function profiles_content_type_views_default_views() {
     ),
     'skip_blank' => 0,
   ));
-  $handler->override_option('pane_title', 'Profile: Team overview');
+  $handler->override_option('pane_title', 'Profile: Overview: Målmænd');
   $handler->override_option('pane_description', '');
   $handler->override_option('pane_category', array(
     'name' => 'Profile',
@@ -2965,6 +3018,759 @@ function profiles_content_type_views_default_views() {
       'panel' => '0',
       'fixed' => '',
       'label' => 'Node: Nid',
+    ),
+  ));
+  $handler->override_option('link_to_view', 0);
+  $handler->override_option('inherit_panels_path', 0);
+  $handler = $view->new_display('panel_pane', 'Profile: Overview: Forsvar', 'panel_pane_8');
+  $handler->override_option('fields', array(
+    'title' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 1,
+      'empty_zero' => 0,
+      'link_to_node' => 1,
+      'exclude' => 0,
+      'id' => 'title',
+      'table' => 'node',
+      'field' => 'title',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+    'field_profile_position_value' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'link_to_node' => 0,
+      'label_type' => 'none',
+      'format' => 'default',
+      'multiple' => array(
+        'group' => TRUE,
+        'multiple_number' => '',
+        'multiple_from' => '',
+        'multiple_reversed' => FALSE,
+      ),
+      'exclude' => 1,
+      'id' => 'field_profile_position_value',
+      'table' => 'node_data_field_profile_position',
+      'field' => 'field_profile_position_value',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+  ));
+  $handler->override_option('arguments', array(
+    'name' => array(
+      'default_action' => 'not found',
+      'style_plugin' => 'default_summary',
+      'style_options' => array(),
+      'wildcard' => 'all',
+      'wildcard_substitution' => 'All',
+      'title' => '',
+      'breadcrumb' => '',
+      'default_argument_type' => 'fixed',
+      'default_argument' => '',
+      'validate_type' => 'none',
+      'validate_fail' => 'not found',
+      'glossary' => 0,
+      'limit' => '0',
+      'case' => 'none',
+      'path_case' => 'none',
+      'transform_dash' => 0,
+      'add_table' => 0,
+      'require_value' => 0,
+      'id' => 'name',
+      'table' => 'term_data',
+      'field' => 'name',
+      'validate_user_argument_type' => 'uid',
+      'validate_user_roles' => array(
+        '2' => 0,
+        '3' => 0,
+        '7' => 0,
+        '6' => 0,
+        '8' => 0,
+        '9' => 0,
+        '4' => 0,
+        '5' => 0,
+      ),
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+      'default_options_div_prefix' => '',
+      'default_argument_fixed' => '',
+      'default_argument_user' => 0,
+      'default_argument_php' => '',
+      'validate_argument_node_type' => array(
+        'profile' => 0,
+        'spotbox' => 0,
+        'region' => 0,
+        'panel' => 0,
+        'articles' => 0,
+        'blogs' => 0,
+        'event' => 0,
+        'global_campaigns' => 0,
+        'kampagne' => 0,
+        'newsletter' => 0,
+        'photo' => 0,
+        'static_page' => 0,
+        'subsite' => 0,
+      ),
+      'validate_argument_node_access' => 0,
+      'validate_argument_nid_type' => 'nid',
+      'validate_argument_vocabulary' => array(
+        '1' => 0,
+        '2' => 0,
+      ),
+      'validate_argument_type' => 'tid',
+      'validate_argument_transform' => 0,
+      'validate_user_restrict_roles' => 0,
+      'validate_argument_php' => '',
+    ),
+  ));
+  $handler->override_option('filters', array(
+    'type' => array(
+      'operator' => 'in',
+      'value' => array(
+        'profile' => 'profile',
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'type',
+      'table' => 'node',
+      'field' => 'type',
+      'relationship' => 'none',
+    ),
+    'status' => array(
+      'operator' => '=',
+      'value' => '1',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'status',
+      'table' => 'node',
+      'field' => 'status',
+      'override' => array(
+        'button' => 'Override',
+      ),
+      'relationship' => 'none',
+    ),
+    'field_profile_position_value' => array(
+      'operator' => '=',
+      'value' => 'Forsvar',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'case' => 0,
+      'id' => 'field_profile_position_value',
+      'table' => 'node_data_field_profile_position',
+      'field' => 'field_profile_position_value',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+  ));
+  $handler->override_option('items_per_page', 0);
+  $handler->override_option('style_options', array(
+    'grouping' => 'field_profile_position_value',
+    'group' => array(
+      'element_type' => 'h3',
+      'class' => 'title',
+    ),
+    'list' => array(
+      'element_type' => 'ul',
+      'class' => '',
+    ),
+    'row' => array(
+      'element_type' => 'li',
+      'class' => '',
+      'last_every_nth' => '0',
+      'first_class' => 'first',
+      'last_class' => 'last',
+      'striping_classes' => 'odd even',
+    ),
+  ));
+  $handler->override_option('row_options', array(
+    'semantic_html' => array(
+      'title' => array(
+        'element_type' => '',
+        'class' => '',
+      ),
+    ),
+    'skip_blank' => 0,
+  ));
+  $handler->override_option('pane_title', 'Profile: Overview: Forsvar');
+  $handler->override_option('pane_description', '');
+  $handler->override_option('pane_category', array(
+    'name' => 'Profile',
+    'weight' => '0',
+  ));
+  $handler->override_option('allow', array(
+    'use_pager' => FALSE,
+    'items_per_page' => FALSE,
+    'offset' => FALSE,
+    'link_to_view' => FALSE,
+    'more_link' => FALSE,
+    'path_override' => FALSE,
+    'title_override' => FALSE,
+    'exposed_form' => FALSE,
+    'fields_override' => FALSE,
+  ));
+  $handler->override_option('argument_input', array(
+    'name' => array(
+      'type' => 'context',
+      'context' => 'term.name',
+      'context_optional' => 0,
+      'panel' => '0',
+      'fixed' => '',
+      'label' => 'Taxonomy: Term',
+    ),
+  ));
+  $handler->override_option('link_to_view', 0);
+  $handler->override_option('inherit_panels_path', 0);
+  $handler = $view->new_display('panel_pane', 'Profile: Overview: Midtbane', 'panel_pane_9');
+  $handler->override_option('fields', array(
+    'title' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 1,
+      'empty_zero' => 0,
+      'link_to_node' => 1,
+      'exclude' => 0,
+      'id' => 'title',
+      'table' => 'node',
+      'field' => 'title',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+    'field_profile_position_value' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'link_to_node' => 0,
+      'label_type' => 'none',
+      'format' => 'default',
+      'multiple' => array(
+        'group' => TRUE,
+        'multiple_number' => '',
+        'multiple_from' => '',
+        'multiple_reversed' => FALSE,
+      ),
+      'exclude' => 1,
+      'id' => 'field_profile_position_value',
+      'table' => 'node_data_field_profile_position',
+      'field' => 'field_profile_position_value',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+  ));
+  $handler->override_option('arguments', array(
+    'name' => array(
+      'default_action' => 'not found',
+      'style_plugin' => 'default_summary',
+      'style_options' => array(),
+      'wildcard' => 'all',
+      'wildcard_substitution' => 'All',
+      'title' => '',
+      'breadcrumb' => '',
+      'default_argument_type' => 'fixed',
+      'default_argument' => '',
+      'validate_type' => 'none',
+      'validate_fail' => 'not found',
+      'glossary' => 0,
+      'limit' => '0',
+      'case' => 'none',
+      'path_case' => 'none',
+      'transform_dash' => 0,
+      'add_table' => 0,
+      'require_value' => 0,
+      'id' => 'name',
+      'table' => 'term_data',
+      'field' => 'name',
+      'validate_user_argument_type' => 'uid',
+      'validate_user_roles' => array(
+        '2' => 0,
+        '3' => 0,
+        '7' => 0,
+        '6' => 0,
+        '8' => 0,
+        '9' => 0,
+        '4' => 0,
+        '5' => 0,
+      ),
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+      'default_options_div_prefix' => '',
+      'default_argument_fixed' => '',
+      'default_argument_user' => 0,
+      'default_argument_php' => '',
+      'validate_argument_node_type' => array(
+        'profile' => 0,
+        'spotbox' => 0,
+        'region' => 0,
+        'panel' => 0,
+        'articles' => 0,
+        'blogs' => 0,
+        'event' => 0,
+        'global_campaigns' => 0,
+        'kampagne' => 0,
+        'newsletter' => 0,
+        'photo' => 0,
+        'static_page' => 0,
+        'subsite' => 0,
+      ),
+      'validate_argument_node_access' => 0,
+      'validate_argument_nid_type' => 'nid',
+      'validate_argument_vocabulary' => array(
+        '1' => 0,
+        '2' => 0,
+      ),
+      'validate_argument_type' => 'tid',
+      'validate_argument_transform' => 0,
+      'validate_user_restrict_roles' => 0,
+      'validate_argument_php' => '',
+    ),
+  ));
+  $handler->override_option('filters', array(
+    'type' => array(
+      'operator' => 'in',
+      'value' => array(
+        'profile' => 'profile',
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'type',
+      'table' => 'node',
+      'field' => 'type',
+      'relationship' => 'none',
+    ),
+    'status' => array(
+      'operator' => '=',
+      'value' => '1',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'status',
+      'table' => 'node',
+      'field' => 'status',
+      'override' => array(
+        'button' => 'Override',
+      ),
+      'relationship' => 'none',
+    ),
+    'field_profile_position_value' => array(
+      'operator' => '=',
+      'value' => 'Midtbane',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'case' => 0,
+      'id' => 'field_profile_position_value',
+      'table' => 'node_data_field_profile_position',
+      'field' => 'field_profile_position_value',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+  ));
+  $handler->override_option('items_per_page', 0);
+  $handler->override_option('style_options', array(
+    'grouping' => 'field_profile_position_value',
+    'group' => array(
+      'element_type' => 'h3',
+      'class' => 'title',
+    ),
+    'list' => array(
+      'element_type' => 'ul',
+      'class' => '',
+    ),
+    'row' => array(
+      'element_type' => 'li',
+      'class' => '',
+      'last_every_nth' => '0',
+      'first_class' => 'first',
+      'last_class' => 'last',
+      'striping_classes' => 'odd even',
+    ),
+  ));
+  $handler->override_option('pane_title', 'Profile: Overview: Midtbane');
+  $handler->override_option('pane_description', '');
+  $handler->override_option('pane_category', array(
+    'name' => 'Profile',
+    'weight' => '0',
+  ));
+  $handler->override_option('allow', array(
+    'use_pager' => FALSE,
+    'items_per_page' => FALSE,
+    'offset' => FALSE,
+    'link_to_view' => FALSE,
+    'more_link' => FALSE,
+    'path_override' => FALSE,
+    'title_override' => FALSE,
+    'exposed_form' => FALSE,
+    'fields_override' => FALSE,
+  ));
+  $handler->override_option('argument_input', array(
+    'name' => array(
+      'type' => 'context',
+      'context' => 'term.name',
+      'context_optional' => 0,
+      'panel' => '0',
+      'fixed' => '',
+      'label' => 'Taxonomy: Term',
+    ),
+  ));
+  $handler->override_option('link_to_view', 0);
+  $handler->override_option('inherit_panels_path', 0);
+  $handler = $view->new_display('panel_pane', 'Profile: Overview: Angreb', 'panel_pane_10');
+  $handler->override_option('fields', array(
+    'title' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 1,
+      'empty_zero' => 0,
+      'link_to_node' => 1,
+      'exclude' => 0,
+      'id' => 'title',
+      'table' => 'node',
+      'field' => 'title',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+    'field_profile_position_value' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'link_to_node' => 0,
+      'label_type' => 'none',
+      'format' => 'default',
+      'multiple' => array(
+        'group' => TRUE,
+        'multiple_number' => '',
+        'multiple_from' => '',
+        'multiple_reversed' => FALSE,
+      ),
+      'exclude' => 1,
+      'id' => 'field_profile_position_value',
+      'table' => 'node_data_field_profile_position',
+      'field' => 'field_profile_position_value',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+  ));
+  $handler->override_option('arguments', array(
+    'name' => array(
+      'default_action' => 'not found',
+      'style_plugin' => 'default_summary',
+      'style_options' => array(),
+      'wildcard' => 'all',
+      'wildcard_substitution' => 'All',
+      'title' => '',
+      'breadcrumb' => '',
+      'default_argument_type' => 'fixed',
+      'default_argument' => '',
+      'validate_type' => 'none',
+      'validate_fail' => 'not found',
+      'glossary' => 0,
+      'limit' => '0',
+      'case' => 'none',
+      'path_case' => 'none',
+      'transform_dash' => 0,
+      'add_table' => 0,
+      'require_value' => 0,
+      'id' => 'name',
+      'table' => 'term_data',
+      'field' => 'name',
+      'validate_user_argument_type' => 'uid',
+      'validate_user_roles' => array(
+        '2' => 0,
+        '3' => 0,
+        '7' => 0,
+        '6' => 0,
+        '8' => 0,
+        '9' => 0,
+        '4' => 0,
+        '5' => 0,
+      ),
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+      'default_options_div_prefix' => '',
+      'default_argument_fixed' => '',
+      'default_argument_user' => 0,
+      'default_argument_php' => '',
+      'validate_argument_node_type' => array(
+        'profile' => 0,
+        'spotbox' => 0,
+        'region' => 0,
+        'panel' => 0,
+        'articles' => 0,
+        'blogs' => 0,
+        'event' => 0,
+        'global_campaigns' => 0,
+        'kampagne' => 0,
+        'newsletter' => 0,
+        'photo' => 0,
+        'static_page' => 0,
+        'subsite' => 0,
+      ),
+      'validate_argument_node_access' => 0,
+      'validate_argument_nid_type' => 'nid',
+      'validate_argument_vocabulary' => array(
+        '1' => 0,
+        '2' => 0,
+      ),
+      'validate_argument_type' => 'tid',
+      'validate_argument_transform' => 0,
+      'validate_user_restrict_roles' => 0,
+      'validate_argument_php' => '',
+    ),
+  ));
+  $handler->override_option('filters', array(
+    'type' => array(
+      'operator' => 'in',
+      'value' => array(
+        'profile' => 'profile',
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'type',
+      'table' => 'node',
+      'field' => 'type',
+      'relationship' => 'none',
+    ),
+    'status' => array(
+      'operator' => '=',
+      'value' => '1',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'status',
+      'table' => 'node',
+      'field' => 'status',
+      'override' => array(
+        'button' => 'Override',
+      ),
+      'relationship' => 'none',
+    ),
+    'field_profile_position_value' => array(
+      'operator' => '=',
+      'value' => 'Angriber',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'case' => 0,
+      'id' => 'field_profile_position_value',
+      'table' => 'node_data_field_profile_position',
+      'field' => 'field_profile_position_value',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+  ));
+  $handler->override_option('items_per_page', 0);
+  $handler->override_option('style_options', array(
+    'grouping' => 'field_profile_position_value',
+    'group' => array(
+      'element_type' => 'h3',
+      'class' => 'title',
+    ),
+    'list' => array(
+      'element_type' => 'ul',
+      'class' => '',
+    ),
+    'row' => array(
+      'element_type' => 'li',
+      'class' => '',
+      'last_every_nth' => '0',
+      'first_class' => 'first',
+      'last_class' => 'last',
+      'striping_classes' => 'odd even',
+    ),
+  ));
+  $handler->override_option('pane_title', 'Profile: Overview: Angreb');
+  $handler->override_option('pane_description', '');
+  $handler->override_option('pane_category', array(
+    'name' => 'Profile',
+    'weight' => '0',
+  ));
+  $handler->override_option('allow', array(
+    'use_pager' => FALSE,
+    'items_per_page' => FALSE,
+    'offset' => FALSE,
+    'link_to_view' => FALSE,
+    'more_link' => FALSE,
+    'path_override' => FALSE,
+    'title_override' => FALSE,
+    'exposed_form' => FALSE,
+    'fields_override' => FALSE,
+  ));
+  $handler->override_option('argument_input', array(
+    'name' => array(
+      'type' => 'context',
+      'context' => 'term.name',
+      'context_optional' => 0,
+      'panel' => '0',
+      'fixed' => '',
+      'label' => 'Taxonomy: Term',
     ),
   ));
   $handler->override_option('link_to_view', 0);

@@ -646,9 +646,6 @@ body.context-editing a.context-block {
 
 .profile-player-overview .view-content {
   overflow-y: hidden;
-}
-
-.profile-player-overview .views-column {
   float: left;
   width: 138px;
   border-left: 1px solid #eff0f4;
@@ -656,7 +653,7 @@ body.context-editing a.context-block {
   min-height: 234px;
 }
 
-.profile-player-overview .views-column:first-child {
+.profile-player-overview:first-child .view-content {
   border: none;
 }
 
@@ -666,7 +663,7 @@ body.context-editing a.context-block {
 
 .profile-player-overview ul {
   list-style: square;
-  margin-left: 12px;
+  margin-left: 15px;
   font-size: 11px;
 }
 
