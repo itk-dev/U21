@@ -20,7 +20,18 @@ function profiles_content_type_default_page_manager_handlers() {
     'css_id' => '',
     'css' => '',
     'contexts' => array(),
-    'relationships' => array(),
+    'relationships' => array(
+      0 => array(
+        'context' => 'argument_nid_1',
+        'name' => 'term_from_node',
+        'id' => 1,
+        'identifier' => 'Term from node',
+        'keyword' => 'term',
+        'relationship_settings' => array(
+          'vid' => '2',
+        ),
+      ),
+    ),
     'access' => array(
       'logic' => 'and',
       'plugins' => array(
@@ -137,28 +148,88 @@ function profiles_content_type_default_page_manager_handlers() {
     $pane->pid = 'new-4';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
-    $pane->subtype = 'profile-panel_pane_2';
+    $pane->subtype = 'profile-panel_pane_3';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
       'context' => array(
-        0 => 'argument_nid_1',
+        0 => 'relationship_term_from_node_1',
       ),
     );
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
     );
-    $pane->css = array(
-      'css_id' => '',
-      'css_class' => 'pane-menu-tree',
-    );
+    $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
     $display->content['new-4'] = $pane;
     $display->panels['left'][0] = 'new-4';
     $pane = new stdClass;
     $pane->pid = 'new-5';
+    $pane->panel = 'left';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'profile-panel_pane_8';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'context' => array(
+        0 => 'relationship_term_from_node_1',
+      ),
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $display->content['new-5'] = $pane;
+    $display->panels['left'][1] = 'new-5';
+    $pane = new stdClass;
+    $pane->pid = 'new-6';
+    $pane->panel = 'left';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'profile-panel_pane_9';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'context' => array(
+        0 => 'relationship_term_from_node_1',
+      ),
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
+    $display->content['new-6'] = $pane;
+    $display->panels['left'][2] = 'new-6';
+    $pane = new stdClass;
+    $pane->pid = 'new-7';
+    $pane->panel = 'left';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'profile-panel_pane_10';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'context' => array(
+        0 => 'relationship_term_from_node_1',
+      ),
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 3;
+    $display->content['new-7'] = $pane;
+    $display->panels['left'][3] = 'new-7';
+    $pane = new stdClass;
+    $pane->pid = 'new-8';
     $pane->panel = 'right';
     $pane->type = 'block';
     $pane->subtype = 'block-15';
@@ -175,10 +246,10 @@ function profiles_content_type_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-5'] = $pane;
-    $display->panels['right'][0] = 'new-5';
+    $display->content['new-8'] = $pane;
+    $display->panels['right'][0] = 'new-8';
     $pane = new stdClass;
-    $pane->pid = 'new-6';
+    $pane->pid = 'new-9';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'profile-panel_pane_1';
@@ -196,8 +267,8 @@ function profiles_content_type_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
-    $display->content['new-6'] = $pane;
-    $display->panels['right'][1] = 'new-6';
+    $display->content['new-9'] = $pane;
+    $display->panels['right'][1] = 'new-9';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
