@@ -345,3 +345,26 @@ ul.ui-tabs-nav {
 .ui-tabs-hide {
   display: none;
 }
+
+/* ======================================== */
+/*  Profile Menus                           */
+/* ======================================== */
+.node-type-profile .panel-col-left li {
+  list-style-type: none;
+  font-size: 11px;
+  line-height: 13px;
+}
+
+.node-type-profile .panel-col-left li a {
+  border: medium none;
+  display: inline-block;
+  margin-bottom: 6px;
+  margin-left: 6px;
+  padding-left: 8px;
+  text-decoration: underline;
+}
+
+.node-type-profile .panel-col-left {
+  background: transparent url(../images/back-groove.png) left top repeat-x;
+  padding-top: 10px;
+}
