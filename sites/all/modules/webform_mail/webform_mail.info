@@ -1,0 +1,5 @@
+; $Id$
+name = Webform mail (frivilligsektion)
+description = Hooks into webform mail's used to special confirmation mails
+package = "U21"
+core = 6.x
