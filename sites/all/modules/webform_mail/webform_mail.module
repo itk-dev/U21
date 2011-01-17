@@ -1,8 +1,15 @@
 <?php
 
 define('WEBFORM_MAIL_RW_URL', 'frivillig/registrering');
+define('WEBFORM_MAIL_TOKEN', 'Ktn3~n5dM(71~<');
 
-
+/**
+ * Implementation of hook_mail().
+ *
+ * Rewrite the url link, so that we can redirect to the next form with $sid.
+ *
+ * @param <type> $message
+ */
 function webform_mail_mail_alter(&$message) {
   // Don't forget to check if the mail is actually a webform submission
   if (($message['id'] == 'webform_submission')  ) {
@@ -10,14 +17,76 @@ function webform_mail_mail_alter(&$message) {
     $body = $message['body'][0];
 
     // Find submission url in mail
-    $pattern = "/http:\/\/[\w\d\.]+\/node\/\d+\/submission\/(\d+)/";
+    $pattern = "/http:\/\/[\w\d\.]+\/node\/(\d+)\/submission\/(\d+)/";
     preg_match($pattern, $body, $matches);
 
+    // Secure token
+    $token = md5($matches[1] . $matches[2] . WEBFORM_MAIL_TOKEN);
+    
     // Create the new url
-    $url = url(WEBFORM_MAIL_RW_URL, array('absolute' => TRUE)) . '?sid=' . $matches[1];
+    $url = url(WEBFORM_MAIL_RW_URL, array('absolute' => TRUE)) . '?sid=' . $matches[2] . '&token=' . $token;
     $body = str_replace($matches[0], $url, $body);
+
+    webform_mail_set_token($matches[1], $matches[2], $token);
+    
 
     // Update the body text
     $message['body'][0] = $body;
   }
+}
+
+/**
+ * Alter webmail form no. 2 and validate secure token id.
+ *
+ */
+function webform_mail_form_alter(&$form, $form_state, $form_id) {
+  // Only catch the one form
+  if ($form_id == 'webform_client_form_919') {
+    $sid = check_plain($_GET['sid']);
+    if (!is_numeric($sid)) {
+      drupal_set_message(t('The sid can not be validated as a number'));
+      return;
+    }
+
+    // Check security token
+    $token = md5(918 . $sid . WEBFORM_MAIL_TOKEN);
+    if ($token != webform_mail_get_token(918, $sid)) {
+      drupal_set_message(t('Token was not found, please try again'));
+      dsm($token);
+      $form = array();
+    }
+
+    // Load form result form the database
+    $result = db_query('SELECT sd.data, c.form_key, c.name, c.cid
+                          FROM {webform_component} c LEFT JOIN
+                               {webform_submitted_data} sd
+                           ON (c.cid = sd.cid AND c.nid = sd.nid)
+                        WHERE sid=%d
+                          AND sd.nid=%d', $sid, '918'); // 918 prev form nid
+    while ($data = db_fetch_array($result)) {
+      if (isset($form['submitted'][$data['form_key']])) {
+        $form['submitted'][$data['form_key']]['#default_value'] = $data['data'];
+      }
+    }
+  }
+}
+
+/**
+ * Saves secute token id to the database.
+ */
+function webform_mail_set_token($nid, $sid, $token) {
+  if (!db_query('INSERT into {webform_mail_token} (nid, sid, token) VALUES (%d, %d, \'%s\')', $nid, $sid, $token)) {
+    drupal_set_message(t('Could not save webform mail token!'), 'error');
+  }
+}
+
+/**
+ * Load the secure token id from the database.
+ */
+function webform_mail_get_token($nid, $sid) {
+  $result = db_fetch_array(db_query('SELECT token
+                                       FROM {webform_mail_token}
+                                      WHERE nid=%d
+                                        AND sid=%d', $nid, $sid));
+  return $result['token'];
 }

@@ -1,0 +1,45 @@
+<?php
+
+/**
+ * Implementation of hook_schema().
+ *
+ */
+function webform_mail_schema() {
+  $schema['webform_mail_token'] = array(
+    'description' => t('Stores webform mail modules secure ID\'s.'),
+    'fields' => array(
+      'sid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'description' => t('Webform session id'),
+      ),
+      'nid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'description' => t('The {node}.nid for the node that the webform is accessed.'),
+      ),
+      'token' => array(
+        'type' => 'varchar',
+        'length' => 200,
+        'description' => t('Secure token, used in e-mail validation links.'),
+      ),
+    ),
+    'primary key' => array('sid', 'nid'),
+  );
+
+  return $schema;
+}
+
+/**
+ * Implementation of hook_install().
+ */
+function webform_mail_install() {
+  drupal_install_schema('webform_mail');
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function webform_mail_uninstall() {
+  drupal_uninstall_schema('webform_mail');
+}
