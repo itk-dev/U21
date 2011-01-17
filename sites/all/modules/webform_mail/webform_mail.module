@@ -1,0 +1,23 @@
+<?php
+
+define('WEBFORM_MAIL_RW_URL', 'frivillig/registrering');
+
+
+function webform_mail_mail_alter(&$message) {
+  // Don't forget to check if the mail is actually a webform submission
+  if (($message['id'] == 'webform_submission')  ) {
+    // Get body text
+    $body = $message['body'][0];
+
+    // Find submission url in mail
+    $pattern = "/http:\/\/[\w\d\.]+\/node\/\d+\/submission\/(\d+)/";
+    preg_match($pattern, $body, $matches);
+
+    // Create the new url
+    $url = url(WEBFORM_MAIL_RW_URL, array('absolute' => TRUE)) . '?sid=' . $matches[1];
+    $body = str_replace($matches[0], $url, $body);
+
+    // Update the body text
+    $message['body'][0] = $body;
+  }
+}
