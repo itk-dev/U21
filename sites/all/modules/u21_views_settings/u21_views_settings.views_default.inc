@@ -1,4 +1,4 @@
-<?php
+<php?
 
 /**
  * Implementation of hook_views_default_views().
@@ -539,6 +539,54 @@ function u21_views_settings_views_default_views() {
       'validate_user_restrict_roles' => 0,
       'validate_argument_php' => '',
     ),
+  ));
+  $handler->override_option('style_plugin', 'semanticviews_default');
+  $handler->override_option('style_options', array(
+    'grouping' => '',
+    'group' => array(
+      'element_type' => 'h3',
+      'class' => 'title',
+    ),
+    'list' => array(
+      'element_type' => '',
+      'class' => '',
+    ),
+    'row' => array(
+      'element_type' => 'div',
+      'class' => '',
+      'last_every_nth' => '0',
+      'first_class' => 'first',
+      'last_class' => 'last',
+      'striping_classes' => 'odd even',
+    ),
+  ));
+  $handler->override_option('row_plugin', 'semanticviews_fields');
+  $handler->override_option('row_options', array(
+    'semantic_html' => array(
+      'field_titleimage_imceimage_path' => array(
+        'element_type' => 'div',
+        'class' => 'field-titleimage-imceimage-path',
+      ),
+      'field_teaser_value' => array(
+        'element_type' => 'div',
+        'class' => 'field-teaser-value',
+      ),
+      'created' => array(
+        'element_type' => 'div',
+        'class' => 'created',
+      ),
+      'field_content_value' => array(
+        'element_type' => 'div',
+        'class' => 'field-content-value',
+      ),
+      'field_related_nodes_nid' => array(
+        'element_type' => 'div',
+        'class' => 'field-related',
+        'label_element_type' => 'h2',
+        'label_class' => '',
+      ),
+    ),
+    'skip_blank' => 1,
   ));
   $handler->override_option('pane_title', 'Display news content');
   $handler->override_option('pane_description', 'Displays a news post');
@@ -6920,3 +6968,5 @@ function u21_views_settings_views_default_views() {
 
   return $views;
 }
+
+
