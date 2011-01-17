@@ -172,7 +172,9 @@ table img {
 }
 
 .view-News .field-content-value,
-.view-events .field-content-value {
+.view-events .field-content-value,
+.view-News .field-related,
+.view-event .field-related {
   width: 444px;
   padding: 0 8px;
 }
