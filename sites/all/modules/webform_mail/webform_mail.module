@@ -45,15 +45,16 @@ function webform_mail_form_alter(&$form, $form_state, $form_id) {
     $sid = check_plain($_GET['sid']);
     if (!is_numeric($sid)) {
       drupal_set_message(t('The sid can not be validated as a number'));
+      $form = array();
       return;
     }
 
     // Check security token
     $token = md5(918 . $sid . WEBFORM_MAIL_TOKEN);
     if ($token != webform_mail_get_token(918, $sid)) {
-      drupal_set_message(t('Token was not found, please try again'));
-      dsm($token);
+      drupal_set_message(t('Token was not found, please try again'));      
       $form = array();
+      return;
     }
 
     // Load form result form the database
@@ -68,6 +69,9 @@ function webform_mail_form_alter(&$form, $form_state, $form_id) {
         $form['submitted'][$data['form_key']]['#default_value'] = $data['data'];
       }
     }
+
+    // Add some js
+    drupal_add_js(drupal_get_path('module', 'webform_mail') . '/js/webform_mail.js');
   }
 }
 
