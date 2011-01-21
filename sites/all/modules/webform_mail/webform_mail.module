@@ -42,22 +42,26 @@ function webform_mail_mail_alter(&$message) {
 function webform_mail_form_alter(&$form, $form_state, $form_id) {
   // Only catch the one form
   if ($form_id == 'webform_client_form_919') {
+    // Get parameters
     $sid = check_plain($_GET['sid']);
+    if (!(isset($sid) && isset($_GET['token']))) {
+      return;
+    }
+
+    // Validate the sid
     if (!is_numeric($sid)) {
-      drupal_set_message(t('The sid can not be validated as a number'));
-      $form = array();
+      drupal_set_message(t('The sid can not be validated as a number.'));
       return;
     }
 
     // Check security token
-    $token = md5(918 . $sid . WEBFORM_MAIL_TOKEN);
-    if ($token != webform_mail_get_token(918, $sid)) {
-      drupal_set_message(t('Token was not found, please try again'));      
-      $form = array();
+    if (check_plain($_GET['token']) != webform_mail_get_token(918, $sid)) {
+      drupal_set_message(t('Token was not found, please try again.'));
       return;
     }
 
     // Load form result form the database
+    $data_found = FALSE;
     $result = db_query('SELECT sd.data, c.form_key, c.name, c.cid
                           FROM {webform_component} c LEFT JOIN
                                {webform_submitted_data} sd
@@ -68,6 +72,12 @@ function webform_mail_form_alter(&$form, $form_state, $form_id) {
       if (isset($form['submitted'][$data['form_key']])) {
         $form['submitted'][$data['form_key']]['#default_value'] = $data['data'];
       }
+      $data_found = TRUE;
+    }
+
+    if (!$data_found) {
+      drupal_set_message('Token or sid could not be validated.');
+      return;
     }
 
     // Add some js
