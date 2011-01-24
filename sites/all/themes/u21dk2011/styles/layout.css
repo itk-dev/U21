@@ -227,6 +227,14 @@ table img {
 /*  WEBFORMS                                */
 /* ======================================== */
 
+.node-webform .meta {
+  display: none;
+}
+
+.node-webform .webform-client-form {
+  margin-top: 16px;
+}
+
 .node-webform label {
   margin-bottom: 4px;
 }
@@ -263,7 +271,8 @@ table img {
   margin-left: 120px;
 }
 
-.node-webform .form-checkboxes, .form-radios {
+.node-webform .form-checkboxes, 
+.node-webform .form-radios {
   margin-top: 0;}
 
 .webform-component {
