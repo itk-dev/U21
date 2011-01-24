@@ -167,7 +167,8 @@ table img {
 
 
 /* ----- / Content formatting ----- */
-.view-static-pages .field-content-value {
+.view-static-pages .field-content-value,
+#main-content .node-webform {
  padding: 0 8px; 
 }
 
@@ -222,6 +223,71 @@ table img {
   padding-bottom: 16px;
 }
 
+/* ======================================== */
+/*  WEBFORMS                                */
+/* ======================================== */
+
+.node-webform label {
+  margin-bottom: 4px;
+}
+
+.node-webform .form-item {
+  margin-top: 0;
+}
+
+.node-webform .form-item-textfield label,
+.node-webform .form-item-file label {
+  float: left;
+  width: 110px;
+  text-align: right;
+  padding-right: 10px;
+}
+
+.node-webform .form-item-file {
+  margin: 16px 0;
+  padding: 8px 0;
+  border: 1px dotted #ddd;
+  border-width: 1px 0;
+}
+
+.node-webform .form-item-textfield input {
+  width: 240px;
+}
+
+.node-webform .form-item-textfield input[size="30"] {
+  width: 200px;
+}
+
+.node-webform .form-item-checkboxes .form-checkboxes,
+.node-webform .form-item-radios .form-radios {
+  margin-left: 120px;
+}
+
+.node-webform .form-checkboxes, .form-radios {
+  margin-top: 0;}
+
+.webform-component {
+  margin-bottom: 8px;
+}
+
+.node-webform legend {
+  font-size: 14px;
+  font-weight: bold;
+  color: #222;
+}
+
+.node-webform fieldset {
+  border-top: 1px solid #ccc;
+  margin-bottom: 16px;
+  padding-top: 16px;
+  position: relative;
+}
+
+.node-webform legend span {
+  display: block;
+  width: 444px;
+  border-bottom: 1px solid #ccc;
+}
 
 /* ======================================== */
 /*  SIDEBAR                                 */
