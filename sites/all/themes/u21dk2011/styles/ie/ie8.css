@@ -3,7 +3,8 @@
   display: block;
 }
 
-.spotbox .spotbox-image img {
+.spotbox .spotbox-image img,
+.pane-block img {
   display: inline;
 }
 

@@ -891,6 +891,10 @@ body.context-editing a.context-block {
   display; block;
 }
 
+.linked-image a:link,
+.linked-image a:visited {
+  border: none;
+}
 
 #secondary-content .block-block img{display:block;margin:0 -8px;}#secondary-content .block-views li{background:url(../images/back-list-top.png) center 2px no-repeat;padding-bottom:8px;padding-top:8px;}#secondary-content .block-views li.first{background:transparent;padding-top:0;}#region-middle h2,#region-bottom h2{display:none;}
 
