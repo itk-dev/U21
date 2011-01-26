@@ -3941,7 +3941,7 @@ function u21_views_settings_views_default_views() {
   ));
   $handler->override_option('sorts', array(
     'field_date_value' => array(
-      'order' => 'DESC',
+      'order' => 'ASC',
       'delta' => -1,
       'id' => 'field_date_value',
       'table' => 'node_data_field_date',
