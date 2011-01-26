@@ -1083,15 +1083,25 @@ h2.spotbox a:visited {
   border-top: none;
 }
 
-/*
-.view-profile .views_slideshow_singleframe_main .views-row {
-  padding: 0 8px;
+
+/* ------ / Countdown spotbox ----- */
+.block-countdown {
+  margin: 10px;
+  padding: 16px;
+  background: #19396A;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 120%;
 }
 
-.spotbox-image {
-  margin: 0 -8px;
+.block-countdown h2 {
+  margin-top: 0;
+  color: #fff;
+  font-size: 32px;
+  margin-bottom: 8px;
+  line-height: 120%;
 }
-*/
 
 
 /* ------ / Views ------ */
