@@ -648,6 +648,45 @@ div.feed-icon {
 
 
 /* ======================================== */
+/*  BUTTONS                                 */
+/* ======================================== */
+
+.button-pill {
+  margin-top: 12px;
+}
+
+.button-pill:first-child {
+  margin-top: 0;
+}
+
+.button-pill a {
+  display: inline-block;
+  width: 120px;
+  height: 34px;
+  background: transparent url(../images/button-pill-140px.png) 0 0 no-repeat;
+  line-height: 32px;
+  padding-left: 36px;
+  font-size: 12px;
+  font-weight: bold;
+  -moz-text-shadow: 0 1px rgba(0,0,0,0.5);
+  -webkit-text-shadow: 0 1px rgba(0,0,0,0.5);
+  -o-text-shadow: 0 1px rgba(0,0,0,0.5);  
+  text-shadow: 0 1px rgba(0,0,0,0.5);
+
+}
+.button-pill a:link,
+.button-pill a:visited {
+  border: none;
+  color: #fff;
+  margin: 0;
+}
+
+.button-pill a:hover,
+.button-pill a:active {
+  background-position: 0 -34px;
+}
+
+/* ======================================== */
 /*  SECONDARY CONTENT                       */
 /* ======================================== */
 
