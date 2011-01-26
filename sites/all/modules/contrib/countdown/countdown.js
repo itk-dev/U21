@@ -80,7 +80,7 @@ if (Drupal.jsEnabled) {
   });
 
   $(document).ready(function() {
-      $(".block-countdown .content").onready();
+      $(".block-countdown-content").onready();
     }
   );
 }
