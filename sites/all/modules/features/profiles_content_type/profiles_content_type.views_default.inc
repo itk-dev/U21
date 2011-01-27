@@ -1128,7 +1128,7 @@ function profiles_content_type_views_default_views() {
       ),
       'relationship' => 'none',
     ),
-    'field_profilephoto_imceimage_path' => array(
+    'field_profilephoto_wide_imceimage_path' => array(
       'label' => '',
       'alter' => array(
         'alter_text' => 0,
@@ -1161,13 +1161,13 @@ function profiles_content_type_views_default_views() {
         'multiple_reversed' => FALSE,
       ),
       'exclude' => 0,
-      'id' => 'field_profilephoto_imceimage_path',
-      'table' => 'node_data_field_profilephoto',
-      'field' => 'field_profilephoto_imceimage_path',
-      'relationship' => 'none',
+      'id' => 'field_profilephoto_wide_imceimage_path',
+      'table' => 'node_data_field_profilephoto_wide',
+      'field' => 'field_profilephoto_wide_imceimage_path',
       'override' => array(
         'button' => 'Use default',
       ),
+      'relationship' => 'none',
     ),
     'title_1' => array(
       'label' => 'Navn',
@@ -1509,7 +1509,7 @@ function profiles_content_type_views_default_views() {
       ),
       'relationship' => 'none',
     ),
-    'field_profilephoto_imceimage_path' => array(
+    'field_profilephoto_wide_imceimage_path' => array(
       'label' => '',
       'alter' => array(
         'alter_text' => 0,
@@ -1542,13 +1542,13 @@ function profiles_content_type_views_default_views() {
         'multiple_reversed' => FALSE,
       ),
       'exclude' => 0,
-      'id' => 'field_profilephoto_imceimage_path',
-      'table' => 'node_data_field_profilephoto',
-      'field' => 'field_profilephoto_imceimage_path',
-      'relationship' => 'none',
+      'id' => 'field_profilephoto_wide_imceimage_path',
+      'table' => 'node_data_field_profilephoto_wide',
+      'field' => 'field_profilephoto_wide_imceimage_path',
       'override' => array(
         'button' => 'Use default',
       ),
+      'relationship' => 'none',
     ),
     'title_1' => array(
       'label' => 'Navn',
@@ -2106,7 +2106,7 @@ function profiles_content_type_views_default_views() {
     ),
     'field_profile_position_value' => array(
       'operator' => '=',
-      'value' => 'Målmænd',
+      'value' => 'Målmand',
       'group' => '0',
       'exposed' => FALSE,
       'expose' => array(

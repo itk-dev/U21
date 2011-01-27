@@ -309,7 +309,7 @@ function profiles_content_type_content_default_fields() {
     'active' => '1',
     'text_processing' => '0',
     'max_length' => '',
-    'allowed_values' => 'Målmænd
+    'allowed_values' => 'Målmand
 Forsvar
 Midtbane
 Angriber',
@@ -502,7 +502,7 @@ Angriber',
       ),
       'default_value_php' => NULL,
       'label' => 'Video',
-      'weight' => '2',
+      'weight' => '3',
       'description' => '',
       'type' => 'text_textarea',
       'module' => 'text',
@@ -627,9 +627,61 @@ Angriber',
       ),
       'default_value_php' => NULL,
       'semantic_cck_use_semantic_instance' => 0,
-      'label' => 'Profilbillede',
-      'weight' => '-3',
+      'label' => 'Profilbillede (Portræt)',
+      'weight' => '-2',
       'description' => 'Profilfoto af spillerprofilen. Billedet vises øverst på profilsiderne.',
+      'type' => 'imceimage',
+      'module' => 'imceimage',
+    ),
+  );
+
+  // Exported field: field_profilephoto_wide
+  $fields['profile-field_profilephoto_wide'] = array(
+    'field_name' => 'field_profilephoto_wide',
+    'type_name' => 'profile',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'imceimage',
+    'required' => '1',
+    'multiple' => '0',
+    'module' => 'imceimage',
+    'active' => '1',
+    'imceimage_file_types' => 'png,jpg,jpeg',
+    'widget' => array(
+      'imceimage_file_types' => 'png,jpg,jpeg',
+      'default_value' => array(
+        '0' => array(
+          'imceimage_path' => '',
+          'imceimage_width' => '',
+          'imceimage_height' => '',
+          'imceimage_alt' => '',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Profilbillede (bredformat)',
+      'weight' => '-1',
+      'description' => '',
       'type' => 'imceimage',
       'module' => 'imceimage',
     ),
@@ -814,7 +866,7 @@ Angriber',
       ),
       'default_value_php' => NULL,
       'label' => 'Bag om profilen',
-      'weight' => '1',
+      'weight' => '2',
       'description' => '',
       'type' => 'text_textarea',
       'module' => 'text',
@@ -878,7 +930,7 @@ Angriber',
       'default_value_php' => NULL,
       'semantic_cck_use_semantic_instance' => 0,
       'label' => 'Spillerprofil',
-      'weight' => 0,
+      'weight' => '1',
       'description' => '',
       'type' => 'text_textarea',
       'module' => 'text',
@@ -931,7 +983,7 @@ Angriber',
       'default_value_php' => NULL,
       'semantic_cck_use_semantic_instance' => 0,
       'label' => 'Inkluder i slideshow',
-      'weight' => '4',
+      'weight' => '5',
       'description' => '',
       'type' => 'optionwidgets_buttons',
       'module' => 'optionwidgets',
@@ -950,7 +1002,8 @@ Angriber',
   t('Position');
   t('Position: X');
   t('Position: Y');
-  t('Profilbillede');
+  t('Profilbillede (Portræt)');
+  t('Profilbillede (bredformat)');
   t('Spillerprofil');
   t('Trøjenavn');
   t('Video');

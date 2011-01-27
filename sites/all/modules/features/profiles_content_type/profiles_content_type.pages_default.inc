@@ -147,20 +147,25 @@ function profiles_content_type_default_page_manager_handlers() {
     $pane = new stdClass;
     $pane->pid = 'new-4';
     $pane->panel = 'left';
-    $pane->type = 'views_panes';
-    $pane->subtype = 'profile-panel_pane_3';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'context' => array(
-        0 => 'relationship_term_from_node_1',
-      ),
+      'admin_title' => 'Se holdoversigt',
+      'title' => '',
+      'body' => '<a href="/profile/lineup/%term:name">Se holdoversigt</a>',
+      'format' => '3',
+      'substitute' => 1,
     );
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
     );
-    $pane->css = array();
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'button-pill',
+    );
     $pane->extras = array();
     $pane->position = 0;
     $display->content['new-4'] = $pane;
@@ -169,7 +174,7 @@ function profiles_content_type_default_page_manager_handlers() {
     $pane->pid = 'new-5';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
-    $pane->subtype = 'profile-panel_pane_8';
+    $pane->subtype = 'profile-panel_pane_3';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
@@ -190,7 +195,7 @@ function profiles_content_type_default_page_manager_handlers() {
     $pane->pid = 'new-6';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
-    $pane->subtype = 'profile-panel_pane_9';
+    $pane->subtype = 'profile-panel_pane_8';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
@@ -211,7 +216,7 @@ function profiles_content_type_default_page_manager_handlers() {
     $pane->pid = 'new-7';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
-    $pane->subtype = 'profile-panel_pane_10';
+    $pane->subtype = 'profile-panel_pane_9';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
@@ -230,6 +235,68 @@ function profiles_content_type_default_page_manager_handlers() {
     $display->panels['left'][3] = 'new-7';
     $pane = new stdClass;
     $pane->pid = 'new-8';
+    $pane->panel = 'left';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'profile-panel_pane_10';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'context' => array(
+        0 => 'relationship_term_from_node_1',
+      ),
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 4;
+    $display->content['new-8'] = $pane;
+    $display->panels['left'][4] = 'new-8';
+    $pane = new stdClass;
+    $pane->pid = 'new-9';
+    $pane->panel = 'left';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'term',
+          'settings' => array(
+            'vid' => '2',
+            1 => array(),
+            2 => array(
+              9 => '9',
+            ),
+          ),
+          'context' => 'relationship_term_from_node_1',
+          'not' => FALSE,
+        ),
+      ),
+    );
+    $pane->configuration = array(
+      'admin_title' => 'Boblertrup',
+      'title' => '',
+      'body' => '<a href="/boblertrup/">Boblertrup</a>',
+      'format' => '3',
+      'substitute' => 1,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'button-pill',
+    );
+    $pane->extras = array();
+    $pane->position = 5;
+    $display->content['new-9'] = $pane;
+    $display->panels['left'][5] = 'new-9';
+    $pane = new stdClass;
+    $pane->pid = 'new-10';
     $pane->panel = 'right';
     $pane->type = 'block';
     $pane->subtype = 'block-15';
@@ -246,10 +313,10 @@ function profiles_content_type_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-8'] = $pane;
-    $display->panels['right'][0] = 'new-8';
+    $display->content['new-10'] = $pane;
+    $display->panels['right'][0] = 'new-10';
     $pane = new stdClass;
-    $pane->pid = 'new-9';
+    $pane->pid = 'new-11';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'profile-panel_pane_1';
@@ -267,8 +334,8 @@ function profiles_content_type_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
-    $display->content['new-9'] = $pane;
-    $display->panels['right'][1] = 'new-9';
+    $display->content['new-11'] = $pane;
+    $display->panels['right'][1] = 'new-11';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
