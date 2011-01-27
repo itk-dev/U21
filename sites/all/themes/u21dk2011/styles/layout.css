@@ -690,7 +690,7 @@ div.feed-icon {
 
 .button-pill a {
   display: inline-block;
-  width: 120px;
+  width: 104px;
   height: 34px;
   background: transparent url(../images/button-pill-140px.png) 0 0 no-repeat;
   line-height: 32px;
@@ -701,8 +701,8 @@ div.feed-icon {
   -webkit-text-shadow: 0 1px rgba(0,0,0,0.5);
   -o-text-shadow: 0 1px rgba(0,0,0,0.5);  
   text-shadow: 0 1px rgba(0,0,0,0.5);
-
 }
+
 .button-pill a:link,
 .button-pill a:visited {
   border: none;
@@ -713,6 +713,18 @@ div.feed-icon {
 .button-pill a:hover,
 .button-pill a:active {
   background-position: 0 -34px;
+}
+
+.button-right a:link,
+.button-right a:visited {
+  background-position: 0 -68px;
+  padding-left: 20px;
+  width: 120px;
+}
+
+.button-right a:hover,
+.button-right a:active {
+  background-position: 0 -102px;
 }
 
 /* ======================================== */
