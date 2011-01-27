@@ -289,7 +289,7 @@ function profiles_content_type_default_page_manager_handlers() {
     );
     $pane->css = array(
       'css_id' => '',
-      'css_class' => 'button-pill',
+      'css_class' => 'button-pill button-right',
     );
     $pane->extras = array();
     $pane->position = 5;
