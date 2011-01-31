@@ -1,6 +1,6 @@
 #secondary-content .block-block-content p a:link,
 #secondary-content .block-block-content p a:visited {
-  display: block;
+  display: inline-block;
 }
 
 .spotbox .spotbox-image img,
@@ -8,6 +8,13 @@
   display: inline;
 }
 
-.player-info .profile-image img {
+.spotbox .spotbox-image a:link,
+.spotbox .spotbox-image a:visited {
+  border: none;
+  text-decoration: none;
+}
+
+.player-info .profile-image img,
+img.imagecache-profile_spotbox {
   display: inline-block;
 }
