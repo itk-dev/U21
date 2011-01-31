@@ -327,6 +327,11 @@ div.messages ul {
   border-bottom: 1px solid #ccc;
 }
 
+.node-webform .description {
+  margin-bottom: 1em;
+  font-size: 13px;
+}
+
 /* ======================================== */
 /*  SIDEBAR                                 */
 /* ======================================== */
@@ -550,12 +555,6 @@ div.messages ul {
 .top-slideshow .view-footer p {
  margin-bottom: 0;
 }
-
-/* ----- / Regional slider ----- */
-/* .news-top-region-news {
-  border-top: 1px solid transparent;
-  margin-top: 19px;
-} */
 
 /* ======================================== */
 /*  NEWS / EVENTS LIST                      */
