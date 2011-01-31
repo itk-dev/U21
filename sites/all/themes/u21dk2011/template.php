@@ -170,9 +170,11 @@ function u21dk2011_views_slideshow_singleframe_controls($vss_id, $view, $options
  * Ideally this function should target only forms created by Webform Module
  */
 
-function u21dk2011_form_element($element, $value) {
+/* && preg_match("/^webform-component-/", $element['#id'])*/
+
+/* function u21dk2011_form_element($element, $value) {
   $output  = '<div class="form-item"';
-  if (!empty($element['#id']) /* && preg_match("/^webform-component-/", $element['#id'])*/) {
+  if (!empty($element['#id'])) {
     $output .= ' id="'. $element['#id'] .'-wrapper"';
   }
   $output .= ">\n";
@@ -202,3 +204,4 @@ function u21dk2011_form_element($element, $value) {
   return $output;
 }
 
+*/
