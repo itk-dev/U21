@@ -297,7 +297,7 @@ div.messages ul {
 
 .node-webform .form-item-checkboxes .form-checkboxes,
 .node-webform .form-item-radios .form-radios {
-  margin-left: 120px;
+  margin-left: 10px;
 }
 
 .node-webform .form-checkboxes, 

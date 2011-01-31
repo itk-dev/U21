@@ -165,19 +165,23 @@ function u21dk2011_views_slideshow_singleframe_controls($vss_id, $view, $options
 }
 
 /**
- * Implementation of theme_form_element.
+ * Implementation of theme_webform_element.
  * Move form descriptions to a position above form fields instead of below
  * Ideally this function should target only forms created by Webform Module
  */
 
-/* && preg_match("/^webform-component-/", $element['#id'])*/
+ function u21dk2011_form_element($element, $value) {
+  
+  $wrapper_classes = array(
+   'form-item',
+  );
 
-/* function u21dk2011_form_element($element, $value) {
-  $output  = '<div class="form-item"';
+  $output = "<div class=\"form-item form-item-" . $element['#type'] . " \" ";
   if (!empty($element['#id'])) {
     $output .= ' id="'. $element['#id'] .'-wrapper"';
   }
   $output .= ">\n";
+
   $required = !empty($element['#required']) ? '<span class="form-required" title="'. t('This field is required.') .'">*</span>' : '';
 
   if (!empty($element['#title'])) {
@@ -188,6 +192,7 @@ function u21dk2011_views_slideshow_singleframe_controls($vss_id, $view, $options
     else {
       $output .= ' <label>'. t('!title: !required', array('!title' => filter_xss_admin($title), '!required' => $required)) ."</label>\n";
     }
+    
     if (!empty($element['#description'])) {
       $output .= ' <div class="description">'. $element['#description'] ."</div>\n";
     }
@@ -204,4 +209,4 @@ function u21dk2011_views_slideshow_singleframe_controls($vss_id, $view, $options
   return $output;
 }
 
-*/
+
