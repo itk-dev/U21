@@ -1,6 +1,6 @@
 <?php
 
-define('WEBFORM_MAIL_RW_URL', 'frivillig/registrering');
+define('WEBFORM_MAIL_RW_URL', 'frivillig/registering');
 define('WEBFORM_MAIL_TOKEN', 'Ktn3~n5dM(71~<');
 
 /**
