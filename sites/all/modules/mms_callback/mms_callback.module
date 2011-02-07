@@ -1,0 +1,44 @@
+<?php
+
+/*
+  <?xml version="1.0" encoding="iso-8859-1"?>
+  <mo>
+    <msgid>654321</msgid>
+    <mobile>4512345678</mobile>
+    <network>tdc</network>
+    <channel>1220</channel>
+    <keyword>u21foto</keyword>
+    <message type="mms">
+      <timestamp>2005-02-01 12:00:00</timestamp>
+      <subject>Check this picture</subject>
+      <content>
+        <text>
+          http://mms.domæne.dk/mms/mo/654321/picture.txt
+        </text>
+        <image>
+          http://mms.domæne.dk/mms/mo/654321/pix.jpg
+        </image>
+      </content>
+    </message>
+  </mo>
+*/
+
+/**
+ * Implementation of hook_menu().
+ */
+function mms_callback_menu() {
+  $items = array();
+
+  $items['callback/mms'] = array(
+    'title' => 'MMS callback',
+    'page callback' => 'mms_callback_message',
+    'type' => MENU_LOCAL_TASK,
+  );
+
+  return $items;
+}
+
+
+function mms_callback_message() {
+  $xml = $_GET['msg'];
+}
