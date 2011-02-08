@@ -32,6 +32,7 @@ function mms_callback_menu() {
   $items['callback/upload/mms'] = array(
     'title' => 'MMS callback',
     'page callback' => 'mms_callback_message',
+    'access callback' => TRUE,
     'type' => MENU_LOCAL_TASK,
   );
 
