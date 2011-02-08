@@ -29,7 +29,7 @@
 function mms_callback_menu() {
   $items = array();
 
-  $items['callback/mms'] = array(
+  $items['callback/upload/mms'] = array(
     'title' => 'MMS callback',
     'page callback' => 'mms_callback_message',
     'type' => MENU_LOCAL_TASK,
@@ -40,5 +40,13 @@ function mms_callback_menu() {
 
 
 function mms_callback_message() {
-  $xml = $_GET['msg'];
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $postText = file_get_contents('php://input');
+  }
+
+  $datetime = date('ymdHis');
+  $xmlfile = file_directory_path()."/myfile" . $datetime . ".xml";
+  $FileHandle = fopen($xmlfile, 'w') or die("can't open file");
+  fwrite($FileHandle, $postText);
+  fclose($FileHandle);
 }
