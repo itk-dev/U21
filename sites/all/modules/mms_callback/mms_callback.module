@@ -49,13 +49,14 @@ function mms_callback_message() {
   }
   
   // Get text
-  $text = file_get_contents($xml->message->content->text);
+  $text = file_get_contents(trim($xml->message->content->text));
 
   // Create folder and download image
+  $url = trim($xml->message->content->image);
   $path = file_directory_path() . '/mms_images';
   if (file_check_directory($path, FILE_CREATE_DIRECTORY)) {
-    $image = $xml->mobile . '_' . basename($xml->message->content->image);
-    file_put_contents(realpath($path) . '/' . $image, file_get_contents($xml->message->content->image));
+    $image = $xml->mobile . '_' . basename($url);
+    file_put_contents(realpath($path) . '/' . $image, file_get_contents($url));
   }
   else {
     watchdog('MMS Callback', t('Could not create folder inside files folder.'), NULL, WATCHDOG_ERROR);
@@ -64,7 +65,7 @@ function mms_callback_message() {
 
   // Save information to the database
   $record = new stdClass();
-  $record->msgid = $xml->msgid;
+  $record->msgid = trim($xml->msgid);
   $record->message = $text;
   $record->image = $path . '/' . $image;
   $record->timestamp = time();
