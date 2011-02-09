@@ -34,13 +34,6 @@ function mms_callback_message() {
   // Try to get the XML callback information
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $postText = file_get_contents('php://input');
-
-    // TMP SAVE
-    $datetime = date('ymdHis');
-    $xmlfile = file_directory_path()."/myfile" . $datetime . ".xml";
-    $FileHandle = fopen($xmlfile, 'w') or die("can't open file");
-    fwrite($FileHandle, $postText);
-    fclose($FileHandle);
   }
   else {
     // No information found
