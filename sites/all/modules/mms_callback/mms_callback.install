@@ -1,0 +1,51 @@
+<?php
+
+/**
+ * Implementation of hook_install().
+ */
+function mms_callback_schema() {
+  $schema['mms_callback'] = array(
+    'description' => t('Stores information about received MMS'),
+    'fields' => array(
+      'msgid' => array(
+        'type' => 'char',
+        'length' => 24,
+        'not null' => TRUE,
+        'description' => t('MMS message id'),
+      ),
+      'message' => array(
+        'type' => 'text',
+        'not null' => TRUE,
+        'description' => t('Message sendt with the MMS'),
+      ),
+      'image' => array(
+        'type' => 'text',
+        'not null' => TRUE,
+        'description' => t('Link til local image sendt with the MMS'),
+      ),
+      'timestamp' => array(
+        'type' => 'datetime',
+        'not null' => TRUE,
+        'description' => t('The MMS received timestamp'),
+      ),
+    ),
+    'primary key' => array('msgid'),
+  );
+  
+  return $schema;
+}
+
+/**
+ * Implementation of hook_install().
+ */
+function mms_callback_install() {
+  drupal_install_schema('mms_callback');
+  echo 'FISK';
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function mms_callback_uninstall() {
+  drupal_uninstall_schema('mms_callback');
+}
