@@ -4,3 +4,4 @@ description = Provides node creation from MMS callback
 package = "U21"
 core = 6.x
 php = 5.2
+dependencies[] = feeds
