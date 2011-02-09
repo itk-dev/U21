@@ -1,0 +1,208 @@
+.page-schedule #content {
+  background: blue url(../images/back-schedule.jpg) center top no-repeat;
+  min-height: 854px;
+  margin-top: 0;
+  padding-top: 20px;
+
+} 
+
+.page-schedule #content .meta {
+  display: none;
+}
+
+.page-schedule #page-title { 
+  text-indent: -999em;
+  background: transparent url(../images/back-schedule-heading.png) center top no-repeat;
+  height: 62px;
+  padding: 0;
+  padding-bottom: 20px;
+}
+
+.schedule-table {
+  margin: 8px;
+}
+
+.schedule-table td,
+.schedule-table th {
+  background: none;
+  color: #fff;
+  border-bottom: none;
+  height: 29px;
+  line-height: 29px;
+  padding: 0 0;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.schedule-table tr.footer td {
+  font-size: 11px;
+  padding-top: 8px;
+  padding-left: 16px;
+}
+
+
+
+/* !extra space */
+.schedule-table .match-4 td,
+.schedule-table .match-8 td {
+  padding-bottom: 27px;
+}
+
+.schedule-table .match-12 td {
+  padding-bottom: 23px;
+}
+
+.schedule-table .match-14 td {
+  padding-bottom: 19px;
+}
+
+/* !number-graphics */
+.schedule-table th {
+  width: 30px;
+  text-indent: -999em;
+  overflow: hidden;
+  background: transparent url(../images/back-schedule-numbers.png) left top no-repeat;
+}
+
+.schedule-table .match-1 th  { background-position: 0 0; }
+.schedule-table .match-2 th  { background-position: 0 -29px; }
+.schedule-table .match-3 th  { background-position: 0 -58px; }
+.schedule-table .match-4 th  { background-position: 0 -87px; }
+.schedule-table .match-5 th  { background-position: 0 -143px; }
+.schedule-table .match-6 th  { background-position: 0 -172px; }
+.schedule-table .match-7 th  { background-position: 0 -201px; }
+.schedule-table .match-8 th  { background-position: 0 -230px; }
+.schedule-table .match-9 th  { background-position: 0 -286px; }
+.schedule-table .match-10 th { background-position: 0 -315px; }
+.schedule-table .match-11 th { background-position: 0 -344px; }
+.schedule-table .match-12 th { background-position: 0 -373px; }
+.schedule-table .match-13 th { background-position: 0 -425px; }
+.schedule-table .match-14 th { background-position: 0 -456px; }
+.schedule-table .match-15 th { background-position: 0 -506px; } 
+
+/* !group-numbers */
+#content .schedule-table th[rowspan="2"] {
+  width: 20px;
+  background: transparent url(../images/back-schedule-grp.png) 0 0 no-repeat;
+}
+
+#content .schedule-table th[rowspan="4"] {
+  width: 20px;
+  background: none;
+}
+
+#content .schedule-table .match-1 th[rowspan="2"]  { background-position: 0 0; }
+#content .schedule-table .match-3 th[rowspan="2"]  { background-position: 0 -58px; }
+#content .schedule-table .match-5 th[rowspan="2"]  { background-position: 0 -143px; }
+#content .schedule-table .match-7 th[rowspan="2"]  { background-position: 0 -201px; }
+#content .schedule-table .match-9 th[rowspan="2"]  { background-position: 0 -286px; }
+#content .schedule-table .match-11 th[rowspan="2"] { background-position: 0 -344px; }
+
+
+
+/* !buttons */
+.col-ticket {
+  width: 130px;
+}
+
+.col-ticket a {
+  display: block;
+  background: transparent url(../images/button-pill-small.png) 0 -1px no-repeat;
+  height: 27px;
+  width: 80px;
+  line-height: 27px;
+  margin: 1px 8px 1px 14px;
+  padding: 0 12px;
+  border-bottom: none;
+  color: #fff;
+  font-size: 11px;
+  -moz-opacity: 0.8;
+  -webkit-opacity: 0.8;
+  -o-opacity: 0.8;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+	filter: alpha(opacity = 80);
+  opacity: 0.8;
+}
+
+.col-ticket a:hover {
+   -moz-opacity: 1;
+  -webkit-opacity: 1;
+  -o-opacity: 1;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+	filter: alpha(opacity = 100);
+  opacity: 1; 
+}
+
+
+/* !match-times */
+.match-1 .col-time,
+.match-2 .col-time,
+.match-5 .col-time,
+.match-6 .col-time,
+.match-9 .col-time,
+.match-10 .col-time {
+  color: #0073AE;
+}
+
+.match-3 .col-time,
+.match-4 .col-time,
+.match-7 .col-time,
+.match-8 .col-time,
+.match-11 .col-time,
+.match-12 .col-time,
+.match-15 .col-time {
+  color: #E51937;
+}
+
+/* !place-colours */
+.match-1 .col-place,
+.match-2 .col-place,
+.match-5 .col-place,
+.match-6 .col-place,
+.match-9 .col-place,
+.match-10 .col-place,
+.match-13 .col-place,
+.match-14 .col-place {
+  color: #77ACD3;
+}
+
+.match-3 .col-place,
+.match-4 .col-place,
+.match-7 .col-place,
+.match-8 .col-place,
+.match-11 .col-place,
+.match-12 .col-place,
+.match-15 .col-place {
+  color: #B5BCD2;
+}
+
+.match-15 .col-place {
+  color: #E8EAF2
+;
+
+}
+/* !match-nations */
+.schedule-table .col-match {
+  text-align: center;
+}
+
+.schedule-table .cell-finale {
+  color: #E51937;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.schedule-table .cell-semifinals .grp-b {
+  color: #E51937;  
+}
+
+/* !sponsors */
+.sponsors {
+  background: transparent url(../images/back-schedule-sponsors.png) left top no-repeat;
+  display: block;
+  width: 382px;
+  height: 102px;
+  margin: 25px auto 10px;
+  text-indent: -999em;
+}
+
