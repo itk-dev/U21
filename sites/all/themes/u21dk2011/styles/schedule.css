@@ -110,7 +110,7 @@
 
 .col-ticket a {
   display: block;
-  background: transparent url(../images/button-pill-small.png) 0 -1px no-repeat;
+  background: transparent url(../images/button-pill-small.png) 0 -65px no-repeat;
   height: 27px;
   width: 80px;
   line-height: 27px;
@@ -119,21 +119,10 @@
   border-bottom: none;
   color: #fff;
   font-size: 11px;
-  -moz-opacity: 0.8;
-  -webkit-opacity: 0.8;
-  -o-opacity: 0.8;
-  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
-	filter: alpha(opacity = 80);
-  opacity: 0.8;
 }
 
 .col-ticket a:hover {
-   -moz-opacity: 1;
-  -webkit-opacity: 1;
-  -o-opacity: 1;
-  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
-	filter: alpha(opacity = 100);
-  opacity: 1; 
+  background-position: 0 -98px;
 }
 
 
