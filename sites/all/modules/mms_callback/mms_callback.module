@@ -1,28 +1,5 @@
 <?php
 
-/*
-  <?xml version="1.0" encoding="iso-8859-1"?>
-  <mo>
-    <msgid>654321</msgid>
-    <mobile>4512345678</mobile>
-    <network>tdc</network>
-    <channel>1220</channel>
-    <keyword>u21foto</keyword>
-    <message type="mms">
-      <timestamp>2005-02-01 12:00:00</timestamp>
-      <subject>Check this picture</subject>
-      <content>
-        <text>
-          http://mms.domæne.dk/mms/mo/654321/picture.txt
-        </text>
-        <image>
-          http://mms.domæne.dk/mms/mo/654321/pix.jpg
-        </image>
-      </content>
-    </message>
-  </mo>
-*/
-
 /**
  * Implementation of hook_menu().
  */
@@ -36,18 +13,65 @@ function mms_callback_menu() {
     'type' => MENU_LOCAL_TASK,
   );
 
+  $items['callback/upload/mms/xml'] = array(
+    'title' => 'XML mms feed',
+    'page callback' => 'mms_callback_xml',
+    'access callback' => TRUE,
+    'type' => MENU_LOCAL_TASK,
+  );
+
   return $items;
 }
 
-
 function mms_callback_message() {
+  // Try to get the XML callback information
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $postText = file_get_contents('php://input');
+
+    // TMP SAVE
+    $datetime = date('ymdHis');
+    $xmlfile = file_directory_path()."/myfile" . $datetime . ".xml";
+    $FileHandle = fopen($xmlfile, 'w') or die("can't open file");
+    fwrite($FileHandle, $postText);
+    fclose($FileHandle);
+  }
+  else {
+    // No information found
+    watchdog('MMS Callback', t('Callback received but no data found in message.'), NULL, WATCHDOG_ERROR);
+    return;
   }
 
-  $datetime = date('ymdHis');
-  $xmlfile = file_directory_path()."/myfile" . $datetime . ".xml";
-  $FileHandle = fopen($xmlfile, 'w') or die("can't open file");
-  fwrite($FileHandle, $postText);
-  fclose($FileHandle);
+  // Parse XML message
+  $xml = new SimpleXMLElement($postText);
+  if (!$xml) {
+    watchdog('MMS Callback', t('The XML could not be parsed.'), NULL, WATCHDOG_ERROR);
+    return;
+  }
+  
+  // Get text
+  $text = file_get_contents($xml->message->content->text);
+
+  // Create folder and download image
+  $path = file_directory_path() . '/mms_images';
+  if (file_check_directory($path, FILE_CREATE_DIRECTORY)) {
+    $image = $xml->mobile . '_' . basename($xml->message->content->image);
+    file_put_contents(realpath($path) . '/' . $image, file_get_contents($xml->message->content->image));
+  }
+  else {
+    watchdog('MMS Callback', t('Could not create folder inside files folder.'), NULL, WATCHDOG_ERROR);
+    return;
+  }
+
+  // Save information to the database
+  $record = new stdClass();
+  $record->msgid = $xml->msgid;
+  $record->message = $text;
+  $record->image = $path . '/' . $image;
+  $record->timestamp = time();
+  drupal_write_record('mms_callback', $record);
+}
+
+function mms_callback_xml() {
+
+  
 }
