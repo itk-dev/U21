@@ -1,5 +1,8 @@
 <?php
 
+define('MMS_CALLBACK_TIME', 4200);
+define('MMS_CALLBACK_KEYWORD_LENGHT', 8);
+
 /**
  * Implementation of hook_menu().
  */
@@ -23,6 +26,10 @@ function mms_callback_menu() {
   return $items;
 }
 
+/**
+ * Menu callback to parse MMS XML message when MMS is being received.
+ *
+ */
 function mms_callback_message() {
   // Try to get the XML callback information
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -48,9 +55,9 @@ function mms_callback_message() {
     return;
   }
   
-  // Get text
-  $text = file_get_contents(trim($xml->message->content->text));
-
+  // Get text and strip keyword
+  $text = substr(file_get_contents(trim($xml->message->content->text)), MMS_CALLBACK_KEYWORD_LENGHT);
+  
   // Create folder and download image
   $url = trim($xml->message->content->image);
   $path = file_directory_path() . '/mms_images';
@@ -72,7 +79,56 @@ function mms_callback_message() {
   drupal_write_record('mms_callback', $record);
 }
 
+/**
+ * Menu callback to generate feed based on data received by MMS's.
+ */
 function mms_callback_xml() {
+  // Start new xml document
+  $xml = new DOMDocument('1.0', 'utf-8');
+  $xml->formatOutput= true;
 
-  
+  // Create root element
+  $messages = $xml->createElement('messages');
+  $xml->appendChild($messages);
+
+  // Load data from the database
+  $result = db_query('SELECT * FROM {mms_callback} WHERE timestamp > '. (time() - MMS_CALLBACK_TIME));
+  while ($row = db_fetch_array($result)) {
+    $msg = $xml->createElement('message');
+
+    // Add mid attribute
+    $mid = $xml->createAttribute('mid');
+    $msg->appendChild($mid);
+    $midValue = $xml->createTextNode($row['mid']);
+    $mid->appendChild($midValue);
+
+    // Add time attribute
+    $timestamp = $xml->createAttribute('timestamp');
+    $msg->appendChild($timestamp);
+    $timestampValue = $xml->createTextNode($row['timestamp']);
+    $timestamp->appendChild($timestampValue);
+
+    // Add msgid attribute
+    $msgid = $xml->createAttribute('msgid');
+    $msg->appendChild($msgid);
+    $msgidValue = $xml->createTextNode($row['msgid']);
+    $msgid->appendChild($msgidValue);
+
+    // Add image text
+    $text = $xml->createElement('text');
+    $msg->appendChild($text);
+    $textValue = $xml->createTextNode($row['message']);
+    $text->appendChild($textValue);
+
+    // Add image tag
+    $img = $xml->createElement('image');
+    $msg->appendChild($img);
+    $imgValue = $xml->createTextNode($row['image']);
+    $img->appendChild($imgValue);
+
+    $messages->appendChild($msg);
+  }
+
+  // Output XML
+  echo $xml->saveXML();
 }
