@@ -7,6 +7,12 @@ function mms_callback_schema() {
   $schema['mms_callback'] = array(
     'description' => t('Stores information about received MMS'),
     'fields' => array(
+      'mid' => array(
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'Internal message ID',
+      ),
       'msgid' => array(
         'type' => 'char',
         'length' => 24,
@@ -24,12 +30,12 @@ function mms_callback_schema() {
         'description' => t('Link til local image sendt with the MMS'),
       ),
       'timestamp' => array(
-        'type' => 'datetime',
+        'type' => 'int',
         'not null' => TRUE,
         'description' => t('The MMS received timestamp'),
       ),
     ),
-    'primary key' => array('msgid'),
+    'primary key' => array('mid'),
   );
   
   return $schema;
@@ -40,7 +46,6 @@ function mms_callback_schema() {
  */
 function mms_callback_install() {
   drupal_install_schema('mms_callback');
-  echo 'FISK';
 }
 
 /**

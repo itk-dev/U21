@@ -16,7 +16,6 @@ function mms_callback_menu() {
   return $items;
 }
 
-
 function mms_callback_message() {
   // Try to get the XML callback information
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -25,34 +24,35 @@ function mms_callback_message() {
   else {
     // No information found
     watchdog('MMS Callback', t('Callback received but no data found in message.'), NULL, WATCHDOG_ERROR);
-    return FALSE;
+    return;
   }
 
   // Parse XML message
   $xml = new SimpleXMLElement($postText);
   if (!$xml) {
     watchdog('MMS Callback', t('The XML could not be parsed.'), NULL, WATCHDOG_ERROR);
-    return FALSE;
+    return;
   }
   
   // Get text
-  $text = file_get_contents($xml->text);
+  $text = file_get_contents($xml->message->content->text);
 
   // Create folder and download image
-  $image = file_directory_path() . '/mms_images';
-  if (file_check_directory($image, FILE_CREATE_DIRECTORY)) {
-    $image .= '/' . basename($xml->image);
-    file_put_contents($img, file_get_contents($xml->image));
+  $path = file_directory_path() . '/mms_images';
+  if (file_check_directory($path, FILE_CREATE_DIRECTORY)) {
+    $image = $xml->mobile . '_' . basename($xml->message->content->image);
+    file_put_contents(realpath($path) . '/' . $image, file_get_contents($xml->message->content->image));
   }
   else {
     watchdog('MMS Callback', t('Could not create folder inside files folder.'), NULL, WATCHDOG_ERROR);
-    return FALSE;
+    return;
   }
 
   // Save information to the database
   $record = new stdClass();
   $record->msgid = $xml->msgid;
   $record->message = $text;
-  $record->image = $image;
+  $record->image = $path . '/' . $image;
+  $record->timestamp = time();
   drupal_write_record('mms_callback', $record);
 }
