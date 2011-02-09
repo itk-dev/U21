@@ -49,7 +49,7 @@ function mms_callback_message() {
   }
   
   // Get text
-  $text = file_get_contents($xml->message->content->text);
+  $text = file_get_contents(trim($xml->message->content->text));
 
   // Create folder and download image
   $url = trim($xml->message->content->image);
@@ -65,7 +65,7 @@ function mms_callback_message() {
 
   // Save information to the database
   $record = new stdClass();
-  $record->msgid = $xml->msgid;
+  $record->msgid = trim($xml->msgid);
   $record->message = $text;
   $record->image = $path . '/' . $image;
   $record->timestamp = time();
