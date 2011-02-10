@@ -52,6 +52,11 @@ function mms_import_feeds_importer_default() {
             'target' => 'created',
             'unique' => FALSE,
           ),
+          4 => array(
+            'source' => 'uploaded',
+            'target' => 'field_user_uploaded',
+            'unique' => FALSE,
+          ),
         ),
         'author' => 0,
       ),
