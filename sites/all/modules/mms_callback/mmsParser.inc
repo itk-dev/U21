@@ -11,6 +11,7 @@ class mmsParser extends FeedsParser {
     // Run through news items
     foreach ($xml->message as $message) {
       $item = array();
+      $item['title'] = 'Photo_'.(string)$message['mid'];
       $item['mid'] = (string)$message['mid'];
       $item['msgid'] = (string)$message['msgid'];
       $item['timestamp'] = (string)$message['timestamp'];
@@ -36,6 +37,10 @@ class mmsParser extends FeedsParser {
       'mid' => array(
         'name' => t('Drupal message ID'),
         'description' => t('The unique drupal message id.'),
+      ),
+      'title' => array(
+        'name' => t('Photo title'),
+        'description' => t('Unique title for the photo.'),
       ),
       'msgid' => array(
         'name' => t('MMS message ID'),
