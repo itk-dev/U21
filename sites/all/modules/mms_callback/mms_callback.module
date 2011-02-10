@@ -2,6 +2,7 @@
 
 define('MMS_CALLBACK_TIME', 4200);
 define('MMS_CALLBACK_KEYWORD_LENGHT', 8);
+define('MMS_CALLBACK_FILE_PATH', '/uploaded_mms');
 
 /**
  * Implementation of hook_menu().
@@ -58,25 +59,55 @@ function mms_callback_message() {
   // Get text and strip keyword
   $text = substr(file_get_contents(trim($xml->message->content->text)), MMS_CALLBACK_KEYWORD_LENGHT);
   
-  // Create folder and download image
-  $url = trim($xml->message->content->image);
-  $path = file_directory_path() . '/mms_images';
-  if (file_check_directory($path, FILE_CREATE_DIRECTORY)) {
-    $image = $xml->mobile . '_' . basename($url);
-    file_put_contents(realpath($path) . '/' . $image, file_get_contents($url));
+  // Download image(s)
+  $images =  array();  
+  if (count($xml->message->content->image) > 1) {
+    // More than one picture is added to the MMS    
+    foreach ($xml->message->content->image as $url) {
+      $url = trim($url);
+      $image = mms_callback_download_image($url, $xml->mobile);
+      if (!$image) {
+        return;
+      }
+      $images[] = $image;
+    }
   }
   else {
-    watchdog('MMS Callback', t('Could not create folder inside files folder.'), NULL, WATCHDOG_ERROR);
-    return;
+    $url = trim($xml->message->content->image);
+    $image = mms_callback_download_image($url, $xml->mobile);
+    if (!$image) {
+      return;
+    }
+    $images[] = $image;
   }
 
-  // Save information to the database
+  // Write information to the database.
   $record = new stdClass();
   $record->msgid = trim($xml->msgid);
   $record->message = $text;
-  $record->image = $path . '/' . $image;
+  $record->images = serialize($images);
   $record->timestamp = time();
   drupal_write_record('mms_callback', $record);
+}
+
+/**
+ * Downloadeds a image from an url and prefixes the name of the downloaded url
+ *
+ * @param string $url
+ * @param string $prefix
+ * @return mixed image path if image was downloaded else FALSE
+ */
+function mms_callback_download_image($url, $prefix = NULL) {
+  $path = file_directory_path() . MMS_CALLBACK_FILE_PATH;
+  if (file_check_directory($path, FILE_CREATE_DIRECTORY)) {
+    $image = ($prefix ? $prefix : time()) . '_' . basename($url);
+    file_put_contents(realpath($path) . '/' . $image, file_get_contents($url));
+  } else {
+    watchdog('MMS Callback', t('Could not create folder inside files folder.'), NULL, WATCHDOG_ERROR);
+    return FALSE;
+  }
+
+  return $path . '/' . $image;
 }
 
 /**
@@ -114,17 +145,20 @@ function mms_callback_xml() {
     $msgidValue = $xml->createTextNode($row['msgid']);
     $msgid->appendChild($msgidValue);
 
-    // Add image text
+    // Add text
     $text = $xml->createElement('text');
     $msg->appendChild($text);
     $textValue = $xml->createTextNode($row['message']);
     $text->appendChild($textValue);
 
-    // Add image tag
-    $img = $xml->createElement('image');
-    $msg->appendChild($img);
-    $imgValue = $xml->createTextNode($row['image']);
-    $img->appendChild($imgValue);
+    // Add image(s)
+    $images = unserialize($row['images']);
+    foreach ($images as $image) {
+      $img = $xml->createElement('image');
+      $msg->appendChild($img);
+      $imgValue = $xml->createTextNode($image);
+      $img->appendChild($imgValue);
+    }
 
     $messages->appendChild($msg);
   }

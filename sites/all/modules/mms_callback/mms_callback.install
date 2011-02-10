@@ -24,7 +24,7 @@ function mms_callback_schema() {
         'not null' => TRUE,
         'description' => t('Message sendt with the MMS'),
       ),
-      'image' => array(
+      'images' => array(
         'type' => 'text',
         'not null' => TRUE,
         'description' => t('Link til local image sendt with the MMS'),

@@ -15,7 +15,15 @@ class mmsParser extends FeedsParser {
       $item['msgid'] = (string)$message['msgid'];
       $item['timestamp'] = (string)$message['timestamp'];
       $item['text'] = (string)$message->text;
-      $item['image'] = (string)$message->image;
+      
+      // Convert XML image to array
+      $images = array();
+      foreach ($message->image as $url) {
+        $images[] = $url;
+      }
+      $item['images'] = $images;
+
+      // Add feed item
       $items[] = $item;
     }
 
@@ -41,8 +49,8 @@ class mmsParser extends FeedsParser {
         'name' => t('MMS text'),
         'description' => t('Text sendt with the MMS.'),
       ),
-      'image' => array(
-        'name' => t('Image link'),
+      'images' => array(
+        'name' => t('Image(s) link'),
         'description' => t('Link to the image in the files folder.'),
       ),
     );
