@@ -20,7 +20,7 @@ class mmsParser extends FeedsParser {
       // Convert XML image to array
       $images = array();
       foreach ($message->image as $url) {
-        $images[] = $url;
+        $images[] = (string)$url;
       }
       $item['images'] = $images;
 
