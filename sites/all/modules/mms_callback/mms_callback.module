@@ -78,7 +78,7 @@ function mms_callback_message() {
     if (!$image) {
       return;
     }
-    $images[] = $image;
+    $images[] = (string)$image;
   }
 
   // Write information to the database.
@@ -107,7 +107,7 @@ function mms_callback_download_image($url, $prefix = NULL) {
     return FALSE;
   }
 
-  return $path . '/' . $image;
+  return $path . '/' . (string)$image;
 }
 
 /**
