@@ -178,16 +178,68 @@ function mms_import_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Tilknytning',
-      'weight' => '5',
+      'weight' => '6',
       'description' => '',
       'type' => 'nodereference_select',
       'module' => 'nodereference',
     ),
   );
 
+  // Exported field: field_user_uploaded
+  $fields['photo-field_user_uploaded'] = array(
+    'field_name' => 'field_user_uploaded',
+    'type_name' => 'photo',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'text',
+    'required' => '0',
+    'multiple' => '1',
+    'module' => 'text',
+    'active' => '1',
+    'text_processing' => '0',
+    'max_length' => '',
+    'allowed_values' => 'Ja',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'default_value' => array(
+        '0' => array(
+          'value' => '',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Brugerfoto',
+      'weight' => '-2',
+      'description' => '',
+      'type' => 'optionwidgets_buttons',
+      'module' => 'optionwidgets',
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Besked');
+  t('Brugerfoto');
   t('Foto');
   t('Tilknytning');
 
