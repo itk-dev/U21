@@ -1,5 +1,5 @@
 .page-schedule #content,
-.page-kampe-og-billetter #content {
+.page-kampe-og-billetter #content, .page-buy-tickets #content {
   background: blue url(../images/back-schedule.jpg) center top no-repeat;
   min-height: 854px;
   margin-top: 0;
@@ -8,12 +8,13 @@
 } 
 
 .page-schedule #content .meta,
-.page-kampe-og-billetter #content .meta {
+.page-kampe-og-billetter #content, .page-buy-tickets #content .meta {
   display: none;
 }
 
 .page-schedule #page-title,
-.page-kampe-og-billetter #page-title { 
+.page-kampe-og-billetter #page-title,
+.page-buy-tickets #page-title { 
   text-indent: -999em;
   background: transparent url(../images/back-schedule-heading.png) center top no-repeat;
   height: 62px;
