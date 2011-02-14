@@ -1,0 +1,6 @@
+; $Id$
+name = U21 admin modifications
+description = Modifications using hooks
+package = "U21"
+core = 6.x
+
