@@ -1,0 +1,9 @@
+/* ----- / u21_foto_admin styling ----- */
+.views-field-field-photo-gallery-fid {
+  overflow: hidden;
+}
+
+.views-field-field-photo-gallery-fid div.field-item {
+  float: left;
+  padding: 8px;
+}

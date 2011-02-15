@@ -9,6 +9,7 @@ scripts[] = "js/rubik.js"
 stylesheets[screen][] = "core.css"
 stylesheets[screen][] = "icons.css"
 stylesheets[screen][] = "style.css"
+stylesheets[screen][] = "rubik-overrides.css"
 
 regions[content] = "Content"
 
