@@ -3,6 +3,8 @@
 define('MMS_CALLBACK_TIME', 4200);
 define('MMS_CALLBACK_KEYWORD_LENGHT', 8);
 define('MMS_CALLBACK_FILE_PATH', '/uploaded_mms');
+define('MMS_CALLBACK_SMS_RECEIPT_URL', 'http://www.smssys.dk/?user=U21+Denmark&pass=2866');
+define('MMS_CALLBACK_SMS_RECEIPT_MSG', 'Tak for billedet. Vi har givet vores redaktører besked. Du kan også få U21-nyheder på SMS ved at sende \'u21 updates\' til 1220.');
 
 /**
  * Implementation of hook_menu().
@@ -88,6 +90,22 @@ function mms_callback_message() {
   $record->images = serialize($images);
   $record->timestamp = time();
   drupal_write_record('mms_callback', $record);
+
+  // Send SMS repeipt back
+  $msg = urlencode(utf8_decode(MMS_CALLBACK_SMS_RECEIPT_MSG));
+  $url = MMS_CALLBACK_SMS_RECEIPT_URL . '&number=' . substr(trim($xml->mobile), 2) . '&message=' .  $msg;
+  $ret = file_get_contents($url);
+  $xml = new SimpleXMLElement($ret);
+  if (!$xml) {
+    watchdog('MMS Callback', t('The receipt MSM returned XML could not be parsed.'), NULL, WATCHDOG_ERROR);
+    return;
+  }
+
+  // Check that the SMS was sendt, if not log error code to log
+  $code = trim($xml->status->statusline->code);
+  if ($code != 0) {
+    watchdog('MMS Callback', t('SMS receipt not send gateway returned error code %code', array('%code' => $code)), NULL, WATCHDOG_ERROR);
+  }
 }
 
 /**
