@@ -69,8 +69,8 @@ function webform_mail_form_alter(&$form, $form_state, $form_id) {
                         WHERE sid=%d
                           AND sd.nid=%d', $sid, '918'); // 918 prev form nid
     while ($data = db_fetch_array($result)) {
-      if (isset($form['submitted'][$data['form_key']])) {
-        $form['submitted'][$data['form_key']]['#default_value'] = $data['data'];
+      if (isset($form['submitted']['kontakt'][$data['form_key']])) {
+        $form['submitted']['kontakt'][$data['form_key']]['#default_value'] = $data['data'];
       }
       $data_found = TRUE;
     }
