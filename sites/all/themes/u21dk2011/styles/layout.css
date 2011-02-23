@@ -727,6 +727,33 @@ div.feed-icon {
 }
 
 /* ======================================== */
+/*  SPONSORSTRIP                            */
+/* ======================================== */
+
+#sponsorstrip {
+  background: #030f43;
+  padding: 8px 0 0;
+  text-align: center;
+  margin-bottom: 11px;
+}
+
+#sponsorstrip a,
+#sponsorstrip a:link,
+#sponsorstrip a:visited,
+#sponsorstrip a:hover,
+#sponsorstrip a:active {
+  display: inline-block;
+  padding: 0 2px;
+  margin: 0;
+  border: none;
+}
+
+#sponsorstrip>div {
+  padding-bottom: 6px;
+}
+
+
+/* ======================================== */
 /*  SECONDARY CONTENT                       */
 /* ======================================== */
 
