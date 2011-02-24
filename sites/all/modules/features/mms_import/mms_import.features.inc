@@ -30,6 +30,49 @@ function mms_import_imagecache_default_presets() {
         ),
       ),
     ),
+    'u21_fotos_large' => array(
+      'presetname' => 'u21_fotos_large',
+      'actions' => array(
+        '0' => array(
+          'weight' => '0',
+          'module' => 'imagecache',
+          'action' => 'imagecache_scale',
+          'data' => array(
+            'width' => '1024',
+            'height' => '768',
+            'upscale' => 0,
+          ),
+        ),
+      ),
+    ),
+    'u21_fotos_profile' => array(
+      'presetname' => 'u21_fotos_profile',
+      'actions' => array(
+        '0' => array(
+          'weight' => '0',
+          'module' => 'imagecache',
+          'action' => 'imagecache_scale_and_crop',
+          'data' => array(
+            'width' => '100',
+            'height' => '100',
+          ),
+        ),
+      ),
+    ),
+    'u21_fotos_square' => array(
+      'presetname' => 'u21_fotos_square',
+      'actions' => array(
+        '0' => array(
+          'weight' => '0',
+          'module' => 'imagecache',
+          'action' => 'imagecache_scale_and_crop',
+          'data' => array(
+            'width' => '69',
+            'height' => '69',
+          ),
+        ),
+      ),
+    ),
   );
   return $items;
 }

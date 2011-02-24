@@ -54,7 +54,7 @@ function mms_import_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Besked',
-      'weight' => '-4',
+      'weight' => 0,
       'description' => '',
       'type' => 'text_textfield',
       'module' => 'text',
@@ -113,22 +113,21 @@ function mms_import_content_default_fields() {
       'default_image' => NULL,
       'use_default_image' => 0,
       'label' => 'Foto',
-      'weight' => '-3',
+      'weight' => '-2',
       'description' => '',
       'type' => 'imagefield_widget',
       'module' => 'imagefield',
     ),
   );
 
-  // Exported field: field_slug_ref
-  $fields['photo-field_slug_ref'] = array(
-    'field_name' => 'field_slug_ref',
+  // Exported field: field_related_profiles
+  $fields['photo-field_related_profiles'] = array(
+    'field_name' => 'field_related_profiles',
     'type_name' => 'photo',
     'display_settings' => array(
-      'weight' => '5',
-      'parent' => '',
       'label' => array(
-        'format' => 'hidden',
+        'format' => 'above',
+        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -150,37 +149,44 @@ function mms_import_content_default_fields() {
     'widget_active' => '1',
     'type' => 'nodereference',
     'required' => '0',
-    'multiple' => '0',
+    'multiple' => '1',
     'module' => 'nodereference',
     'active' => '1',
     'referenceable_types' => array(
-      'region' => 'region',
-      'subsite' => 'subsite',
+      'profile' => 'profile',
       'event' => 0,
+      'blogs' => 0,
+      'feed_news' => 0,
       'photo' => 0,
-      'kampagne' => 0,
+      'feed_imported' => 0,
+      'imported_mms' => 0,
+      'articles' => 0,
       'newsletter' => 0,
       'panel' => 0,
-      'profile' => 0,
+      'global_campaigns' => 0,
+      'region' => 0,
+      'kampagne' => 0,
+      'spotbox' => 0,
       'static_page' => 0,
-      'articles' => 0,
-      'blogs' => 0,
+      'subsite' => 0,
+      'webform' => 0,
     ),
     'advanced_view' => '--',
     'advanced_view_args' => '',
     'widget' => array(
       'autocomplete_match' => 'contains',
-      'size' => 60,
+      'size' => '60',
       'default_value' => array(
         '0' => array(
-          'nid' => '',
+          'nid' => NULL,
+          '_error_element' => 'default_value_widget][field_related_profiles][0][nid][nid',
         ),
       ),
       'default_value_php' => NULL,
-      'label' => 'Tilknytning',
-      'weight' => '6',
+      'label' => 'Relaterede spillerprofiler',
+      'weight' => '10',
       'description' => '',
-      'type' => 'nodereference_select',
+      'type' => 'nodereference_autocomplete',
       'module' => 'nodereference',
     ),
   );
@@ -229,7 +235,7 @@ function mms_import_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Brugerfoto',
-      'weight' => '-2',
+      'weight' => '1',
       'description' => '',
       'type' => 'optionwidgets_buttons',
       'module' => 'optionwidgets',
@@ -241,7 +247,7 @@ function mms_import_content_default_fields() {
   t('Besked');
   t('Brugerfoto');
   t('Foto');
-  t('Tilknytning');
+  t('Relaterede spillerprofiler');
 
   return $fields;
 }
