@@ -1849,7 +1849,7 @@ function profiles_content_type_views_default_views() {
       'speed' => '400',
       'start_paused' => 0,
       'fixed_height' => '1',
-      'random' => '0',
+      'random' => '1',
       'pause' => '1',
       'pause_on_click' => '0',
       'pause_when_hidden' => 0,
