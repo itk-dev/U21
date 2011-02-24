@@ -38,7 +38,7 @@ table img {
 }
 
 /* ======================================== */
-/*  MESSAGES                                */
+/* !MESSAGES                                */
 /* ======================================== */
 
 div.messages {
@@ -67,7 +67,7 @@ div.messages ul {
 
 
 /* ======================================== */
-/*  HEADER                                  */
+/* !HEADER                                  */
 /* ======================================== */
 
 #header {
@@ -78,7 +78,7 @@ div.messages ul {
 }
 
 
-/* ----- / Branding elementer ----- */
+/* !----- / Branding elementer ----- */
 
 #site-logo {
   float: left;
@@ -99,7 +99,7 @@ div.messages ul {
 
 
 /* ======================================== */
-/*  CONTENT                                 */
+/* !CONTENT                                 */
 /* ======================================== */
 
 #content {
@@ -134,7 +134,7 @@ div.messages ul {
   padding-bottom: 20px;
 }
 
-/* ----- / Region header ----- */
+/* !----- / Region header ----- */
 #region-title-menu {
   padding: 0 8px;
 }
@@ -150,7 +150,7 @@ div.messages ul {
 }
 
 
-/* ----- / Teaser + date ----- */
+/* !----- / Teaser + date ----- */
 .page-node .panel-col-left .field-teaser-value {
   font-size: 20px;
   line-height: 25px;
@@ -195,7 +195,7 @@ div.messages ul {
 }
 
 
-/* ----- / Content formatting ----- */
+/* !----- / Content formatting ----- */
 .view-static-pages .field-content-value,
 #main-content .node-webform {
  padding: 0 8px; 
@@ -216,7 +216,7 @@ div.messages ul {
   height: auto;
 }
 
-/* ----- / Title image ----- */
+/* !----- / Title image ----- */
 .field-titleimage-imceimage-path,
 .title-image {
   padding: 7px;
@@ -253,7 +253,7 @@ div.messages ul {
 }
 
 /* ======================================== */
-/*  WEBFORMS                                */
+/* !WEBFORMS                                */
 /* ======================================== */
 
 .node-webform .meta {
@@ -333,7 +333,7 @@ div.messages ul {
 }
 
 /* ======================================== */
-/*  SIDEBAR                                 */
+/* !SIDEBAR                                 */
 /* ======================================== */
 
 .pane-page-content,
@@ -394,7 +394,7 @@ div.messages ul {
 
 
 /* ======================================== */
-/*  TOP NEWS                                */
+/* !TOP NEWS                                */
 /* ======================================== */
 
 .top-slideshow {
@@ -471,7 +471,7 @@ div.messages ul {
   height: 330px !important;
 }
 
-/* ----- / Next/Prev controls ----- */
+/* !----- / Next/Prev controls ----- */
 .top-slideshow .views-slideshow-controls-bottom {
   position: absolute;
   bottom: 0;
@@ -522,7 +522,7 @@ div.messages ul {
   margin: -1px;
 }
 
-/* ----- / Pager ----- */
+/* !----- / Pager ----- */
 
 .top-slideshow .views_slideshow_singleframe_pager {
   padding: 8px 16px 2px;
@@ -541,7 +541,7 @@ div.messages ul {
   background: url(../images/button-pager-active.png) left top no-repeat;
 }
 
-/* ----- / Read more link ----- */
+/* !----- / Read more link ----- */
 .top-slideshow .view-footer {
   float: right;
   position: absolute;
@@ -557,7 +557,7 @@ div.messages ul {
 }
 
 /* ======================================== */
-/*  NEWS / EVENTS LIST                      */
+/* !NEWS / EVENTS LIST                      */
 /* ======================================== */
 
 .list-news-list .views-list>li,
@@ -616,13 +616,35 @@ div.messages ul {
   float: left;
 } 
 
-/* ----- / External calendar link ----- */
+/* !----- / External calendar link ----- */
 .pane-region-calendar-link {
   padding: 8px;
 }
 
 /* ======================================== */
-/*  REGIONAL CAMPAIGNS                      */
+/* !PHOTO GALLERIES                         */
+/* ======================================== */
+
+.grid-6 .u21foto-list .foto {
+  display: inline-block;
+  border: 4px solid #FFFFFF;
+  display: inline-block;
+  margin: 0 6px 6px -4px;  
+}
+
+.grid-6 .u21foto-list .foto:hover {
+  border-color: #18396C;
+}
+
+.grid-6 .u21foto-tag-list {
+  padding: 0 0 0 8px;
+
+}
+
+
+
+/* ======================================== */
+/* !REGIONAL CAMPAIGNS                      */
 /* ======================================== */
 
 .pane-regional-campaign a:link,
@@ -654,7 +676,7 @@ div.messages ul {
 
 
 /* ======================================== */
-/*  PAGER                                   */
+/* !PAGER                                   */
 /* ======================================== */
 
 .pager {
@@ -665,7 +687,7 @@ div.messages ul {
 }
 
 /* ======================================== */
-/*  FEED ICON                               */
+/* !FEED ICON                               */
 /* ======================================== */
 
 div.feed-icon {
@@ -676,7 +698,7 @@ div.feed-icon {
 
 
 /* ======================================== */
-/*  BUTTONS                                 */
+/* !BUTTONS                                 */
 /* ======================================== */
 
 .button-pill {
@@ -727,7 +749,7 @@ div.feed-icon {
 }
 
 /* ======================================== */
-/*  SPONSORSTRIP                            */
+/* !SPONSORSTRIP                            */
 /* ======================================== */
 
 #sponsorstrip {
@@ -754,7 +776,7 @@ div.feed-icon {
 
 
 /* ======================================== */
-/*  SECONDARY CONTENT                       */
+/* !SECONDARY CONTENT                       */
 /* ======================================== */
 
 #secondary-content-inner>div {
@@ -768,7 +790,7 @@ div.feed-icon {
 
 
 /* ======================================== */
-/*  Footer                                  */
+/* !Footer                                  */
 /* ======================================== */
 
 #footer, #footer-inner, #footer-regions {
@@ -818,7 +840,7 @@ body.context-editing a.context-block {
 
 
 /* ======================================== */
-/*  Profile Overviews                       */
+/* !Profile Overviews                       */
 /* ======================================== */
 
 /* ----- / Profile Player Overview ----- */
@@ -965,7 +987,7 @@ body.context-editing a.context-block {
 
    Kandidater til oprydning */
 
-/* Indhold fra spotbox stylesheetet */
+/* !Indhold fra spotbox stylesheetet */
 .sms-updates{background:#0f1141 url(../images/banner-620x170-lighter.jpg) left top no-repeat;display:block;height:118px;padding:16px;}.sms-updates h2{color:#fff;font-size:26px;height:26px;line-height:1;margin-top:8px;padding-bottom:16px;}.sms-updates .subscribe{color:#fff;float:left;font-size:26px;line-height:1;width:40%;}.sms-updates .sms-message,.sms-updates .sms-number{color:#fea92f;font-weight:700;}.sms-updates .notice{color:#fff;font-size:13px;padding:0 0 0 50%;}.pane-region-banner{padding-bottom:16px;}
 
 #secondary-content .block-block-content,
@@ -1004,7 +1026,7 @@ body.context-editing a.context-block {
 
 #secondary-content .block-block img{display:block;margin:0 -8px;}#secondary-content .block-views li{background:url(../images/back-list-top.png) center 2px no-repeat;padding-bottom:8px;padding-top:8px;}#secondary-content .block-views li.first{background:transparent;padding-top:0;}#region-middle h2,#region-bottom h2{display:none;}
 
-/* ----- / Spotbox style designs ----- */
+/* !----- / Spotbox style designs ----- */
 .panel-col-right .pane-events-panel-pane-8 {
   background:transparent;
   margin:0 0 20px;
@@ -1052,7 +1074,7 @@ a.imagecache-spotbox-titleimage:visited {
   margin-bottom: 8px;
 }
 
-/* ----- / Content spotboxes ----- */
+/* !----- / Content spotboxes ----- */
 .panel-col-right div[class*=pane-nodespotbox-] {
   background: transparent;
   margin-top: 0;
@@ -1082,7 +1104,7 @@ a.imagecache-spotbox-titleimage:visited {
 }
 
 
-/* ----- / Profile spotboxes ----- */
+/* !----- / Profile spotboxes ----- */
 
 #views_slideshow_singleframe_teaser_section_profile-block_2,
 .block-nodespotbox div.spotbox {
@@ -1122,7 +1144,7 @@ h2.spotbox a:visited {
 }
 
 
-/* ------ / Countdown spotbox ----- */
+/* !------ / Countdown spotbox ----- */
 .block-countdown {
   margin: 10px;
   padding: 16px;
@@ -1142,7 +1164,7 @@ h2.spotbox a:visited {
 }
 
 
-/* ------ / Views ------ */
+/* !------ / Views ------ */
 
 .views-list {
   list-style: none;
@@ -1155,7 +1177,7 @@ h2.spotbox a:visited {
 }
 
 
-/* ----- / Campaigns ----- */
+/* !----- / Campaigns ----- */
 .campaign-type-ii .random-regional-campaign {
   float: left;
   width: 300px;
@@ -1178,7 +1200,7 @@ h2.spotbox a:visited {
 }
 
 /* ======================================== */
-/*  CONTEXT INLINE EDITOR                   */
+/* !CONTEXT INLINE EDITOR                   */
 /* ======================================== */
 
 /* Hide context inline editor for select regions in the theme - menus included */
