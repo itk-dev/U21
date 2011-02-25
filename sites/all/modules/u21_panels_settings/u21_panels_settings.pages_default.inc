@@ -68,7 +68,6 @@ function u21_panels_settings_default_page_manager_handlers() {
     ),
   );
   $display = new panels_display;
-  $display->api_version = 1;
   $display->layout = 'twocol_8_4';
   $display->layout_settings = array();
   $display->panel_settings = array(
@@ -83,7 +82,6 @@ function u21_panels_settings_default_page_manager_handlers() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-1';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
@@ -111,7 +109,6 @@ function u21_panels_settings_default_page_manager_handlers() {
     $display->content['new-1'] = $pane;
     $display->panels['left'][0] = 'new-1';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-2';
     $pane->panel = 'left';
     $pane->type = 'block';
@@ -135,8 +132,33 @@ function u21_panels_settings_default_page_manager_handlers() {
     $display->content['new-2'] = $pane;
     $display->panels['left'][1] = 'new-2';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-3';
+    $pane->panel = 'left';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'photo_view-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'use_pager' => 0,
+      'pager_id' => '',
+      'items_per_page' => '0',
+      'context' => array(
+        0 => 'relationship_term_from_node_1',
+      ),
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
+    $display->content['new-3'] = $pane;
+    $display->panels['left'][2] = 'new-3';
+    $pane = new stdClass;
+    $pane->pid = 'new-4';
     $pane->panel = 'right';
     $pane->type = 'block';
     $pane->subtype = 'block-15';
@@ -153,11 +175,10 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-3'] = $pane;
-    $display->panels['right'][0] = 'new-3';
+    $display->content['new-4'] = $pane;
+    $display->panels['right'][0] = 'new-4';
     $pane = new stdClass;
-    $pane->api_version = 1;
-    $pane->pid = 'new-4';
+    $pane->pid = 'new-5';
     $pane->panel = 'right';
     $pane->type = 'maps';
     $pane->subtype = 'maps';
@@ -178,11 +199,10 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
-    $display->content['new-4'] = $pane;
-    $display->panels['right'][1] = 'new-4';
+    $display->content['new-5'] = $pane;
+    $display->panels['right'][1] = 'new-5';
     $pane = new stdClass;
-    $pane->api_version = 1;
-    $pane->pid = 'new-5';
+    $pane->pid = 'new-6';
     $pane->panel = 'right';
     $pane->type = 'page_content';
     $pane->subtype = 'page_links';
@@ -200,11 +220,10 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 2;
-    $display->content['new-5'] = $pane;
-    $display->panels['right'][2] = 'new-5';
+    $display->content['new-6'] = $pane;
+    $display->panels['right'][2] = 'new-6';
     $pane = new stdClass;
-    $pane->api_version = 1;
-    $pane->pid = 'new-6';
+    $pane->pid = 'new-7';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'News-panel_pane_4';
@@ -235,8 +254,8 @@ function u21_panels_settings_default_page_manager_handlers() {
     );
     $pane->extras = array();
     $pane->position = 3;
-    $display->content['new-6'] = $pane;
-    $display->panels['right'][3] = 'new-6';
+    $display->content['new-7'] = $pane;
+    $display->panels['right'][3] = 'new-7';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -305,7 +324,6 @@ function u21_panels_settings_default_page_manager_handlers() {
     ),
   );
   $display = new panels_display;
-  $display->api_version = 1;
   $display->layout = 'twocol_8_4_stacked';
   $display->layout_settings = array();
   $display->panel_settings = array(
@@ -321,7 +339,6 @@ function u21_panels_settings_default_page_manager_handlers() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-1';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
@@ -349,7 +366,6 @@ function u21_panels_settings_default_page_manager_handlers() {
     $display->content['new-1'] = $pane;
     $display->panels['left'][0] = 'new-1';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-2';
     $pane->panel = 'left';
     $pane->type = 'region';
@@ -371,8 +387,33 @@ function u21_panels_settings_default_page_manager_handlers() {
     $display->content['new-2'] = $pane;
     $display->panels['left'][1] = 'new-2';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-3';
+    $pane->panel = 'left';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'photo_view-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'use_pager' => 0,
+      'pager_id' => '',
+      'items_per_page' => '0',
+      'context' => array(
+        0 => 'relationship_term_from_node_1',
+      ),
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
+    $display->content['new-3'] = $pane;
+    $display->panels['left'][2] = 'new-3';
+    $pane = new stdClass;
+    $pane->pid = 'new-4';
     $pane->panel = 'right';
     $pane->type = 'block';
     $pane->subtype = 'block-15';
@@ -389,11 +430,10 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-3'] = $pane;
-    $display->panels['right'][0] = 'new-3';
+    $display->content['new-4'] = $pane;
+    $display->panels['right'][0] = 'new-4';
     $pane = new stdClass;
-    $pane->api_version = 1;
-    $pane->pid = 'new-4';
+    $pane->pid = 'new-5';
     $pane->panel = 'right';
     $pane->type = 'maps';
     $pane->subtype = 'maps';
@@ -414,11 +454,10 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
-    $display->content['new-4'] = $pane;
-    $display->panels['right'][1] = 'new-4';
+    $display->content['new-5'] = $pane;
+    $display->panels['right'][1] = 'new-5';
     $pane = new stdClass;
-    $pane->api_version = 1;
-    $pane->pid = 'new-5';
+    $pane->pid = 'new-6';
     $pane->panel = 'right';
     $pane->type = 'page_content';
     $pane->subtype = 'page_links';
@@ -436,11 +475,10 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 2;
-    $display->content['new-5'] = $pane;
-    $display->panels['right'][2] = 'new-5';
+    $display->content['new-6'] = $pane;
+    $display->panels['right'][2] = 'new-6';
     $pane = new stdClass;
-    $pane->api_version = 1;
-    $pane->pid = 'new-6';
+    $pane->pid = 'new-7';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'News-panel_pane_4';
@@ -471,11 +509,10 @@ function u21_panels_settings_default_page_manager_handlers() {
     );
     $pane->extras = array();
     $pane->position = 3;
-    $display->content['new-6'] = $pane;
-    $display->panels['right'][3] = 'new-6';
+    $display->content['new-7'] = $pane;
+    $display->panels['right'][3] = 'new-7';
     $pane = new stdClass;
-    $pane->api_version = 1;
-    $pane->pid = 'new-7';
+    $pane->pid = 'new-8';
     $pane->panel = 'top';
     $pane->type = 'region';
     $pane->subtype = 'region_menu';
@@ -493,11 +530,10 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-7'] = $pane;
-    $display->panels['top'][0] = 'new-7';
+    $display->content['new-8'] = $pane;
+    $display->panels['top'][0] = 'new-8';
     $pane = new stdClass;
-    $pane->api_version = 1;
-    $pane->pid = 'new-8';
+    $pane->pid = 'new-9';
     $pane->panel = 'top';
     $pane->type = 'page_title';
     $pane->subtype = 'page_title';
@@ -517,8 +553,8 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
-    $display->content['new-8'] = $pane;
-    $display->panels['top'][1] = 'new-8';
+    $display->content['new-9'] = $pane;
+    $display->panels['top'][1] = 'new-9';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -562,7 +598,6 @@ function u21_panels_settings_default_page_manager_handlers() {
     ),
   );
   $display = new panels_display;
-  $display->api_version = 1;
   $display->layout = 'twocol_8_4_stacked';
   $display->layout_settings = array();
   $display->panel_settings = array(
@@ -578,7 +613,6 @@ function u21_panels_settings_default_page_manager_handlers() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-1';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
@@ -588,7 +622,7 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->configuration = array(
       'use_pager' => 0,
       'pager_id' => '',
-      'items_per_page' => '3',
+      'items_per_page' => '8',
       'fields_override' => array(
         'title' => 1,
         'field_titleimage_imceimage_path' => 1,
@@ -613,7 +647,6 @@ function u21_panels_settings_default_page_manager_handlers() {
     $display->content['new-1'] = $pane;
     $display->panels['left'][0] = 'new-1';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-2';
     $pane->panel = 'left';
     $pane->type = 'region';
@@ -635,7 +668,6 @@ function u21_panels_settings_default_page_manager_handlers() {
     $display->content['new-2'] = $pane;
     $display->panels['left'][1] = 'new-2';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-3';
     $pane->panel = 'left';
     $pane->type = 'campaign';
@@ -660,8 +692,27 @@ function u21_panels_settings_default_page_manager_handlers() {
     $display->content['new-3'] = $pane;
     $display->panels['left'][2] = 'new-3';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-4';
+    $pane->panel = 'right';
+    $pane->type = 'block';
+    $pane->subtype = 'nodespotbox-850';
+    $pane->shown = FALSE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-4'] = $pane;
+    $display->panels['right'][0] = 'new-4';
+    $pane = new stdClass;
+    $pane->pid = 'new-5';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'events-panel_pane_8';
@@ -681,12 +732,11 @@ function u21_panels_settings_default_page_manager_handlers() {
       'css_class' => 'spotbox',
     );
     $pane->extras = array();
-    $pane->position = 0;
-    $display->content['new-4'] = $pane;
-    $display->panels['right'][0] = 'new-4';
+    $pane->position = 1;
+    $display->content['new-5'] = $pane;
+    $display->panels['right'][1] = 'new-5';
     $pane = new stdClass;
-    $pane->api_version = 1;
-    $pane->pid = 'new-5';
+    $pane->pid = 'new-6';
     $pane->panel = 'right';
     $pane->type = 'block';
     $pane->subtype = 'block-15';
@@ -702,12 +752,11 @@ function u21_panels_settings_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 1;
-    $display->content['new-5'] = $pane;
-    $display->panels['right'][1] = 'new-5';
+    $pane->position = 2;
+    $display->content['new-6'] = $pane;
+    $display->panels['right'][2] = 'new-6';
     $pane = new stdClass;
-    $pane->api_version = 1;
-    $pane->pid = 'new-6';
+    $pane->pid = 'new-7';
     $pane->panel = 'top';
     $pane->type = 'region';
     $pane->subtype = 'region_menu';
@@ -725,10 +774,10 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-6'] = $pane;
-    $display->panels['top'][0] = 'new-6';
+    $display->content['new-7'] = $pane;
+    $display->panels['top'][0] = 'new-7';
   $display->hide_title = PANELS_TITLE_NONE;
-  $display->title_pane = 'new-6';
+  $display->title_pane = 'new-7';
   $handler->conf['display'] = $display;
   $handlers['node_view_panel_context_3'] = $handler;
 
@@ -753,6 +802,16 @@ function u21_panels_settings_default_page_manager_handlers() {
         'id' => 1,
         'identifier' => 'Related node (slug)',
         'keyword' => 'related_node',
+      ),
+      1 => array(
+        'context' => 'argument_nid_1',
+        'name' => 'term_from_node',
+        'id' => 1,
+        'identifier' => 'fotoset',
+        'keyword' => 'fotoset',
+        'relationship_settings' => array(
+          'vid' => '3',
+        ),
       ),
     ),
     'access' => array(
@@ -785,7 +844,6 @@ function u21_panels_settings_default_page_manager_handlers() {
     ),
   );
   $display = new panels_display;
-  $display->api_version = 1;
   $display->layout = 'threecol_3_6_3_stacked';
   $display->layout_settings = array();
   $display->panel_settings = array(
@@ -804,7 +862,6 @@ function u21_panels_settings_default_page_manager_handlers() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-1';
     $pane->panel = 'center';
     $pane->type = 'views_panes';
@@ -829,8 +886,33 @@ function u21_panels_settings_default_page_manager_handlers() {
     $display->content['new-1'] = $pane;
     $display->panels['center'][0] = 'new-1';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-2';
+    $pane->panel = 'center';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'photo_view-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'use_pager' => 0,
+      'pager_id' => '',
+      'items_per_page' => '0',
+      'context' => array(
+        0 => 'relationship_term_from_node_1',
+      ),
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $display->content['new-2'] = $pane;
+    $display->panels['center'][1] = 'new-2';
+    $pane = new stdClass;
+    $pane->pid = 'new-3';
     $pane->panel = 'left';
     $pane->type = 'menu_tree';
     $pane->subtype = '_active';
@@ -856,11 +938,10 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-2'] = $pane;
-    $display->panels['left'][0] = 'new-2';
+    $display->content['new-3'] = $pane;
+    $display->panels['left'][0] = 'new-3';
     $pane = new stdClass;
-    $pane->api_version = 1;
-    $pane->pid = 'new-3';
+    $pane->pid = 'new-4';
     $pane->panel = 'lower_left';
     $pane->type = 'region';
     $pane->subtype = 'region_banner';
@@ -878,11 +959,10 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-3'] = $pane;
-    $display->panels['lower_left'][0] = 'new-3';
+    $display->content['new-4'] = $pane;
+    $display->panels['lower_left'][0] = 'new-4';
     $pane = new stdClass;
-    $pane->api_version = 1;
-    $pane->pid = 'new-4';
+    $pane->pid = 'new-5';
     $pane->panel = 'right';
     $pane->type = 'block';
     $pane->subtype = 'block-15';
@@ -899,11 +979,10 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-4'] = $pane;
-    $display->panels['right'][0] = 'new-4';
+    $display->content['new-5'] = $pane;
+    $display->panels['right'][0] = 'new-5';
     $pane = new stdClass;
-    $pane->api_version = 1;
-    $pane->pid = 'new-5';
+    $pane->pid = 'new-6';
     $pane->panel = 'right';
     $pane->type = 'maps';
     $pane->subtype = 'maps';
@@ -924,11 +1003,10 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
-    $display->content['new-5'] = $pane;
-    $display->panels['right'][1] = 'new-5';
+    $display->content['new-6'] = $pane;
+    $display->panels['right'][1] = 'new-6';
     $pane = new stdClass;
-    $pane->api_version = 1;
-    $pane->pid = 'new-6';
+    $pane->pid = 'new-7';
     $pane->panel = 'right';
     $pane->type = 'page_content';
     $pane->subtype = 'sidebar_content';
@@ -946,11 +1024,10 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 2;
-    $display->content['new-6'] = $pane;
-    $display->panels['right'][2] = 'new-6';
+    $display->content['new-7'] = $pane;
+    $display->panels['right'][2] = 'new-7';
     $pane = new stdClass;
-    $pane->api_version = 1;
-    $pane->pid = 'new-7';
+    $pane->pid = 'new-8';
     $pane->panel = 'right';
     $pane->type = 'page_content';
     $pane->subtype = 'static_file_links';
@@ -968,11 +1045,10 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 3;
-    $display->content['new-7'] = $pane;
-    $display->panels['right'][3] = 'new-7';
+    $display->content['new-8'] = $pane;
+    $display->panels['right'][3] = 'new-8';
     $pane = new stdClass;
-    $pane->api_version = 1;
-    $pane->pid = 'new-8';
+    $pane->pid = 'new-9';
     $pane->panel = 'right';
     $pane->type = 'page_content';
     $pane->subtype = 'page_links';
@@ -990,11 +1066,10 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 4;
-    $display->content['new-8'] = $pane;
-    $display->panels['right'][4] = 'new-8';
+    $display->content['new-9'] = $pane;
+    $display->panels['right'][4] = 'new-9';
     $pane = new stdClass;
-    $pane->api_version = 1;
-    $pane->pid = 'new-9';
+    $pane->pid = 'new-10';
     $pane->panel = 'top';
     $pane->type = 'region';
     $pane->subtype = 'region_menu';
@@ -1012,11 +1087,10 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-9'] = $pane;
-    $display->panels['top'][0] = 'new-9';
+    $display->content['new-10'] = $pane;
+    $display->panels['top'][0] = 'new-10';
     $pane = new stdClass;
-    $pane->api_version = 1;
-    $pane->pid = 'new-10';
+    $pane->pid = 'new-11';
     $pane->panel = 'top';
     $pane->type = 'page_title';
     $pane->subtype = 'page_title';
@@ -1036,10 +1110,10 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
-    $display->content['new-10'] = $pane;
-    $display->panels['top'][1] = 'new-10';
+    $display->content['new-11'] = $pane;
+    $display->panels['top'][1] = 'new-11';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-9';
+  $display->title_pane = 'new-10';
   $handler->conf['display'] = $display;
   $handlers['node_view_panel_context_4'] = $handler;
 
@@ -1057,7 +1131,18 @@ function u21_panels_settings_default_page_manager_handlers() {
     'css_id' => '',
     'css' => '',
     'contexts' => array(),
-    'relationships' => array(),
+    'relationships' => array(
+      0 => array(
+        'context' => 'argument_nid_1',
+        'name' => 'term_from_node',
+        'id' => 1,
+        'identifier' => 'fotoset-term',
+        'keyword' => 'fotoset',
+        'relationship_settings' => array(
+          'vid' => '3',
+        ),
+      ),
+    ),
     'access' => array(
       'plugins' => array(
         0 => array(
@@ -1088,7 +1173,6 @@ function u21_panels_settings_default_page_manager_handlers() {
     ),
   );
   $display = new panels_display;
-  $display->api_version = 1;
   $display->layout = 'threecol_3_6_3_stacked';
   $display->layout_settings = array();
   $display->panel_settings = array(
@@ -1107,7 +1191,6 @@ function u21_panels_settings_default_page_manager_handlers() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-1';
     $pane->panel = 'center';
     $pane->type = 'views_panes';
@@ -1132,8 +1215,36 @@ function u21_panels_settings_default_page_manager_handlers() {
     $display->content['new-1'] = $pane;
     $display->panels['center'][0] = 'new-1';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-2';
+    $pane->panel = 'center';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'photo_view-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'use_pager' => 0,
+      'pager_id' => '',
+      'items_per_page' => '0',
+      'context' => array(
+        0 => 'relationship_term_from_node_1',
+      ),
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'u21foto-tag-list',
+    );
+    $pane->extras = array();
+    $pane->position = 1;
+    $display->content['new-2'] = $pane;
+    $display->panels['center'][1] = 'new-2';
+    $pane = new stdClass;
+    $pane->pid = 'new-3';
     $pane->panel = 'left';
     $pane->type = 'menu_tree';
     $pane->subtype = '_active';
@@ -1159,11 +1270,10 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-2'] = $pane;
-    $display->panels['left'][0] = 'new-2';
+    $display->content['new-3'] = $pane;
+    $display->panels['left'][0] = 'new-3';
     $pane = new stdClass;
-    $pane->api_version = 1;
-    $pane->pid = 'new-3';
+    $pane->pid = 'new-4';
     $pane->panel = 'lower_left';
     $pane->type = 'block';
     $pane->subtype = 'block-10';
@@ -1183,11 +1293,10 @@ function u21_panels_settings_default_page_manager_handlers() {
     );
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-3'] = $pane;
-    $display->panels['lower_left'][0] = 'new-3';
+    $display->content['new-4'] = $pane;
+    $display->panels['lower_left'][0] = 'new-4';
     $pane = new stdClass;
-    $pane->api_version = 1;
-    $pane->pid = 'new-4';
+    $pane->pid = 'new-5';
     $pane->panel = 'right';
     $pane->type = 'block';
     $pane->subtype = 'block-15';
@@ -1204,11 +1313,10 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-4'] = $pane;
-    $display->panels['right'][0] = 'new-4';
+    $display->content['new-5'] = $pane;
+    $display->panels['right'][0] = 'new-5';
     $pane = new stdClass;
-    $pane->api_version = 1;
-    $pane->pid = 'new-5';
+    $pane->pid = 'new-6';
     $pane->panel = 'right';
     $pane->type = 'maps';
     $pane->subtype = 'maps';
@@ -1229,11 +1337,10 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
-    $display->content['new-5'] = $pane;
-    $display->panels['right'][1] = 'new-5';
+    $display->content['new-6'] = $pane;
+    $display->panels['right'][1] = 'new-6';
     $pane = new stdClass;
-    $pane->api_version = 1;
-    $pane->pid = 'new-6';
+    $pane->pid = 'new-7';
     $pane->panel = 'right';
     $pane->type = 'page_content';
     $pane->subtype = 'sidebar_content';
@@ -1251,11 +1358,10 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 2;
-    $display->content['new-6'] = $pane;
-    $display->panels['right'][2] = 'new-6';
+    $display->content['new-7'] = $pane;
+    $display->panels['right'][2] = 'new-7';
     $pane = new stdClass;
-    $pane->api_version = 1;
-    $pane->pid = 'new-7';
+    $pane->pid = 'new-8';
     $pane->panel = 'right';
     $pane->type = 'page_content';
     $pane->subtype = 'static_file_links';
@@ -1273,11 +1379,10 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 3;
-    $display->content['new-7'] = $pane;
-    $display->panels['right'][3] = 'new-7';
+    $display->content['new-8'] = $pane;
+    $display->panels['right'][3] = 'new-8';
     $pane = new stdClass;
-    $pane->api_version = 1;
-    $pane->pid = 'new-8';
+    $pane->pid = 'new-9';
     $pane->panel = 'right';
     $pane->type = 'page_content';
     $pane->subtype = 'page_links';
@@ -1295,8 +1400,8 @@ function u21_panels_settings_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 4;
-    $display->content['new-8'] = $pane;
-    $display->panels['right'][4] = 'new-8';
+    $display->content['new-9'] = $pane;
+    $display->panels['right'][4] = 'new-9';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-1';
   $handler->conf['display'] = $display;
@@ -1358,7 +1463,6 @@ function u21_panels_settings_default_page_manager_handlers() {
     ),
   );
   $display = new panels_display;
-  $display->api_version = 1;
   $display->layout = 'twocol_8_4';
   $display->layout_settings = array();
   $display->panel_settings = array(
@@ -1373,7 +1477,6 @@ function u21_panels_settings_default_page_manager_handlers() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-1';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
@@ -1406,7 +1509,6 @@ function u21_panels_settings_default_page_manager_handlers() {
     $display->content['new-1'] = $pane;
     $display->panels['left'][0] = 'new-1';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-2';
     $pane->panel = 'left';
     $pane->type = 'block';
@@ -1427,7 +1529,6 @@ function u21_panels_settings_default_page_manager_handlers() {
     $display->content['new-2'] = $pane;
     $display->panels['left'][1] = 'new-2';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-3';
     $pane->panel = 'right';
     $pane->type = 'block';
@@ -1448,7 +1549,6 @@ function u21_panels_settings_default_page_manager_handlers() {
     $display->content['new-3'] = $pane;
     $display->panels['right'][0] = 'new-3';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-4';
     $pane->panel = 'right';
     $pane->type = 'maps';
@@ -1473,7 +1573,6 @@ function u21_panels_settings_default_page_manager_handlers() {
     $display->content['new-4'] = $pane;
     $display->panels['right'][1] = 'new-4';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-5';
     $pane->panel = 'right';
     $pane->type = 'events';
@@ -1498,7 +1597,6 @@ function u21_panels_settings_default_page_manager_handlers() {
     $display->content['new-5'] = $pane;
     $display->panels['right'][2] = 'new-5';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-6';
     $pane->panel = 'right';
     $pane->type = 'page_content';
@@ -1587,7 +1685,6 @@ function u21_panels_settings_default_page_manager_handlers() {
     ),
   );
   $display = new panels_display;
-  $display->api_version = 1;
   $display->layout = 'twocol_8_4_stacked';
   $display->layout_settings = array();
   $display->panel_settings = array(
@@ -1603,7 +1700,6 @@ function u21_panels_settings_default_page_manager_handlers() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-1';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
@@ -1636,7 +1732,6 @@ function u21_panels_settings_default_page_manager_handlers() {
     $display->content['new-1'] = $pane;
     $display->panels['left'][0] = 'new-1';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-2';
     $pane->panel = 'left';
     $pane->type = 'region';
@@ -1658,7 +1753,6 @@ function u21_panels_settings_default_page_manager_handlers() {
     $display->content['new-2'] = $pane;
     $display->panels['left'][1] = 'new-2';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-3';
     $pane->panel = 'right';
     $pane->type = 'block';
@@ -1679,7 +1773,6 @@ function u21_panels_settings_default_page_manager_handlers() {
     $display->content['new-3'] = $pane;
     $display->panels['right'][0] = 'new-3';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-4';
     $pane->panel = 'right';
     $pane->type = 'maps';
@@ -1704,7 +1797,6 @@ function u21_panels_settings_default_page_manager_handlers() {
     $display->content['new-4'] = $pane;
     $display->panels['right'][1] = 'new-4';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-5';
     $pane->panel = 'right';
     $pane->type = 'events';
@@ -1729,7 +1821,6 @@ function u21_panels_settings_default_page_manager_handlers() {
     $display->content['new-5'] = $pane;
     $display->panels['right'][2] = 'new-5';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-6';
     $pane->panel = 'right';
     $pane->type = 'page_content';
@@ -1751,7 +1842,6 @@ function u21_panels_settings_default_page_manager_handlers() {
     $display->content['new-6'] = $pane;
     $display->panels['right'][3] = 'new-6';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-7';
     $pane->panel = 'top';
     $pane->type = 'region';
@@ -1773,7 +1863,6 @@ function u21_panels_settings_default_page_manager_handlers() {
     $display->content['new-7'] = $pane;
     $display->panels['top'][0] = 'new-7';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-8';
     $pane->panel = 'top';
     $pane->type = 'page_title';
@@ -1801,12 +1890,219 @@ function u21_panels_settings_default_page_manager_handlers() {
   $handler->conf['display'] = $display;
   $handlers['node_view_panel_context_7'] = $handler;
 
+  $handler = new stdClass;
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
+  $handler->name = 'node_view_panel_context_9';
+  $handler->task = 'node_view';
+  $handler->subtask = '';
+  $handler->handler = 'panel_context';
+  $handler->weight = 13;
+  $handler->conf = array(
+    'title' => 'Global webforms',
+    'no_blocks' => 0,
+    'pipeline' => 'standard',
+    'css_id' => '',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(),
+    'access' => array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'node_type',
+          'settings' => array(
+            'type' => array(
+              'webform' => 'webform',
+            ),
+          ),
+          'context' => 'argument_nid_1',
+          'not' => FALSE,
+        ),
+      ),
+      'logic' => 'and',
+    ),
+  );
+  $display = new panels_display;
+  $display->layout = 'threecol_3_6_3_stacked';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'top' => NULL,
+      'left' => NULL,
+      'center' => NULL,
+      'right' => NULL,
+      'lower_left' => NULL,
+      'lower_right' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = '';
+  $display->content = array();
+  $display->panels = array();
+    $pane = new stdClass;
+    $pane->pid = 'new-1';
+    $pane->panel = 'center';
+    $pane->type = 'node_content';
+    $pane->subtype = 'node_content';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'links' => 0,
+      'page' => 1,
+      'no_extras' => 0,
+      'override_title' => 1,
+      'override_title_text' => '',
+      'identifier' => '',
+      'link' => 0,
+      'leave_node_title' => 0,
+      'build_mode' => 'full',
+      'context' => 'argument_nid_1',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-1'] = $pane;
+    $display->panels['center'][0] = 'new-1';
+    $pane = new stdClass;
+    $pane->pid = 'new-2';
+    $pane->panel = 'left';
+    $pane->type = 'menu_tree';
+    $pane->subtype = '_active';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'menu_name' => '_active',
+      'parent_mlid' => 0,
+      'title_link' => 0,
+      'admin_title' => 'Static menu 2+',
+      'level' => '2',
+      'follow' => 0,
+      'depth' => 0,
+      'expanded' => 1,
+      'sort' => 0,
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-2'] = $pane;
+    $display->panels['left'][0] = 'new-2';
+    $pane = new stdClass;
+    $pane->pid = 'new-3';
+    $pane->panel = 'right';
+    $pane->type = 'block';
+    $pane->subtype = 'block-15';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-3'] = $pane;
+    $display->panels['right'][0] = 'new-3';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = '0';
+  $handler->conf['display'] = $display;
+  $handlers['node_view_panel_context_9'] = $handler;
+
   return $handlers;
 }
 /**
  * Implementation of hook_default_page_manager_pages()
  */
 function u21_panels_settings_default_page_manager_pages() {
+  $page = new stdClass;
+  $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
+  $page->api_version = 1;
+  $page->name = 'buy_tickets';
+  $page->task = 'page';
+  $page->admin_title = 'UK Match Schedule';
+  $page->admin_description = '';
+  $page->path = 'buy-tickets';
+  $page->access = array();
+  $page->menu = array();
+  $page->arguments = array();
+  $page->conf = array();
+  $page->default_handlers = array();
+  $handler = new stdClass;
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
+  $handler->name = 'page_buy_tickets_panel_context';
+  $handler->task = 'page';
+  $handler->subtask = 'buy_tickets';
+  $handler->handler = 'panel_context';
+  $handler->weight = 0;
+  $handler->conf = array(
+    'title' => 'Panel',
+    'no_blocks' => 0,
+    'pipeline' => 'standard',
+    'css_id' => '',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(),
+  );
+  $display = new panels_display;
+  $display->layout = 'onecol';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'middle' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = 'UEFA European Under-21 Championship Match Schedule';
+  $display->content = array();
+  $display->panels = array();
+    $pane = new stdClass;
+    $pane->pid = 'new-1';
+    $pane->panel = 'middle';
+    $pane->type = 'node';
+    $pane->subtype = 'node';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'nid' => '2625',
+      'links' => 0,
+      'leave_node_title' => 0,
+      'identifier' => '',
+      'build_mode' => 'full',
+      'link_node_title' => 0,
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-1'] = $pane;
+    $display->panels['middle'][0] = 'new-1';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = 'new-1';
+  $handler->conf['display'] = $display;
+  $page->default_handlers[$handler->name] = $handler;
+  $pages['buy_tickets'] = $page;
+
   $page = new stdClass;
   $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
   $page->api_version = 1;
@@ -1847,7 +2143,6 @@ function u21_panels_settings_default_page_manager_pages() {
     'relationships' => array(),
   );
   $display = new panels_display;
-  $display->api_version = 1;
   $display->layout = 'twocol_8_4';
   $display->layout_settings = array();
   $display->panel_settings = array(
@@ -1862,7 +2157,6 @@ function u21_panels_settings_default_page_manager_pages() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-1';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
@@ -1900,7 +2194,6 @@ function u21_panels_settings_default_page_manager_pages() {
     $display->content['new-1'] = $pane;
     $display->panels['left'][0] = 'new-1';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-2';
     $pane->panel = 'left';
     $pane->type = 'block';
@@ -1924,7 +2217,6 @@ function u21_panels_settings_default_page_manager_pages() {
     $display->content['new-2'] = $pane;
     $display->panels['left'][1] = 'new-2';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-3';
     $pane->panel = 'right';
     $pane->type = 'slug_links';
@@ -1948,7 +2240,6 @@ function u21_panels_settings_default_page_manager_pages() {
     $display->content['new-3'] = $pane;
     $display->panels['right'][0] = 'new-3';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-4';
     $pane->panel = 'right';
     $pane->type = 'taxonomy';
@@ -2063,7 +2354,6 @@ function u21_panels_settings_default_page_manager_pages() {
     ),
   );
   $display = new panels_display;
-  $display->api_version = 1;
   $display->layout = 'twocol_8_4_stacked';
   $display->layout_settings = array();
   $display->panel_settings = array(
@@ -2079,7 +2369,6 @@ function u21_panels_settings_default_page_manager_pages() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-1';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
@@ -2119,7 +2408,6 @@ function u21_panels_settings_default_page_manager_pages() {
     $display->content['new-1'] = $pane;
     $display->panels['left'][0] = 'new-1';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-2';
     $pane->panel = 'left';
     $pane->type = 'region';
@@ -2141,7 +2429,6 @@ function u21_panels_settings_default_page_manager_pages() {
     $display->content['new-2'] = $pane;
     $display->panels['left'][1] = 'new-2';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-3';
     $pane->panel = 'right';
     $pane->type = 'slug_links';
@@ -2165,7 +2452,6 @@ function u21_panels_settings_default_page_manager_pages() {
     $display->content['new-3'] = $pane;
     $display->panels['right'][0] = 'new-3';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-4';
     $pane->panel = 'right';
     $pane->type = 'taxonomy';
@@ -2205,7 +2491,6 @@ function u21_panels_settings_default_page_manager_pages() {
     $display->content['new-4'] = $pane;
     $display->panels['right'][1] = 'new-4';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-5';
     $pane->panel = 'top';
     $pane->type = 'region';
@@ -2287,7 +2572,6 @@ function u21_panels_settings_default_page_manager_pages() {
     ),
   );
   $display = new panels_display;
-  $display->api_version = 1;
   $display->layout = 'twocol_8_4_stacked';
   $display->layout_settings = array();
   $display->panel_settings = array(
@@ -2303,7 +2587,6 @@ function u21_panels_settings_default_page_manager_pages() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-1';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
@@ -2341,7 +2624,6 @@ function u21_panels_settings_default_page_manager_pages() {
     $display->content['new-1'] = $pane;
     $display->panels['left'][0] = 'new-1';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-2';
     $pane->panel = 'left';
     $pane->type = 'region';
@@ -2363,7 +2645,6 @@ function u21_panels_settings_default_page_manager_pages() {
     $display->content['new-2'] = $pane;
     $display->panels['left'][1] = 'new-2';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-3';
     $pane->panel = 'left';
     $pane->type = 'region';
@@ -2385,7 +2666,6 @@ function u21_panels_settings_default_page_manager_pages() {
     $display->content['new-3'] = $pane;
     $display->panels['left'][2] = 'new-3';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-4';
     $pane->panel = 'right';
     $pane->type = 'block';
@@ -2406,7 +2686,6 @@ function u21_panels_settings_default_page_manager_pages() {
     $display->content['new-4'] = $pane;
     $display->panels['right'][0] = 'new-4';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-5';
     $pane->panel = 'right';
     $pane->type = 'slug_links';
@@ -2430,7 +2709,6 @@ function u21_panels_settings_default_page_manager_pages() {
     $display->content['new-5'] = $pane;
     $display->panels['right'][1] = 'new-5';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-6';
     $pane->panel = 'right';
     $pane->type = 'taxonomy';
@@ -2470,7 +2748,6 @@ function u21_panels_settings_default_page_manager_pages() {
     $display->content['new-6'] = $pane;
     $display->panels['right'][2] = 'new-6';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-7';
     $pane->panel = 'top';
     $pane->type = 'region';
@@ -2527,7 +2804,6 @@ function u21_panels_settings_default_page_manager_pages() {
     'relationships' => array(),
   );
   $display = new panels_display;
-  $display->api_version = 1;
   $display->layout = 'twocol_8_4_stacked';
   $display->layout_settings = array();
   $display->panel_settings = array(
@@ -2543,7 +2819,6 @@ function u21_panels_settings_default_page_manager_pages() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-1';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
@@ -2578,7 +2853,6 @@ function u21_panels_settings_default_page_manager_pages() {
     $display->content['new-1'] = $pane;
     $display->panels['left'][0] = 'new-1';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-2';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
@@ -2613,7 +2887,6 @@ function u21_panels_settings_default_page_manager_pages() {
     $display->content['new-2'] = $pane;
     $display->panels['left'][1] = 'new-2';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-3';
     $pane->panel = 'left';
     $pane->type = 'block';
@@ -2637,7 +2910,6 @@ function u21_panels_settings_default_page_manager_pages() {
     $display->content['new-3'] = $pane;
     $display->panels['left'][2] = 'new-3';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-4';
     $pane->panel = 'right';
     $pane->type = 'block';
@@ -2658,7 +2930,6 @@ function u21_panels_settings_default_page_manager_pages() {
     $display->content['new-4'] = $pane;
     $display->panels['right'][0] = 'new-4';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-5';
     $pane->panel = 'right';
     $pane->type = 'slug_links';
@@ -2682,7 +2953,6 @@ function u21_panels_settings_default_page_manager_pages() {
     $display->content['new-5'] = $pane;
     $display->panels['right'][1] = 'new-5';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-6';
     $pane->panel = 'right';
     $pane->type = 'taxonomy';
@@ -2761,7 +3031,6 @@ function u21_panels_settings_default_page_manager_pages() {
     ),
   );
   $display = new panels_display;
-  $display->api_version = 1;
   $display->layout = 'twocol_8_4';
   $display->layout_settings = array();
   $display->panel_settings = array(
@@ -2776,7 +3045,6 @@ function u21_panels_settings_default_page_manager_pages() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-1';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
@@ -2810,7 +3078,6 @@ function u21_panels_settings_default_page_manager_pages() {
     $display->content['new-1'] = $pane;
     $display->panels['left'][0] = 'new-1';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-2';
     $pane->panel = 'left';
     $pane->type = 'block';
@@ -2834,12 +3101,11 @@ function u21_panels_settings_default_page_manager_pages() {
     $display->content['new-2'] = $pane;
     $display->panels['left'][1] = 'new-2';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-3';
     $pane->panel = 'left';
     $pane->type = 'block';
     $pane->subtype = 'block-17';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array(
       'override_title' => 0,
@@ -2855,8 +3121,116 @@ function u21_panels_settings_default_page_manager_pages() {
     $display->content['new-3'] = $pane;
     $display->panels['left'][2] = 'new-3';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-4';
+    $pane->panel = 'left';
+    $pane->type = 'block';
+    $pane->subtype = 'block-22';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 3;
+    $display->content['new-4'] = $pane;
+    $display->panels['left'][3] = 'new-4';
+    $pane = new stdClass;
+    $pane->pid = 'new-5';
+    $pane->panel = 'left';
+    $pane->type = 'block';
+    $pane->subtype = 'block-21';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'grid-8 alpha omega',
+    );
+    $pane->extras = array();
+    $pane->position = 4;
+    $display->content['new-5'] = $pane;
+    $display->panels['left'][4] = 'new-5';
+    $pane = new stdClass;
+    $pane->pid = 'new-6';
+    $pane->panel = 'left';
+    $pane->type = 'block';
+    $pane->subtype = 'block-19';
+    $pane->shown = FALSE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'grid-4 alpha linked-image',
+    );
+    $pane->extras = array();
+    $pane->position = 5;
+    $display->content['new-6'] = $pane;
+    $display->panels['left'][5] = 'new-6';
+    $pane = new stdClass;
+    $pane->pid = 'new-7';
+    $pane->panel = 'left';
+    $pane->type = 'block';
+    $pane->subtype = 'block-20';
+    $pane->shown = FALSE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'grid-4 omega linked-image',
+    );
+    $pane->extras = array();
+    $pane->position = 6;
+    $display->content['new-7'] = $pane;
+    $display->panels['left'][6] = 'new-7';
+    $pane = new stdClass;
+    $pane->pid = 'new-8';
+    $pane->panel = 'right';
+    $pane->type = 'block';
+    $pane->subtype = 'nodespotbox-850';
+    $pane->shown = FALSE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-8'] = $pane;
+    $display->panels['right'][0] = 'new-8';
+    $pane = new stdClass;
+    $pane->pid = 'new-9';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'events-panel_pane_1';
@@ -2883,12 +3257,11 @@ function u21_panels_settings_default_page_manager_pages() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 0;
-    $display->content['new-4'] = $pane;
-    $display->panels['right'][0] = 'new-4';
+    $pane->position = 1;
+    $display->content['new-9'] = $pane;
+    $display->panels['right'][1] = 'new-9';
     $pane = new stdClass;
-    $pane->api_version = 1;
-    $pane->pid = 'new-5';
+    $pane->pid = 'new-10';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'events-panel_pane_8';
@@ -2904,12 +3277,11 @@ function u21_panels_settings_default_page_manager_pages() {
       'css_class' => 'spotbox',
     );
     $pane->extras = array();
-    $pane->position = 1;
-    $display->content['new-5'] = $pane;
-    $display->panels['right'][1] = 'new-5';
+    $pane->position = 2;
+    $display->content['new-10'] = $pane;
+    $display->panels['right'][2] = 'new-10';
     $pane = new stdClass;
-    $pane->api_version = 1;
-    $pane->pid = 'new-6';
+    $pane->pid = 'new-11';
     $pane->panel = 'right';
     $pane->type = 'block';
     $pane->subtype = 'block-15';
@@ -2925,9 +3297,9 @@ function u21_panels_settings_default_page_manager_pages() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 2;
-    $display->content['new-6'] = $pane;
-    $display->panels['right'][2] = 'new-6';
+    $pane->position = 3;
+    $display->content['new-11'] = $pane;
+    $display->panels['right'][3] = 'new-11';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -2978,7 +3350,6 @@ function u21_panels_settings_default_page_manager_pages() {
     ),
   );
   $display = new panels_display;
-  $display->api_version = 1;
   $display->layout = 'twocol_8_4_stacked';
   $display->layout_settings = array();
   $display->panel_settings = array(
@@ -2994,7 +3365,6 @@ function u21_panels_settings_default_page_manager_pages() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-1';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
@@ -3041,7 +3411,6 @@ return TRUE;',
     $display->content['new-1'] = $pane;
     $display->panels['left'][0] = 'new-1';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-2';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
@@ -3075,7 +3444,6 @@ return TRUE;',
     $display->content['new-2'] = $pane;
     $display->panels['left'][1] = 'new-2';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-3';
     $pane->panel = 'left';
     $pane->type = 'block';
@@ -3099,7 +3467,6 @@ return TRUE;',
     $display->content['new-3'] = $pane;
     $display->panels['left'][2] = 'new-3';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-4';
     $pane->panel = 'right';
     $pane->type = 'block';
@@ -3120,7 +3487,6 @@ return TRUE;',
     $display->content['new-4'] = $pane;
     $display->panels['right'][0] = 'new-4';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-5';
     $pane->panel = 'right';
     $pane->type = 'type_links';
@@ -3154,7 +3520,6 @@ return TRUE;',
     $display->content['new-5'] = $pane;
     $display->panels['right'][1] = 'new-5';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-6';
     $pane->panel = 'right';
     $pane->type = 'slug_links';
@@ -3178,7 +3543,6 @@ return TRUE;',
     $display->content['new-6'] = $pane;
     $display->panels['right'][2] = 'new-6';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-7';
     $pane->panel = 'right';
     $pane->type = 'taxonomy';
@@ -3217,7 +3581,6 @@ return TRUE;',
     $display->content['new-7'] = $pane;
     $display->panels['right'][3] = 'new-7';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-8';
     $pane->panel = 'right';
     $pane->type = 'cm_signup';
@@ -3318,7 +3681,6 @@ return TRUE;',
     ),
   );
   $display = new panels_display;
-  $display->api_version = 1;
   $display->layout = 'twocol_8_4_stacked';
   $display->layout_settings = array();
   $display->panel_settings = array(
@@ -3334,7 +3696,6 @@ return TRUE;',
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-1';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
@@ -3371,7 +3732,6 @@ return TRUE;',
     $display->content['new-1'] = $pane;
     $display->panels['left'][0] = 'new-1';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-2';
     $pane->panel = 'left';
     $pane->type = 'region';
@@ -3393,7 +3753,6 @@ return TRUE;',
     $display->content['new-2'] = $pane;
     $display->panels['left'][1] = 'new-2';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-3';
     $pane->panel = 'right';
     $pane->type = 'slug_links';
@@ -3417,7 +3776,6 @@ return TRUE;',
     $display->content['new-3'] = $pane;
     $display->panels['right'][0] = 'new-3';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-4';
     $pane->panel = 'right';
     $pane->type = 'taxonomy';
@@ -3456,7 +3814,6 @@ return TRUE;',
     $display->content['new-4'] = $pane;
     $display->panels['right'][1] = 'new-4';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-5';
     $pane->panel = 'right';
     $pane->type = 'cm_signup';
@@ -3480,7 +3837,6 @@ return TRUE;',
     $display->content['new-5'] = $pane;
     $display->panels['right'][2] = 'new-5';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-6';
     $pane->panel = 'top';
     $pane->type = 'region';
@@ -3569,7 +3925,6 @@ return TRUE;',
     ),
   );
   $display = new panels_display;
-  $display->api_version = 1;
   $display->layout = 'twocol_8_4_stacked';
   $display->layout_settings = array();
   $display->panel_settings = array();
@@ -3578,7 +3933,6 @@ return TRUE;',
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-1';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
@@ -3608,7 +3962,6 @@ return TRUE;',
     $display->content['new-1'] = $pane;
     $display->panels['left'][0] = 'new-1';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-2';
     $pane->panel = 'right';
     $pane->type = 'slug_links';
@@ -3630,7 +3983,6 @@ return TRUE;',
     $display->content['new-2'] = $pane;
     $display->panels['right'][0] = 'new-2';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-3';
     $pane->panel = 'right';
     $pane->type = 'type_links';
@@ -3662,7 +4014,6 @@ return TRUE;',
     $display->content['new-3'] = $pane;
     $display->panels['right'][1] = 'new-3';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-4';
     $pane->panel = 'right';
     $pane->type = 'taxonomy';
@@ -3698,7 +4049,6 @@ return TRUE;',
     $display->content['new-4'] = $pane;
     $display->panels['right'][2] = 'new-4';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-5';
     $pane->panel = 'right';
     $pane->type = 'cm_signup';
@@ -3791,7 +4141,6 @@ return FALSE;',
     ),
   );
   $display = new panels_display;
-  $display->api_version = 1;
   $display->layout = 'twocol_8_4_stacked';
   $display->layout_settings = array();
   $display->panel_settings = array(
@@ -3807,7 +4156,6 @@ return FALSE;',
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-1';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
@@ -3840,7 +4188,6 @@ return FALSE;',
     $display->content['new-1'] = $pane;
     $display->panels['left'][0] = 'new-1';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-2';
     $pane->panel = 'left';
     $pane->type = 'block';
@@ -3864,7 +4211,6 @@ return FALSE;',
     $display->content['new-2'] = $pane;
     $display->panels['left'][1] = 'new-2';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-3';
     $pane->panel = 'right';
     $pane->type = 'type_links';
@@ -3898,7 +4244,6 @@ return FALSE;',
     $display->content['new-3'] = $pane;
     $display->panels['right'][0] = 'new-3';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-4';
     $pane->panel = 'right';
     $pane->type = 'slug_links';
@@ -3922,7 +4267,6 @@ return FALSE;',
     $display->content['new-4'] = $pane;
     $display->panels['right'][1] = 'new-4';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-5';
     $pane->panel = 'right';
     $pane->type = 'taxonomy';
@@ -3961,7 +4305,6 @@ return FALSE;',
     $display->content['new-5'] = $pane;
     $display->panels['right'][2] = 'new-5';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-6';
     $pane->panel = 'right';
     $pane->type = 'cm_signup';
@@ -4005,7 +4348,6 @@ return FALSE;',
     'relationships' => array(),
   );
   $display = new panels_display;
-  $display->api_version = 1;
   $display->layout = 'twocol_8_4_stacked';
   $display->layout_settings = array();
   $display->panel_settings = array();
@@ -4014,7 +4356,6 @@ return FALSE;',
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-1';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
@@ -4046,7 +4387,6 @@ return FALSE;',
     $display->content['new-1'] = $pane;
     $display->panels['left'][0] = 'new-1';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-2';
     $pane->panel = 'right';
     $pane->type = 'slug_links';
@@ -4068,7 +4408,6 @@ return FALSE;',
     $display->content['new-2'] = $pane;
     $display->panels['right'][0] = 'new-2';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-3';
     $pane->panel = 'right';
     $pane->type = 'type_links';
@@ -4100,7 +4439,6 @@ return FALSE;',
     $display->content['new-3'] = $pane;
     $display->panels['right'][1] = 'new-3';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-4';
     $pane->panel = 'right';
     $pane->type = 'taxonomy';
@@ -4136,7 +4474,6 @@ return FALSE;',
     $display->content['new-4'] = $pane;
     $display->panels['right'][2] = 'new-4';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-5';
     $pane->panel = 'right';
     $pane->type = 'cm_signup';
@@ -4218,7 +4555,6 @@ return FALSE;',
     ),
   );
   $display = new panels_display;
-  $display->api_version = 1;
   $display->layout = 'twocol_8_4_stacked';
   $display->layout_settings = array();
   $display->panel_settings = array(
@@ -4234,7 +4570,6 @@ return FALSE;',
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-1';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
@@ -4271,7 +4606,6 @@ return FALSE;',
     $display->content['new-1'] = $pane;
     $display->panels['left'][0] = 'new-1';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-2';
     $pane->panel = 'left';
     $pane->type = 'region';
@@ -4293,7 +4627,6 @@ return FALSE;',
     $display->content['new-2'] = $pane;
     $display->panels['left'][1] = 'new-2';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-3';
     $pane->panel = 'right';
     $pane->type = 'block';
@@ -4314,7 +4647,6 @@ return FALSE;',
     $display->content['new-3'] = $pane;
     $display->panels['right'][0] = 'new-3';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-4';
     $pane->panel = 'right';
     $pane->type = 'slug_links';
@@ -4338,7 +4670,6 @@ return FALSE;',
     $display->content['new-4'] = $pane;
     $display->panels['right'][1] = 'new-4';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-5';
     $pane->panel = 'right';
     $pane->type = 'taxonomy';
@@ -4378,7 +4709,6 @@ return FALSE;',
     $display->content['new-5'] = $pane;
     $display->panels['right'][2] = 'new-5';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-6';
     $pane->panel = 'right';
     $pane->type = 'cm_signup';
@@ -4402,7 +4732,6 @@ return FALSE;',
     $display->content['new-6'] = $pane;
     $display->panels['right'][3] = 'new-6';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-7';
     $pane->panel = 'top';
     $pane->type = 'region';
@@ -4428,6 +4757,81 @@ return FALSE;',
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
   $pages['region_news'] = $page;
+
+  $page = new stdClass;
+  $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
+  $page->api_version = 1;
+  $page->name = 'schedule';
+  $page->task = 'page';
+  $page->admin_title = 'Kampe og billetsalg';
+  $page->admin_description = '';
+  $page->path = 'kampe-og-billetter';
+  $page->access = array();
+  $page->menu = array();
+  $page->arguments = array();
+  $page->conf = array();
+  $page->default_handlers = array();
+  $handler = new stdClass;
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
+  $handler->name = 'page_schedule_panel_context';
+  $handler->task = 'page';
+  $handler->subtask = 'schedule';
+  $handler->handler = 'panel_context';
+  $handler->weight = 0;
+  $handler->conf = array(
+    'title' => 'Panel',
+    'no_blocks' => 0,
+    'pipeline' => 'standard',
+    'css_id' => 'schedule-dk',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(),
+  );
+  $display = new panels_display;
+  $display->layout = 'onecol';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'middle' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = 'UEFA European Under-21 Championship Match Schedule';
+  $display->content = array();
+  $display->panels = array();
+    $pane = new stdClass;
+    $pane->pid = 'new-1';
+    $pane->panel = 'middle';
+    $pane->type = 'node';
+    $pane->subtype = 'node';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'nid' => '2555',
+      'links' => 0,
+      'leave_node_title' => 0,
+      'identifier' => '',
+      'build_mode' => 'full',
+      'link_node_title' => 0,
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-1'] = $pane;
+    $display->panels['middle'][0] = 'new-1';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = '0';
+  $handler->conf['display'] = $display;
+  $page->default_handlers[$handler->name] = $handler;
+  $pages['schedule'] = $page;
 
  return $pages;
 }
