@@ -107,3 +107,12 @@ function mms_import_node_info() {
   );
   return $items;
 }
+
+/**
+ * Implementation of hook_views_api().
+ */
+function mms_import_views_api() {
+  return array(
+    'api' => '2',
+  );
+}
