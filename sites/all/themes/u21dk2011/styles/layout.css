@@ -1222,8 +1222,12 @@ h2.spotbox a:visited {
   margin: 4px 0 0;
 }
 
-/* PROFILE */
+/* !----- / Page ----- */
+.page-node .fb-social-like-widget {
+  margin: 15px 0 0;
+}
 
+/* !----- / Profiles ----- */
 .node-type-profile .fb-social-like-widget {
   right: -236px;
   position: absolute;
