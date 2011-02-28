@@ -1221,3 +1221,11 @@ h2.spotbox a:visited {
   float: right;
   margin: 4px 0 0;
 }
+
+/* PROFILE */
+
+.node-type-profile .fb-social-like-widget {
+  right: -236px;
+  position: absolute;
+  top: 58px;
+}
