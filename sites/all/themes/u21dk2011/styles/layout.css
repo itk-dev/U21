@@ -1212,3 +1212,12 @@ h2.spotbox a:visited {
 #region-main-menu .context-block-region {
   display: none !important;
 }
+
+/* ======================================== */
+/* !FACEBOOK                                */
+/* ======================================== */
+
+.view-content .fb-social-button {
+  float: right;
+  margin: 4px 0 0;
+}
