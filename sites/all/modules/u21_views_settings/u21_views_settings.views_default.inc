@@ -369,6 +369,44 @@ function u21_views_settings_views_default_views() {
       'field' => 'field_teaser_value',
       'relationship' => 'none',
     ),
+    'fb_social_like' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => FALSE,
+        'text' => '',
+        'make_link' => FALSE,
+        'path' => '',
+        'alt' => '',
+        'link_class' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'trim' => FALSE,
+        'max_length' => '',
+        'word_boundary' => TRUE,
+        'ellipsis' => TRUE,
+        'strip_tags' => FALSE,
+        'html' => FALSE,
+      ),
+      'empty' => '',
+      'hide_empty' => FALSE,
+      'empty_zero' => FALSE,
+      'link_to_node' => FALSE,
+      'fb_social_like_layout_style' => 'button_count',
+      'fb_social_like_show_faces' => 0,
+      'fb_social_like_width' => '',
+      'fb_social_like_verb' => 'like',
+      'fb_social_like_font' => 'arial',
+      'fb_social_like_color' => 'dark',
+      'exclude' => '',
+      'id' => 'fb_social_like',
+      'table' => 'fb_social_like',
+      'field' => 'fb_social_like',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
     'created' => array(
       'label' => '',
       'alter' => array(
@@ -570,6 +608,10 @@ function u21_views_settings_views_default_views() {
       'field_teaser_value' => array(
         'element_type' => 'div',
         'class' => 'field-teaser-value',
+      ),
+      'fb_social_like' => array(
+        'element_type' => 'div',
+        'class' => 'fb-social-like',
       ),
       'created' => array(
         'element_type' => 'div',
@@ -1784,6 +1826,44 @@ function u21_views_settings_views_default_views() {
       'id' => 'field_teaser_value',
       'table' => 'node_data_field_teaser',
       'field' => 'field_teaser_value',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+    'fb_social_like' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => FALSE,
+        'text' => '',
+        'make_link' => FALSE,
+        'path' => '',
+        'alt' => '',
+        'link_class' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'trim' => FALSE,
+        'max_length' => '',
+        'word_boundary' => TRUE,
+        'ellipsis' => TRUE,
+        'strip_tags' => FALSE,
+        'html' => FALSE,
+      ),
+      'empty' => '',
+      'hide_empty' => FALSE,
+      'empty_zero' => FALSE,
+      'link_to_node' => FALSE,
+      'fb_social_like_layout_style' => 'button_count',
+      'fb_social_like_show_faces' => 0,
+      'fb_social_like_width' => '',
+      'fb_social_like_verb' => 'like',
+      'fb_social_like_font' => 'arial',
+      'fb_social_like_color' => 'dark',
+      'exclude' => '',
+      'id' => 'fb_social_like',
+      'table' => 'fb_social_like',
+      'field' => 'fb_social_like',
       'override' => array(
         'button' => 'Use default',
       ),
@@ -4221,8 +4301,6 @@ function u21_views_settings_views_default_views() {
       'operator' => 'in',
       'value' => array(
         'articles' => 'articles',
-        'blogs' => 'blogs',
-        'photo' => 'photo',
       ),
       'group' => '0',
       'exposed' => FALSE,
@@ -5783,9 +5861,7 @@ function u21_views_settings_views_default_views() {
       'operator' => 'in',
       'value' => array(
         'articles' => 'articles',
-        'blogs' => 'blogs',
         'event' => 'event',
-        'photo' => 'photo',
       ),
       'group' => '0',
       'exposed' => FALSE,
@@ -6968,5 +7044,3 @@ function u21_views_settings_views_default_views() {
 
   return $views;
 }
-
-
