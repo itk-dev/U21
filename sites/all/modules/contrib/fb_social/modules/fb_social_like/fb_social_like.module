@@ -1,5 +1,4 @@
 <?php
-// $Id: fb_social_like.module,v 1.4.2.21 2010/11/21 05:21:33 ferdi Exp $
 
 /**
  * Implementation of hook init

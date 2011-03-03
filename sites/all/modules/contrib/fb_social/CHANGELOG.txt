@@ -1,4 +1,10 @@
-$Id: CHANGELOG.txt,v 1.1.2.10 2010/11/21 05:04:43 ferdi Exp $
+
+fb_social 6.x-1.0-BETA5, 2010-11-xx
+
+#995394 by AlexisWilke : Should comment block be hidden when node is unpublished
+#988086 : fb social views error
+changed "pageid" to "page url" (href) for likebox ; please update your settings accordingly
+#941842 Likebox Color Scheme
 
 fb_social 6.x-1.0-BETA5, 2010-11-xx
  

@@ -1,5 +1,4 @@
 <?php
-//$Id: fb_social_likebox.module,v 1.1.2.4 2010/10/04 23:54:40 ferdi Exp $
 
 /**
  * Implementation of hook_menu
@@ -56,8 +55,10 @@ function fb_social_likebox_theme() {
 
 function theme_fb_social_likebox_block_likebox_view(){
   $attrs = array(
-      'profile_id' => variable_get('fb_social_likebox_pageid', ''), 
+      'href' => variable_get('fb_social_likebox_href', ''), 
       'width' => variable_get('fb_social_likebox_width', 292), 
+      'height' => variable_get('fb_social_likebox_height', 63), 
+      'colorscheme' => variable_get('fb_social_likebox_color', 'light'), 
       'connections' => variable_get('fb_social_likebox_connections', 10),
       'stream' => variable_get('fb_social_likebox_stream', 1) ? "true" : "false",
       'header' => variable_get('fb_social_likebox_header', 1) ? "true" : "false",
