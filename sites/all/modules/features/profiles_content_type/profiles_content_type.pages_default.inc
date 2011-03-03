@@ -69,6 +69,30 @@ function profiles_content_type_default_page_manager_handlers() {
     $pane = new stdClass;
     $pane->pid = 'new-1';
     $pane->panel = 'center';
+    $pane->type = 'node_links';
+    $pane->subtype = 'node_links';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => '',
+      'teaser' => 0,
+      'identifier' => '',
+      'link' => 0,
+      'context' => 'argument_nid_1',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-1'] = $pane;
+    $display->panels['center'][0] = 'new-1';
+    $pane = new stdClass;
+    $pane->pid = 'new-2';
+    $pane->panel = 'center';
     $pane->type = 'views_panes';
     $pane->subtype = 'profile-panel_pane_5';
     $pane->shown = TRUE;
@@ -89,11 +113,11 @@ function profiles_content_type_default_page_manager_handlers() {
       'css_class' => '',
     );
     $pane->extras = array();
-    $pane->position = 0;
-    $display->content['new-1'] = $pane;
-    $display->panels['center'][0] = 'new-1';
+    $pane->position = 1;
+    $display->content['new-2'] = $pane;
+    $display->panels['center'][1] = 'new-2';
     $pane = new stdClass;
-    $pane->pid = 'new-2';
+    $pane->pid = 'new-3';
     $pane->panel = 'center';
     $pane->type = 'views_panes';
     $pane->subtype = 'profile-panel_pane_6';
@@ -113,35 +137,6 @@ function profiles_content_type_default_page_manager_handlers() {
     $pane->css = array(
       'css_id' => 'profile-tab-extra',
       'css_class' => '',
-    );
-    $pane->extras = array();
-    $pane->position = 1;
-    $display->content['new-2'] = $pane;
-    $display->panels['center'][1] = 'new-2';
-    $pane = new stdClass;
-    $pane->pid = 'new-3';
-    $pane->panel = 'center';
-    $pane->type = 'views_panes';
-    $pane->subtype = 'photo_view-panel_pane_2';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'use_pager' => 0,
-      'pager_id' => '',
-      'items_per_page' => '0',
-      'override_title' => 1,
-      'override_title_text' => 'Fotos',
-      'context' => array(
-        0 => 'argument_nid_1',
-      ),
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array(
-      'css_id' => 'profile-tab-photos',
-      'css_class' => 'u21foto-list',
     );
     $pane->extras = array();
     $pane->position = 2;
