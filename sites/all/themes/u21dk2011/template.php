@@ -92,6 +92,7 @@ function u21dk2011_breadcrumb($breadcrumb) {
     if (!empty($title)) {
       $breadcrumb[]=$title;
     }
+    
     return '<div class="breadcrumb">'. implode(' > ', $breadcrumb) .'</div>';
   }
 } 
