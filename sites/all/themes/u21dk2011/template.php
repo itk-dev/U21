@@ -104,7 +104,7 @@ function u21dk2011_breadcrumb($breadcrumb) {
     // Get the request uri
     $uri = split('/', $_SERVER['REQUEST_URI']);
 
-    // Fix profiles (/profile/*)
+    // Fix profiles (/profile)
     if ($uri[1] == 'profile') {
       $tmp = $breadcrumb;
       $breadcrumb = array();
@@ -113,6 +113,12 @@ function u21dk2011_breadcrumb($breadcrumb) {
       $breadcrumb[] = $title;
     }
 
+    // Fix /news and /events
+    $type = $uri[count($uri)-1];
+    if ($type == 'news' || $type == 'events') {
+      $breadcrumb[] = t(ucfirst($type));
+    }
+    
     // Fix all under regions (/location)
     if ($uri[1] == 'location' && $uri[2] != strtolower($title)) {
       $tmp = $breadcrumb;
