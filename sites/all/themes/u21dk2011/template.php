@@ -90,13 +90,31 @@ function u21dk2011_breadcrumb($breadcrumb) {
 
   if (!empty($breadcrumb)) {
     $title = drupal_get_title();
+    // Fix 2x title in breadcrumb
+    if (!empty($title) && strstr($breadcrumb[count($breadcrumb)-1], $title)) {
+      // Remove title
+      array_pop($breadcrumb);
+    }
+
+    // Add title, but not as link
     if (!empty($title)) {
       $breadcrumb[] = $title;
     }
 
-    // Add region name, if in the uri.
+    // Get the request uri
     $uri = split('/', $_SERVER['REQUEST_URI']);
-    if ($uri[1] == 'location' && $uri[2] != strtolower(drupal_get_title())) {
+
+    // Fix profiles (/profile/*)
+    if ($uri[1] == 'profile') {
+      $tmp = $breadcrumb;
+      $breadcrumb = array();
+      $breadcrumb[] = array_shift($tmp);
+      $breadcrumb[] = l(t('Profiles'), 'profile/jonas-l-ssl');
+      $breadcrumb[] = $title;
+    }
+
+    // Fix all under regions (/location)
+    if ($uri[1] == 'location' && $uri[2] != strtolower($title)) {
       $tmp = $breadcrumb;
       $breadcrumb = array();
       $breadcrumb[] = array_shift($tmp);
@@ -105,6 +123,17 @@ function u21dk2011_breadcrumb($breadcrumb) {
       else {
         $breadcrumb[] = ucfirst($uri[2]);
       }
+
+      // Fix events and news
+      if (strstr($tmp[0], 'href="/news"')) {
+        $breadcrumb[] = l(t('News'), $uri[1] . '/' . $uri[2] . '/news');
+        array_shift($tmp);
+      }
+      if (strstr($tmp[0], 'href="/events"')) {
+        $breadcrumb[] = l(t('Events'), $uri[1] . '/' . $uri[2] . '/events');
+        array_shift($tmp);
+      }
+
       // Put the rest back.
       while (!empty($tmp)) {
         $breadcrumb[] = array_shift($tmp);
