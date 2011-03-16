@@ -87,10 +87,24 @@ function u21dk2011_preprocess_page(&$vars, $hook) {
  * Add current page to breadcrumb
  */
 function u21dk2011_breadcrumb($breadcrumb) {
+
+  // Add region name, if in the uri.
+  $uri = split('/', $_SERVER['REQUEST_URI']);
+  if ($uri[1] == 'location') {
+    $tmp = $breadcrumb;
+    $breadcrumb = array();
+    $breadcrumb[0] = array_shift($tmp);
+    $breadcrumb[1] = l(ucfirst($uri[2]), $uri[1] . '/' . $uri[2]);
+    // Put the rest back.
+    while (!empty($tmp)) {
+      $breadcrumb[] = array_shift($tmp);
+    }
+  }
+  
   if (!empty($breadcrumb)) {
     $title = drupal_get_title();
     if (!empty($title)) {
-      $breadcrumb[]=$title;
+      $breadcrumb[] = $title;
     }
     
     return '<div class="breadcrumb">'. implode(' > ', $breadcrumb) .'</div>';
