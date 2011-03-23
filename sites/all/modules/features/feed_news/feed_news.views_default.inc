@@ -43,7 +43,7 @@ function feed_news_views_default_views() {
       'empty_zero' => 0,
       'link_to_node' => 0,
       'label_type' => 'none',
-      'format' => 'default',
+      'format' => 'plain',
       'multiple' => array(
         'group' => 0,
         'multiple_number' => '',
