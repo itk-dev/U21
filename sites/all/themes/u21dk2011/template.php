@@ -87,14 +87,68 @@ function u21dk2011_preprocess_page(&$vars, $hook) {
  * Add current page to breadcrumb
  */
 function u21dk2011_breadcrumb($breadcrumb) {
+
   if (!empty($breadcrumb)) {
     $title = drupal_get_title();
-    if (!empty($title)) {
-      $breadcrumb[]=$title;
+    // Fix 2x title in breadcrumb
+    if (!empty($title) && strstr($breadcrumb[count($breadcrumb)-1], $title)) {
+      // Remove title
+      array_pop($breadcrumb);
     }
-    return '<div class="breadcrumb">'. implode(' > ', $breadcrumb) .'</div>';
+
+    // Add title, but not as link
+    if (!empty($title)) {
+      $breadcrumb[] = $title;
+    }
+
+    // Get the request uri
+    $uri = split('/', $_SERVER['REQUEST_URI']);
+
+    // Fix profiles (/profile)
+    if ($uri[1] == 'profile') {
+      $tmp = $breadcrumb;
+      $breadcrumb = array();
+      $breadcrumb[] = array_shift($tmp);
+      $breadcrumb[] = l(t('Profiles'), 'profile/jonas-l-ssl');
+      $breadcrumb[] = $title;
+    }
+
+    // Fix /news and /events
+    $type = $uri[count($uri)-1];
+    if ($type == 'news' || $type == 'events') {
+      $breadcrumb[] = t(ucfirst($type));
+    }
+    
+    // Fix all under regions (/location)
+    if ($uri[1] == 'location' && $uri[2] != strtolower($title)) {
+      $tmp = $breadcrumb;
+      $breadcrumb = array();
+      $breadcrumb[] = array_shift($tmp);
+      if (count($tmp))
+        $breadcrumb[] = l(ucfirst($uri[2]), $uri[1] . '/' . $uri[2]);
+      else {
+        $breadcrumb[] = ucfirst($uri[2]);
+      }
+
+      // Fix events and news
+      if (strstr($tmp[0], 'href="/news"')) {
+        $breadcrumb[] = l(t('News'), $uri[1] . '/' . $uri[2] . '/news');
+        array_shift($tmp);
+      }
+      if (strstr($tmp[0], 'href="/events"')) {
+        $breadcrumb[] = l(t('Events'), $uri[1] . '/' . $uri[2] . '/events');
+        array_shift($tmp);
+      }
+
+      // Put the rest back.
+      while (!empty($tmp)) {
+        $breadcrumb[] = array_shift($tmp);
+      }
+    }
+
+    return '<div class="breadcrumb">' . implode(' > ', $breadcrumb) . '</div>';
   }
-} 
+}
 
 /**
  * Generate the HTML output for a menu item and submenu.

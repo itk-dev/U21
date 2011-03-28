@@ -35,8 +35,6 @@
         <?php endif; ?>        
     </div><!-- /header -->
 
-    <?php /* print $breadcrumb; */ ?>
-
     <?php if ($region_top): ?>
       <div id="region-top" class="region container-12">
       <?php print $region_top; ?>
@@ -44,6 +42,7 @@
     <?php endif; ?>
        
     <div id="content" class="container-12 clear">
+      <?php print $breadcrumb; ?>
       <?php if ($title && !$is_region): ?>
         <h1 class="title grid-12 al" id="page-title"><?php print $title; ?> </h1>
       <?php endif; ?>
