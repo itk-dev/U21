@@ -115,8 +115,11 @@ function u21dk2011_breadcrumb($breadcrumb) {
 
     // Fix /news and /events
     $type = $uri[count($uri)-1];
-    if ($type == 'news' || $type == 'events') {
-      $breadcrumb[] = t(ucfirst($type));
+    if ($type == 'news') {
+      $breadcrumb[] = 'Nyheder';
+    }
+    if ($type == 'events') {
+      $breadcrumb[] = 'Arrangementer';
     }
     
     // Fix all under regions (/location)
@@ -132,11 +135,11 @@ function u21dk2011_breadcrumb($breadcrumb) {
 
       // Fix events and news
       if (strstr($tmp[0], 'href="/news"')) {
-        $breadcrumb[] = l(t('News'), $uri[1] . '/' . $uri[2] . '/news');
+        $breadcrumb[] = l('Nyheder', $uri[1] . '/' . $uri[2] . '/news');
         array_shift($tmp);
       }
       if (strstr($tmp[0], 'href="/events"')) {
-        $breadcrumb[] = l(t('Events'), $uri[1] . '/' . $uri[2] . '/events');
+        $breadcrumb[] = l('Arrangementer', $uri[1] . '/' . $uri[2] . '/events');
         array_shift($tmp);
       }
 
