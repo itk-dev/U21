@@ -358,7 +358,8 @@ div.messages ul {
 }
 
 /* Remove styling from banner ads */
-.panel-col-right .pane-block-15 {
+.panel-col-right .pane-block-15,
+.panel-col-right .pane-block-29 {
   padding-top: 0;
   background: none;
 }
