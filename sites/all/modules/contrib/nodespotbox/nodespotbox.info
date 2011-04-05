@@ -1,0 +1,13 @@
+name = Nodespotbox
+description = Create spotboxes (blocks) from nodes using views to display content.
+package = Content
+core = 6.x
+version = 1.1
+dependencies[] = views
+
+; Information added by drupal.org packaging script on 2011-03-24
+version = "6.x-1.2"
+core = "6.x"
+project = "nodespotbox"
+datestamp = "1300981568"
+

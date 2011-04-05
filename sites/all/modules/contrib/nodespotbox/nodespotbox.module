@@ -1,0 +1,442 @@
+<?php
+
+/**
+ * @file
+ * Creates spotboxes based on node types and display them using views.
+ * 
+ */
+
+/**
+ * Utility function to determined if spotbox is enabled for a given node type.
+ *
+ * @param string/node object $type
+ * @return boolean/array
+ */
+function nodespotbox_is_enabled($type) {
+  if (is_object($type)) {
+    $type = $type->type;
+  }
+  $nodespotbox = variable_get('nodespotbox_'. $type, FALSE);
+  if ($nodespotbox && $nodespotbox['enable']) {
+    return $nodespotbox;
+  }
+  return FALSE;
+}
+
+/**
+ * Add node spotbox settings to the edit content type form.
+ *
+ * @param <type> $form
+ * @param <type> $form_state
+ */
+function nodespotbox_form_node_type_form_alter(&$form, &$form_state) {
+  // Load view information.
+  $views = _nodespotbox_load_all_views_info();
+
+  // Set default view names.
+  $view_names = array('none' => 'None');
+  $display_names = array('none' => 'None');
+
+  // Add found views information.
+  foreach (array_keys($views) as $name) {
+    $view_names[$name] = t($name);
+    // Create array with all possible choices, to prevent form security problems
+    // on submit. The displays not need when selecting a given view, is filter
+    // out in javascript.
+    $display_names = array_merge($display_names, $views[$name]['displays']);
+  }
+
+  // Build js settings array, with views information.
+  $settings = array(
+    'nodespotbox' => $views,
+  );
+  
+  // Load default configuration values
+  $default = variable_get('nodespotbox_'. $form['#node_type']->type, array());
+
+  // Build settings form.
+  $form['nodespotbox'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Node spotbox settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+    '#tree' => TRUE,
+  );
+
+  // Enable node spotbox for the current content type.
+  $form['nodespotbox']['enable'] = array(
+    '#type' => 'radios',
+    '#title' => t('Enable spotbox'),
+    '#default_value' => isset($default['enable']) ? $default['enable'] : 0,
+    '#options' => array(0 => t('Disabled'), 1 => t('Enabled')),
+    '#description' => t('Should these nodes be made available as spotboxes?'),
+  );
+
+  // Should the default behaviour be to create spotboxes for all nodes of this
+  // content type.
+  $form['nodespotbox']['always'] = array(
+    '#type' => 'radios',
+    '#title' => t('Always create spotbox'),
+    '#default_value' => isset($default['always']) ? $default['always'] : 1,
+    '#options' => array(1 => t('Enabled'), 0 => t('Disabled')),
+    '#description' => t('Should these nodes always be made available as spotboxes? If not users can select if a node of this type should be a spotbox.'),
+  );
+
+  // Views settings fieldset
+  $form['nodespotbox']['views'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Views settings'),
+    '#attributes' => array('id' => 'nodespotbox-view-settings'),
+    '#collapsible' => FALSE,
+    '#collapsed' => FALSE,
+  );
+
+  // Select view name.
+  $form['nodespotbox']['views']['name'] = array(
+    '#type' => 'select',
+    '#title' => t('View name'),
+    '#description' => t('The name of the view used to display these nodes?'),
+    '#options' => $view_names,
+    '#attributes' => array('class' => 'nodespotbox-views-names'),
+    '#default_value' => isset($default['views']['name']) ? $default['views']['name'] : 'none',
+  );
+
+  // Select view display id from the view selected above.
+  $form['nodespotbox']['views']['display_id'] = array(
+    '#type' => 'select',
+    '#title' => t('View display id'),
+    '#description' => t('The view aboves display. If selected that users can choose, this will be the default display.'),
+    '#options' => $display_names,
+    '#attributes' => array('class' => 'nodespotbox-views-displays'),
+    '#default_value' => isset($default['views']['display_id']) ? $default['views']['display_id'] : 'none',
+  );
+
+  // Should users be able to select which display id to use.
+  $form['nodespotbox']['views']['user'] = array(
+    '#type' => 'radios',
+    '#title' => t('Should user select display ID ?'),
+    '#description' => t('Determind if the user should be able to select the view display.'),
+    '#options' => array('1' => t('Yes'), '0' => t('No')),
+    '#default_value' => isset($default['views']['user']) ? $default['views']['user'] : 0,
+  );
+  
+  // Add submit function to save nested configuration options
+  $form['#submit'][] = 'nodespotbox_form_node_type_form_submit';
+  $form['#validate'][] = 'nodespotbox_form_node_type_form_validate';
+
+  // Add front-end js support
+  drupal_add_js($settings, 'setting');
+  drupal_add_js(drupal_get_path('module', 'nodespotbox') . '/js/nodespotbox.js');
+}
+
+/**
+ * Validation of node spotbox settings on edit content type form.
+ *
+ * @param <type> $form
+ * @param <type> $form_state
+ */
+function nodespotbox_form_node_type_form_validate($form, &$form_state) {
+  if ($form_state['values']['nodespotbox']['enable']) {
+    if ($form_state['values']['nodespotbox']['views']['name'] == 'none') {
+      form_set_error('display_id', t('You have to select a view when node spotbox is enabled.'));
+    }
+    else {
+      if ($form_state['values']['nodespotbox']['views']['display_id'] == 'none') {
+        form_set_error('display_id', t('You have to select a view display when node spotbox is enabled.'));
+      }
+    }
+  }
+}
+
+/**
+ * Save nodespotbox settings.
+ *
+ * @param <type> $form
+ * @param <type> $form_state
+ */
+function nodespotbox_form_node_type_form_submit($form, $form_state) {
+  variable_set('nodespotbox_'.$form_state['values']['type'], $form_state['values']['nodespotbox']);
+  unset($form_state['values']['nodespotbox']);
+}
+
+/**
+ * Implementation of hook_form_alter() to change node edit/add form.
+ *
+ */
+function nodespotbox_form_alter(&$form, $form_state, $form_id) {
+  if (isset($form['type']) && isset($form['#node']) && $form['type']['#value'] .'_node_form' == $form_id) {
+    // Get the current node.
+    $node = $form['#node'];
+
+    // Check if node spotbox is enabled for the current node type.
+    $nodespotbox = nodespotbox_is_enabled($node->type);   
+    if ($nodespotbox) {
+      $form['nodespotbox'] = array(
+        '#type' => 'fieldset',
+        '#title' => t('Spotbox options'),
+        '#tree' => TRUE,
+      );
+
+      // If node spotbox always enabled, do not give the user the option to
+      // disable the spotbox.
+      if (!$nodespotbox['always']) {
+        $form['nodespotbox']['enable'] = array(
+          '#type' => 'radios',
+          '#title' => t('Enable spotbox'),
+          '#default_value' => isset($node->nodespotbox['enable']) ? $node->nodespotbox['enable'] : 0,
+          '#options' => array(0 => t('Disabled'), 1 => t('Enabled')),
+          '#description' => t('Should this node be made available as a spotbox?'),
+        );
+      }
+
+      // View display id may be selected by the user.
+      if ($nodespotbox['views']['user']) {
+        // @TODO Users should not be able to select "None" for display
+        $form['nodespotbox']['display_id'] = array(
+          '#type' => 'select',
+          '#title' => t('View display id'),
+          '#default_value' => isset($node->nodespotbox['display_id']) ? $node->nodespotbox['display_id'] : $nodespotbox['views']['display_id'],
+          '#description' => t('The view aboves display. If selected that users can choose, this will be the default display.'),
+          '#options' =>  _nodespotbox_load_views_info($nodespotbox['views']['name']),
+        );
+      }
+    }
+  }
+}
+
+/**
+ * Implementation of hook_nodeapi().
+ */
+function nodespotbox_nodeapi(&$node, $op, $teaser, $page) {
+  // Check if the current content type supports node spotbox
+  $nodespotbox = nodespotbox_is_enabled($node);
+  if (!$nodespotbox) {
+    return;
+  }
+  
+  switch ($op) {
+    case 'load':
+      // Default values.
+      $enable = 0;
+      $display_id = FALSE;
+
+      // Load spotbox settings this node values.
+      $result = db_fetch_array(db_query('SELECT nid, view_display
+                                           FROM {nodespotbox}
+                                          WHERE nid=%d', $node->nid));
+      
+      // Check if it's optional to create spotboxes for this content type.
+      if (!$nodespotbox['always'] && $result) {
+        $enable = 1;
+      }
+
+      // Should users be able to select view display.
+      if ($nodespotbox['views']['user']) {
+        $display_id = $result['view_display'];
+      }
+
+      // Return values found.
+      return array(
+          'nodespotbox' => array(
+            'enable' => $enable,
+            'display_id' => $display_id,
+          ),
+        );
+
+    case 'insert':
+    case 'update':
+      // Save spotbox avalibility, if not set to aways provide spotbox in settings.
+      if (!$nodespotbox['always']) {
+        // Delete old settings (this may be optimized).
+        db_query('DELETE FROM {nodespotbox} WHERE nid = %d', $node->nid);
+      }
+
+      // Save view selected display id.
+      if ($nodespotbox['views']['user'] && $node->nodespotbox['enable']) {
+        db_query('INSERT INTO {nodespotbox}
+                       VALUES (%d, "%s", "%s")', $node->nid, $node->type, $node->nodespotbox['display_id']);
+      }
+
+      nodespotbox_flush_cache();
+      break;
+
+    case 'delete':
+      db_query('DELETE FROM {nodespotbox} WHERE nid=%d', $node->nid);
+      nodespotbox_flush_cache();
+      break;
+  }
+}
+
+/**
+ * Flush context cache, if available, and re-hash block information in DB.
+ *
+ */
+function nodespotbox_flush_cache() {
+  // Clear context modules cache (or it will not be available in the drop down).
+  if (function_exists('context_flush_caches')) {
+    context_flush_caches();
+  }
+
+  // Rebuild blocks provied by modules
+  _block_rehash();
+}
+
+/**
+ * Implementation of hook_block().
+ */
+function nodespotbox_block($op = 'list', $delta = 0, $edit = array()) {
+  $output = array();
+  switch ($op) {
+    case 'list':
+      // Get all node types.
+      foreach (node_get_types() as $node_type) {
+        // Load spotbox settings, if enabled for this content type.
+        $nodespotbox = nodespotbox_is_enabled($node_type);
+        if ($nodespotbox) {
+          if ($nodespotbox['always']) {
+            // As spotbox setting, says that all nodes of this type should be spotboxes.. load all.
+            $result = db_query("SELECT nid, title
+                                  FROM {node}
+                                 WHERE type = '%s'
+                                  AND (nid = tnid OR tnid = 0)", $node_type->type);
+            while ($node = db_fetch_object($result)) {
+              $output[$node->nid] = array('info' => $node->title .' (Node spotbox)');
+            }            
+          }
+          else {
+            // Load spotbox information for the ones selected by users.
+            $result = db_query("SELECT nid, title 
+                                  FROM {node} n
+                                 WHERE type = '%s'
+                                   AND nid in (SELECT nid
+                                                 FROM {nodespotbox}
+                                                WHERE type = n.type)
+                                   AND (nid = tnid OR tnid = 0)", $node_type->type);
+            while ($node = db_fetch_object($result)) {
+              $output[$node->nid] = array('info' => $node->title .' (Node spotbox)');
+            }
+          }
+        }
+      }
+      break;
+
+    case 'configure':
+      // Get spotbox settings for a given content type.
+      $node_info = db_fetch_object(db_query('SELECT title, type FROM {node} WHERE nid = %d', $delta));
+      $nodespotbox = nodespotbox_is_enabled($node_info->type);
+
+      // Get settings for the current node spotbox.
+      $display_id = db_result(db_query('SELECT view_display
+                                          FROM {nodespotbox}
+                                         WHERE nid=%d', $delta));
+
+      // Create view display settings form.
+      if ($nodespotbox['views']['user']) {
+        $form = array();
+        $form['nodespotbox'] = array(
+          '#type' => 'fieldset',
+          '#title' => t('Node spotbox settings'),
+          '#collapsible' => FALSE,
+          '#collapsed' => FALSE,
+        );
+        $form['nodespotbox']['display_id'] = array(
+          '#type' => 'select',
+          '#title' => t('View display id'),
+          '#default_value' => isset($display_id) ? $display_id : $nodespotbox['views']['display_id'],
+          '#description' => t('The view aboves display. If selected that users can choose, this will be the default display.'),
+          '#options' =>  _nodespotbox_load_views_info($nodespotbox['views']['name']),
+        );
+      }
+      return $form;
+      break;
+
+    case 'save':
+      if (isset($edit['display_id'])) {
+        // Update node spotbox settings.
+        db_query('UPDATE {nodespotbox}
+                     SET view_display=\'%s\'
+                   WHERE nid=%d', $edit['display_id'], $delta);
+      }
+      break;
+
+    case 'view':      
+      // Get the node type based on the delta (nid).
+      $node_info = db_fetch_object(db_query('SELECT title, type FROM {node} WHERE nid = %d', $delta));
+      
+      // Get spotbox settings.
+      $nodespotbox = nodespotbox_is_enabled($node_info->type);
+
+      // Load display id, if user have selected one.
+      if ($nodespotbox['views']['user']) {
+        $nodespotbox['views']['display_id'] = db_result(db_query("SELECT view_display
+                                                                    FROM {nodespotbox}
+                                                                   WHERE nid = %d", $delta));
+      }
+      
+      // Build output based on selected view.
+      $output['content'] = views_embed_view($nodespotbox['views']['name'], $nodespotbox['views']['display_id'], $delta);
+      break;
+  }
+
+  // @TODO Set drupal message, if the view used have been disabled or removed.
+
+  return $output;
+}
+
+/**
+ * Utility function to load views name and displays.
+ *
+ * @return string array
+ */
+function _nodespotbox_load_all_views_info() {
+  // Load all views.
+  $views = views_get_all_views();
+
+  // Get the information that we need from views.
+  $result = array();
+  foreach ($views as $view) {
+
+    // If disabled, don't collect information.
+    if ($view->disabled) {
+      continue;
+    }
+
+    // Add index for current view.
+    $view_info = array();
+    
+    // Find all displayes.
+    $displays = array();
+    foreach (array_keys($view->display) as $id) {
+      // Find display name.
+      $display_name = check_plain($view->display[$id]->display_title);
+      if (!isset($display_name) || $display_name == '') {
+        $display_name = $id;
+      }
+      $displays[$id] = $display_name;
+    }
+    $view_info['displays'] = $displays;
+
+    // Save the information.
+    $result[check_plain($view->name)] = $view_info;
+  }
+  return $result;
+}
+
+/**
+ * Utility function to help load a views displays based on a view name.
+ *
+ * @param string $name
+ * @return string array
+ */
+function _nodespotbox_load_views_info($name) {
+  $view = views_get_view($name);
+  $displays = array();
+  foreach (array_keys($view->display) as $id) {
+    $display_name = check_plain($view->display[$id]->display_title);
+    if (!isset($display_name) || $display_name == '') {
+      $display_name = $id;
+    }
+    $displays[$id] = $display_name;
+  }
+  return $displays;
+}
