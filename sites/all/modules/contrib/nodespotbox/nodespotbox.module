@@ -188,6 +188,13 @@ function nodespotbox_form_alter(&$form, $form_state, $form_id) {
           '#description' => t('Should this node be made available as a spotbox?'),
         );
       }
+      else {
+        // Make sure that the enabled variable gets set on the node form.
+        $form['nodespotbox']['enable'] = array(
+          '#type' => 'hidden',
+          '#default_value' => 1,
+        );
+      }
 
       // View display id may be selected by the user.
       if ($nodespotbox['views']['user']) {
@@ -246,7 +253,7 @@ function nodespotbox_nodeapi(&$node, $op, $teaser, $page) {
     case 'insert':
     case 'update':
       // Save spotbox avalibility, if not set to aways provide spotbox in settings.
-      if (!$nodespotbox['always']) {
+      if ($nodespotbox['always'] || $nodespotbox['views']['user']) {
         // Delete old settings (this may be optimized).
         db_query('DELETE FROM {nodespotbox} WHERE nid = %d', $node->nid);
       }
