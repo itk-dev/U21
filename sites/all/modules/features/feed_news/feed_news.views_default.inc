@@ -22,7 +22,7 @@ function feed_news_views_default_views() {
       'label' => '',
       'alter' => array(
         'alter_text' => 0,
-        'text' => '',
+        'text' => '<h1>[field_links_url]</h1>',
         'make_link' => 0,
         'path' => '',
         'link_class' => '',
@@ -55,14 +55,17 @@ function feed_news_views_default_views() {
       'table' => 'node_data_field_links',
       'field' => 'field_links_url',
       'relationship' => 'none',
+      'override' => array(
+        'button' => 'Override',
+      ),
     ),
     'title' => array(
       'label' => '',
       'alter' => array(
-        'alter_text' => 0,
-        'text' => '',
-        'make_link' => 1,
-        'path' => '[field_links_url]',
+        'alter_text' => 1,
+        'text' => '<a href="[field_links_url]" rel="external">[title]</a>',
+        'make_link' => 0,
+        'path' => '',
         'link_class' => '',
         'alt' => '',
         'prefix' => '',
@@ -85,6 +88,9 @@ function feed_news_views_default_views() {
       'table' => 'node',
       'field' => 'title',
       'relationship' => 'none',
+      'override' => array(
+        'button' => 'Override',
+      ),
     ),
     'created' => array(
       'label' => '',
