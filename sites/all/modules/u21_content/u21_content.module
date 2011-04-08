@@ -338,12 +338,7 @@ function u21_content_preprocess_event_details(&$variables, $hook) {
   $variables['time_end'] = date_format_date($date, 'custom', 'H:i');
 
   // Price
-  if (isset($node->field_price[0]['value']) && $node->field_price[0]['value'] > 0) {
-    $variables['price'] = $node->field_price[0]['value'] .' Kr';
-  }
-  else {
-    $variables['price'] = t('Free of charge');
-  }
+  $variables['price'] = $node->field_price_text[0]['value'];
 
   // Address
   $variables['address_name'] = $node->location['name'];
