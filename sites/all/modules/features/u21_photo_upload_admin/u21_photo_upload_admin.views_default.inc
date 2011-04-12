@@ -73,7 +73,7 @@ function u21_photo_upload_admin_views_default_views() {
       'empty_zero' => 0,
       'link_to_node' => 0,
       'label_type' => 'none',
-      'format' => 'shadowbox_gallery_field___u21_fotos_profile___original',
+      'format' => 'u21_fotos_admin_imagelink',
       'multiple' => array(
         'group' => 1,
         'multiple_number' => '',
@@ -200,6 +200,28 @@ function u21_photo_upload_admin_views_default_views() {
       'override' => array(
         'button' => 'Override',
       ),
+    ),
+    'name' => array(
+      'operator' => '=',
+      'value' => '',
+      'group' => '0',
+      'exposed' => TRUE,
+      'expose' => array(
+        'use_operator' => 0,
+        'operator' => 'name_op',
+        'identifier' => 'name',
+        'label' => 'Vis kun bestemt tag',
+        'optional' => 1,
+        'remember' => 0,
+      ),
+      'case' => 1,
+      'id' => 'name',
+      'table' => 'term_data',
+      'field' => 'name',
+      'override' => array(
+        'button' => 'Override',
+      ),
+      'relationship' => 'none',
     ),
   ));
   $handler->override_option('access', array(
@@ -341,6 +363,28 @@ function u21_photo_upload_admin_views_default_views() {
         'button' => 'Use default',
       ),
     ),
+    'name' => array(
+      'operator' => '=',
+      'value' => '',
+      'group' => '0',
+      'exposed' => TRUE,
+      'expose' => array(
+        'use_operator' => 0,
+        'operator' => 'name_op',
+        'identifier' => 'name',
+        'label' => 'Vis kun bestemt tag',
+        'optional' => 1,
+        'remember' => 0,
+      ),
+      'case' => 1,
+      'id' => 'name',
+      'table' => 'term_data',
+      'field' => 'name',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
   ));
   $handler->override_option('title', 'Rediger officielle fotos');
   $handler->override_option('style_options', array(
@@ -379,13 +423,13 @@ function u21_photo_upload_admin_views_default_views() {
     'display_result' => 1,
     'merge_single_action' => 1,
     'selected_operations' => array(
+      'views_bulk_operations_delete_node_action' => 'views_bulk_operations_delete_node_action',
       'views_bulk_operations_fields_action' => 'views_bulk_operations_fields_action',
       'views_bulk_operations_taxonomy_action' => 'views_bulk_operations_taxonomy_action',
       'node_mass_update:9c585624b9b3af0b4687d5f97f35e047' => 'node_mass_update:9c585624b9b3af0b4687d5f97f35e047',
       'node_mass_update:0ccad85c1ebe4c9ceada1aa64293b080' => 'node_mass_update:0ccad85c1ebe4c9ceada1aa64293b080',
       'node_assign_owner_action' => 0,
       'nodewords_admin_mass_update:48d00920397f9d8f23f7088c88056286' => 0,
-      'views_bulk_operations_delete_node_action' => 0,
       'node_mass_update:a27b9efabcd054685a549378b174ad11' => 0,
       'system_message_action' => 0,
       'views_bulk_operations_action' => 0,
