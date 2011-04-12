@@ -170,6 +170,35 @@ function profiles_content_type_default_page_manager_handlers() {
     $display->panels['center'][3] = 'new-4';
     $pane = new stdClass;
     $pane->pid = 'new-5';
+    $pane->panel = 'center';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'u21_photo_gallery-panel_pane_2';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'use_pager' => 1,
+      'pager_id' => '',
+      'items_per_page' => '16',
+      'context' => array(
+        0 => 'argument_nid_1',
+      ),
+      'override_title' => 1,
+      'override_title_text' => 'Photo',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => 'profile-tab-photos',
+      'css_class' => 'u21foto-list',
+    );
+    $pane->extras = array();
+    $pane->position = 4;
+    $display->content['new-5'] = $pane;
+    $display->panels['center'][4] = 'new-5';
+    $pane = new stdClass;
+    $pane->pid = 'new-6';
     $pane->panel = 'left';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
@@ -192,10 +221,10 @@ function profiles_content_type_default_page_manager_handlers() {
     );
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-5'] = $pane;
-    $display->panels['left'][0] = 'new-5';
+    $display->content['new-6'] = $pane;
+    $display->panels['left'][0] = 'new-6';
     $pane = new stdClass;
-    $pane->pid = 'new-6';
+    $pane->pid = 'new-7';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
     $pane->subtype = 'profile-panel_pane_3';
@@ -213,10 +242,10 @@ function profiles_content_type_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
-    $display->content['new-6'] = $pane;
-    $display->panels['left'][1] = 'new-6';
+    $display->content['new-7'] = $pane;
+    $display->panels['left'][1] = 'new-7';
     $pane = new stdClass;
-    $pane->pid = 'new-7';
+    $pane->pid = 'new-8';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
     $pane->subtype = 'profile-panel_pane_8';
@@ -234,10 +263,10 @@ function profiles_content_type_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 2;
-    $display->content['new-7'] = $pane;
-    $display->panels['left'][2] = 'new-7';
+    $display->content['new-8'] = $pane;
+    $display->panels['left'][2] = 'new-8';
     $pane = new stdClass;
-    $pane->pid = 'new-8';
+    $pane->pid = 'new-9';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
     $pane->subtype = 'profile-panel_pane_9';
@@ -255,10 +284,10 @@ function profiles_content_type_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 3;
-    $display->content['new-8'] = $pane;
-    $display->panels['left'][3] = 'new-8';
+    $display->content['new-9'] = $pane;
+    $display->panels['left'][3] = 'new-9';
     $pane = new stdClass;
-    $pane->pid = 'new-9';
+    $pane->pid = 'new-10';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
     $pane->subtype = 'profile-panel_pane_10';
@@ -276,10 +305,10 @@ function profiles_content_type_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 4;
-    $display->content['new-9'] = $pane;
-    $display->panels['left'][4] = 'new-9';
+    $display->content['new-10'] = $pane;
+    $display->panels['left'][4] = 'new-10';
     $pane = new stdClass;
-    $pane->pid = 'new-10';
+    $pane->pid = 'new-11';
     $pane->panel = 'left';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
@@ -317,10 +346,10 @@ function profiles_content_type_default_page_manager_handlers() {
     );
     $pane->extras = array();
     $pane->position = 5;
-    $display->content['new-10'] = $pane;
-    $display->panels['left'][5] = 'new-10';
+    $display->content['new-11'] = $pane;
+    $display->panels['left'][5] = 'new-11';
     $pane = new stdClass;
-    $pane->pid = 'new-11';
+    $pane->pid = 'new-12';
     $pane->panel = 'right';
     $pane->type = 'block';
     $pane->subtype = 'block-15';
@@ -337,10 +366,10 @@ function profiles_content_type_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-11'] = $pane;
-    $display->panels['right'][0] = 'new-11';
+    $display->content['new-12'] = $pane;
+    $display->panels['right'][0] = 'new-12';
     $pane = new stdClass;
-    $pane->pid = 'new-12';
+    $pane->pid = 'new-13';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'profile-panel_pane_1';
@@ -358,8 +387,8 @@ function profiles_content_type_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
-    $display->content['new-12'] = $pane;
-    $display->panels['right'][1] = 'new-12';
+    $display->content['new-13'] = $pane;
+    $display->panels['right'][1] = 'new-13';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
