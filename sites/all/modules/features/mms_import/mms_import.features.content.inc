@@ -153,23 +153,23 @@ function mms_import_content_default_fields() {
     'module' => 'nodereference',
     'active' => '1',
     'referenceable_types' => array(
+      'event' => 'event',
+      'articles' => 'articles',
       'profile' => 'profile',
-      'event' => 0,
+      'static_page' => 'static_page',
+      'webform' => 'webform',
       'blogs' => 0,
       'feed_news' => 0,
       'photo' => 0,
       'feed_imported' => 0,
       'imported_mms' => 0,
-      'articles' => 0,
       'newsletter' => 0,
       'panel' => 0,
       'global_campaigns' => 0,
       'region' => 0,
       'kampagne' => 0,
       'spotbox' => 0,
-      'static_page' => 0,
       'subsite' => 0,
-      'webform' => 0,
     ),
     'advanced_view' => '--',
     'advanced_view_args' => '',
@@ -183,10 +183,75 @@ function mms_import_content_default_fields() {
         ),
       ),
       'default_value_php' => NULL,
-      'label' => 'Relaterede spillerprofiler',
+      'label' => 'Tilknyttede sider',
       'weight' => '10',
       'description' => '',
       'type' => 'nodereference_autocomplete',
+      'module' => 'nodereference',
+    ),
+  );
+
+  // Exported field: field_slug_ref
+  $fields['photo-field_slug_ref'] = array(
+    'field_name' => 'field_slug_ref',
+    'type_name' => 'photo',
+    'display_settings' => array(
+      'weight' => '5',
+      'parent' => '',
+      'label' => array(
+        'format' => 'hidden',
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'nodereference',
+    'required' => '0',
+    'multiple' => '0',
+    'module' => 'nodereference',
+    'active' => '1',
+    'referenceable_types' => array(
+      'region' => 'region',
+      'subsite' => 'subsite',
+      'event' => 0,
+      'photo' => 0,
+      'kampagne' => 0,
+      'newsletter' => 0,
+      'panel' => 0,
+      'profile' => 0,
+      'static_page' => 0,
+      'articles' => 0,
+      'blogs' => 0,
+    ),
+    'advanced_view' => '--',
+    'advanced_view_args' => '',
+    'widget' => array(
+      'autocomplete_match' => 'contains',
+      'size' => 60,
+      'default_value' => array(
+        '0' => array(
+          'nid' => '',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Tilknytning',
+      'weight' => '6',
+      'description' => '',
+      'type' => 'nodereference_select',
       'module' => 'nodereference',
     ),
   );
@@ -247,7 +312,8 @@ function mms_import_content_default_fields() {
   t('Besked');
   t('Brugerfoto');
   t('Foto');
-  t('Relaterede spillerprofiler');
+  t('Tilknytning');
+  t('Tilknyttede sider');
 
   return $fields;
 }
