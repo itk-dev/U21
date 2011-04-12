@@ -638,18 +638,26 @@ div.messages ul {
 /* !PHOTO GALLERIES                         */
 /* ======================================== */
 
-.grid-6 .u21foto-list .foto {
+.u21foto-list {
+  margin: 0 8px;
+}
+
+.ui-tabs .u21foto-list {
+  margin: 0;
+}
+
+.u21foto-list .foto {
   display: inline-block;
   border: 4px solid #FFFFFF;
   display: inline-block;
   margin: 0 6px 6px -4px;  
 }
 
-.grid-6 .u21foto-list .foto:hover {
+.u21foto-list .foto:hover {
   border-color: #18396C;
 }
 
-.grid-6 .u21foto-tag-list {
+.u21foto-tag-list {
   padding: 0 0 0 8px;
 
 }
