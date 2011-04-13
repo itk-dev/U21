@@ -172,7 +172,7 @@ function mms_callback_xml() {
     // index the MMS's.
     $taxonomy = $xml->createElement('taxonomy');
     $msg->appendChild($taxonomy);
-    $taxonomyValue = $xml->createTextNode(preg_replace('/\W.*/', '', $row['message']));
+    $taxonomyValue = $xml->createTextNode(strtolower($preg_replace('/\W.*/', '', $row['message'])));
     $taxonomy->appendChild($taxonomyValue);
 
     // Add image(s)
