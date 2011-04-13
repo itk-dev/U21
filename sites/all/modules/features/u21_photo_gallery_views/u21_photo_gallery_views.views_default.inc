@@ -64,11 +64,7 @@ function u21_photo_gallery_views_views_default_views() {
     'type' => array(
       'operator' => 'in',
       'value' => array(
-        'profile' => 'profile',
-        'articles' => 'articles',
-        'event' => 'event',
-        'static_page' => 'static_page',
-        'webform' => 'webform',
+        'photo' => 'photo',
       ),
       'group' => '0',
       'exposed' => FALSE,
@@ -82,7 +78,7 @@ function u21_photo_gallery_views_views_default_views() {
       'override' => array(
         'button' => 'Override',
       ),
-      'relationship' => 'none',
+      'relationship' => 'vid',
     ),
   ));
   $handler->override_option('access', array(
@@ -91,6 +87,7 @@ function u21_photo_gallery_views_views_default_views() {
   $handler->override_option('cache', array(
     'type' => 'none',
   ));
+  $handler->override_option('title', 'Fotos');
   $handler->override_option('items_per_page', 20);
   $handler->override_option('style_plugin', 'semanticviews_default');
   $handler->override_option('style_options', array(
@@ -276,7 +273,7 @@ function u21_photo_gallery_views_views_default_views() {
     'weight' => '0',
   ));
   $handler->override_option('allow', array(
-    'use_pager' => 'use_pager',
+    'use_pager' => 0,
     'items_per_page' => 'items_per_page',
     'offset' => 0,
     'link_to_view' => 0,

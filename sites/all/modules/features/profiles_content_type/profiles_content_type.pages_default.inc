@@ -182,8 +182,8 @@ function profiles_content_type_default_page_manager_handlers() {
       'context' => array(
         0 => 'argument_nid_1',
       ),
-      'override_title' => 1,
-      'override_title_text' => 'Photo',
+      'override_title' => 0,
+      'override_title_text' => '',
     );
     $pane->cache = array();
     $pane->style = array(
