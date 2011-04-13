@@ -1,7 +1,6 @@
 <?php
 
 define('MMS_CALLBACK_TIME', 4200);
-define('MMS_CALLBACK_KEYWORD_LENGHT', 8);
 define('MMS_CALLBACK_FILE_PATH', '/uploaded_mms');
 define('MMS_CALLBACK_SMS_RECEIPT_URL', 'http://www.smssys.dk/?user=U21+Denmark&pass=2866');
 define('MMS_CALLBACK_SMS_RECEIPT_MSG', 'Tak for billedet. Vi har givet vores redaktører besked. Du kan også få U21-nyheder på SMS ved at sende \'u21 updates\' til 1220.');
@@ -59,7 +58,7 @@ function mms_callback_message() {
   }
   
   // Get text and strip keyword
-  $text = substr(file_get_contents(trim($xml->message->content->text)), MMS_CALLBACK_KEYWORD_LENGHT);
+  $text = trim(substr(file_get_contents(trim($xml->message->content->text)), strlen($xml->keyword)));
   
   // Download image(s)
   $images =  array();  
@@ -168,6 +167,13 @@ function mms_callback_xml() {
     $msg->appendChild($text);
     $textValue = $xml->createTextNode($row['message']);
     $text->appendChild($textValue);
+
+    // Get first word of the text as it may be a keyword too and can be used to
+    // index the MMS's.
+    $taxonomy = $xml->createElement('taxonomy');
+    $msg->appendChild($taxonomy);
+    $taxonomyValue = $xml->createTextNode(preg_replace('/\W.*/', '', $row['message']));
+    $taxonomy->appendChild($taxonomyValue);
 
     // Add image(s)
     $images = unserialize($row['images']);

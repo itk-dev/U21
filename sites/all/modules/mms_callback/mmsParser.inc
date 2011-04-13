@@ -16,6 +16,7 @@ class mmsParser extends FeedsParser {
       $item['msgid'] = (string)$message['msgid'];
       $item['timestamp'] = (string)$message['timestamp'];
       $item['text'] = (string)$message->text;
+      $item['taxonomy'] = (string)$message->taxonomy;
       $item['uploaded'] = 'Ja';
       
       // Convert XML image to array
@@ -54,6 +55,10 @@ class mmsParser extends FeedsParser {
       'text' => array(
         'name' => t('MMS text'),
         'description' => t('Text sendt with the MMS.'),
+      ),
+      'taxonomy' => array(
+        'name' => t('Taxonomy keyword'),
+        'description' => t('Second word sendt in the MMS.'),
       ),
       'images' => array(
         'name' => t('Image(s) link'),
