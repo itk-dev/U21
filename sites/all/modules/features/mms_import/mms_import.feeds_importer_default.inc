@@ -62,6 +62,11 @@ function mms_import_feeds_importer_default() {
             'target' => 'taxonomy:features_mms_keywords',
             'unique' => FALSE,
           ),
+          6 => array(
+            'source' => 'msgid',
+            'target' => 'guid',
+            'unique' => FALSE,
+          ),
         ),
         'author' => 0,
       ),
