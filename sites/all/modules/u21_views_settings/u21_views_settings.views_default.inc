@@ -1164,10 +1164,10 @@ function u21_views_settings_views_default_views() {
     'date_filter' => array(
       'operator' => '>=',
       'value' => array(
+        'value' => NULL,
         'min' => NULL,
         'max' => NULL,
-        'value' => NULL,
-        'default_date' => 'now',
+        'default_date' => 'now -1 day',
         'default_to_date' => '',
       ),
       'group' => '0',
@@ -1182,13 +1182,16 @@ function u21_views_settings_views_default_views() {
       'date_method' => 'OR',
       'granularity' => 'minute',
       'form_type' => 'date_select',
-      'default_date' => 'now',
+      'default_date' => 'now -1 day',
       'default_to_date' => '',
       'year_range' => '-3:+3',
       'id' => 'date_filter',
       'table' => 'node',
       'field' => 'date_filter',
       'relationship' => 'none',
+      'override' => array(
+        'button' => 'Override',
+      ),
     ),
   ));
   $handler->override_option('access', array(
@@ -1640,10 +1643,10 @@ function u21_views_settings_views_default_views() {
     'date_filter' => array(
       'operator' => '>=',
       'value' => array(
+        'value' => NULL,
         'min' => NULL,
         'max' => NULL,
-        'value' => NULL,
-        'default_date' => 'now',
+        'default_date' => 'now -1 day',
         'default_to_date' => '',
       ),
       'group' => '0',
@@ -1658,13 +1661,16 @@ function u21_views_settings_views_default_views() {
       'date_method' => 'OR',
       'granularity' => 'minute',
       'form_type' => 'date_select',
-      'default_date' => 'now',
+      'default_date' => 'now -1 day',
       'default_to_date' => '',
       'year_range' => '-3:+3',
       'id' => 'date_filter',
       'table' => 'node',
       'field' => 'date_filter',
       'relationship' => 'none',
+      'override' => array(
+        'button' => 'Use default',
+      ),
     ),
     'field_promote_value' => array(
       'operator' => '=',
@@ -4032,32 +4038,48 @@ function u21_views_settings_views_default_views() {
       ),
     ),
   ));
-  $handler->override_option('title', 'Næste arrangement');
-  $handler->override_option('footer', '<a href="/events/">Se alle arrangementer</a>');
+  $handler->override_option('title', 'Kommende arrangementer');
+  $handler->override_option('footer', '<a href="/events/">Se alle</a>');
   $handler->override_option('footer_format', '3');
   $handler->override_option('footer_empty', 0);
-  $handler->override_option('items_per_page', 1);
+  $handler->override_option('items_per_page', 6);
   $handler->override_option('use_pager', '0');
   $handler->override_option('use_more', 0);
   $handler->override_option('use_more_always', 0);
-  $handler->override_option('style_plugin', 'semanticviews_default');
+  $handler->override_option('style_plugin', 'slideshow');
   $handler->override_option('style_options', array(
-    'grouping' => '',
-    'group' => array(
-      'element_type' => 'h2',
-      'class' => '',
-    ),
-    'list' => array(
-      'element_type' => '',
-      'class' => '',
-    ),
-    'row' => array(
-      'element_type' => '',
-      'class' => '',
-      'last_every_nth' => '0',
-      'first_class' => 'first',
-      'last_class' => '',
-      'striping_classes' => 'odd even',
+    'type' => 'ul',
+    'mode' => 'views_slideshow_singleframe',
+    'views_slideshow_singleframe-prefix' => '',
+    'views_slideshow_singleframe' => array(
+      'timeout' => '5000',
+      'delay' => '0',
+      'speed' => '700',
+      'start_paused' => 1,
+      'fixed_height' => '0',
+      'random' => '0',
+      'pause' => '1',
+      'pause_on_click' => '0',
+      'pause_when_hidden' => 0,
+      'pause_when_hidden_type' => 'full',
+      'amount_allowed_visible' => '',
+      'remember_slide' => 0,
+      'remember_slide_days' => '1',
+      'controls' => '0',
+      'pager' => '2',
+      'pager_type' => 'Numbered',
+      'pager_hover' => '2',
+      'pager_click_to_page' => 0,
+      'image_count' => '0',
+      'items_per_slide' => '1',
+      'effect' => 'scrollHorz',
+      'sync' => '1',
+      'nowrap' => '0',
+      'advanced' => '',
+      'ie' => array(
+        'cleartype' => 'true',
+        'cleartypenobg' => 'false',
+      ),
     ),
   ));
   $handler->override_option('row_plugin', 'semanticviews_fields');

@@ -264,18 +264,18 @@ table.layout-table th {
   line-height: 40px;
 }
 
-.top-slideshow .view-node a:link,
-.top-slideshow .view-node a:visited,
-.top-slideshow .view-footer a:link,
-.top-slideshow .view-footer a:visited {
+.view-node a:link,
+.view-node a:visited,
+.view-footer a:link,
+.view-footer a:visited {
   color: #fea92f;
   font-weight: bold;
   border-bottom: 1px dotted #fea92f;
   line-height: 18px;
 }
 
-.top-slideshow .view-node a:hover,
-.top-slideshow .view-footer a:hover {
+.view-node a:hover,
+.view-footer a:hover {
   border-bottom: none;
   padding-bottom: 1px;
 }
