@@ -1,9 +1,19 @@
 <?php
 
-define('MMS_CALLBACK_TIME', 4200);
-define('MMS_CALLBACK_FILE_PATH', '/uploaded_mms');
-define('MMS_CALLBACK_SMS_RECEIPT_URL', 'http://www.smssys.dk/?user=U21+Denmark&pass=2866');
-define('MMS_CALLBACK_SMS_RECEIPT_MSG', 'Tak for billedet. Vi har givet vores redaktører besked. Du kan også få U21-nyheder på SMS ved at sende \'u21 updates\' til 1220.');
+//define('MMS_CALLBACK_TIME', 4200);
+//define('MMS_CALLBACK_FILE_PATH', '/uploaded_mms');
+//define('MMS_CALLBACK_SMS_RECEIPT_URL', 'http://www.smssys.dk/?user=U21+Denmark&pass=2866');
+//define('MMS_CALLBACK_SMS_RECEIPT_MSG', 'Tak for billedet. Vi har givet vores redaktører besked. Du kan også få U21-nyheder på SMS ved at sende \'u21 updates\' til 1220.');
+
+/**
+ * Implementation of hook_perm().
+ */
+function mms_callback_perm() {
+  return array(
+      'configure mms',
+      'configure mms messages',
+    );
+ }
 
 /**
  * Implementation of hook_menu().
@@ -23,6 +33,33 @@ function mms_callback_menu() {
     'page callback' => 'mms_callback_xml',
     'access callback' => TRUE,
     'type' => MENU_LOCAL_TASK,
+  );
+  
+  $items['admin/settings/mms'] = array(
+    'title' => 'MMS settings',
+    'description' => t('Configureations for MMS\'s'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('mms_calback_admin_form'),
+    'access arguments' => array('configure mms'),
+    'file' => 'mms_callback.admin.inc',
+  );
+
+  $items['admin/settings/mms/settings'] = array(
+    'title' => 'Settings',
+    'description' => t('Configure MMS settings.'),
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -10,
+  );
+
+  $items['admin/settings/mms/messages'] = array(
+    'title' => 'MMS messages',
+    'description' => t('Set the messages to send back to users.'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('mms_calback_message_form'),
+    'access arguments' => array('configure mms messages'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => -5,
+    'file' => 'mms_callback.admin.inc',
   );
 
   return $items;
@@ -50,6 +87,13 @@ function mms_callback_message() {
     return;
   }
 
+  // Load settings
+  $settings = variable_get('mms_callback', array());
+  if (empty($settings)) {
+    watchdog('MMS Callback', t('MMS received but no setting where found.'));
+    return;
+  }
+
   // Parse XML message
   $xml = new SimpleXMLElement($postText);
   if (!$xml) {
@@ -66,7 +110,7 @@ function mms_callback_message() {
     // More than one picture is added to the MMS    
     foreach ($xml->message->content->image as $url) {
       $url = trim($url);
-      $image = mms_callback_download_image($url, $xml->mobile);
+      $image = mms_callback_download_image($url, $settings['path'], $xml->mobile);
       if (!$image) {
         return;
       }
@@ -75,7 +119,7 @@ function mms_callback_message() {
   }
   else {
     $url = trim($xml->message->content->image);
-    $image = mms_callback_download_image($url, $xml->mobile);
+    $image = mms_callback_download_image($url, $settings['path'], $xml->mobile);
     if (!$image) {
       return;
     }
@@ -89,10 +133,10 @@ function mms_callback_message() {
   $record->images = serialize($images);
   $record->timestamp = time();
   drupal_write_record('mms_callback', $record);
-
+  
   // Send SMS repeipt back
-  $msg = urlencode(utf8_decode(MMS_CALLBACK_SMS_RECEIPT_MSG));
-  $url = MMS_CALLBACK_SMS_RECEIPT_URL . '&number=' . substr(trim($xml->mobile), 2) . '&message=' .  $msg;
+  $msg = urlencode(utf8_decode(mms_callback_find_message(mms_callback_secound_keyword($text))));
+  $url = $settings['gateway'] . '&number=' . substr(trim($xml->mobile), 2) . '&message=' .  $msg;
   $ret = file_get_contents($url);
   $xml = new SimpleXMLElement($ret);
   if (!$xml) {
@@ -107,6 +151,32 @@ function mms_callback_message() {
   }
 }
 
+function mms_callback_secound_keyword($text) {
+  return strtolower(preg_replace('/\W.*/', '', $text));
+}
+
+/**
+ * Find the right message to send back.
+ *
+ * @param <type> $keyword
+ * @return <type>
+ */
+function mms_callback_find_message($keyword) {
+  // Load messages
+  $messages = variable_get('mms_callback_messages', array());
+  if (empty($messages)) {
+    watchdog('MMS Callback', t('MMS received but no setting where found.'));
+    return 'No message configured!';
+  }
+
+  if (array_key_exists($keyword, $messages)) {
+    return $messages[$keyword];
+  }
+  else {
+    return $messages['default_msg'];
+  }
+}
+
 /**
  * Downloadeds a image from an url and prefixes the name of the downloaded url
  *
@@ -114,8 +184,8 @@ function mms_callback_message() {
  * @param string $prefix
  * @return mixed image path if image was downloaded else FALSE
  */
-function mms_callback_download_image($url, $prefix = NULL) {
-  $path = file_directory_path() . MMS_CALLBACK_FILE_PATH;
+function mms_callback_download_image($url, $path, $prefix = NULL) {
+  $path = file_directory_path() . '/' . $path;
   if (file_check_directory($path, FILE_CREATE_DIRECTORY)) {
     $image = ($prefix ? $prefix : time()) . '_' . basename($url);
     file_put_contents(realpath($path) . '/' . $image, file_get_contents($url));
@@ -131,6 +201,13 @@ function mms_callback_download_image($url, $prefix = NULL) {
  * Menu callback to generate feed based on data received by MMS's.
  */
 function mms_callback_xml() {
+  // Load settings
+  $settings = variable_get('mms_callback', array());
+  if (empty($settings)) {
+    watchdog('MMS Callback', t('MMS received but no setting where found.'));
+    return;
+  }
+
   // Start new xml document
   $xml = new DOMDocument('1.0', 'utf-8');
   $xml->formatOutput= true;
@@ -140,7 +217,7 @@ function mms_callback_xml() {
   $xml->appendChild($messages);
 
   // Load data from the database
-  $result = db_query('SELECT * FROM {mms_callback} WHERE timestamp > '. (time() - MMS_CALLBACK_TIME));
+  $result = db_query('SELECT * FROM {mms_callback} WHERE timestamp > '. (time() - $settings['time']));
   while ($row = db_fetch_array($result)) {
     $msg = $xml->createElement('message');
 
@@ -172,7 +249,7 @@ function mms_callback_xml() {
     // index the MMS's.
     $taxonomy = $xml->createElement('taxonomy');
     $msg->appendChild($taxonomy);
-    $taxonomyValue = $xml->createTextNode(strtolower(preg_replace('/\W.*/', '', $row['message'])));
+    $taxonomyValue = $xml->createTextNode(mms_callback_secound_keyword($row['message']));
     $taxonomy->appendChild($taxonomyValue);
 
     // Add image(s)
