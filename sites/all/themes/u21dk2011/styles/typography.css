@@ -255,8 +255,8 @@ table.layout-table th {
 }
 
 /* ----- / News Slider ----- */
-.top-slideshow .title a:link,
-.top-slideshow .title a:visited {
+.title a:link,
+.title a:visited {
   border: none;
   font-weight: bold;
   color: #fff;
