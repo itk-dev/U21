@@ -287,6 +287,14 @@ table.layout-table th {
   padding-bottom: 1px;
 } 
 
+.views-slideshow-controls-bottom a:link,
+.views-slideshow-controls-bottom a:visited,
+.views-slideshow-controls-bottom a:hover,
+.views-slideshow-controls-bottom a:active {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
 /* ----- / Metadata ------ */
 
 .views-list .date-display-single,
