@@ -68,6 +68,8 @@ function mms_calback_message_form()  {
     '#title' => 'Default message',
     '#description' => 'Enter the message the send back to the user on repection as default',
     '#default_value' => isset($default['default_msg']) ? $default['default_msg'] : '',
+    '#size' => 160,
+    '#maxlength' => 160,
   );
 
   $terms = taxonomy_get_tree($settings['vocabulary']);
@@ -77,6 +79,8 @@ function mms_calback_message_form()  {
       '#title' => 'Message for keyword (' .  check_plain($term->name) . ')',
       '#description' => 'Enter the message the send back to the user on repection of the keyword',
       '#default_value' => isset($default[$term->name]) ? $default[$term->name] : '',
+      '#size' => 160,
+      '#maxlength' => 160,
     );
   }
   
