@@ -1267,38 +1267,3 @@ h2.spotbox a:visited {
   position: absolute;
   top: 58px;
 }
-
-/* ======================================== */
-/* !USER LOGIN FORM                         */
-/* ======================================== */
-
-#user-login-form {
-  text-align: left;
-}
-
-#user-login-form label {
-  float: left;
-  width: 100px;
-}
-
-#user-login-form input[type=text], #user-login-form input[type=password] {
-  width: 200px;
-}
-
-#user-login-form .item-list {
-  overflow: hidden;
-}
-
-
-#user-login-form .item-list li {
-  float: left;
-  padding-top: 25px;
-  margin-right: 25px;
-  list-style: none;
-}
-
-#user-login-form li.openid-link,
-html.js #user-login-form li.openid-link {
-  display: none;
-}
-
