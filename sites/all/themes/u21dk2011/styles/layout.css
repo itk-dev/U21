@@ -790,7 +790,7 @@ div.feed-icon {
 #sponsorstrip a:hover,
 #sponsorstrip a:active {
   display: inline-block;
-  padding: 0 2px;
+  padding: 0 1px;
   margin: 0;
   border: none;
 }
