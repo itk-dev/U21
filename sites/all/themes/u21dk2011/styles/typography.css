@@ -89,6 +89,10 @@ strong, bold {
   font-weight: bold;
 }
 
+.teaser-content ul {
+  margin-left: 20px;
+}
+
 /* ------ / Link typography ------ */
 
 a:link, a:visited, li a.active {

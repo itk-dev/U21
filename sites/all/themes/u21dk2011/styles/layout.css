@@ -545,7 +545,7 @@ div.messages ul {
   padding: 8px 16px 2px;
 }
 
-.pager-item a {
+.views_slideshow_singleframe_pager .pager-item a {
   background: url(../images/button-pager.png) left top no-repeat;
   width: 12px;
   height: 12px;
