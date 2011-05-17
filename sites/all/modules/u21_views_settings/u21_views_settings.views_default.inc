@@ -1370,6 +1370,7 @@ function u21_views_settings_views_default_views() {
   ));
   $handler->override_option('arguments', array());
   $handler->override_option('empty', '');
+  $handler->override_option('items_per_page', 6);
   $handler->override_option('style_plugin', 'semanticviews_default');
   $handler->override_option('style_options', array(
     'grouping' => '',
@@ -1419,14 +1420,14 @@ function u21_views_settings_views_default_views() {
     'weight' => '0',
   ));
   $handler->override_option('allow', array(
-    'use_pager' => 'use_pager',
-    'items_per_page' => 'items_per_page',
-    'offset' => 'offset',
+    'use_pager' => 0,
+    'items_per_page' => 0,
+    'offset' => 0,
     'link_to_view' => 0,
     'more_link' => 0,
     'path_override' => 'path_override',
     'title_override' => 'title_override',
-    'exposed_form' => FALSE,
+    'exposed_form' => 0,
     'fields_override' => 'fields_override',
   ));
   $handler->override_option('argument_input', array(
