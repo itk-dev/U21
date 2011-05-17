@@ -1167,7 +1167,7 @@ function u21_views_settings_views_default_views() {
         'value' => NULL,
         'min' => NULL,
         'max' => NULL,
-        'default_date' => 'now -1 day',
+        'default_date' => 'now',
         'default_to_date' => '',
       ),
       'group' => '0',
@@ -1182,7 +1182,7 @@ function u21_views_settings_views_default_views() {
       'date_method' => 'OR',
       'granularity' => 'minute',
       'form_type' => 'date_select',
-      'default_date' => 'now -1 day',
+      'default_date' => 'now',
       'default_to_date' => '',
       'year_range' => '-3:+3',
       'id' => 'date_filter',
@@ -1696,7 +1696,7 @@ function u21_views_settings_views_default_views() {
   $handler->override_option('footer_empty', 0);
   $handler->override_option('empty', '<p>Næste arrangement vil blive offentliggjort her.</p>');
   $handler->override_option('items_per_page', 6);
-  $handler->override_option('use_pager', FALSE);
+  $handler->override_option('use_pager', '0');
   $handler->override_option('style_plugin', 'slideshow');
   $handler->override_option('style_options', array(
     'type' => 'ul',
@@ -2381,6 +2381,7 @@ function u21_views_settings_views_default_views() {
       ),
     ),
   ));
+  $handler->override_option('items_per_page', 8);
   $handler->override_option('style_plugin', 'semanticviews_default');
   $handler->override_option('style_options', array(
     'grouping' => '',
@@ -2422,7 +2423,7 @@ function u21_views_settings_views_default_views() {
       ),
       'field_teaser_value' => array(
         'element_type' => 'div',
-        'class' => '',
+        'class' => 'teaser-content',
       ),
     ),
     'skip_blank' => 1,
@@ -2434,14 +2435,14 @@ function u21_views_settings_views_default_views() {
     'weight' => '0',
   ));
   $handler->override_option('allow', array(
-    'use_pager' => 'use_pager',
-    'items_per_page' => 'items_per_page',
-    'offset' => 'offset',
+    'use_pager' => 0,
+    'items_per_page' => 0,
+    'offset' => 0,
     'link_to_view' => 0,
     'more_link' => 0,
     'path_override' => 'path_override',
     'title_override' => 'title_override',
-    'exposed_form' => FALSE,
+    'exposed_form' => 0,
     'fields_override' => 'fields_override',
   ));
   $handler->override_option('argument_input', array(
@@ -4055,7 +4056,7 @@ function u21_views_settings_views_default_views() {
       'timeout' => '5000',
       'delay' => '0',
       'speed' => '700',
-      'start_paused' => 1,
+      'start_paused' => 0,
       'fixed_height' => '0',
       'random' => '0',
       'pause' => '1',
