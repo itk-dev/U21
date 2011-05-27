@@ -911,7 +911,7 @@ body.context-editing a.context-block {
 }
 
 .playingfield-wide .player-marker {
-  background: transparent url(../images/back-player-position.png) left top no-repeat;
+  background: transparent url(../images/back-player-position-neutral.png) left top no-repeat;
   width: 64px;
   height: 53px;
   display: block;
@@ -919,6 +919,10 @@ body.context-editing a.context-block {
   position: absolute;
   left: 0; /* default value. Overridden by inline styles */
   top: 0; /* ditto */
+}
+
+.team-danmark .player-marker {
+  background-image: url(../images/back-player-position.png);
 }
 
 .js .playingfield-wide .player-marker {
