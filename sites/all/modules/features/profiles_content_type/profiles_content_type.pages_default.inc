@@ -12,7 +12,7 @@ function profiles_content_type_default_page_manager_handlers() {
   $handler->task = 'node_view';
   $handler->subtask = '';
   $handler->handler = 'panel_context';
-  $handler->weight = 12;
+  $handler->weight = -22;
   $handler->conf = array(
     'title' => 'Profile page',
     'no_blocks' => 0,
@@ -203,7 +203,23 @@ function profiles_content_type_default_page_manager_handlers() {
     $pane->type = 'custom';
     $pane->subtype = 'custom';
     $pane->shown = TRUE;
-    $pane->access = array();
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'term',
+          'settings' => array(
+            'vid' => '2',
+            1 => array(),
+            3 => array(),
+            2 => array(
+              9 => '9',
+            ),
+          ),
+          'context' => 'relationship_term_from_node_1',
+          'not' => FALSE,
+        ),
+      ),
+    );
     $pane->configuration = array(
       'admin_title' => 'Se holdoversigt',
       'title' => '',
@@ -444,6 +460,24 @@ function profiles_content_type_default_page_manager_pages() {
     'css' => '',
     'contexts' => array(),
     'relationships' => array(),
+    'access' => array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'term',
+          'settings' => array(
+            'vid' => '2',
+            1 => array(),
+            3 => array(),
+            2 => array(
+              9 => '9',
+            ),
+          ),
+          'context' => 'argument_term_1',
+          'not' => FALSE,
+        ),
+      ),
+      'logic' => 'and',
+    ),
   );
   $display = new panels_display;
   $display->layout = 'twocol_8_4_stacked_bottom';
