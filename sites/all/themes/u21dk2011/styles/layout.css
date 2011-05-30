@@ -553,8 +553,8 @@ div.messages ul {
   display: inline-block;
 }
 
-.activeSlide a,
-.pager-item a:hover {
+.views_slideshow_singleframe_pager .activeSlide a,
+.views_slideshow_singleframe_pager .pager-item a:hover {
   background: url(../images/button-pager-active.png) left top no-repeat;
 }
 
