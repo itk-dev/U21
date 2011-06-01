@@ -545,7 +545,7 @@ div.messages ul {
   padding: 8px 16px 2px;
 }
 
-.pager-item a {
+.views_slideshow_singleframe_pager .pager-item a {
   background: url(../images/button-pager.png) left top no-repeat;
   width: 12px;
   height: 12px;
@@ -553,8 +553,8 @@ div.messages ul {
   display: inline-block;
 }
 
-.activeSlide a,
-.pager-item a:hover {
+.views_slideshow_singleframe_pager .activeSlide a,
+.views_slideshow_singleframe_pager .pager-item a:hover {
   background: url(../images/button-pager-active.png) left top no-repeat;
 }
 
@@ -654,7 +654,7 @@ div.messages ul {
   display: inline-block;
   border: 4px solid #FFFFFF;
   display: inline-block;
-  margin: 0 6px 6px -4px;  
+  margin: 0 4px 6px -4px;  
 }
 
 .u21foto-list .foto:hover {
@@ -911,7 +911,7 @@ body.context-editing a.context-block {
 }
 
 .playingfield-wide .player-marker {
-  background: transparent url(../images/back-player-position.png) left top no-repeat;
+  background: transparent url(../images/back-player-position-neutral.png) left top no-repeat;
   width: 64px;
   height: 53px;
   display: block;
@@ -919,6 +919,10 @@ body.context-editing a.context-block {
   position: absolute;
   left: 0; /* default value. Overridden by inline styles */
   top: 0; /* ditto */
+}
+
+.team-danmark .player-marker {
+  background-image: url(../images/back-player-position.png);
 }
 
 .js .playingfield-wide .player-marker {
