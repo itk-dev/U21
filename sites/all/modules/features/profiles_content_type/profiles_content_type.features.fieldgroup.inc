@@ -48,13 +48,14 @@ function profiles_content_type_fieldgroup_default_groups() {
     ),
     'weight' => '4',
     'fields' => array(
-      '0' => 'field_profile_position',
-      '1' => 'field_profile_current_club',
-      '2' => 'field_profile_weight',
-      '3' => 'field_profile_height',
-      '4' => 'field_profile_birth',
-      '5' => 'field_profile_clubs',
-      '6' => 'field_profile_teams',
+      '0' => 'field_profile_nation',
+      '1' => 'field_profile_position',
+      '2' => 'field_profile_current_club',
+      '3' => 'field_profile_weight',
+      '4' => 'field_profile_height',
+      '5' => 'field_profile_birth',
+      '6' => 'field_profile_clubs',
+      '7' => 'field_profile_teams',
     ),
   );
 

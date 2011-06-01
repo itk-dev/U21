@@ -69,7 +69,7 @@ function profiles_content_type_content_default_fields() {
       'year_range' => '-3:+3',
       'label_position' => 'above',
       'label' => 'Født',
-      'weight' => '13',
+      'weight' => '21',
       'description' => '',
       'type' => 'date_popup',
       'module' => 'date',
@@ -132,7 +132,7 @@ function profiles_content_type_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Karriere',
-      'weight' => '14',
+      'weight' => '22',
       'description' => '',
       'type' => 'text_textarea',
       'module' => 'text',
@@ -195,7 +195,7 @@ function profiles_content_type_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Klub',
-      'weight' => '10',
+      'weight' => '18',
       'description' => '',
       'type' => 'text_textfield',
       'module' => 'text',
@@ -260,10 +260,64 @@ function profiles_content_type_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Højde',
-      'weight' => '12',
+      'weight' => '20',
       'description' => '',
       'type' => 'number',
       'module' => 'number',
+    ),
+  );
+
+  // Exported field: field_profile_nation
+  $fields['profile-field_profile_nation'] = array(
+    'field_name' => 'field_profile_nation',
+    'type_name' => 'profile',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'text',
+    'required' => '0',
+    'multiple' => '0',
+    'module' => 'text',
+    'active' => '1',
+    'text_processing' => '0',
+    'max_length' => '',
+    'allowed_values' => '',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'rows' => 5,
+      'size' => '60',
+      'default_value' => array(
+        '0' => array(
+          'value' => '',
+          '_error_element' => 'default_value_widget][field_profile_nation][0][value',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Nationalitet',
+      'weight' => '16',
+      'description' => '',
+      'type' => 'text_textfield',
+      'module' => 'text',
     ),
   );
 
@@ -322,7 +376,7 @@ Angriber',
       ),
       'default_value_php' => NULL,
       'label' => 'Position',
-      'weight' => '9',
+      'weight' => '17',
       'description' => '',
       'type' => 'optionwidgets_select',
       'module' => 'optionwidgets',
@@ -447,7 +501,7 @@ Angriber',
       ),
       'default_value_php' => NULL,
       'label' => 'Landshold',
-      'weight' => '15',
+      'weight' => '23',
       'description' => '',
       'type' => 'text_textarea',
       'module' => 'text',
@@ -567,7 +621,7 @@ Angriber',
       ),
       'default_value_php' => NULL,
       'label' => 'Vægt',
-      'weight' => '11',
+      'weight' => '19',
       'description' => '',
       'type' => 'number',
       'module' => 'number',
@@ -999,6 +1053,7 @@ Angriber',
   t('Karriere');
   t('Klub');
   t('Landshold');
+  t('Nationalitet');
   t('Position');
   t('Position: X');
   t('Position: Y');
