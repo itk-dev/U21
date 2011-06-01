@@ -2659,59 +2659,30 @@ function profiles_content_type_views_default_views() {
       ),
       'relationship' => 'none',
     ),
-    'field_promote_value' => array(
-      'operator' => '=',
-      'value' => '1',
+    'tid' => array(
+      'operator' => 'not',
+      'value' => array(
+        '0' => '9',
+        '1' => '21',
+      ),
       'group' => '0',
       'exposed' => FALSE,
       'expose' => array(
         'operator' => FALSE,
         'label' => '',
       ),
-      'case' => 0,
-      'id' => 'field_promote_value',
-      'table' => 'node_data_field_promote',
-      'field' => 'field_promote_value',
+      'type' => 'textfield',
+      'limit' => TRUE,
+      'vid' => '2',
+      'id' => 'tid',
+      'table' => 'term_node',
+      'field' => 'tid',
+      'hierarchy' => 0,
       'override' => array(
         'button' => 'Use default',
       ),
       'relationship' => 'none',
-    ),
-    'name' => array(
-      'operator' => '!=',
-      'value' => 'danmark',
-      'group' => '0',
-      'exposed' => FALSE,
-      'expose' => array(
-        'operator' => FALSE,
-        'label' => '',
-      ),
-      'case' => 0,
-      'id' => 'name',
-      'table' => 'term_data',
-      'field' => 'name',
-      'override' => array(
-        'button' => 'Use default',
-      ),
-      'relationship' => 'none',
-    ),
-    'name_1' => array(
-      'operator' => '!=',
-      'value' => 'old stars',
-      'group' => '0',
-      'exposed' => FALSE,
-      'expose' => array(
-        'operator' => FALSE,
-        'label' => '',
-      ),
-      'case' => 1,
-      'id' => 'name_1',
-      'table' => 'term_data',
-      'field' => 'name',
-      'override' => array(
-        'button' => 'Use default',
-      ),
-      'relationship' => 'none',
+      'reduce_duplicates' => 0,
     ),
   ));
   $handler->override_option('title', 'Udenlanske profiler');

@@ -53,7 +53,7 @@ function profiles_content_type_default_page_manager_handlers() {
             3 => array(),
             2 => array(
               9 => '9',
-              13 => '13',
+              21 => '21',
             ),
           ),
           'context' => 'relationship_term_from_node_1',
@@ -1035,7 +1035,7 @@ function profiles_content_type_default_page_manager_pages() {
   $handler->handler = 'panel_context';
   $handler->weight = 1;
   $handler->conf = array(
-    'title' => 'Team: All Star',
+    'title' => 'Team: Old Stars',
     'no_blocks' => 0,
     'pipeline' => 'standard',
     'css_id' => 'profile-lineup',
@@ -1051,7 +1051,7 @@ function profiles_content_type_default_page_manager_pages() {
             1 => array(),
             3 => array(),
             2 => array(
-              13 => '13',
+              21 => '21',
             ),
           ),
           'context' => 'argument_term_1',
