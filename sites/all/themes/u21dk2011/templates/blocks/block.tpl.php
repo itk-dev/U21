@@ -17,6 +17,9 @@ if ($classes) {
 if ($id_block) {
   $id_block = ' id="' . $id_block . '"';
 }
+else {
+  $id_block = '';
+}
 ?>
 
 <div<?php print $id_block . $classes; ?>>
