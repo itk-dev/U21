@@ -39,7 +39,7 @@ function u21dk2011_preprocess_page(&$vars, $hook) {
   // Detect if page is shown in a regional context
   $vars['is_region'] = FALSE;
   if ($hook == 'page') {
-    if ($vars['node']->field_slug_ref[0]['nid']) {
+    if (isset($vars['node']) && property_exists($vars['node'], 'field_slug_ref') && $vars['node']->field_slug_ref[0]['nid']) {
       $vars['is_region'] = TRUE;
     }
   }
