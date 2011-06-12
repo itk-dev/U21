@@ -17,6 +17,7 @@ function mothership_menu_tree($tree) {
 
 function mothership_menu_item($link, $has_children, $menu = '', $in_active_trail = FALSE, $extra_class = NULL) {
 
+    $class = FALSE;
     if (theme_get_setting('mothership_cleanup_menu_leafs')) {
       $class = ($menu ? 'expanded' : ($has_children ? 'collapsed' : 'leaf'));
     }

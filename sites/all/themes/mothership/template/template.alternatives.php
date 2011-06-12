@@ -15,6 +15,8 @@
  * div-span
  */
 function mothership_item_list($items = array(), $title = NULL, $type = 'ul', $attributes = NULL) {
+  $output = '';
+
   //fix if the type is div-span
   if ($type == "div-span") {
     $type = "div";

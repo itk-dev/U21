@@ -134,13 +134,15 @@ function u21dk2011_breadcrumb($breadcrumb) {
       }
 
       // Fix events and news
-      if (strstr($tmp[0], 'href="/news"')) {
-        $breadcrumb[] = l('Nyheder', $uri[1] . '/' . $uri[2] . '/news');
-        array_shift($tmp);
-      }
-      if (strstr($tmp[0], 'href="/events"')) {
-        $breadcrumb[] = l('Arrangementer', $uri[1] . '/' . $uri[2] . '/events');
-        array_shift($tmp);
+      if (!empty($tmp)) {
+	if (strstr($tmp[0], 'href="/news"')) {
+	  $breadcrumb[] = l('Nyheder', $uri[1] . '/' . $uri[2] . '/news');
+	  array_shift($tmp);
+	}
+	if (strstr($tmp[0], 'href="/events"')) {
+	  $breadcrumb[] = l('Arrangementer', $uri[1] . '/' . $uri[2] . '/events');
+	  array_shift($tmp);
+	}
       }
 
       // Put the rest back.
@@ -164,10 +166,8 @@ function u21dk2011_menu_item_link($link) {
   }
   
   // Add mlid to all menu-items and not only $primary-links and $secondary-links
-  if (empty($link['localized_options']['attributes']['class'])) {
+  if (empty($link['localized_options']['attributes']['class']) && isset($link['mlid'])) {
     $link['localized_options']['attributes']['class'] = 'menu-'. $link['mlid'];
-  }
-  else {
   }
 
   // Create variable with link title wrapped in div. 
@@ -181,21 +181,23 @@ function u21dk2011_menu_item_link($link) {
   $region_links = array('node/1','node/2','node/3','node/4');
   if (in_array($link['href'], $region_links)) {
     $tmp = split('/', $_SERVER[ 'REQUEST_URI']);
-    if ($tmp[2] == 'herning' && $link['href'] == 'node/4') {
+    if (count($tmp) >= 3) {
+      if ($tmp[2] == 'herning' && $link['href'] == 'node/4') {
         $link['localized_options']['attributes']['class'] = 'active-trail';
         return l($link['title'], $link['href'], $link['localized_options']) . $hover;
-    }
-    else if ($tmp[2] == 'viborg' && $link['href'] == 'node/3') {
+      }
+      else if ($tmp[2] == 'viborg' && $link['href'] == 'node/3') {
         $link['localized_options']['attributes']['class'] = 'active-trail';
         return l($link['title'], $link['href'], $link['localized_options']) . $hover;
-    }
-    else if ($tmp[2] == 'aarhus' && $link['href'] == 'node/2') {
+      }
+      else if ($tmp[2] == 'aarhus' && $link['href'] == 'node/2') {
         $link['localized_options']['attributes']['class'] = 'active-trail';
         return l($link['title'], $link['href'], $link['localized_options']) . $hover;
-    }
-    else if ($tmp[2] == 'aalborg' && $link['href'] == 'node/1') {
+      }
+      else if ($tmp[2] == 'aalborg' && $link['href'] == 'node/1') {
         $link['localized_options']['attributes']['class'] = 'active-trail';
         return l($link['title'], $link['href'], $link['localized_options']) . $hover;
+      }
     }
   }
 
@@ -215,7 +217,7 @@ function u21dk2011_views_slideshow_singleframe_controls($vss_id, $view, $options
   $attributes['id'] = "views_slideshow_singleframe_controls_" . $vss_id;
   $attributes = drupal_attributes($attributes);
 
-  $output .= theme('views_slideshow_singleframe_control_previous', $vss_id, $view, $options);
+  $output  = theme('views_slideshow_singleframe_control_previous', $vss_id, $view, $options);
   $output .= theme('views_slideshow_singleframe_control_next', $vss_id, $view, $options);
   
   return $output;

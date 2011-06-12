@@ -1,3 +1,3 @@
-<?php if ($sidebar) : ?>
+<?php if (isset($sidebar)) : ?>
   <?php print $sidebar ?>
 <?php endif ?>

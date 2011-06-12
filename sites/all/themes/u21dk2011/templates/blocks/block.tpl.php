@@ -14,7 +14,7 @@ if ($classes) {
   $classes = ' class="' . $classes . '"';
 }
 
-if ($id_block) {
+if (isset($id_block)) {
   $id_block = ' id="' . $id_block . '"';
 }
 else {
@@ -28,6 +28,6 @@ else {
 <?php endif; ?>
   <div<?php print $id_block . $inner_classes; ?>>
     <?php print $block->content; ?>
-    <?php  print $edit_links; ?>
+    <?php  if (isset($edit_links)) { print $edit_links; } ?>
   </div>
 </div>

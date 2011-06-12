@@ -359,7 +359,7 @@ function mothership_preprocess(&$vars, $hook) {
     }
 
     //skinr
-    if( module_exists(skinr) ) {
+    if ( module_exists('skinr') ) {
         $classes[] = $vars['skinr'];
     }
 

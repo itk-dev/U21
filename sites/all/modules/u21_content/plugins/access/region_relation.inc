@@ -33,11 +33,11 @@ function u21_content_region_relation_ctools_access_check($conf, $context) {
   // If region is set on the node, we allow it to pass if the
   // selection is "yes".
   if (isset($node->field_slug_ref[0]['nid'])) {
-    if ($selected == no) {
+    if ($selected == 'no') {
       return FALSE;
     }
     // Region is selected, so check if a specific region have been choosen
-    elseif ($selected != yes) {
+    elseif ($selected != 'yes') {
       if ($selected != $node->field_slug_ref[0]['nid']) {
         return FALSE;
       }
