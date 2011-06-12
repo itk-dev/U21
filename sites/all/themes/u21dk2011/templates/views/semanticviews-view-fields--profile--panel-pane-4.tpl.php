@@ -28,15 +28,15 @@
  */
 ?>
 
-<li class="player-marker" style="<?php if ($fields[field_profilepos_x_value]->content != "") : print 'left: '. $fields[field_profilepos_x_value]->content .';'; endif; if ($fields[field_profilepos_y_value]->content != "") : print 'top: '. $fields[field_profilepos_y_value]->content .';'; endif;  ?>;" tabindex="0">
+<li class="player-marker" style="<?php if ($fields['field_profilepos_x_value']->content != "") : print 'left: '. $fields['field_profilepos_x_value']->content .';'; endif; if ($fields['field_profilepos_y_value']->content != "") : print 'top: '. $fields['field_profilepos_y_value']->content .';'; endif;  ?>;" tabindex="0">
 
-<h3 class="player-shirtname"><?php print $fields[field_profile_shirtname_value]->content; ?></h3>
+<h3 class="player-shirtname"><?php print $fields['field_profile_shirtname_value']->content; ?></h3>
   
 <div class="player-info">
 
 <?php foreach ($fields as $id => $field): ?>
 
-  <?php if ($id != field_profilepos_x_value && $id != field_profilepos_y_value && $id != field_profile_shirtname_value): ?>
+  <?php if ($id != 'field_profilepos_x_value' && $id != 'field_profilepos_y_value' && $id != 'field_profile_shirtname_value'): ?>
     <?php if ($field->element_type): ?>
       <<?php print $field->element_type; ?><?php print drupal_attributes($field->attributes); ?>>
     <?php endif; ?>
